@@ -10,5 +10,5 @@ export default defineConfig({
       components: '/src/components'
     }
   },
-  base: '/mern-front/'
+  base: '/project-mern-schedule-01/'
 });

@@ -6,6 +6,7 @@ import routes from 'src/routes';
 
 import { register } from '../redux/auth/authOps';
 import RegisterForm from '../components/Forms/RegisterForm/RegisterForm';
+import AuthNavigate from '../components/AuthNavigate/AuthNavigate';
 import usePHBState from '../redux/selectors';
 
 export default function RegisterPage() {
@@ -31,6 +32,7 @@ export default function RegisterPage() {
         buttonName="Register"
         onSubmitForm={callBack}
       />
+      <AuthNavigate formType="register" />
     </>
   );
 }
