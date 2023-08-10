@@ -11,9 +11,9 @@ import {
   Input,
   ErrorText,
   Button
-} from './RegisterForm.styled';
+} from './LoginForm.styled';
 
-export default function RegisterForm({ onSubmitForm }) {
+export default function LoginForm({ onSubmitForm }) {
   const onSubmit = (data, { resetForm }) => {
     onSubmitForm(data);
     resetForm();
@@ -21,35 +21,25 @@ export default function RegisterForm({ onSubmitForm }) {
 
   return (
     <Container>
-      <Title>Sign Up</Title>
+      <Title>Log In</Title>
 
       <Formik
         validationSchema={validationRules}
-        initialValues={{ name: '', email: '', password: '' }}
+        initialValues={{ email: '', password: '' }}
         onSubmit={onSubmit}
       >
         {({ isValid }) => (
           <FormElement autoComplete="off">
-            <Subtitle htmlFor="name">Name</Subtitle>
-            <Input type="name" name="name" placeholder="Enter your name" id="signup_name" />
-            <ErrorText name="name" component="p" />
-
             <Subtitle htmlFor="email">Email</Subtitle>
-            <Input type="email" name="email" placeholder="Enter email" id="signup_email" />
+            <Input type="email" name="email" placeholder="nadiia@gmail.com" id="login_email" />
             <ErrorText name="email" component="p" />
 
             <Subtitle htmlFor="password">Password</Subtitle>
-            <Input
-              type="password"
-              name="password"
-              placeholder="Enter password"
-              id="signup_password"
-            />
-
+            <Input type="password" name="password" placeholder="******" id="login_password" />
             <ErrorText name="password" component="p" />
 
             <Button type="submit" disabled={!isValid}>
-              Sign Up
+              Log in
             </Button>
           </FormElement>
         )}
@@ -58,6 +48,6 @@ export default function RegisterForm({ onSubmitForm }) {
   );
 }
 
-RegisterForm.propTypes = {
+LoginForm.propTypes = {
   onSubmitForm: PropTypes.func.isRequired
 };
