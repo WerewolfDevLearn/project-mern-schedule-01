@@ -17,9 +17,14 @@ export default function LoginPage() {
     isLoading,
     user: { token }
   } = usePHBState();
-  const callBack = (data) => dispatch(userlogin(data));
+
+  const callBack = (data) => {
+    console.log(data);
+    dispatch(userlogin(data));
+  };
+
   if (!error && !isLoading && token) {
-    navigate(routes.calendarDay);
+    navigate(`/calendar/month/${}`);
   }
 
   return (

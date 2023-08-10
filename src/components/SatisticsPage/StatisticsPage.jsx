@@ -8,10 +8,9 @@
 //     </>
 //   );
 // }
+import PeriodPaginator from '../shared/PeriodPaginator/PeriodPaginator';
 
-import StatisticsChart from '../SatisticsPage/StatisticsChart/StatisticsChart';
-
-import PeriodPaginator from './PeriodPaginator';
+import StatisticsChart from './StatisticsChart/StatisticsChart';
 
 const StatisticsPage = () => {
   const tasksByDay = {

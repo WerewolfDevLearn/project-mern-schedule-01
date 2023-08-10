@@ -1,7 +1,7 @@
 import { Formik } from 'formik';
 import PropTypes from 'prop-types';
 
-import { validationRules } from '../validationRules';
+import { validationRegisterRules } from '../validationRules';
 
 import {
   Container,
@@ -24,7 +24,7 @@ export default function RegisterForm({ onSubmitForm }) {
       <Title>Sign Up</Title>
 
       <Formik
-        validationSchema={validationRules}
+        validationSchema={validationRegisterRules}
         initialValues={{ name: '', email: '', password: '' }}
         onSubmit={onSubmit}
       >

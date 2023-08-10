@@ -4,10 +4,10 @@ export default {
   registerPage: '/register',
   loginPage: '/login',
   verify: '/verify', //  :verifycode
-  mainLayout: '/user',
-  accountPage: '/user/account',
-  calendarPage: '/user/calendar',
-  calendarMonth: '/month',
-  calendarDay: '/user/month/:currentDate',
-  statisticsPage: '/user/statistics'
+  mainLayout: '/',
+  accountPage: '/account',
+  calendarPage: '/calendar',
+  calendarMonth: '/calendar/month/:currentDate',
+  calendarDay: '/calendar/day/:currentDate',
+  statisticsPage: '/statistics'
 };

@@ -1,7 +1,7 @@
 import { Formik } from 'formik';
 import PropTypes from 'prop-types';
 
-import { validationRules } from '../validationRules';
+import { validationLoingRules } from '../validationRules';
 
 import {
   Container,
@@ -24,7 +24,7 @@ export default function LoginForm({ onSubmitForm }) {
       <Title>Log In</Title>
 
       <Formik
-        validationSchema={validationRules}
+        validationSchema={validationLoingRules}
         initialValues={{ email: '', password: '' }}
         onSubmit={onSubmit}
       >
@@ -38,9 +38,7 @@ export default function LoginForm({ onSubmitForm }) {
             <Input type="password" name="password" placeholder="******" id="login_password" />
             <ErrorText name="password" component="p" />
 
-            <Button type="submit" disabled={!isValid}>
-              Log in
-            </Button>
+            <Button type="submit">Log in</Button>
           </FormElement>
         )}
       </Formik>
