@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import routes from '../routes';
 
 import { userlogin } from '../redux/auth/authOps';
-import RegisterForm from '../components/Forms/RegisterForm/RegisterForm';
+import LoginForm from '../components/Forms/LoginForm/LoginForm';
 import AuthNavigate from '../components/shared/AuthNavigate/AuthNavigate';
 import usePHBState from '../redux/selectors';
 
@@ -24,7 +24,7 @@ export default function LoginPage() {
 
   return (
     <>
-      <RegisterForm option="login" title="User login" buttonName="LogIn" onSubmitForm={callBack} />
+      <LoginForm onSubmitForm={callBack} />
       <AuthNavigate formType="login" />
     </>
   );

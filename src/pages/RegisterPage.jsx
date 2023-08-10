@@ -26,12 +26,7 @@ export default function RegisterPage() {
 
   return (
     <>
-      <RegisterForm
-        option="register"
-        title="User register"
-        buttonName="Register"
-        onSubmitForm={callBack}
-      />
+      <RegisterForm onSubmitForm={callBack} />
       <AuthNavigate formType="register" />
     </>
   );
