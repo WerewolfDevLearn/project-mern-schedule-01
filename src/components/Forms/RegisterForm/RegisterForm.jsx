@@ -7,6 +7,7 @@ import {
   Container,
   Title,
   FormElement,
+  InputWrap,
   Subtitle,
   Input,
   ErrorText,
@@ -22,7 +23,6 @@ export default function RegisterForm({ onSubmitForm }) {
   return (
     <Container>
       <Title>Sign Up</Title>
-
       <Formik
         validationSchema={validationRules}
         initialValues={{ name: '', email: '', password: '' }}
@@ -30,23 +30,30 @@ export default function RegisterForm({ onSubmitForm }) {
       >
         {({ isValid }) => (
           <FormElement autoComplete="off">
-            <Subtitle htmlFor="name">Name</Subtitle>
-            <Input type="name" name="name" placeholder="Enter your name" id="signup_name" />
-            <ErrorText name="name" component="p" />
+            <InputWrap>
+              <Subtitle htmlFor="name">
+                Name
+                <Input type="name" name="name" placeholder="Enter your name" id="signup_name" />
+              </Subtitle>
+              <ErrorText name="name" component="p" />
 
-            <Subtitle htmlFor="email">Email</Subtitle>
-            <Input type="email" name="email" placeholder="Enter email" id="signup_email" />
-            <ErrorText name="email" component="p" />
+              <Subtitle htmlFor="email">
+                Email
+                <Input type="email" name="email" placeholder="Enter email" id="signup_email" />
+              </Subtitle>
+              <ErrorText name="email" component="p" />
 
-            <Subtitle htmlFor="password">Password</Subtitle>
-            <Input
-              type="password"
-              name="password"
-              placeholder="Enter password"
-              id="signup_password"
-            />
-
-            <ErrorText name="password" component="p" />
+              <Subtitle htmlFor="password">
+                Password
+                <Input
+                  type="password"
+                  name="password"
+                  placeholder="Enter password"
+                  id="signup_password"
+                />
+              </Subtitle>
+              <ErrorText name="password" component="p" />
+            </InputWrap>
 
             <Button type="submit" disabled={!isValid}>
               Sign Up

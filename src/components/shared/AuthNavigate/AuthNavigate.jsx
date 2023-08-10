@@ -1,6 +1,7 @@
-import { NavLink } from 'react-router-dom';
 import routes from 'src/routes';
 import PropTypes from 'prop-types';
+
+import { NavigateLink } from './AuthNavigate.styled';
 
 export default function AuthNavigate({ formType }) {
   const filanRout = formType === 'register' ? routes.loginPage : routes.registerPage;
@@ -8,7 +9,7 @@ export default function AuthNavigate({ formType }) {
 
   return (
     <div>
-      <NavLink to={filanRout}>{filanContent}</NavLink>
+      <NavigateLink to={filanRout}>{filanContent}</NavigateLink>
     </div>
   );
 }
