@@ -1,67 +1,63 @@
-import { useForm } from 'react-hook-form';
+import { Formik } from 'formik';
 import PropTypes from 'prop-types';
 
-import { InputField } from '../InputField/InputField';
-import { validationRules } from '../validationRules';
+import { registerSchema } from '../validationRules';
 
-import { Form } from './RegisterForm.styled';
+import {
+  Container,
+  Title,
+  FormElement,
+  Subtitle,
+  Input,
+  ErrorText,
+  Button
+} from './RegisterForm.styled';
 
-export default function RegisterForm({ option, title, buttonName, onSubmitForm }) {
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors, isValid }
-  } = useForm({ mode: 'onBlur' });
-
-  const onSubmit = (data) => {
+export default function RegisterForm({ onSubmitForm }) {
+  const onSubmit = (data, { resetForm }) => {
     onSubmitForm(data);
-    reset();
+    resetForm();
   };
 
   return (
-    <>
-      <h2>{title}</h2>
-      <Form onSubmit={handleSubmit(onSubmit)}>
-        {option === 'register' && (
-          <InputField
-            label="Name:"
-            placeholder="Name"
-            type="text"
-            name="name"
-            rules={validationRules.userName}
-            formContext={{ register, formState: { errors } }}
-          />
+    <Container>
+      <Title>Sign Up</Title>
+
+      <Formik
+        validationSchema={registerSchema}
+        initialValues={{ name: '', email: '', password: '' }}
+        onSubmit={onSubmit}
+      >
+        {({ isValid }) => (
+          <FormElement autoComplete="off">
+            <Subtitle htmlFor="name">Name</Subtitle>
+            <Input type="name" name="name" placeholder="Enter your name" id="signup_name" />
+            <ErrorText name="name" component="p" />
+
+            <Subtitle htmlFor="email">Email</Subtitle>
+            <Input type="email" name="email" placeholder="Enter email" id="signup_email" />
+            <ErrorText name="email" component="p" />
+
+            <Subtitle htmlFor="password">Password</Subtitle>
+            <Input
+              type="password"
+              name="password"
+              placeholder="Enter password"
+              id="signup_password"
+            />
+
+            <ErrorText name="password" component="p" />
+
+            <Button type="submit" disabled={!isValid}>
+              Sign Up
+            </Button>
+          </FormElement>
         )}
-        <InputField
-          label="Email:"
-          placeholder="Email"
-          type="email"
-          name="email"
-          rules={validationRules.userEmail}
-          formContext={{ register, formState: { errors } }}
-        />
-
-        <InputField
-          label="Password:"
-          placeholder="Password"
-          type="password"
-          name="password"
-          rules={validationRules.password}
-          formContext={{ register, formState: { errors } }}
-        />
-
-        <button type="submit" disabled={!isValid}>
-          {buttonName}
-        </button>
-      </Form>
-    </>
+      </Formik>
+    </Container>
   );
 }
 
 RegisterForm.propTypes = {
-  option: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  buttonName: PropTypes.string.isRequired,
   onSubmitForm: PropTypes.func.isRequired
 };
