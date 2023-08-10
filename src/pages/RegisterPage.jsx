@@ -21,7 +21,7 @@ export default function RegisterPage() {
   };
 
   if (!error && !isLoading && emailSend) {
-    navigate(routes.verify);
+    navigate(routes.calendarDay);
   }
 
   return (

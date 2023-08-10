@@ -16,7 +16,6 @@ const Layout = () => {
     <Container>
       <AppHeader />
       <SideBar />
-      <Outlet />
       {isLoading ? <Loader /> : <Outlet />}
       <ToastContainer />
     </Container>
