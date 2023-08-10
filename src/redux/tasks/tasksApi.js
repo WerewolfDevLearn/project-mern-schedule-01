@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-export const reviewsApi = createApi({
+export const tasksApi = createApi({
   reducerPath: 'reviews',
   baseQuery: fetchBaseQuery({
     baseUrl: 'https://project-mern-schedule-03.onrender.com/api',
@@ -11,44 +11,44 @@ export const reviewsApi = createApi({
       }
     }
   }),
-  tagTypes: ['reviews'],
+  tagTypes: ['tasks'],
   endpoints: (builder) => ({
-    getReviews: builder.query({
-      query: () => ({
-        url: '/reviews',
+    getTasks: builder.query({
+      query: (data) => ({
+        url: `/tasks?year=${data.year}&month=${data.month}`,
         method: 'GET'
       }),
-      providesTags: ['reviews']
+      providesTags: ['tasks']
     }),
-    createReviews: builder.mutation({
+    createTasks: builder.mutation({
       query: (review) => ({
-        url: '/reviews',
+        url: '/tasks',
         method: 'POST',
         body: review
       }),
-      invalidatesTags: ['reviews']
+      invalidatesTags: ['tasks']
     }),
-    deleteReviews: builder.mutation({
-      query: (reviewID) => ({
-        url: `/reviews/${reviewID}`,
+    deleteTasks: builder.mutation({
+      query: (tasksID) => ({
+        url: `/tasks/${tasksID}`,
         method: 'DELETE'
       }),
-      invalidatesTags: ['reviews']
+      invalidatesTags: ['tasks']
     }),
-    updateReviews: builder.mutation({
+    updateTasks: builder.mutation({
       query: ({ id, ...rest }) => ({
-        url: `/reviews/${id}`,
+        url: `/tasks/${id}`,
         method: 'PATCH',
         body: { ...rest }
       }),
-      invalidatesTags: ['reviews']
+      invalidatesTags: ['tasks']
     })
   })
 });
 
 export const {
-  useGetReviewsQuery,
-  useCreateReviewsMutation,
-  useDeleteReviewsMutation,
-  useUpdateReviewsMutation
-} = reviewsApi;
+  useGetTasksQuery,
+  useCreateTasksMutation,
+  useDeleteTasksMutation,
+  useUpdateTasksMutation
+} = tasksApi;
