@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 export const reviewsApi = createApi({
   reducerPath: 'reviews',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://project-mern-schedule-03.onrender.com',
+    baseUrl: 'https://project-mern-schedule-03.onrender.com/api',
     prepareHeaders: (headers, { getState }) => {
       const token = getState().user.token;
       if (token) {
@@ -28,14 +28,14 @@ export const reviewsApi = createApi({
       }),
       invalidatesTags: ['reviews']
     }),
-    deleteContact: builder.mutation({
+    deleteReviews: builder.mutation({
       query: (reviewID) => ({
         url: `/reviews/${reviewID}`,
         method: 'DELETE'
       }),
       invalidatesTags: ['reviews']
     }),
-    updateContacts: builder.mutation({
+    updateReviews: builder.mutation({
       query: ({ id, ...rest }) => ({
         url: `/reviews/${id}`,
         method: 'PATCH',
