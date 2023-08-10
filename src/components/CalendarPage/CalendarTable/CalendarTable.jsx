@@ -1,16 +1,16 @@
 import PropTypes from 'prop-types';
 
-import { TemplatNameStyles } from './TemplatName.styled';
+import { CalendarTableStyles } from './CalendarTable.styled';
 
-export default function TemplatName({ arg }) {
+export default function CalendarTable({ arg }) {
   return (
-    <TemplatNameStyles>
-      <h2>TemplatName</h2>
+    <CalendarTableStyles>
+      <h2>CalendarTable</h2>
       <p>{arg}</p>
-    </TemplatNameStyles>
+    </CalendarTableStyles>
   );
 }
 
-TemplatName.propTypes = {
+CalendarTable.propTypes = {
   arg: PropTypes.any
 };

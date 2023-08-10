@@ -1,16 +1,16 @@
 import PropTypes from 'prop-types';
 
-import { TemplatNameStyles } from './TemplatName.styled';
+import { PeriodPaginatorStyles } from './PeriodPaginator.styled';
 
-export default function TemplatName({ arg }) {
+export default function PeriodPaginator({ arg }) {
   return (
-    <TemplatNameStyles>
-      <h2>TemplatName</h2>
+    <PeriodPaginatorStyles>
+      <h2>PeriodPaginator</h2>
       <p>{arg}</p>
-    </TemplatNameStyles>
+    </PeriodPaginatorStyles>
   );
 }
 
-TemplatName.propTypes = {
+PeriodPaginator.propTypes = {
   arg: PropTypes.any
 };

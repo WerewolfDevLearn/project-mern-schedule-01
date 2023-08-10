@@ -1,16 +1,16 @@
 import PropTypes from 'prop-types';
 
-import { TemplatNameStyles } from './TemplatName.styled';
+import { PeriodTypeSelectStyles } from './PeriodTypeSelect.styled';
 
-export default function TemplatName({ arg }) {
+export default function PeriodTypeSelect({ arg }) {
   return (
-    <TemplatNameStyles>
-      <h2>TemplatName</h2>
+    <PeriodTypeSelectStyles>
+      <h2>PeriodTypeSelect</h2>
       <p>{arg}</p>
-    </TemplatNameStyles>
+    </PeriodTypeSelectStyles>
   );
 }
 
-TemplatName.propTypes = {
+PeriodTypeSelect.propTypes = {
   arg: PropTypes.any
 };

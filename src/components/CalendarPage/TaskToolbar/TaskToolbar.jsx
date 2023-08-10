@@ -1,16 +1,16 @@
 import PropTypes from 'prop-types';
 
-import { TemplatNameStyles } from './TemplatName.styled';
+import { TaskToolbarStyles } from './TaskToolbar.styled';
 
-export default function TemplatName({ arg }) {
+export default function TaskToolbar({ arg }) {
   return (
-    <TemplatNameStyles>
-      <h2>TemplatName</h2>
+    <TaskToolbarStyles>
+      <h2>TaskToolbar</h2>
       <p>{arg}</p>
-    </TemplatNameStyles>
+    </TaskToolbarStyles>
   );
 }
 
-TemplatName.propTypes = {
+TaskToolbar.propTypes = {
   arg: PropTypes.any
 };

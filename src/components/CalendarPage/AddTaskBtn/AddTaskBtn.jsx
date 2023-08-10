@@ -1,16 +1,16 @@
 import PropTypes from 'prop-types';
 
-import { TemplatNameStyles } from './TemplatName.styled';
+import { AddTaskBtnStyles } from './AddTaskBtn.styled';
 
-export default function TemplatName({ arg }) {
+export default function AddTaskBtn({ arg }) {
   return (
-    <TemplatNameStyles>
-      <h2>TemplatName</h2>
+    <AddTaskBtnStyles>
+      <h2>AddTaskBtn</h2>
       <p>{arg}</p>
-    </TemplatNameStyles>
+    </AddTaskBtnStyles>
   );
 }
 
-TemplatName.propTypes = {
+AddTaskBtn.propTypes = {
   arg: PropTypes.any
 };

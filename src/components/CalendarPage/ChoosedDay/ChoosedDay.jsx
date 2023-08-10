@@ -1,16 +1,16 @@
 import PropTypes from 'prop-types';
 
-import { TemplatNameStyles } from './TemplatName.styled';
+import { ChoosedDayStyles } from './ChoosedDay.styled';
 
-export default function TemplatName({ arg }) {
+export default function ChoosedDay({ arg }) {
   return (
-    <TemplatNameStyles>
-      <h2>TemplatName</h2>
+    <ChoosedDayStyles>
+      <h2>ChoosedDay</h2>
       <p>{arg}</p>
-    </TemplatNameStyles>
+    </ChoosedDayStyles>
   );
 }
 
-TemplatName.propTypes = {
+ChoosedDay.propTypes = {
   arg: PropTypes.any
 };

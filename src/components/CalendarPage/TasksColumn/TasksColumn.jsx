@@ -1,16 +1,16 @@
 import PropTypes from 'prop-types';
 
-import { TemplatNameStyles } from './TemplatName.styled';
+import { TasksColumnStyles } from './TasksColumn.styled';
 
-export default function TemplatName({ arg }) {
+export default function TasksColumn({ arg }) {
   return (
-    <TemplatNameStyles>
-      <h2>TemplatName</h2>
+    <TasksColumnStyles>
+      <h2>TasksColumn</h2>
       <p>{arg}</p>
-    </TemplatNameStyles>
+    </TasksColumnStyles>
   );
 }
 
-TemplatName.propTypes = {
+TasksColumn.propTypes = {
   arg: PropTypes.any
 };

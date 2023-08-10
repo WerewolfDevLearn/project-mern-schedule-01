@@ -1,16 +1,16 @@
 import PropTypes from 'prop-types';
 
-import { TemplatNameStyles } from './TemplatName.styled';
+import { ColumnHeadBarStyles } from './ColumnHeadBar.styled';
 
-export default function TemplatName({ arg }) {
+export default function ColumnHeadBar({ arg }) {
   return (
-    <TemplatNameStyles>
-      <h2>TemplatName</h2>
+    <ColumnHeadBarStyles>
+      <h2>ColumnHeadBar</h2>
       <p>{arg}</p>
-    </TemplatNameStyles>
+    </ColumnHeadBarStyles>
   );
 }
 
-TemplatName.propTypes = {
+ColumnHeadBar.propTypes = {
   arg: PropTypes.any
 };

@@ -1,16 +1,16 @@
 import PropTypes from 'prop-types';
 
-import { TemplatNameStyles } from './TemplatName.styled';
+import { CalendarToolbarStyles } from './CalendarToolbar.styled';
 
-export default function TemplatName({ arg }) {
+export default function CalendarToolbar({ arg }) {
   return (
-    <TemplatNameStyles>
-      <h2>TemplatName</h2>
+    <CalendarToolbarStyles>
+      <h2>CalendarToolbar</h2>
       <p>{arg}</p>
-    </TemplatNameStyles>
+    </CalendarToolbarStyles>
   );
 }
 
-TemplatName.propTypes = {
+CalendarToolbar.propTypes = {
   arg: PropTypes.any
 };
