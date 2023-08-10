@@ -1,9 +1,9 @@
 import { Outlet } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 
-import Loader from '../Loader/Loader';
+import Loader from '../shared/Loader/Loader';
 import usePHBState from '../../redux/selectors';
-import Container from '../Container';
+import Container from '../shared/Container';
 
 import SideBar from './SideBar/SideBar';
 import AppHeader from './AppHeader/AppHeader';

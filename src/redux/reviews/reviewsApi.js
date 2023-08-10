@@ -1,9 +1,9 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-export const itemApi = createApi({
-  reducerPath: 'contacts',
+export const reviewsApi = createApi({
+  reducerPath: 'reviews',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://connections-api.herokuapp.com',
+    baseUrl: 'https://project-mern-schedule-03.onrender.com',
     prepareHeaders: (headers, { getState }) => {
       const token = getState().user.token;
       if (token) {
@@ -11,44 +11,44 @@ export const itemApi = createApi({
       }
     }
   }),
-  tagTypes: ['ITEMS'],
+  tagTypes: ['reviews'],
   endpoints: (builder) => ({
-    getContats: builder.query({
+    getReviews: builder.query({
       query: () => ({
-        url: '/contacts',
+        url: '/reviews',
         method: 'GET'
       }),
-      providesTags: ['Contacts']
+      providesTags: ['reviews']
     }),
-    createContact: builder.mutation({
-      query: (contact) => ({
-        url: '/contacts',
+    createReviews: builder.mutation({
+      query: (review) => ({
+        url: '/reviews',
         method: 'POST',
-        body: contact
+        body: review
       }),
-      invalidatesTags: ['Contacts']
+      invalidatesTags: ['reviews']
     }),
     deleteContact: builder.mutation({
-      query: (contactID) => ({
-        url: `/contacts/${contactID}`,
+      query: (reviewID) => ({
+        url: `/reviews/${reviewID}`,
         method: 'DELETE'
       }),
-      invalidatesTags: ['Contacts']
+      invalidatesTags: ['reviews']
     }),
     updateContacts: builder.mutation({
       query: ({ id, ...rest }) => ({
-        url: `/contacts/${id}`,
+        url: `/reviews/${id}`,
         method: 'PATCH',
         body: { ...rest }
       }),
-      invalidatesTags: ['Contacts']
+      invalidatesTags: ['reviews']
     })
   })
 });
 
 export const {
-  useGetContatsQuery,
-  useCreateContactMutation,
-  useDeleteContactMutation,
-  useUpdateContactsMutation
-} = itemApi;
+  useGetReviewsQuery,
+  useCreateReviewsMutation,
+  useDeleteReviewsMutation,
+  useUpdateReviewssMutation
+} = reviewsApi;

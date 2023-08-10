@@ -6,7 +6,7 @@ import routes from 'src/routes';
 
 import { register } from '../redux/auth/authOps';
 import RegisterForm from '../components/Forms/RegisterForm/RegisterForm';
-import AuthNavigate from '../components/AuthNavigate/AuthNavigate';
+import AuthNavigate from '../components/shared/AuthNavigate/AuthNavigate';
 import usePHBState from '../redux/selectors';
 
 export default function RegisterPage() {

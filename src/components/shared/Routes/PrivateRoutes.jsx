@@ -1,8 +1,8 @@
 import { Outlet, Navigate } from 'react-router-dom';
 
-import usePHBState from '../../redux/selectors';
+import usePHBState from '../../../redux/selectors';
 
-import routes from '../../routes';
+import routes from '../../../routes';
 export default function PrivateRoutes() {
   const { user } = usePHBState();
 

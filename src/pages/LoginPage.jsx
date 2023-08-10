@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { userlogin } from '../redux/auth/authOps';
 import RegisterForm from '../components/Forms/RegisterForm/RegisterForm';
 
-import AuthNavigate from '../components/AuthNavigate/AuthNavigate';
+import AuthNavigate from '../components/shared/AuthNavigate/AuthNavigate';
 export default function LoginPage() {
   const dispatch = useDispatch();
   const callBack = (data) => dispatch(userlogin(data));

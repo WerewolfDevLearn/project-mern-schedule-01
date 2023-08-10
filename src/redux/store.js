@@ -4,12 +4,12 @@ import { persistStore, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from 
 
 import { ErrorLogger } from '../utils/notify-MD';
 
-import { itemApi } from './Items/itemsApi';
+import { reviewsApi } from './reviews/reviewsApi';
 import { persistedUserReducer } from './auth/slices/authfulfilledSlice';
 import { isRefreshingReducer } from './auth/slices/authRefreshingSlice';
 import { errorReducer } from './auth/slices/authErrorSlice';
 import { isLoadingReducer } from './auth/slices/authIsLoadingSlice';
-import { filterReducer } from './Items/filterSlices';
+import { filterReducer } from './reviews/filterSlices';
 
 export const store = configureStore({
   reducer: {
@@ -17,7 +17,7 @@ export const store = configureStore({
     error: errorReducer,
     isLoading: isLoadingReducer,
     isRefreshing: isRefreshingReducer,
-    [itemApi.reducerPath]: itemApi.reducer,
+    [reviewsApi.reducerPath]: reviewsApi.reducer,
     filter: filterReducer
   },
   middleware: (gDM) =>
@@ -26,7 +26,7 @@ export const store = configureStore({
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER]
       }
     })
-      .concat(itemApi.middleware)
+      .concat(reviewsApi.middleware)
       .concat(ErrorLogger),
   devTools: process.env.NODE_ENV === 'development'
 });

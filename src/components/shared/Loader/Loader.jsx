@@ -1,6 +1,6 @@
 import { FallingLines } from 'react-loader-spinner';
 
-import { DivloaderContainer } from '../Styled-Components/Styled-Components.styled';
+import { DivloaderContainer } from '../../Styled-Components/Styled-Components.styled';
 
 export default function Loader() {
   return (

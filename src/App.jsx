@@ -6,13 +6,13 @@ import { getCurrent } from './redux/auth/authOps';
 
 import usePHBState from './redux/selectors';
 
-import PrivateRoutes from './components/Routes/PrivateRoutes';
-import PubliceRourtes from './components/Routes/PubliceRoutes';
+import PrivateRoutes from './components/shared/Routes/PrivateRoutes';
+import PubliceRourtes from './components/shared/Routes/PubliceRoutes';
 import MainLayout from './components/MainLayout/MainLayout';
 import AccountPage from './components/AccountPage/AccountPage';
 import CalendarPage from './components/CalendarPage/CalendarPage';
 import SatisticsPage from './components/SatisticsPage/SatisticsPage';
-import Loader from './components/Loader/Loader';
+import Loader from './components/shared/Loader/Loader';
 import MainPage from './pages/MainPage';
 import ErrorPage from './pages/ErrorPage';
 import LoginPage from './pages/LoginPage';
