@@ -1,16 +1,16 @@
 import PropTypes from 'prop-types';
 
-import { TemplatNameStyles } from './TemplatName.styled';
+import { ThemeTogglerStyles } from './ThemeToggler.styled';
 
-export default function TemplatName({ arg }) {
+export default function ThemeToggler({ arg }) {
   return (
-    <TemplatNameStyles>
-      <h2>TemplatName</h2>
+    <ThemeTogglerStyles>
+      <h2>ThemeToggler</h2>
       <p>{arg}</p>
-    </TemplatNameStyles>
+    </ThemeTogglerStyles>
   );
 }
 
-TemplatName.propTypes = {
+ThemeToggler.propTypes = {
   arg: PropTypes.any
 };

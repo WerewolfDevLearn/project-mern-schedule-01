@@ -1,16 +1,16 @@
 import PropTypes from 'prop-types';
 
-import { TemplatNameStyles } from './TemplatName.styled';
+import { UserInfoStyles } from './UserInfo.styled';
 
-export default function TemplatName({ arg }) {
+export default function UserInfo({ arg }) {
   return (
-    <TemplatNameStyles>
-      <h2>TemplatName</h2>
+    <UserInfoStyles>
+      <h2>UserInfo</h2>
       <p>{arg}</p>
-    </TemplatNameStyles>
+    </UserInfoStyles>
   );
 }
 
-TemplatName.propTypes = {
+UserInfo.propTypes = {
   arg: PropTypes.any
 };

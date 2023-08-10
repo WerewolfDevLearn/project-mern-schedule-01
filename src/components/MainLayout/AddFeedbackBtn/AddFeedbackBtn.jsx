@@ -1,16 +1,16 @@
 import PropTypes from 'prop-types';
 
-import { TemplatNameStyles } from './TemplatName.styled';
+import { AddFeedbackBtnStyles } from '../AddFeedbackBtn/AddFeedbackBtn.styled';
 
-export default function TemplatName({ arg }) {
+export default function AddFeedbackBt({ arg }) {
   return (
-    <TemplatNameStyles>
-      <h2>TemplatName</h2>
+    <AddFeedbackBtnStyles>
+      <h2>AddFeedbackBt</h2>
       <p>{arg}</p>
-    </TemplatNameStyles>
+    </AddFeedbackBtnStyles>
   );
 }
 
-TemplatName.propTypes = {
+AddFeedbackBt.propTypes = {
   arg: PropTypes.any
 };
