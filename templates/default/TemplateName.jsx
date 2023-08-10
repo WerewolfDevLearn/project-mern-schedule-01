@@ -1,16 +1,16 @@
 import PropTypes from 'prop-types';
 
-import { TemplatNameStyles } from './TemplatName.styled';
+import { TemplateNameStyles } from './TemplateName.styled';
 
-export default function TemplatName({ arg }) {
+export default function TemplateName({ arg }) {
   return (
-    <TemplatNameStyles>
-      <h2>TemplatName</h2>
+    <TemplateNameStyles>
+      <h2>TemplateName</h2>
       <p>{arg}</p>
-    </TemplatNameStyles>
+    </TemplateNameStyles>
   );
 }
 
-TemplatName.propTypes = {
+TemplateName.propTypes = {
   arg: PropTypes.any
 };
