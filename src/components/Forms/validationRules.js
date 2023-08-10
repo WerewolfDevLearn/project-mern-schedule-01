@@ -1,18 +1,13 @@
-export const validationRules = {
-  userName: {
-    required: 'Name is required',
-    minLength: { value: 2, message: 'Minimum 2 characters' }
-  },
-  userEmail: {
-    required: 'Email is required',
-    pattern: {
-      value:
-        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-      message: 'Please enter a valid email (example@xmpl.com)'
-    }
-  },
-  password: {
-    required: 'Password is required',
-    minLength: { value: 6, message: 'Minimum 6 symbols' }
-  }
-};
+import * as Yup from 'yup';
+
+export const registerSchema = Yup.object().shape({
+  name: Yup.string()
+    .min(2, 'Too Short!')
+    .max(70, 'Too Long!')
+    .matches(/^[a-zA-Z0-9_]*$/, 'Only letters, underscores and numbers are allowed')
+    .required(),
+  email: Yup.string().required('Email is a required field').email('Invalid email format'),
+  password: Yup.string()
+    .required('Password is a required field')
+    .min(6, 'Password must be at least 6 characters')
+});
