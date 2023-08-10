@@ -1,16 +1,16 @@
 import PropTypes from 'prop-types';
 
-import { TemplatNameStyles } from './TemplatName.styled';
+import { StatisticsChartStyles } from './StatisticsChart.styled';
 
-export default function TemplatName({ arg }) {
+export default function StatisticsChart({ arg }) {
   return (
-    <TemplatNameStyles>
-      <h2>TemplatName</h2>
+    <StatisticsChartStyles>
+      <h2>StatisticsChart</h2>
       <p>{arg}</p>
-    </TemplatNameStyles>
+    </StatisticsChartStyles>
   );
 }
 
-TemplatName.propTypes = {
+StatisticsChart.propTypes = {
   arg: PropTypes.any
 };
