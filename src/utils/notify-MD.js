@@ -1,6 +1,5 @@
 import { isRejected } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
-import { Middleware } from 'redux';
 
 const regExpContacts = '/contacts/gm';
 const regExpUser = '/user/gm';
@@ -10,7 +9,7 @@ const regExp = {
   userLogOutFF: 'user/LogOut/fulfilled'
 };
 
-export const ErrorLogger: Middleware = (_api) => (next) => (action) => {
+export const ErrorLogger = (_api) => (next) => (action) => {
   if (isRejected(action) && action.type.match(regExpContacts)) {
     toast.error(action.payload);
   }
@@ -18,8 +17,9 @@ export const ErrorLogger: Middleware = (_api) => (next) => (action) => {
     toast.error(action.payload);
   }
 
-  if (action.type === regExp.userRegFF)
+  if (action.type === regExp.userRegFF) {
     toast.success('Verification letter was send to you eamil adress');
+  }
   if (action.type === regExp.userLoginFF) toast.success('Welcome!');
 
   if (action.type === regExp.userLogOutFF) {

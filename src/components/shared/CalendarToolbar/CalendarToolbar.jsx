@@ -15,5 +15,5 @@ export default function CalendarToolbar({ children }) {
   );
 }
 CalendarToolbar.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequiredZ
+  children: PropTypes.node.isRequired
 };

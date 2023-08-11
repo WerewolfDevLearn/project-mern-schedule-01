@@ -1,10 +1,9 @@
 import { Outlet, Navigate } from 'react-router-dom';
 
-import usePHBState from '../../../redux/selectors';
+import { useVerifiedEmail } from '../../../redux/selectors';
 
 import routes from '../../../routes';
 export default function PrivateRoutes() {
-  const { user } = usePHBState();
-
-  return user.verifiedEmail ? <Outlet /> : <Navigate to={routes.login} />;
+  const verifiedEmail = useVerifiedEmail();
+  return verifiedEmail ? <Outlet /> : <Navigate to={routes.mainPage} />;
 }

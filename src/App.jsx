@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 
 import { getCurrent } from './redux/auth/authOps';
 
-import usePHBState from './redux/selectors';
+import { useisRefreshing } from './redux/selectors';
 
 import PrivateRoutes from './components/shared/Routes/PrivateRoutes';
 import PubliceRourtes from './components/shared/Routes/PubliceRoutes';
@@ -21,18 +21,15 @@ import LoginPage from './pages/LoginPage';
 
 import RegisterPage from './pages/RegisterPage';
 
-import routes from './routes.js';
+import routes from './routes';
 
 function App() {
-  const {
-    isRefreshing,
-    user: { token }
-  } = usePHBState();
+  const isRefreshing = useisRefreshing();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (token) dispatch(getCurrent());
-  }, [dispatch, token]);
+    dispatch(getCurrent());
+  }, [dispatch]);
   return isRefreshing ? (
     <Loader />
   ) : (
@@ -61,21 +58,3 @@ function App() {
 }
 
 export default App;
-
-/* //   <Routes>
-    //     <Route path={routes.home} element={<MainLayout />}>
-    //       <Route element={<PubliceRourtes />}>
-    //         <Route index element={<MainPage />} />
-    //         <Route path={routes.register} element={<RegisterPage />} />
-    //         <Route path={routes.login} element={<LoginPage />} />
-    //         <Route path={routes.verify} element={<VerifyPage />} />
-    //       </Route>
-    //       <Route element={<PrivateRoutes />}>
-    //     <Route path={routes.home} element={<MainLayout />}>
-    //         <Route path={routes.items} element={<ItemsPage />} />
-    //         <Route path={routes.items} element={<ItemsPage />} />
-    //         <Route path={routes.items} element={<ItemsPage />} />
-    //       </Route>
-    //       <Route path="*" element={<ErrorPage />} />
-    //     </Route>
-    //   </Routes> */

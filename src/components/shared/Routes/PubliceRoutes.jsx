@@ -1,9 +1,14 @@
 import { Outlet, Navigate } from 'react-router-dom';
+import getCurrentDate from 'src/utils/currentDate';
 
-import usePHBState from '../../../redux/selectors';
+import { useVerifiedEmail } from '../../../redux/selectors';
 import routes from '../../../routes';
 
 export default function PubliceRoutes() {
-  const { user } = usePHBState();
-  return user.verifiedEmail ? <Navigate to={routes.items} /> : <Outlet />;
+  const verifiedEmail = useVerifiedEmail();
+  return verifiedEmail ? (
+    <Navigate to={`${routes.navFromLogIn}/${getCurrentDate()}`} />
+  ) : (
+    <Outlet />
+  );
 }

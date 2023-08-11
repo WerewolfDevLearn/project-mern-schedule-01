@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import routes from 'src/routes';
 import { verify, sendEmail } from 'src/redux/auth/authOps';
 
-import usePHBState from '../redux/selectors';
+import { usePHBState } from '../redux/selectors';
 
 export default function VerifyPage() {
   const dispatch = useDispatch();

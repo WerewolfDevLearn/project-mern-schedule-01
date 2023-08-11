@@ -1,7 +1,7 @@
 export default function SideBarLogo() {
   return (
     <div>
-      <img src="../../../images/svg/google.svg" alt="SideBarLogo" />
+      <img src="../../../../images/others/scattered-forcefields.png" alt="SideBarLogo" />
     </div>
   );
 }
