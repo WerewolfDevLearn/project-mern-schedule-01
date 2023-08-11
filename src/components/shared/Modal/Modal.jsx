@@ -1,46 +1,39 @@
-import { useRef, useEffect } from 'react';
-import ReactDOM from 'react-dom';
-import PropTypes from 'prop-types';
+import { useEffect } from 'react';
+import { createPortal } from 'react-dom';
 
-import ModalSTL from './Modal.module.css';
+import { ModalDiv, Overlay } from './Modal.styled';
 
-export default function Modal({ isOpen, onCloseModal, children }) {
-  const portalElem = document.getElementById('modal');
+const modalRoot = document.querySelector('#modal-root');
 
-  const overlayRef = useRef(null);
+export const Modal = ({ onClose, children }) => {
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
 
-  const pressEscBtn = (event) => {
-    if (event.code === 'Escape') {
-      onCloseModal();
+    const closeModalByEsc = (e) => {
+      if (e.code === 'Escape') {
+        onClose();
+      }
+    };
+
+    document.addEventListener('keydown', closeModalByEsc);
+
+    return () => {
+      document.body.style.overflow = 'auto';
+
+      document.removeEventListener('keydown', closeModalByEsc);
+    };
+  }, [onClose]);
+
+  const handleOverlayClick = (e) => {
+    if (e.target === e.currentTarget) {
+      onClose();
     }
   };
-  const onOverlayClick = (event) => {
-    if (event.target === event.currentTarget) onCloseModal();
-  };
 
-  useEffect(() => {
-    overlayRef.current.focus();
-  }, []);
-
-  if (!isOpen) return null;
-
-  return ReactDOM.createPortal(
-    <div
-      className={ModalSTL.Overlay}
-      onClick={onOverlayClick}
-      onKeyDown={pressEscBtn}
-      role="button"
-      tabIndex={0}
-      ref={overlayRef}
-    >
-      <div className={ModalSTL.Modal}>{children}</div>
-    </div>,
-    portalElem
+  return createPortal(
+    <Overlay onClick={handleOverlayClick}>
+      <ModalDiv>{children}</ModalDiv>
+    </Overlay>,
+    modalRoot
   );
-}
-
-Modal.propTypes = {
-  isOpen: PropTypes.bool.isRequired,
-  onCloseModal: PropTypes.func.isRequired,
-  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired
 };
