@@ -3,7 +3,8 @@ import { Form, Field, ErrorMessage } from 'formik';
 
 export const Container = styled.div`
   display: flex;
-  max-width: 335px;
+  width: 100%;
+
   padding: 40px 24px;
   flex-direction: column;
   justify-content: center;
@@ -13,9 +14,14 @@ export const Container = styled.div`
   border-radius: 8px;
   background: #fff;
 
+  @media screen and (min-width: 375px) {
+    width: 335px;
+  }
+
   @media screen and (min-width: 768px) {
     width: 480px;
     gap: 40px;
+    padding: 40px 40px;
   }
 `;
 
