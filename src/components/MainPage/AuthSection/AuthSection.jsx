@@ -1,5 +1,7 @@
+import { useTranslation } from 'react-i18next';
 import routes from 'src/routes';
 import { CgLogIn } from 'react-icons/cg';
+import LangToggler from 'src/components/shared/LangToggler/LangToggler';
 
 import logoMobile from '../../../images/others/mobile/goose1x.png';
 import logoMobile2x from '../../../images/others/mobile/goose2x.png';
@@ -24,8 +26,12 @@ import {
 export default function AuthSection() {
   // Забрати в MainLayout
 
+  // add lang
+  const { t } = useTranslation();
+
   return (
     <StyledHero>
+      <LangToggler />
       <StyledImg>
         <source
           media="(max-width: 767px)"
@@ -44,9 +50,9 @@ export default function AuthSection() {
 
       <Wrapper>
         <AuthWrapper>
-          <AuthLink to={routes.registerPage}>Sign up</AuthLink>
+          <AuthLink to={routes.registerPage}>{t('Sign up')}</AuthLink>
           <AuthLink to={routes.loginPage} color="blue" colorbtn="white">
-            Log in
+            {t('Log in')}
             <CgLogIn style={{ marginLeft: 6, width: 18, height: 18 }} />
           </AuthLink>
         </AuthWrapper>

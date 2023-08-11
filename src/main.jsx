@@ -7,6 +7,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 import ThemeContextProvider from './components/MainLayout/ThemeToggler/ThemeContextProvider';
 
 import { store, persistor } from './redux/store';
+import './utils/internationalization/i18next';
 
 import App from './App.jsx';
 import './index.css';
