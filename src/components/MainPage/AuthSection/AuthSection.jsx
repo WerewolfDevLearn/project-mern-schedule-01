@@ -1,5 +1,5 @@
 import routes from 'src/routes';
-// import { CgLogIn } from 'react-icons/cg';
+import { CgLogIn } from 'react-icons/cg';
 
 import logoMobile from '../../../images/others/mobile/goose1x.png';
 import logoMobile2x from '../../../images/others/mobile/goose2x.png';
@@ -22,6 +22,8 @@ import {
 } from './AuthSection.styled.jsx';
 
 export default function AuthSection() {
+  // Забрати в MainLayout
+
   return (
     <StyledHero>
       <StyledImg>
@@ -45,7 +47,7 @@ export default function AuthSection() {
           <AuthLink to={routes.registerPage}>Sign up</AuthLink>
           <AuthLink to={routes.loginPage} color="blue" colorbtn="white">
             Log in
-            {/* <CgLogIn style={{ marginLeft: 6, width: 18, height: 18 }} /> */}
+            <CgLogIn style={{ marginLeft: 6, width: 18, height: 18 }} />
           </AuthLink>
         </AuthWrapper>
       </Wrapper>

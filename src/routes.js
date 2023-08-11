@@ -1,5 +1,4 @@
-// eslint-disable-next-line import/no-anonymous-default-export
-export default {
+const routes = {
   mainPage: '/',
   registerPage: '/register',
   loginPage: '/login',
@@ -9,5 +8,8 @@ export default {
   calendarPage: '/calendar',
   calendarMonth: '/calendar/month/:currentDate',
   calendarDay: '/calendar/day/:currentDate',
-  statisticsPage: '/statistics'
+  statisticsPage: '/statistics',
+  navFromLogIn: '/calendar/month'
 };
+
+export default routes;
