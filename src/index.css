@@ -1,4 +1,4 @@
-@import-normalize; /* bring in normalize.css styles */
+@import '../node_modules/modern-normalize/modern-normalize.css';
 
 @font-face {
   font-family: 'Inter';
@@ -53,7 +53,7 @@
   font-style: italic;
   font-display: swap;
 }
-
+/* 
 html {
   box-sizing: border-box;
 }
@@ -62,7 +62,7 @@ html {
 *::after,
 *::before {
   box-sizing: inherit;
-}
+} */
 
 body {
   margin: 0;
