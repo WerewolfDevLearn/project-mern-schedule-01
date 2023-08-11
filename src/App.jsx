@@ -4,14 +4,16 @@ import { useDispatch } from 'react-redux';
 
 import { getCurrent } from './redux/auth/authOps';
 
-import usePHBState from './redux/selectors';
+import { useisRefreshing } from './redux/selectors';
 
 import PrivateRoutes from './components/shared/Routes/PrivateRoutes';
 import PubliceRourtes from './components/shared/Routes/PubliceRoutes';
 import MainLayout from './components/MainLayout/MainLayout';
 import AccountPage from './components/AccountPage/AccountPage';
 import CalendarPage from './components/CalendarPage/CalendarPage';
-import SatisticsPage from './components/SatisticsPage/SatisticsPage';
+import ChoosedMonth from './components/CalendarPage/ChoosedMonth/ChoosedMonth';
+import ChoosedDay from './components/CalendarPage/ChoosedDay/ChoosedDay';
+import SatisticsPage from './components/SatisticsPage/StatisticsPage';
 import Loader from './components/shared/Loader/Loader';
 import MainPage from './pages/MainPage';
 import ErrorPage from './pages/ErrorPage';
@@ -19,33 +21,32 @@ import LoginPage from './pages/LoginPage';
 
 import RegisterPage from './pages/RegisterPage/RegisterPage';
 
-import routes from './routes.js';
+import routes from './routes';
 
 function App() {
-  const {
-    isRefreshing,
-    user: { token }
-  } = usePHBState();
+  const isRefreshing = useisRefreshing();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (token) dispatch(getCurrent());
-  }, [dispatch, token]);
+    dispatch(getCurrent());
+  }, [dispatch]);
   return isRefreshing ? (
     <Loader />
   ) : (
     <Suspense fallback={<Loader />}>
       <Routes>
-        <Route path={routes.mainPage} element={<PubliceRourtes />}>
+        <Route element={<PubliceRourtes />}>
           <Route path={routes.mainPage} element={<MainPage />} />
           <Route path={routes.registerPage} element={<RegisterPage />} />
           <Route path={routes.loginPage} element={<LoginPage />} />
         </Route>
-        <Route path={routes.mainPage} element={<PrivateRoutes />}>
+        <Route element={<PrivateRoutes />}>
           <Route path={routes.mainLayout} element={<MainLayout />}>
             <Route path={routes.accountPage} element={<AccountPage />} />
-            <Route path={routes.calendarPage} element={<CalendarPage />} />
-            {/* day Page */}
+            <Route path={routes.calendarPage} element={<CalendarPage />}>
+              <Route path={routes.calendarMonth} element={<ChoosedMonth />} />
+              <Route path={routes.calendarDay} element={<ChoosedDay />} />
+            </Route>
             <Route path={routes.statisticsPage} element={<SatisticsPage />} />
           </Route>
         </Route>
@@ -57,21 +58,3 @@ function App() {
 }
 
 export default App;
-
-/* //   <Routes>
-    //     <Route path={routes.home} element={<MainLayout />}>
-    //       <Route element={<PubliceRourtes />}>
-    //         <Route index element={<MainPage />} />
-    //         <Route path={routes.register} element={<RegisterPage />} />
-    //         <Route path={routes.login} element={<LoginPage />} />
-    //         <Route path={routes.verify} element={<VerifyPage />} />
-    //       </Route>
-    //       <Route element={<PrivateRoutes />}>
-    //     <Route path={routes.home} element={<MainLayout />}>
-    //         <Route path={routes.items} element={<ItemsPage />} />
-    //         <Route path={routes.items} element={<ItemsPage />} />
-    //         <Route path={routes.items} element={<ItemsPage />} />
-    //       </Route>
-    //       <Route path="*" element={<ErrorPage />} />
-    //     </Route>
-    //   </Routes> */

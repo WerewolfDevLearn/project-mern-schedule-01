@@ -2,20 +2,18 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
-import routes from 'src/routes';
-
-import { register } from '../../redux/auth/authOps';
-import RegisterForm from '../../components/Forms/RegisterForm/RegisterForm';
-import AuthNavigate from '../../components/shared/AuthNavigate/AuthNavigate';
-import usePHBState from '../../redux/selectors';
-
-import { Container, Wrap } from './RegisterPage.styled';
+import { register } from '../redux/auth/authOps';
+import RegisterForm from '../components/Forms/RegisterForm/RegisterForm';
+import AuthNavigate from '../components/shared/AuthNavigate/AuthNavigate';
+import { useError, useisLoading } from '../redux/selectors';
 
 export default function RegisterPage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const currentDay = new Date();
   const [emailSend, setEmailSend] = useState(false);
-  const { error, isLoading } = usePHBState();
+  const error = useError();
+  const isLoading = useisLoading();
 
   const callBack = (data) => {
     dispatch(register(data));
@@ -23,15 +21,13 @@ export default function RegisterPage() {
   };
 
   if (!error && !isLoading && emailSend) {
-    navigate(routes.calendarDay);
+    navigate(`/calendar/month/${currentDay}`);
   }
 
   return (
-    <Container>
-      <Wrap>
-        <RegisterForm onSubmitForm={callBack} />
-        <AuthNavigate formType="register" />
-      </Wrap>
-    </Container>
+    <>
+      <RegisterForm onSubmitForm={callBack} />
+      <AuthNavigate formType="register" />
+    </>
   );
 }

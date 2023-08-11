@@ -1,12 +1,14 @@
 import PropTypes from 'prop-types';
 
+import TasksColumnsList from './TasksColumnsList/TasksColumnsList';
+import DayCalendarHead from './DayCalendarHead/DayCalendarHead';
 import { ChoosedDayStyles } from './ChoosedDay.styled';
 
 export default function ChoosedDay({ arg }) {
   return (
     <ChoosedDayStyles>
-      <h2>ChoosedDay</h2>
-      <p>{arg}</p>
+      <DayCalendarHead />
+      <TasksColumnsList />
     </ChoosedDayStyles>
   );
 }

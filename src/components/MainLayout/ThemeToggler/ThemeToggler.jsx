@@ -1,16 +1,26 @@
 import PropTypes from 'prop-types';
 
-import { ThemeTogglerStyles } from './ThemeToggler.styled';
+import { ThemeTogglerStyles, ToggleThemeBtn, IconLight, IconDark } from './ThemeToggler.styled';
+import { useThemeColors } from './ThemeContextProvider';
 
-export default function ThemeToggler({ arg }) {
+const ThemeToggler = () => {
+  const changeTheme = useThemeColors().changeTheme;
+
+  const handlerChangeTheme = () => {
+    changeTheme();
+  };
+  const type = useThemeColors().type;
   return (
     <ThemeTogglerStyles>
-      <h2>ThemeToggler</h2>
-      <p>{arg}</p>
+      <ToggleThemeBtn onClick={handlerChangeTheme}>
+        {type === 'dark' ? <IconLight /> : <IconDark />}
+      </ToggleThemeBtn>
     </ThemeTogglerStyles>
   );
-}
+};
 
 ThemeToggler.propTypes = {
   arg: PropTypes.any
 };
+
+export default ThemeToggler;
