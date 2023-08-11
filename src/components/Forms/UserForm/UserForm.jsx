@@ -18,7 +18,7 @@ import {
   DateInput,
   ErrorMessage,
   FormBtn
-} from './UpdateUserForm.styled';
+} from './UserForm.styled';
 
 const SUPPORTED_FORMATS = ['image/webp', 'image/jpg', 'image/jpeg', 'image/gif', 'image/png'];
 const PATTERN_FOR_PHONE = /^\+380\d{9}$/;
@@ -161,7 +161,7 @@ export default function UserForm({ avatarUrl, name, phone, birthday, skype, emai
                     />
                     <ErrorMessage name="birthday" component="div" />
                   </label>
-                  <FormikInput label="Phone" type="text" name="skype" placeholder="Enter skype" />
+                  <FormikInput label="Skype" type="text" name="skype" placeholder="Enter skype" />
                   <FormikInput label="Email" type="email" name="email" placeholder="Enter email" />
                 </FormInputContainer>
                 <FormBtn type="submit" disabled={!formik.isValid || formik.isSubmitting}>
