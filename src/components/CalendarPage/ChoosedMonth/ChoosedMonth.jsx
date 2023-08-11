@@ -1,16 +1,19 @@
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
+
+import CalendarTable from './CalendarTable/CalendarTable';
+import MonthCalendarHead from './MonthCalendarHead/MonthCalendarHead';
 
 import { ChoosedMonthStyles } from './ChoosedMonth.styled';
 
-export default function ChoosedMonth({ arg }) {
+export default function ChoosedMonth() {
   return (
     <ChoosedMonthStyles>
-      <h2>ChoosedMonth</h2>
-      <p>{arg}</p>
+      <MonthCalendarHead />
+      <CalendarTable />
     </ChoosedMonthStyles>
   );
 }
 
-ChoosedMonth.propTypes = {
-  arg: PropTypes.any
-};
+// ChoosedMonth.propTypes = {
+//   children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequiredZ
+// };

@@ -1,12 +1,17 @@
 import PropTypes from 'prop-types';
 
+import ColumnHeadBar from '../ColumnHeadBar/ColumnHeadBar';
+import ColumnTaskList from '../ColumnsTasksList/ColumnsTasksList';
+import AddTaskBtn from '../AddTaskBtn/AddTaskBtn';
+
 import { TasksColumnStyles } from './TasksColumn.styled';
 
 export default function TasksColumn({ arg }) {
   return (
     <TasksColumnStyles>
-      <h2>TasksColumn</h2>
-      <p>{arg}</p>
+      <ColumnHeadBar />
+      <ColumnTaskList />
+      <AddTaskBtn />
     </TasksColumnStyles>
   );
 }

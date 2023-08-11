@@ -8,7 +8,7 @@ import {
   verifyByCode,
   sendVEmail,
   token
-} from '../../services/authAxApi';
+} from '../../../services/authAxApi';
 
 export const register = createAsyncThunk(
   'user/Register',
