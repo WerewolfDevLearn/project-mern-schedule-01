@@ -99,6 +99,16 @@ export default function UserForm({ avatarUrl, name, phone, birthday, skype, emai
     // resetForm();
   };
 
+  const FormikInput = ({ label, type, name, placeholder }) => {
+    return (
+      <label htmlFor={name}>
+        <FormLabelSpan>{label}</FormLabelSpan>
+        <InputField id={name} type={type} name={name} placeholder={placeholder} />
+        <ErrorMessage name={name} component="div" />
+      </label>
+    );
+  };
+
   return (
     <>
       <Formik
