@@ -22,12 +22,10 @@ export const ToggleThemeBtn = styled.button`
   }
 `;
 
-//  ----------------------------------------змінити колір на закоментований!!!!!!!!!!!!
 export const IconLight = styled(FiSun)`
   width: 24px;
   height: 24px;
 
-  //змінити колір на закоментований
   color: #3e85f3;
   /* color: white; */
 
@@ -41,7 +39,6 @@ export const IconDark = styled(FaRegMoon)`
   width: 24px;
   height: 24px;
 
-  //змінити колір на закоментований
   color: #3e85f3;
   /* color: white; */
 
