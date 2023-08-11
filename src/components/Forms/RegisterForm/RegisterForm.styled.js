@@ -63,6 +63,7 @@ export const InputWrap = styled.div`
 `;
 
 export const Subtitle = styled.label`
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -96,6 +97,8 @@ export const Input = styled(Field)`
   font-weight: 400;
   line-height: 18px;
 
+  background: ${(props) => (props.isValid ? 'green' : 'red')};
+
   @media screen and (min-width: 768px) {
     padding: 18px;
     font-size: 18px;
@@ -103,8 +106,21 @@ export const Input = styled(Field)`
 `;
 
 export const ErrorText = styled(ErrorMessage)`
-  color: darkblue;
-  display: block;
+  position: absolute;
+  color: #da1414;
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 14px;
+
+  left: 14px;
+  bottom: -18px;
+
+  @media screen and (min-width: 768px) {
+    font-size: 14px;
+    left: 18px;
+  }
 `;
 
 export const Button = styled.button`

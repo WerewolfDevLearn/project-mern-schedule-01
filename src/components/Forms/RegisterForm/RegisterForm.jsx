@@ -28,38 +28,54 @@ export default function RegisterForm({ onSubmitForm }) {
         initialValues={{ name: '', email: '', password: '' }}
         onSubmit={onSubmit}
       >
-        {({ isValid }) => (
-          <FormElement autoComplete="off">
-            <InputWrap>
-              <Subtitle htmlFor="name">
-                Name
-                <Input type="name" name="name" placeholder="Enter your name" id="signup_name" />
-              </Subtitle>
-              <ErrorText name="name" component="p" />
+        {({ isValid }) => {
+          console.log(isValid);
+          return (
+            <FormElement autoComplete="off">
+              <InputWrap>
+                <Subtitle htmlFor="name">
+                  Name
+                  <Input
+                    type="name"
+                    name="name"
+                    placeholder="Enter your name"
+                    id="signup_name"
+                    isValid
+                  />
+                  <ErrorText name="name" component="p" />
+                </Subtitle>
 
-              <Subtitle htmlFor="email">
-                Email
-                <Input type="email" name="email" placeholder="Enter email" id="signup_email" />
-              </Subtitle>
-              <ErrorText name="email" component="p" />
+                <Subtitle htmlFor="email">
+                  Email
+                  <Input
+                    type="email"
+                    name="email"
+                    placeholder="Enter email"
+                    id="signup_email"
+                    isValid
+                  />
+                  <ErrorText name="email" component="p" />
+                </Subtitle>
 
-              <Subtitle htmlFor="password">
-                Password
-                <Input
-                  type="password"
-                  name="password"
-                  placeholder="Enter password"
-                  id="signup_password"
-                />
-              </Subtitle>
-              <ErrorText name="password" component="p" />
-            </InputWrap>
+                <Subtitle htmlFor="password">
+                  Password
+                  <Input
+                    type="password"
+                    name="password"
+                    placeholder="Enter password"
+                    id="signup_password"
+                    isValid
+                  />
+                  <ErrorText name="password" component="p" />
+                </Subtitle>
+              </InputWrap>
 
-            <Button type="submit" disabled={!isValid}>
-              Sign Up
-            </Button>
-          </FormElement>
-        )}
+              <Button type="submit" disabled={!isValid}>
+                Sign Up
+              </Button>
+            </FormElement>
+          );
+        }}
       </Formik>
     </Container>
   );

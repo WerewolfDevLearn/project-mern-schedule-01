@@ -13,11 +13,20 @@ export const Container = styled.div`
   background: #dcebf7;
 `;
 
-export const Wrap = styled.div`
+export const ContentWrap = styled.div`
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1440px;
+  height: 100%;
+`;
+
+export const Wrap = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
   gap: 18px;
 
   padding: 0 20px;
@@ -34,8 +43,14 @@ export const Wrap = styled.div`
 `;
 
 export const StyledImg = styled.picture`
+  display: none;
+
   position: absolute;
   width: 400px;
   bottom: 0;
-  left: 20px;
+  left: 49px;
+
+  @media screen and (min-width: 1440px) {
+    display: block;
+  }
 `;
