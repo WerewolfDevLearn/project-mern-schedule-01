@@ -121,3 +121,19 @@ img {
   max-width: 100%;
   height: auto;
 }
+
+.circular-flag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #f0f0f0;
+  overflow: hidden;
+  object-fit: cover;
+}
+
+.circular-flag .fi {
+  font-size: 138px;
+}
