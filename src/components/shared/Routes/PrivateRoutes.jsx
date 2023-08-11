@@ -5,5 +5,5 @@ import { useVerifiedEmail } from '../../../redux/selectors';
 import routes from '../../../routes';
 export default function PrivateRoutes() {
   const verifiedEmail = useVerifiedEmail();
-  return verifiedEmail ? <Outlet /> : <Navigate to={routes.loginPage} />;
+  return verifiedEmail ? <Outlet /> : <Navigate to={routes.mainPage} />;
 }

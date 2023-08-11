@@ -9,7 +9,7 @@ export default function UserNav() {
         <NavLink to={routes.accountPage}>My account</NavLink>
       </li>
       <li key="CalendarPage">
-        <NavLink to={routes.calendarPage}>Calendar</NavLink>
+        <NavLink to={routes.calendarMonth}>Calendar</NavLink>
       </li>
       <li key="SatisticsPage">
         <NavLink to={routes.statisticsPage}>Statistics</NavLink>
