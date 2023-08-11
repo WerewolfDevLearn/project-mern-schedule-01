@@ -12,6 +12,11 @@ export const Container = styled.div`
 
   border-radius: 8px;
   background: #fff;
+
+  @media screen and (min-width: 768px) {
+    width: 480px;
+    gap: 40px;
+  }
 `;
 
 export const Title = styled.h1`
@@ -23,6 +28,10 @@ export const Title = styled.h1`
   font-style: normal;
   font-weight: 600;
   line-height: 24px;
+
+  @media screen and (min-width: 768px) {
+    font-size: 24px;
+  }
 `;
 
 export const FormElement = styled(Form)`
@@ -30,6 +39,10 @@ export const FormElement = styled(Form)`
   flex-direction: column;
   gap: 32px;
   width: 100%;
+
+  @media screen and (min-width: 768px) {
+    gap: 48px;
+  }
 `;
 
 export const InputWrap = styled.div`
@@ -37,6 +50,10 @@ export const InputWrap = styled.div`
   flex-direction: column;
   align-items: flex-start;
   gap: 24px;
+
+  @media screen and (min-width: 768px) {
+    gap: 18px;
+  }
 `;
 
 export const Subtitle = styled.label`
@@ -52,11 +69,14 @@ export const Subtitle = styled.label`
   font-style: normal;
   font-weight: 600;
   line-height: normal;
+
+  @media screen and (min-width: 768px) {
+    font-size: 14px;
+  }
 `;
 
 export const Input = styled(Field)`
   width: 100%;
-  height: 46px;
   padding: 14px;
 
   border-radius: 8px;
@@ -69,6 +89,11 @@ export const Input = styled(Field)`
   font-style: normal;
   font-weight: 400;
   line-height: 18px;
+
+  @media screen and (min-width: 768px) {
+    padding: 18px;
+    font-size: 18px;
+  }
 `;
 
 export const ErrorText = styled(ErrorMessage)`
@@ -79,7 +104,7 @@ export const ErrorText = styled(ErrorMessage)`
 export const Button = styled.button`
   display: flex;
   width: 100%;
-  padding: 14px 103px;
+  padding: 14px;
   flex-direction: column;
   align-items: center;
   gap: 10px;
@@ -100,6 +125,11 @@ export const Button = styled.button`
   font-weight: 600;
   line-height: 18px;
   letter-spacing: -0.28px;
+
+  @media screen and (min-width: 768px) {
+    padding: 16px;
+    font-size: 18px;
+  }
 
   &:hover,
   &:focus {

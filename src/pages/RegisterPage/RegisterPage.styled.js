@@ -18,4 +18,10 @@ export const Wrap = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 18px;
+
+  font-size: 12px;
+
+  @media screen and (min-width: 768px) {
+    gap: 24px;
+  }
 `;

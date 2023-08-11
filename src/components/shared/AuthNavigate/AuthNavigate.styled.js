@@ -11,4 +11,8 @@ export const NavigateLink = styled(NavLink)`
   font-weight: 600;
   line-height: 14px;
   text-decoration-line: underline;
+
+  @media screen and (min-width: 768px) {
+    font-size: 18px;
+  }
 `;
