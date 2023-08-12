@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Formik, Form } from 'formik';
 import * as yup from 'yup';
+import { useTranslation } from 'react-i18next';
 // import { toast } from 'react-hot-toast';
 import { BsPlusCircle } from 'react-icons/bs';
 import { usePHBState } from '../../../redux/selectors';
@@ -42,18 +43,19 @@ const schema = yup.object().shape({
   email: yup.string('Enter your email').email('Invalid email').required('Email is required')
 });
 
-export default function UserForm({ avatarUrl, name, phone, birthday, skype, email }) {
+export default function UserForm() {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
-  const userData = useSelector(usePHBState);
+  const { user } = usePHBState();
   const fileInputRef = useRef(null);
 
   const initialValues = {
-    avatarUrl: avatarUrl || '',
-    name,
-    phone: phone || '',
-    birthday,
-    skype: skype || '',
-    email
+    avatarUrl: user.avatarUrl || '',
+    name: user.name,
+    phone: user.phone || '',
+    birthday: user.birthday,
+    skype: user.skype || '',
+    email: user.email
   };
 
   const [selectedAvatar, setSelectedAvatar] = useState(null);
@@ -156,13 +158,23 @@ export default function UserForm({ avatarUrl, name, phone, birthday, skype, emai
                     )}
                   </label>
                 </AvatarContainer>
-                <UserNameTitle>{name}</UserNameTitle>
-                <h3>User</h3>
+                <UserNameTitle>{user.name}</UserNameTitle>
+                <h3>{t('User')}</h3>
                 <FormInputContainer>
-                  <FormikInput label="User Name" type="text" name="name" placeholder="Enter name" />
-                  <FormikInput label="Phone" type="tel" name="phone" placeholder="+380971234567" />
+                  <FormikInput
+                    label={t('UserName')}
+                    type="text"
+                    name="name"
+                    placeholder={t('Enter your name')}
+                  />
+                  <FormikInput
+                    label={t('Phone')}
+                    type="tel"
+                    name="phone"
+                    placeholder="+380971234567"
+                  />
                   <label htmlFor="birthday">
-                    <FormLabelSpan>Birthday</FormLabelSpan>
+                    <FormLabelSpan>{t('Birthday')}</FormLabelSpan>
                     <DateInput
                       id="birthday"
                       name="birthday"
@@ -172,11 +184,21 @@ export default function UserForm({ avatarUrl, name, phone, birthday, skype, emai
                     />
                     <ErrorMessage name="birthday" component="div" />
                   </label>
-                  <FormikInput label="Skype" type="text" name="skype" placeholder="Enter skype" />
-                  <FormikInput label="Email" type="email" name="email" placeholder="Enter email" />
+                  <FormikInput
+                    label={t('Skype')}
+                    type="text"
+                    name="skype"
+                    placeholder={t('Add a skype number')}
+                  />
+                  <FormikInput
+                    label={t('UserEmail')}
+                    type="email"
+                    name="email"
+                    placeholder={t('Enter email')}
+                  />
                 </FormInputContainer>
                 <FormBtn type="submit" disabled={!formik.isValid || formik.isSubmitting}>
-                  Save changes
+                  {t('Save changes')}
                 </FormBtn>
               </FormContainer>
             </Form>
