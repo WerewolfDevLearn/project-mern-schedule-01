@@ -3,14 +3,18 @@ import PropTypes from 'prop-types';
 
 import { validationLoingRules } from '../validationRules';
 
+import icon from '/images/svg/login.svg';
+
 import {
   Container,
   Title,
   FormElement,
+  InputWrap,
   Subtitle,
   Input,
   ErrorText,
-  Button
+  Button,
+  Img
 } from './LoginForm.styled';
 
 export default function LoginForm({ onSubmitForm }) {
@@ -26,19 +30,30 @@ export default function LoginForm({ onSubmitForm }) {
       <Formik
         validationSchema={validationLoingRules}
         initialValues={{ email: '', password: '' }}
+        validateOnChange={false}
+        validateOnBlur={false}
         onSubmit={onSubmit}
       >
-        {({ isValid }) => (
+        {() => (
           <FormElement autoComplete="off">
-            <Subtitle htmlFor="email">Email</Subtitle>
-            <Input type="email" name="email" placeholder="nadiia@gmail.com" id="login_email" />
-            <ErrorText name="email" component="p" />
+            <InputWrap>
+              <Subtitle htmlFor="email">
+                Email
+                <Input type="email" name="email" placeholder="nadiia@gmail.com" id="login_email" />
+                <ErrorText name="email" component="p" />
+              </Subtitle>
 
-            <Subtitle htmlFor="password">Password</Subtitle>
-            <Input type="password" name="password" placeholder="******" id="login_password" />
-            <ErrorText name="password" component="p" />
+              <Subtitle htmlFor="password">
+                Password
+                <Input type="password" name="password" placeholder="●●●●●●●" id="login_password" />
+                <ErrorText name="password" component="p" />
+              </Subtitle>
+            </InputWrap>
 
-            <Button type="submit">Log in</Button>
+            <Button type="submit">
+              Log in
+              <Img src={icon} alt="LogIn SVG" />
+            </Button>
           </FormElement>
         )}
       </Formik>
