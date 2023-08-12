@@ -32,7 +32,7 @@ i18n
       htmlTag: document.documentElement
     },
     backend: {
-      loadPath: '../data/locales/{{lng}}/translation.json'
+      loadPath: './locales/{{lng}}/{{ns}}.json'
     },
     interpolation: {
       escapeValue: false
