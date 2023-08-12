@@ -4,10 +4,13 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
 export const FormContainer = styled.div`
+  padding: 60px 165px 60px 164px;
+`;
+
+export const FormWrap = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 60px 165px 60px 164px;
 `;
 
 export const AvatarContainer = styled.div`
@@ -72,7 +75,6 @@ export const FormLabelSpan = styled.span`
 export const InputField = styled(Field)`
   width: 354px;
   height: 46px;
-  box-sizing: border-box;
   border: 1px solid rgba(17, 17, 17, 15%);
   border-radius: 8px;
   padding: 0 18px;
@@ -119,8 +121,8 @@ export const BtnWrapper = styled.div`
   display: flex;
   flex-direction: column;
   position: absolute;
-  top: 62%;
-  left: 75%;
+  top: 80%;
+  left: 70%;
 
   /* bottom: 24%;
   right: 10%; */
