@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { themes } from 'src/styles/variables/themes';
 
 import { device } from '../../../styles/variables/mediaVeriables';
+import { themes } from '../../../styles/variables/themes';
 
 export const MainWrapper = styled.main`
   display: flex;
@@ -21,6 +22,7 @@ export const MainWrapper = styled.main`
 
 export const StyledHero = styled.header`
   position: relative;
+
   background-color: ${themes.colors.accent};
   min-height: 100vh;
   display: flex;
@@ -30,8 +32,8 @@ export const StyledHero = styled.header`
 `;
 
 export const HeroTitle = styled.h1`
-  color: ${themes.colors.white};
 
+  color: ${themes.colors.white};
   margin: 0;
   margin-bottom: 32px;
   font-family: 'Coolvetica';
@@ -108,13 +110,15 @@ export const AuthLink = styled(NavLink)`
   align-items: center;
   text-decoration: ${({ colorbtn }) => colorbtn !== 'white' && 'underline'};
   text-shadow: 0px 47px 355px rgba(0, 0, 0, 0.07), 0px 9.4px 57.6875px rgba(0, 0, 0, 0.035);
+
   color: ${({ color }) =>
     color === 'blue' ? themes.colors.accent : themes.colors.white};
   background-color: ${({ colorbtn }) => colorbtn === 'white' ? themes.colors.white : 'transparent'};
+
   transform: scale(1);
   transition-property: transform;
   transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0, 0.110, 0.35, 2);
+  transition-timing-function: cubic-bezier(0, 0.11, 0.35, 2);
 
   &:hover,
   &:focus {
