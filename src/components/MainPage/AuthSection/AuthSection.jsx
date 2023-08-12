@@ -24,9 +24,6 @@ import {
 } from './AuthSection.styled.jsx';
 
 export default function AuthSection() {
-  // Забрати в MainLayout
-
-  // add lang
   const { t } = useTranslation();
 
   return (
@@ -51,7 +48,7 @@ export default function AuthSection() {
       <Wrapper>
         <AuthWrapper>
           <AuthLink to={routes.registerPage}>{t('Sign up')}</AuthLink>
-          <AuthLink to={routes.loginPage} color="blue" colorbtn="white">
+          <AuthLink to={routes.loginPage} color="blue" colorbtn="white" >
             {t('Log in')}
             <CgLogIn style={{ marginLeft: 6, width: 18, height: 18 }} />
           </AuthLink>
