@@ -4,6 +4,7 @@ import { Formik, Form } from 'formik';
 import * as yup from 'yup';
 // import { toast } from 'react-hot-toast';
 import { BsPlusCircle } from 'react-icons/bs';
+import { usePHBState } from '../../../redux/selectors';
 import {
   FormContainer,
   AvatarAddIcon,
@@ -42,8 +43,8 @@ const schema = yup.object().shape({
 });
 
 export default function UserForm({ avatarUrl, name, phone, birthday, skype, email }) {
-  // const dispatch = useDispatch();
-  // const userData = useSelector(getUser);
+  const dispatch = useDispatch();
+  const userData = useSelector(usePHBState);
   const fileInputRef = useRef(null);
 
   const initialValues = {
@@ -85,7 +86,7 @@ export default function UserForm({ avatarUrl, name, phone, birthday, skype, emai
       formData.append('email', values.email.trim());
     }
 
-    // dispatch(updateUserDataThunk(formData));
+    dispatch(getState(formData));
 
     const formDataObject = {};
     for (let [key, value] of formData.entries()) {
