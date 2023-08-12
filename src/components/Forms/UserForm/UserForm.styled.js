@@ -114,3 +114,41 @@ export const FormBtn = styled.button`
     background-color: #2b78ef;
   }
 `;
+
+export const BtnWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 62%;
+  left: 75%;
+
+  /* bottom: 24%;
+  right: 10%; */
+`;
+
+export const ChangePassBtn = styled.button`
+  width: 172px;
+  height: 48px;
+  border: none;
+  border-radius: 16px;
+  color: white;
+  background-color: #3e85f3;
+  margin-bottom: 10px;
+
+  &:hover {
+    background-color: #2b78ef;
+  }
+`;
+
+export const DeleteProfileBtn = styled.button`
+  width: 172px;
+  height: 48px;
+  border: none;
+  border-radius: 16px;
+  color: white;
+  background-color: #fad91b;
+
+  &:hover {
+    background-color: red;
+  }
+`;

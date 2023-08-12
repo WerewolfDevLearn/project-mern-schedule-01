@@ -19,7 +19,10 @@ import {
   InputField,
   DateInput,
   ErrorMessage,
-  FormBtn
+  FormBtn,
+  BtnWrapper,
+  ChangePassBtn,
+  DeleteProfileBtn
 } from './UserForm.styled';
 
 const SUPPORTED_FORMATS = ['image/webp', 'image/jpg', 'image/jpeg', 'image/gif', 'image/png'];
@@ -205,6 +208,10 @@ export default function UserForm() {
           );
         }}
       </Formik>
+      <BtnWrapper>
+        <ChangePassBtn type="button">Change password</ChangePassBtn>
+        <DeleteProfileBtn type="button">Delete profile</DeleteProfileBtn>
+      </BtnWrapper>
     </>
   );
 }
