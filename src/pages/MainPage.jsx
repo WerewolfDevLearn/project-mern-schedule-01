@@ -1,13 +1,16 @@
 import AuthSection from 'src/components/MainPage/AuthSection/AuthSection';
-// import MPDescription from 'src/components/MainPage/MPDescription/MPDescription';
+import MPDescription from 'src/components/MainPage/MPDescription/MPDescription';
 // import ReviewsSlider from 'src/components/MainPage/ReviewsSlider/ReviewsSlider';
+import { MainWrapper } from 'src/components/MainPage/AuthSection/AuthSection.styled';
 
 export default function MainPage() {
   return (
     <>
       <AuthSection />
-      {/* <MPDescription />
-      <ReviewsSlider /> */}
+      <MainWrapper>
+        <MPDescription />
+        {/* <ReviewsSlider /> */}
+      </MainWrapper>
     </>
   );
 }
