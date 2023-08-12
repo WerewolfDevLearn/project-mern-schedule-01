@@ -9,3 +9,6 @@ export const MonthCalendarHeadStyles = styled.div`
 `;
 
 export const Day = styled.div``;
+export const DaysOfWeek = styled.div`
+  display: flex;
+`;
