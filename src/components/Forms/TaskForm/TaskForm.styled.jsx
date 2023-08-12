@@ -1,18 +1,21 @@
 import styled from 'styled-components';
 
-import { ReactComponent as IconClose } from 'images/close.svg';
-
 import { Form as FormikForm, Field, ErrorMessage as FormikErrorMessage } from 'formik';
+
+import { XClose, Plus, Pencil } from '../../shared/Icons';
+import { backgroundColor, colorText } from 'src/styles/variables/Variables';
 
 export const Form = styled(FormikForm)`
   position: relative;
   width: 303px;
   max-height: 420px;
   padding: 48px 18px 40px;
-  background-color: ${(props) => props.theme.task_modal_bg};
+  /* background-color: ${(props) => props.theme.task_modal_bg}; */
+  background-color: ${backgroundColor.white};
 
   border-radius: 8px;
-  border: 1px solid ${(props) => props.theme.task_modal_border};
+  /* border: 1px solid ${(props) => props.theme.task_modal_border}; */
+  border: 1px solid ${backgroundColor.grey};
   box-shadow: 0px 4px 16px 0px rgba(17, 17, 17, 0.1);
 
   @media (min-width: 768px) {
@@ -38,8 +41,10 @@ export const InputTitle = styled(Field)`
   height: 42px;
   padding: 12px 14px;
   border-radius: 8px;
-  background: ${(props) => props.theme.input_bg};
+  /* background: ${(props) => props.theme.input_bg}; */
   border: 1px solid ${(props) => props.theme.input_border};
+  background-color: ${backgroundColor.grey};
+  border-color: transparent;
 
   color: ${(props) => props.theme.text_3};
   font-size: 14px;
@@ -78,8 +83,10 @@ export const InputTime = styled(Field)`
   height: 42px;
   padding: 12px 14px;
   border-radius: 8px;
-  background: ${(props) => props.theme.input_bg};
-  border: 1px solid ${(props) => props.theme.input_border};
+  /* background: ${(props) => props.theme.input_bg};
+  border: 1px solid ${(props) => props.theme.input_border}; */
+  background-color: ${backgroundColor.grey};
+  border-color: transparent;
   cursor: pointer;
 
   color: ${(props) => props.theme.text_3};
@@ -259,12 +266,21 @@ export const ErrorMessage = styled(FormikErrorMessage)`
   line-height: 14px;
 `;
 
-export const CloseIcon = styled(IconClose)`
+export const CloseIcon = styled(XClose)`
+  width: 24px;
+  height: 24px;
+
   transition: stroke 250ms linear;
-  stroke: ${(props) => props.theme.title};
+  color: ${colorText.black};
+  /* stroke: ${(props) => props.theme.title}; */
 
   &:hover,
   &:focus {
     stroke: ${(props) => props.theme.close_btn};
   }
+`;
+
+export const PlusIcon = styled(Plus)`
+  width: 24px;
+  height: 24px;
 `;

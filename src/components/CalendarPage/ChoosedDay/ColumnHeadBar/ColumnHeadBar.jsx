@@ -1,16 +1,20 @@
 import PropTypes from 'prop-types';
 
-import { ColumnHeadBarStyles } from './ColumnHeadBar.styled';
+import { Add } from 'src/components/shared/Icons';
 
-export default function ColumnHeadBar({ arg }) {
+import { ColumnHeadBarStyles, TodoTitle, AddBtn } from './ColumnHeadBar.styled';
+
+export default function ColumnHeadBar({ title, openModal }) {
   return (
     <ColumnHeadBarStyles>
-      <h2>ColumnHeadBar</h2>
-      <p>{arg}</p>
+      <TodoTitle>{title}</TodoTitle>
+      <AddBtn onClick={openModal}>
+        <Add width="22" height="22" />
+      </AddBtn>
     </ColumnHeadBarStyles>
   );
 }
 
 ColumnHeadBar.propTypes = {
-  arg: PropTypes.any
+  title: PropTypes.string
 };
