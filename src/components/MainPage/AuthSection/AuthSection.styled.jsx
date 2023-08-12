@@ -2,10 +2,11 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
 import { device } from '../../../styles/variables/mediaVeriables';
+import { themes } from '../../../styles/variables/themes';
 
 export const StyledHero = styled.header`
   position: relative;
-  background-color: #3E85F3;
+  background-color: #3e85f3;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -14,7 +15,7 @@ export const StyledHero = styled.header`
 `;
 
 export const HeroTitle = styled.h1`
-  color: #FFFFFF;
+  color: #ffffff;
 
   margin: 0;
   margin-bottom: 32px;
@@ -91,12 +92,12 @@ export const AuthLink = styled(NavLink)`
   align-items: center;
   text-decoration: underline;
   text-shadow: 0px 47px 355px rgba(0, 0, 0, 0.07), 0px 9.4px 57.6875px rgba(0, 0, 0, 0.035);
-  color: #3E85F3;
-  background-color: white;
+  color: #3e85f3;
+  background-color: ${themes.colors.white};
   transform: scale(1);
   transition-property: transform;
   transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0, 0.110, 0.35, 2);
+  transition-timing-function: cubic-bezier(0, 0.11, 0.35, 2);
 
   &:hover,
   &:focus {

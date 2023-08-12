@@ -1,19 +1,21 @@
-import { NavLink } from 'react-router-dom';
+import getCurrentDate from 'src/utils/currentDate';
 
 import routes from '../../../../routes.js';
 
+import { NavUl, NavLinkStyled } from './UserNav.styled';
+
 export default function UserNav() {
   return (
-    <ul>
+    <NavUl>
       <li key="AccountPage">
-        <NavLink to={routes.accountPage}>My account</NavLink>
+        <NavLinkStyled to={routes.accountPage}>My account</NavLinkStyled>
       </li>
       <li key="CalendarPage">
-        <NavLink to={routes.calendarMonth}>Calendar</NavLink>
+        <NavLinkStyled to={`${routes.navFromLogIn}/${getCurrentDate()}`}>Calendar</NavLinkStyled>
       </li>
       <li key="SatisticsPage">
-        <NavLink to={routes.statisticsPage}>Statistics</NavLink>
+        <NavLinkStyled to={routes.statisticsPage}>Statistics</NavLinkStyled>
       </li>
-    </ul>
+    </NavUl>
   );
 }
