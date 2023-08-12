@@ -1,10 +1,5 @@
-import { Suspense, useEffect } from 'react';
+import { Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-
-import { getCurrent } from './redux/auth/authOps';
-
-import { useisRefreshing } from './redux/selectors';
 
 import PrivateRoutes from './components/shared/Routes/PrivateRoutes';
 import PubliceRourtes from './components/shared/Routes/PubliceRoutes';
@@ -24,15 +19,7 @@ import RegisterPage from './pages/RegisterPage';
 import routes from './routes';
 
 function App() {
-  const isRefreshing = useisRefreshing();
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getCurrent());
-  }, [dispatch]);
-  return isRefreshing ? (
-    <Loader />
-  ) : (
+  return (
     <Suspense fallback={<Loader />}>
       <Routes>
         <Route element={<PubliceRourtes />}>
