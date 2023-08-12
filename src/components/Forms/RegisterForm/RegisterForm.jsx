@@ -26,56 +26,40 @@ export default function RegisterForm({ onSubmitForm }) {
       <Formik
         validationSchema={validationRegisterRules}
         initialValues={{ name: '', email: '', password: '' }}
+        validateOnChange={false}
+        validateOnBlur={false}
         onSubmit={onSubmit}
       >
-        {({ isValid }) => {
-          console.log(isValid);
-          return (
-            <FormElement autoComplete="off">
-              <InputWrap>
-                <Subtitle htmlFor="name">
-                  Name
-                  <Input
-                    type="name"
-                    name="name"
-                    placeholder="Enter your name"
-                    id="signup_name"
-                    isValid
-                  />
-                  <ErrorText name="name" component="p" />
-                </Subtitle>
+        {() => (
+          <FormElement autoComplete="off">
+            <InputWrap>
+              <Subtitle htmlFor="name">
+                Name
+                <Input type="name" name="name" placeholder="Enter your name" id="signup_name" />
+                <ErrorText name="name" component="p" />
+              </Subtitle>
 
-                <Subtitle htmlFor="email">
-                  Email
-                  <Input
-                    type="email"
-                    name="email"
-                    placeholder="Enter email"
-                    id="signup_email"
-                    isValid
-                  />
-                  <ErrorText name="email" component="p" />
-                </Subtitle>
+              <Subtitle htmlFor="email">
+                Email
+                <Input type="email" name="email" placeholder="Enter email" id="signup_email" />
+                <ErrorText name="email" component="p" />
+              </Subtitle>
 
-                <Subtitle htmlFor="password">
-                  Password
-                  <Input
-                    type="password"
-                    name="password"
-                    placeholder="Enter password"
-                    id="signup_password"
-                    isValid
-                  />
-                  <ErrorText name="password" component="p" />
-                </Subtitle>
-              </InputWrap>
+              <Subtitle htmlFor="password">
+                Password
+                <Input
+                  type="password"
+                  name="password"
+                  placeholder="Enter password"
+                  id="signup_password"
+                />
+                <ErrorText name="password" component="p" />
+              </Subtitle>
+            </InputWrap>
 
-              <Button type="submit" disabled={!isValid}>
-                Sign Up
-              </Button>
-            </FormElement>
-          );
-        }}
+            <Button type="submit">Sign Up</Button>
+          </FormElement>
+        )}
       </Formik>
     </Container>
   );

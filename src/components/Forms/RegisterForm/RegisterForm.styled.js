@@ -97,8 +97,6 @@ export const Input = styled(Field)`
   font-weight: 400;
   line-height: 18px;
 
-  background: ${(props) => (props.isValid ? 'green' : 'red')};
-
   @media screen and (min-width: 768px) {
     padding: 18px;
     font-size: 18px;
