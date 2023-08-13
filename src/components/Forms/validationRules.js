@@ -3,7 +3,7 @@ import * as Yup from 'yup';
 export const validationRegisterRules = Yup.object().shape({
   name: Yup.string()
     .min(2, 'Too Short!')
-    .max(70, 'Too Long!')
+    .max(20, 'Too Long!')
     .matches(/^[a-zA-Z0-9_]*$/, 'Only letters, underscores and numbers are allowed')
     .required('Name is a required field'),
   email: Yup.string().required('Email is a required field').email('Invalid email format'),
