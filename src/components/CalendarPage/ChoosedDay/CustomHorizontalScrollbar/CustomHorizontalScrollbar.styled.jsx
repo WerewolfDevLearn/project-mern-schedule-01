@@ -32,7 +32,7 @@ export const Scrollbar = styled(SimpleBar)`
     right: 20px;
 
     width: auto;
-    max-height: 14px;
+    height: 12px;
     border-radius: 12px;
 
     background-color: #e7e5e5;
@@ -42,13 +42,24 @@ export const Scrollbar = styled(SimpleBar)`
     @media screen and (min-width: 768px) {
       left: 30px;
       right: 30px;
+      height: 14px;
     }
   }
 
   .simplebar-scrollbar::before {
+    top: 0;
+    left: 0;
+    right: 0;
     transform: scale(1);
-    height: 14px;
+
+    width: auto;
+    height: 12px;
+
     background-color: #e7e5e5;
-    /* opacity: 0; */
+    opacity: 1;
+
+    @media screen and (min-width: 768px) {
+      height: 14px;
+    }
   }
 `;

@@ -1,7 +1,9 @@
+import { backgroundColor } from 'src/styles/variables/Variables';
 import styled from 'styled-components';
 
 export const MainLayOutContainer = styled.div`
-  background-color: ${({ theme }) => theme.colors.backgroundAuth};
+  /* background-color: ${({ theme }) => theme.colors.backgroundAuth}; */
+  background-color: ${backgroundColor.grey};
   padding-left: 0;
   padding-right: 20px;
   height: 100vh;

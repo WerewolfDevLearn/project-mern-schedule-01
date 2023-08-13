@@ -13,7 +13,6 @@ export default function TasksColumn({ tasks, title }) {
   const [modalOptions, setModalOptions] = useState({ isOpen: false, action: '', taskToEdit: null });
 
   const openModal = (task) => {
-    console.log('task', Boolean(task));
     if (task) {
       setModalOptions({ isOpen: true, action: 'edit', taskToEdit: task });
     }
@@ -26,10 +25,6 @@ export default function TasksColumn({ tasks, title }) {
   const closeModal = () => {
     setModalOptions({ isOpen: false, action: '', taskToEdit: null });
   };
-
-  useEffect(() => {
-    console.log(modalOptions);
-  }, [modalOptions]);
 
   return (
     <>

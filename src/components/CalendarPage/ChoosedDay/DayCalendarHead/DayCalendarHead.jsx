@@ -15,8 +15,6 @@ export default function DayCalendarHead({ date }) {
   const [selectedDay, setSelectedDay] = useState(date);
   const navigate = useNavigate();
 
-  console.log(date);
-
   const screenWidth = window.innerWidth;
 
   const firstWeekDay = startOfWeek(new Date(date), { weekStartsOn: 1 });
