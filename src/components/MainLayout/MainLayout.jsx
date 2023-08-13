@@ -32,16 +32,14 @@ const Layout = () => {
     <Loader />
   ) : (
     <ThemeProvider theme={theme}>
-      <Container>
-        <MainLayOutContainer>
-          <SideBar />
-          <MainLayOutSubContainer>
-            <AppHeader />
-            <ChildrenContainer>{isLoading ? <Loader /> : <Outlet />}</ChildrenContainer>
-          </MainLayOutSubContainer>
-          <ToastContainer />
-        </MainLayOutContainer>
-      </Container>
+      <MainLayOutContainer>
+        {/* <SideBar /> */}
+        <MainLayOutSubContainer>
+          <AppHeader />
+          <ChildrenContainer>{isLoading ? <Loader /> : <Outlet />}</ChildrenContainer>
+        </MainLayOutSubContainer>
+        <ToastContainer />
+      </MainLayOutContainer>
     </ThemeProvider>
   );
 };

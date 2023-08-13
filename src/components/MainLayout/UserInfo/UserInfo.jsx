@@ -1,16 +1,12 @@
-import PropTypes from 'prop-types';
+import Avatar from '@mui/material/Avatar';
 
-import { UserInfoStyles } from './UserInfo.styled';
+import { UserInfoStyles, UserName } from './UserInfo.styled';
 
-export default function UserInfo({ arg }) {
+export default function UserInfo() {
   return (
     <UserInfoStyles>
-      <h2>UserInfo</h2>
-      <p>{arg}</p>
+      <UserName>Madia</UserName>
+      <Avatar alt="username" src="" sx={{ width: 32, height: 32 }} />
     </UserInfoStyles>
   );
 }
-
-UserInfo.propTypes = {
-  arg: PropTypes.any
-};

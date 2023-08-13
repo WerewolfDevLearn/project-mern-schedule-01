@@ -5,7 +5,9 @@ import ThemeToggler from '../ThemeToggler/ThemeToggler';
 
 import UserInfo from '../UserInfo/UserInfo';
 
-import { Header } from './Header.styled';
+import UserMenuBTN from './UserMenuBTN';
+
+import { Header, LoactionSign } from './Header.styled';
 
 function AppHeader() {
   const location = useLocation();
@@ -17,7 +19,8 @@ function AppHeader() {
   };
   return (
     <Header>
-      <h2>{headerTitle[activePage]}</h2>
+      <UserMenuBTN stroke="#000000" />
+      <LoactionSign>{headerTitle[activePage]}</LoactionSign>
       <AddFeedbackBtn />
       <ThemeToggler />
       <UserInfo />
