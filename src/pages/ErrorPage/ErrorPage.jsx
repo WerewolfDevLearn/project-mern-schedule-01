@@ -5,8 +5,6 @@ import { ErrorPageStyles, ErrorCode, Text, HomeBtn, IconWrapper } from './ErrorP
 export default function ErrorPage() {
   const navigate = useNavigate();
 
-  const screenWidth = window.innerWidth;
-
   return (
     <ErrorPageStyles>
       <ErrorCode>
@@ -15,11 +13,11 @@ export default function ErrorPage() {
           <picture>
             <source
               type="image/svg"
-              srcSet="/images/others/mobile/gooseRocketMobile.svg 375w, /images/others/tablet/gooseRocketTablet.svg 768w, 1440w"
+              srcSet="src/images/others/mobile/gooseRocketMobile.svg 375w, src/images/others/tablet/gooseRocketTablet.svg 768w, 1440w"
               sizes="(max-width: 767px) 375px, (max-width: 1439px) 768px, 1440px"
               alt=""
             />
-            <img src="/images/others/tablet/gooseRocketTablet.svg" alt="" />
+            <img src="/src/images/others/tablet/gooseRocketTablet.svg" alt="" />
           </picture>
         </IconWrapper>
         4
