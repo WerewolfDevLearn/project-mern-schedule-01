@@ -62,6 +62,7 @@ export const AvatarImg = styled.img`
   border: 2px solid #3e85f3;
   border-radius: 50%;
   background-size: center;
+  object-fit: cover;
 `;
 
 export const UserNameTitle = styled.h2`
