@@ -3,11 +3,11 @@ import { ToastContainer } from 'react-toastify';
 import { useThemeColors } from 'src/components/MainLayout/ThemeToggler/ThemeContextProvider';
 import { ThemeProvider } from 'styled-components';
 import { useDispatch } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import Loader from '../shared/Loader/Loader';
 import { useisLoading, useisRefreshing } from '../../redux/selectors';
-import Container from '../shared/Container';
+
 import { getCurrent } from '../../redux/auth/authOps';
 
 import SideBar from './SideBar/SideBar';
@@ -20,8 +20,11 @@ import {
 } from './MainLayout.styled';
 
 const Layout = () => {
+  const [open, setOpen] = useState(false);
   const isRefreshing = useisRefreshing();
   const dispatch = useDispatch();
+  const callBack = () => setOpen(true);
+  const callBackCls = () => setOpen(false);
 
   const theme = useThemeColors().theme;
   useEffect(() => {
@@ -32,16 +35,14 @@ const Layout = () => {
     <Loader />
   ) : (
     <ThemeProvider theme={theme}>
-      <Container>
-        <MainLayOutContainer>
-          <SideBar />
-          <MainLayOutSubContainer>
-            <AppHeader />
-            <ChildrenContainer>{isLoading ? <Loader /> : <Outlet />}</ChildrenContainer>
-          </MainLayOutSubContainer>
-          <ToastContainer />
-        </MainLayOutContainer>
-      </Container>
+      <MainLayOutContainer>
+        <SideBar open={open} callBackCls={callBackCls} />
+        <MainLayOutSubContainer>
+          <AppHeader callBack={callBack} />
+          <ChildrenContainer>{isLoading ? <Loader /> : <Outlet />}</ChildrenContainer>
+        </MainLayOutSubContainer>
+        <ToastContainer />
+      </MainLayOutContainer>
     </ThemeProvider>
   );
 };
