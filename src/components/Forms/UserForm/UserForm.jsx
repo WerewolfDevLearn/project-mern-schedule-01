@@ -5,9 +5,8 @@ import * as yup from 'yup';
 import i18n from 'i18next';
 import { useTranslation } from 'react-i18next';
 // import { toast } from 'react-hot-toast';
-import { BsPlusCircle } from 'react-icons/bs';
 import { usePHBState } from '../../../redux/selectors';
-import SvgAvatar from '../../shared/Icons/Avatar';
+import { Avatar, Plus } from '../../shared/Icons';
 import {
   FormContainer,
   FormWrap,
@@ -53,7 +52,6 @@ export default function UserForm() {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const { user } = usePHBState();
-  const { defaultAvatar } = SvgAvatar();
   const fileInputRef = useRef(null);
 
   const initialValues = {
@@ -64,7 +62,7 @@ export default function UserForm() {
     skype: user.skype || '',
     email: user.email
   };
-
+  // console.log(defaultAvatar);
   const [selectedAvatar, setSelectedAvatar] = useState(null);
   const [imagePreview, setImagePreview] = useState(initialValues.avatarUrl);
   const [selectedDate, setSelectedDate] = useState(new Date(initialValues.birthday || new Date()));
@@ -130,11 +128,11 @@ export default function UserForm() {
         {(formik) => {
           return (
             <FormContainer>
-              <Form encType="multipart/form-data">
+              <Form encType="multipart/form-data" onSubmit={handleSubmit}>
                 <FormWrap>
                   <AvatarContainer>
                     <AvatarAddIcon>
-                      <BsPlusCircle onClick={handleAddImageClick} />
+                      <Plus width="18px" height="18px" onClick={handleAddImageClick} />
                     </AvatarAddIcon>
                     <label>
                       <AvatarInputField
@@ -154,16 +152,21 @@ export default function UserForm() {
                           }
                         }}
                       />
+                      {!selectedAvatar && (
+                        <AvatarImgContainer>
+                          <Avatar width="48px" height="48px" />
+                        </AvatarImgContainer>
+                      )}
                       {selectedAvatar && (
                         <AvatarImgContainer>
                           <AvatarImg src={selectedAvatar} alt={initialValues.name} />
                         </AvatarImgContainer>
                       )}
-                      {imagePreview && (
+                      {/* {imagePreview && (
                         <AvatarImgContainer>
                           <AvatarImg src={imagePreview} alt={initialValues.name} />
                         </AvatarImgContainer>
-                      )}
+                      )} */}
                     </label>
                   </AvatarContainer>
                   <UserNameTitle>{user.name}</UserNameTitle>
@@ -204,6 +207,10 @@ export default function UserForm() {
                       name="email"
                       placeholder={t('Enter email')}
                     />
+                    <BtnWrapper>
+                      <ChangePassBtn type="button">Change password</ChangePassBtn>
+                      <DeleteProfileBtn type="button">Delete profile</DeleteProfileBtn>
+                    </BtnWrapper>
                   </FormInputContainer>
                   <FormBtn type="submit" disabled={!formik.isValid || formik.isSubmitting}>
                     {t('Save changes')}
@@ -214,10 +221,6 @@ export default function UserForm() {
           );
         }}
       </Formik>
-      <BtnWrapper>
-        <ChangePassBtn type="button">Change password</ChangePassBtn>
-        <DeleteProfileBtn type="button">Delete profile</DeleteProfileBtn>
-      </BtnWrapper>
     </>
   );
 }

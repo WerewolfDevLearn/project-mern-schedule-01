@@ -5,6 +5,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 
 export const FormContainer = styled.div`
   padding: 60px 165px 60px 164px;
+  /* background-color: black; */
 `;
 
 export const FormWrap = styled.div`
@@ -18,13 +19,19 @@ export const AvatarContainer = styled.div`
   flex-direction: column;
   align-items: center;
   position: relative;
+  margin-bottom: 14px;
 `;
 
 export const AvatarAddIcon = styled.div`
-  display: inline-flex;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
-  top: 77%;
-  left: 76%;
+  width: 24px;
+  height: 24px;
+  top: 85%;
+  left: 60%;
+  color: white;
   background-color: #3e85f3;
   border-radius: 50%;
 
@@ -35,16 +42,17 @@ export const AvatarAddIcon = styled.div`
 `;
 
 export const AvatarInputField = styled.input`
-  visibility: hidden;
+  display: none;
 `;
 
 export const AvatarImgContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  /* width: 62px;
-  height: 62px;
-  border: 2px solid blue; */
+  width: 124px;
+  height: 124px;
+  border: 2px solid #3e85f3;
+  border-radius: 50%;
 `;
 
 export const AvatarImg = styled.img`
@@ -57,6 +65,7 @@ export const AvatarImg = styled.img`
 
 export const UserNameTitle = styled.h2`
   margin: 0;
+  margin-bottom: 8px;
 `;
 
 export const FormInputContainer = styled.div`
@@ -64,6 +73,8 @@ export const FormInputContainer = styled.div`
   justify-content: space-between;
   flex-wrap: wrap;
   padding: 44px 0 88px 0;
+  width: 758px;
+  position: relative;
 `;
 
 export const FormLabelSpan = styled.span`
@@ -88,7 +99,6 @@ export const InputField = styled(Field)`
 export const DateInput = styled(DatePicker)`
   width: 354px;
   height: 46px;
-  box-sizing: border-box;
   border: 1px solid rgba(17, 17, 17, 15%);
   border-radius: 8px;
   padding: 0 18px;
@@ -120,12 +130,16 @@ export const FormBtn = styled.button`
 export const BtnWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  position: absolute;
-  top: 80%;
-  left: 70%;
+  /* margin-top: 50px; */
 
-  /* bottom: 24%;
-  right: 10%; */
+  position: absolute;
+  /* top: 100%;
+  left: 70%; */
+  bottom: 8%;
+  right: -8%;
+
+  /* bottom: 240px;
+  right: 500px; */
 `;
 
 export const ChangePassBtn = styled.button`
