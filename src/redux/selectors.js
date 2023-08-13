@@ -19,3 +19,6 @@ export function useisLoading() {
 export function useError() {
   return useSelector((state) => state.error);
 }
+export function useUser() {
+  return useSelector((state) => state.user);
+}
