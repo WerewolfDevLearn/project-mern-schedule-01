@@ -166,9 +166,9 @@ export default function UserForm() {
                         </AvatarImgContainer>
                       )}
                       {selectedAvatar && (
-                        <AvatarImgContainer>
-                          <AvatarImg src={selectedAvatar} alt={initialValues.name} />
-                        </AvatarImgContainer>
+                        <div>
+                          <AvatarImg src={selectedAvatar} alt={user.name} />
+                        </div>
                       )}
                       {/* {imagePreview && (
                         <AvatarImgContainer>
