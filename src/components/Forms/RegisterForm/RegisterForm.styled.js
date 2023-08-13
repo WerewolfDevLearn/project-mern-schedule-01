@@ -2,6 +2,9 @@ import styled from 'styled-components';
 import { Form, Field, ErrorMessage } from 'formik';
 import { themes } from 'src/styles/variables/themes';
 
+import iconError from 'src/images/svg/validation-error.svg';
+import iconSuccess from 'src/images/svg/validation-success.svg';
+
 export const Container = styled.div`
   display: flex;
   width: 100%;
@@ -93,6 +96,7 @@ export const Subtitle = styled.label`
 `;
 
 export const Input = styled(Field)`
+  position: relative; //========================================
   width: 100%;
   padding: 14px;
 
@@ -207,5 +211,16 @@ export const Img = styled.img`
 
   @media screen and (min-width: ${themes.breakpoints.m}) {
     width: 20px;
+  }
+`;
+
+export const SvgIcon = styled.img`
+  position: absolute;
+  right: 18px;
+  bottom: 11px;
+  width: 24px;
+
+  @media screen and (min-width: ${themes.breakpoints.m}) {
+    bottom: 18px;
   }
 `;
