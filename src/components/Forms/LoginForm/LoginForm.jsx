@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Formik } from 'formik';
 import PropTypes from 'prop-types';
@@ -21,8 +22,11 @@ import {
 export default function LoginForm({ onSubmitForm }) {
   const { t } = useTranslation();
 
-  const onSubmit = (data, { resetForm }) => {
+  const [validateAfterSubmit, setValidateAfterSubmit] = useState(false);
+
+  const onSubmit = (data, { resetForm, setSubmitting }) => {
     onSubmitForm(data);
+    setSubmitting(false);
     resetForm();
   };
 
@@ -34,14 +38,21 @@ export default function LoginForm({ onSubmitForm }) {
         validationSchema={validationLoginRules}
         initialValues={{ email: '', password: '' }}
         validateOnBlur={false}
+        validateOnChange={validateAfterSubmit}
         validateOnMount={false}
         onSubmit={onSubmit}
       >
         {(formik) => {
-          const { errors, touched } = formik;
+          const { errors, handleSubmit, isValid, isSubmitting } = formik;
 
-          const validateInput = (input) =>
-            touched[input] && errors[input] ? 'input-error' : touched[input] ? 'input-correct' : '';
+          const validateInput = (input) => {
+            if (validateAfterSubmit && errors[input]) {
+              return 'input-error';
+            } else if (validateAfterSubmit && !errors[input]) {
+              return 'input-correct';
+            }
+            return '';
+          };
 
           return (
             <FormElement autoComplete="off">
@@ -77,7 +88,14 @@ export default function LoginForm({ onSubmitForm }) {
                 </Subtitle>
               </InputWrap>
 
-              <Button type="submit">
+              <Button
+                type="submit"
+                disabled={!isValid || isSubmitting}
+                onClick={() => {
+                  setValidateAfterSubmit(true);
+                  handleSubmit();
+                }}
+              >
                 {t('Log in')}
                 <Img src={icon} alt="LogIn SVG" />
               </Button>
