@@ -53,8 +53,6 @@ const TaskSchema = Yup.object().shape({
 });
 
 export const TaskForm = ({ onClose, action, column, taskToEdit }) => {
-  // const { _id, title, start, end, priority, date } = taskToEdit;
-
   const dispatch = useDispatch();
   const { currentDay } = useParams();
 
@@ -64,6 +62,7 @@ export const TaskForm = ({ onClose, action, column, taskToEdit }) => {
     }
 
     if (action === 'edit') {
+      const { _id, title, start, end, priority, date } = taskToEdit;
       dispatch(useUpdateTasksMutation({ _id, ...values }));
     }
 
@@ -84,7 +83,7 @@ export const TaskForm = ({ onClose, action, column, taskToEdit }) => {
         start: (action === 'edit' && start) || '09:00',
         end: (action === 'edit' && end) || '10:00',
         priority: (action === 'edit' && priority) || 'low',
-        // date: date || currentDay,
+        date: (action === 'edit' && date) || currentDay,
         category: setCategory()
       }}
       validationSchema={TaskSchema}

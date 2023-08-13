@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { startOfWeek, eachDayOfInterval } from 'date-fns'
 
 import {
   DayCalendarHeadStyles,
@@ -7,12 +8,12 @@ import {
   DateDay
 } from './DayCalendarHead.styled';
 
-export default function DayCalendarHead({ arg }) {
+export default function DayCalendarHead({ currentDate }) {
   // Сокращения дней недели должны будут сокращаться до 3х букв начиная с 768px screen
   return (
     <DayCalendarHeadStyles>
       <DayCalendarHeadItem>
-        <WeekDay>Mon</WeekDay>
+        <WeekDay max >Mon</WeekDay>
         <DateDay currentDay={true}>6</DateDay>
       </DayCalendarHeadItem>
       <DayCalendarHeadItem>

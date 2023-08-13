@@ -71,6 +71,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-weight: 400;
   line-height: 1.29;
+
+  background-color: #F7F6F9;
 }
 
 html,
