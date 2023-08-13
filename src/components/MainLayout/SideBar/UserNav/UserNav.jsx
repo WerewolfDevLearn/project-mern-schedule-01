@@ -1,6 +1,6 @@
 import getCurrentDate from 'src/utils/currentDate';
 
-import routes from '../../../../routes.js';
+import routes from 'src/routes.js';
 
 import { NavUl, NavLinkStyled } from './UserNav.styled';
 

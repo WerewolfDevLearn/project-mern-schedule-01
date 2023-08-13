@@ -2,7 +2,8 @@ import styled from 'styled-components';
 
 export const MainLayOutContainer = styled.div`
   background-color: ${({ theme }) => theme.colors.backgroundAuth};
-  padding: 24px 20px;
+  padding-left: 0;
+  padding-right: 20px;
   height: 100vh;
 `;
 export const MainLayOutSubContainer = styled.div`
