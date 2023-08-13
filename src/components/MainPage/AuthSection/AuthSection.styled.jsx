@@ -3,7 +3,6 @@ import { NavLink } from 'react-router-dom';
 import { themes } from 'src/styles/variables/themes';
 
 import { device } from '../../../styles/variables/mediaVeriables';
-import { themes } from '../../../styles/variables/themes';
 
 export const MainWrapper = styled.main`
   display: flex;
@@ -32,7 +31,6 @@ export const StyledHero = styled.header`
 `;
 
 export const HeroTitle = styled.h1`
-
   color: ${themes.colors.white};
   margin: 0;
   margin-bottom: 32px;
@@ -101,8 +99,7 @@ export const AuthLink = styled(NavLink)`
   padding: 14px 32px;
   border-radius: 16px;
   font-weight: 600;
-  font-size: ${({ colorbtn }) =>
-    colorbtn === 'white' ? themes.fontSizes.s : themes.fontSizes.xs};
+  font-size: ${({ colorbtn }) => (colorbtn === 'white' ? themes.fontSizes.s : themes.fontSizes.xs)};
   line-height: 1.3;
   letter-spacing: -0.02em;
   cursor: pointer;
@@ -111,9 +108,9 @@ export const AuthLink = styled(NavLink)`
   text-decoration: ${({ colorbtn }) => colorbtn !== 'white' && 'underline'};
   text-shadow: 0px 47px 355px rgba(0, 0, 0, 0.07), 0px 9.4px 57.6875px rgba(0, 0, 0, 0.035);
 
-  color: ${({ color }) =>
-    color === 'blue' ? themes.colors.accent : themes.colors.white};
-  background-color: ${({ colorbtn }) => colorbtn === 'white' ? themes.colors.white : 'transparent'};
+  color: ${({ color }) => (color === 'blue' ? themes.colors.accent : themes.colors.white)};
+  background-color: ${({ colorbtn }) =>
+    colorbtn === 'white' ? themes.colors.white : 'transparent'};
 
   transform: scale(1);
   transition-property: transform;
@@ -126,7 +123,7 @@ export const AuthLink = styled(NavLink)`
   }
   @media ${device.tablet} {
     font-size: ${({ colorbtn }) =>
-    colorbtn === 'white' ? themes.fontSizes.s : themes.fontSizes.l};
+      colorbtn === 'white' ? themes.fontSizes.s : themes.fontSizes.l};
     line-height: 1.3;
     padding: 14px 22px;
   }

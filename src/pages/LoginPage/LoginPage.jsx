@@ -1,12 +1,12 @@
 import { useDispatch } from 'react-redux';
 
-import { userlogin } from '../../redux/auth/authOps';
-import LoginForm from '../../components/Forms/LoginForm/LoginForm';
-import AuthNavigate from '../../components/shared/AuthNavigate/AuthNavigate';
+import { userlogin } from 'src/redux/auth/authOps';
+import LoginForm from 'src/components/Forms/LoginForm/LoginForm';
+import AuthNavigate from 'src/components/shared/AuthNavigate/AuthNavigate';
 
-import logo from '/images/others/desktop/rocket1x.png';
-import logo2x from '/images/others/desktop/rocket2x.png';
-import logo3x from '/images/others/desktop/rocket3x.png';
+import logo from 'src/images/others/desktop/rocket1x.png';
+import logo2x from 'src/images/others/desktop/rocket2x.png';
+import logo3x from 'src/images/others/desktop/rocket3x.png';
 
 import { Container, ContentWrap, Wrap, StyledImg } from './LoginPage.styled';
 

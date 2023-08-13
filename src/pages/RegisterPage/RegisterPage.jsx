@@ -1,15 +1,14 @@
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import logo from 'src/images/others/desktop/goose-quote1x.png';
+import logo2x from 'src/images/others/desktop/goose-quote2x.png';
+import logo3x from 'src/images/others/desktop/goose-quote3x.png';
 
-import { register } from '../../redux/auth/authOps';
-import RegisterForm from '../../components/Forms/RegisterForm/RegisterForm';
-import AuthNavigate from '../../components/shared/AuthNavigate/AuthNavigate';
-import { useError, useisLoading } from '../../redux/selectors';
-
-import logo from '/images/others/desktop/goose-quote1x.png';
-import logo2x from '/images/others/desktop/goose-quote2x.png';
-import logo3x from '/images/others/desktop/goose-quote3x.png';
+import { register } from 'src/redux/auth/authOps';
+import RegisterForm from 'src/components/Forms/RegisterForm/RegisterForm';
+import AuthNavigate from 'src/components/shared/AuthNavigate/AuthNavigate';
+import { useError, useisLoading } from 'src/redux/selectors';
 
 import { Container, ContentWrap, Wrap, StyledImg } from './RegisterPage.styled';
 

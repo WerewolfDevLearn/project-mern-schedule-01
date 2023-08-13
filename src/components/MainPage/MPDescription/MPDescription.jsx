@@ -2,35 +2,37 @@ import React, { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import Container from 'src/components/shared/Container';
 
-import calendarMobile1x from '../../../../public/images/others/mobile/feature-calendar1x.png';
-import calendarMobile2x from '../../../../public/images/others/mobile/feature-calendar2x.png';
-import calendarMobile3x from '../../../../public/images/others/mobile/feature-calendar3x.png';
-import sidebarMobile1x from '../../../../public/images/others/mobile/feature-sidebar1x.png';
-import sidebarMobile2x from '../../../../public/images/others/mobile/feature-sidebar2x.png';
-import sidebarMobile3x from '../../../../public/images/others/mobile/feature-sidebar3x.png';
-import allInMobile1x from '../../../../public/images/others/mobile/feature-all-in1x.png';
-import allInMobile2x from '../../../../public/images/others/mobile/feature-all-in2x.png';
-import allInMobile3x from '../../../../public/images/others/mobile/feature-all-in3x.png';
+// import calendarMobile1x from '../../../../public/images/others/mobile/feature-calendar1x.png';
+import calendarMobile1x from 'src/images/others/mobile/feature-calendar1x.png';
 
-import calendarTablet1x from '../../../../public/images/others/tablet/feature-calendar1x.png';
-import calendarTablet2x from '../../../../public/images/others/tablet/feature-calendar2x.png';
-import calendarTablet3x from '../../../../public/images/others/tablet/feature-calendar3x.png';
-import sidebarTablet1x from '../../../../public/images/others/tablet/feature-sidebar1x.png';
-import sidebarTablet2x from '../../../../public/images/others/tablet/feature-sidebar2x.png';
-import sidebarTablet3x from '../../../../public/images/others/tablet/feature-sidebar3x.png';
-import allInTablet1x from '../../../../public/images/others/tablet/feature-all-in1x.png';
-import allInTablet2x from '../../../../public/images/others/tablet/feature-all-in2x.png';
-import allInTablet3x from '../../../../public/images/others/tablet/feature-all-in3x.png';
+import calendarMobile2x from 'src/images/others/mobile/feature-calendar2x.png';
+import calendarMobile3x from 'src/images/others/mobile/feature-calendar3x.png';
+import sidebarMobile1x from 'src/images/others/mobile/feature-sidebar1x.png';
+import sidebarMobile2x from 'src/images/others/mobile/feature-sidebar2x.png';
+import sidebarMobile3x from 'src/images/others/mobile/feature-sidebar3x.png';
+import allInMobile1x from 'src/images/others/mobile/feature-all-in1x.png';
+import allInMobile2x from 'src/images/others/mobile/feature-all-in2x.png';
+import allInMobile3x from 'src/images/others/mobile/feature-all-in3x.png';
 
-import calendarDesktop1x from '../../../../public/images/others/desktop/feature-calendar1x.png';
-import calendarDesktop2x from '../../../../public/images/others/desktop/feature-calendar2x.png';
-import calendarDesktop3x from '../../../../public/images/others/desktop/feature-calendar3x.png';
-import sidebarDesktop1x from '../../../../public/images/others/desktop/feature-sidebar1x.png';
-import sidebarDesktop2x from '../../../../public/images/others/desktop/feature-sidebar2x.png';
-import sidebarDesktop3x from '../../../../public/images/others/desktop/feature-sidebar3x.png';
-import allInDesktop1x from '../../../../public/images/others/desktop/feature-all-in1x.png';
-import allInDesktop2x from '../../../../public/images/others/desktop/feature-all-in2x.png';
-import allInDesktop3x from '../../../../public/images/others/desktop/feature-all-in3x.png';
+import calendarTablet1x from 'src/images/others/tablet/feature-calendar1x.png';
+import calendarTablet2x from 'src/images/others/tablet/feature-calendar2x.png';
+import calendarTablet3x from 'src/images/others/tablet/feature-calendar3x.png';
+import sidebarTablet1x from 'src/images/others/tablet/feature-sidebar1x.png';
+import sidebarTablet2x from 'src/images/others/tablet/feature-sidebar2x.png';
+import sidebarTablet3x from 'src/images/others/tablet/feature-sidebar3x.png';
+import allInTablet1x from 'src/images/others/tablet/feature-all-in1x.png';
+import allInTablet2x from 'src/images/others/tablet/feature-all-in2x.png';
+import allInTablet3x from 'src/images/others/tablet/feature-all-in3x.png';
+
+import calendarDesktop1x from 'src/images/others/desktop/feature-calendar1x.png';
+import calendarDesktop2x from 'src/images/others/desktop/feature-calendar2x.png';
+import calendarDesktop3x from 'src/images/others/desktop/feature-calendar3x.png';
+import sidebarDesktop1x from 'src/images/others/desktop/feature-sidebar1x.png';
+import sidebarDesktop2x from 'src/images/others/desktop/feature-sidebar2x.png';
+import sidebarDesktop3x from 'src/images/others/desktop/feature-sidebar3x.png';
+import allInDesktop1x from 'src/images/others/desktop/feature-all-in1x.png';
+import allInDesktop2x from 'src/images/others/desktop/feature-all-in2x.png';
+import allInDesktop3x from 'src/images/others/desktop/feature-all-in3x.png';
 
 import {
   ContentBlock,

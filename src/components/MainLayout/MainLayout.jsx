@@ -13,7 +13,11 @@ import { getCurrent } from '../../redux/auth/authOps';
 import SideBar from './SideBar/SideBar';
 import AppHeader from './AppHeader/AppHeader';
 import 'react-toastify/dist/ReactToastify.css';
-import { ChildrenContainer, MainLayOutContainer } from './MainLayout.styled';
+import {
+  ChildrenContainer,
+  MainLayOutContainer,
+  MainLayOutSubContainer
+} from './MainLayout.styled';
 
 const Layout = () => {
   const isRefreshing = useisRefreshing();
@@ -29,12 +33,14 @@ const Layout = () => {
   ) : (
     <ThemeProvider theme={theme}>
       <Container>
-        <AppHeader />
         <MainLayOutContainer>
           <SideBar />
-          <ChildrenContainer>{isLoading ? <Loader /> : <Outlet />}</ChildrenContainer>
+          <MainLayOutSubContainer>
+            <AppHeader />
+            <ChildrenContainer>{isLoading ? <Loader /> : <Outlet />}</ChildrenContainer>
+          </MainLayOutSubContainer>
+          <ToastContainer />
         </MainLayOutContainer>
-        <ToastContainer />
       </Container>
     </ThemeProvider>
   );

@@ -5,6 +5,8 @@ import ThemeToggler from '../ThemeToggler/ThemeToggler';
 
 import UserInfo from '../UserInfo/UserInfo';
 
+import { Header } from './Header.styled';
+
 function AppHeader() {
   const location = useLocation();
   const activePage = location.pathname.split('/')[1];
@@ -14,12 +16,12 @@ function AppHeader() {
     calendar: 'Calendar'
   };
   return (
-    <header>
+    <Header>
       <h2>{headerTitle[activePage]}</h2>
       <AddFeedbackBtn />
       <ThemeToggler />
       <UserInfo />
-    </header>
+    </Header>
   );
 }
 
