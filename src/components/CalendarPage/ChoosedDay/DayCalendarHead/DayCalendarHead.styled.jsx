@@ -55,7 +55,7 @@ export const DateDayWrap = styled.div`
   border-radius: 6px;
 
   background-color: ${(props) =>
-    props.selectedDay ? backgroundColor.primaryBlue : backgroundColor.transparent};
+    props.selectedday ? backgroundColor.primaryBlue : backgroundColor.transparent};
   color: ${(props) => (props.selectedDay ? colorText.white : colorText.black)};
 `;
 

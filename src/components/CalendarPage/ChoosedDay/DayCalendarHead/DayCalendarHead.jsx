@@ -48,7 +48,7 @@ export default function DayCalendarHead({ date }) {
         <DayCalendarHeadItem key={day}>
           <a onClick={() => onSelectDay(day)}>
             <WeekDay>{getWeekDay(day)}</WeekDay>
-            <DateDayWrap selectedDay={formatDate(day) === selectedDay ? true : false}>
+            <DateDayWrap selectedday={formatDate(day) === selectedDay}>
               <DateDay>{format(day, 'd')}</DateDay>
             </DateDayWrap>
           </a>
