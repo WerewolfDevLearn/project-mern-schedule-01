@@ -26,15 +26,15 @@ function App() {
           <Route path={routes.mainPage} element={<MainPage />} />
           <Route path={routes.registerPage} element={<RegisterPage />} />
           <Route path={routes.loginPage} element={<LoginPage />} />
-              <Route path={routes.calendarDay} element={<ChoosedDay />} />
+          <Route path={routes.calendarPage} element={<CalendarPage />}>
+            <Route path={routes.calendarMonth} element={<ChoosedMonth />} />
+            <Route path={routes.calendarDay} element={<ChoosedDay />} />
+          </Route>
         </Route>
         <Route element={<PrivateRoutes />}>
           <Route path={routes.mainLayout} element={<MainLayout />}>
             <Route path={routes.accountPage} element={<AccountPage />} />
-            <Route path={routes.calendarPage} element={<CalendarPage />}>
-              <Route path={routes.calendarMonth} element={<ChoosedMonth />} />
-              {/* Вот сюда на 35 ^ строчку верни роут ChoosedDay */}
-            </Route>
+            {/* Вот сюда потом вернешь роут CalendarPage */}
             <Route path={routes.statisticsPage} element={<SatisticsPage />} />
           </Route>
         </Route>

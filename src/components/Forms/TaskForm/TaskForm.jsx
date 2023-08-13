@@ -22,7 +22,8 @@ import {
   RadioSpan,
   RadioWrapper,
   TimeWrapper,
-  PlusIcon
+  PlusIcon,
+  PencilIcon
 } from './TaskForm.styled';
 
 const TaskSchema = Yup.object().shape({
@@ -53,6 +54,12 @@ const TaskSchema = Yup.object().shape({
 });
 
 export const TaskForm = ({ onClose, action, column, taskToEdit }) => {
+  let _id, title, start, end, priority, date;
+
+  if (typeof taskToEdit === 'object' && taskToEdit !== null && true) {
+    ({ _id, title, start, end, priority, date } = taskToEdit);
+  }
+
   const dispatch = useDispatch();
   const { currentDay } = useParams();
 
@@ -62,7 +69,6 @@ export const TaskForm = ({ onClose, action, column, taskToEdit }) => {
     }
 
     if (action === 'edit') {
-      const { _id, title, start, end, priority, date } = taskToEdit;
       dispatch(useUpdateTasksMutation({ _id, ...values }));
     }
 
@@ -135,7 +141,7 @@ export const TaskForm = ({ onClose, action, column, taskToEdit }) => {
             </ButtonAction>
           ) : (
             <ButtonAction type="submit">
-              <Pencil color="#fff" />
+              <PencilIcon color="#fff" />
               Edit
             </ButtonAction>
           )}

@@ -5,13 +5,18 @@ import CustomScrollbar from '../CustomVerticalScrollbar/CustomVerticalScrollbar'
 
 import { ColumnTasksListStyles } from './ColumnTasksList.styled';
 
-export default function ColumnTasksList({ tasks }) {
+export default function ColumnTasksList({ tasks, openModal }) {
   return (
     <CustomScrollbar>
       <ColumnTasksListStyles>
         {tasks &&
           tasks.map((task) => (
-            <TaskColumnCard key={task._id} task={task} tasksCount={tasks.length} />
+            <TaskColumnCard
+              key={task._id}
+              task={task}
+              tasksCount={tasks.length}
+              openModal={openModal}
+            />
           ))}
       </ColumnTasksListStyles>
     </CustomScrollbar>
@@ -19,5 +24,6 @@ export default function ColumnTasksList({ tasks }) {
 }
 
 ColumnTasksList.propTypes = {
-  tasks: PropTypes.array
+  tasks: PropTypes.array,
+  openModal: PropTypes.func
 };

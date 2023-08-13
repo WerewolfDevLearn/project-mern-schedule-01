@@ -8,7 +8,7 @@ export default function ColumnHeadBar({ title, openModal }) {
   return (
     <ColumnHeadBarStyles>
       <TodoTitle>{title}</TodoTitle>
-      <AddBtn onClick={openModal}>
+      <AddBtn onClick={() => openModal()}>
         <Add width="22" height="22" />
       </AddBtn>
     </ColumnHeadBarStyles>
@@ -16,5 +16,7 @@ export default function ColumnHeadBar({ title, openModal }) {
 }
 
 ColumnHeadBar.propTypes = {
-  title: PropTypes.string
+  title: PropTypes.string,
+  openModal: PropTypes.func,
+  column: PropTypes.string
 };

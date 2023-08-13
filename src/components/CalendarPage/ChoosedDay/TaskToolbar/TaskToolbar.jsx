@@ -5,7 +5,7 @@ import { ArrowCircleBrokenRight, Pencil, Trash } from '../../../shared/Icons';
 
 import { TaskToolbarStyles, TaskToolbarBtn, RelocateMenu } from './TaskToolbar.styled';
 
-export default function TaskToolbar({ task }) {
+export default function TaskToolbar({ task, openModal }) {
   const [popperIsOpen, togglePopper] = useState(false);
 
   return (
@@ -14,8 +14,8 @@ export default function TaskToolbar({ task }) {
         <ArrowCircleBrokenRight width="14" height="14" />
       </TaskToolbarBtn>
 
-      <TaskToolbarBtn>
-        <Pencil width="14" height="14"/>
+      <TaskToolbarBtn onClick={() => openModal(task)}>
+        <Pencil width="14" height="14" />
       </TaskToolbarBtn>
 
       <TaskToolbarBtn>
@@ -26,5 +26,6 @@ export default function TaskToolbar({ task }) {
 }
 
 TaskToolbar.propTypes = {
-  task: PropTypes.object
+  task: PropTypes.object,
+  openModal: PropTypes.func
 };

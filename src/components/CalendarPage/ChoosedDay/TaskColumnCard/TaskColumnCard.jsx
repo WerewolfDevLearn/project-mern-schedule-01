@@ -13,7 +13,8 @@ import {
   TaskPriority
 } from './TaskColumnCard.styled';
 
-export default function TaskColumnCard({ task: { title, priority }, tasksCount }) {
+export default function TaskColumnCard({ task, tasksCount, openModal }) {
+  const { title, priority } = task;
   return (
     <>
       <TaskColumnCardStyles taskscount={tasksCount}>
@@ -25,7 +26,7 @@ export default function TaskColumnCard({ task: { title, priority }, tasksCount }
             </OwnerAvatarOverlay>
             <TaskPriority priority={priority}>{priority}</TaskPriority>
           </TaskCardInner>
-          <TaskToolbar />
+          <TaskToolbar task={task} openModal={openModal} />
         </TaskCardWrap>
       </TaskColumnCardStyles>
     </>
@@ -34,5 +35,6 @@ export default function TaskColumnCard({ task: { title, priority }, tasksCount }
 
 TaskColumnCard.propTypes = {
   task: PropTypes.object.isRequired,
-  tasksCount: PropTypes.number
+  tasksCount: PropTypes.number,
+  openModal: PropTypes.func
 };
