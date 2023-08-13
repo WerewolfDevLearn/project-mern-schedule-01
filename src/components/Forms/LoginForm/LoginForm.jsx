@@ -3,7 +3,7 @@ import { Formik } from 'formik';
 import PropTypes from 'prop-types';
 import icon from 'src/images/svg/login.svg';
 
-import { validationLoingRules } from '../validationRules';
+import { validationLoginRules } from '../validationRules';
 
 import {
   Container,
@@ -13,6 +13,7 @@ import {
   Subtitle,
   Input,
   ErrorText,
+  TextCorrect,
   Button,
   Img
 } from './LoginForm.styled';
@@ -30,39 +31,59 @@ export default function LoginForm({ onSubmitForm }) {
       <Title>{t('Log In')}</Title>
 
       <Formik
-        validationSchema={validationLoingRules}
+        validationSchema={validationLoginRules}
         initialValues={{ email: '', password: '' }}
-        validateOnChange={false}
         validateOnBlur={false}
+        validateOnMount={false}
         onSubmit={onSubmit}
       >
-        {() => (
-          <FormElement autoComplete="off">
-            <InputWrap>
-              <Subtitle htmlFor="email">
-                {t('Email')}
-                <Input
-                  type="email"
-                  name="email"
-                  placeholder={t('nadiia@gmail.com')}
-                  id="login_email"
-                />
-                <ErrorText name="email" component="p" />
-              </Subtitle>
+        {(formik) => {
+          const { errors, touched } = formik;
 
-              <Subtitle htmlFor="password">
-                {t('Password')}
-                <Input type="password" name="password" placeholder="●●●●●●●" id="login_password" />
-                <ErrorText name="password" component="p" />
-              </Subtitle>
-            </InputWrap>
+          const validateInput = (input) =>
+            touched[input] && errors[input] ? 'input-error' : touched[input] ? 'input-correct' : '';
 
-            <Button type="submit">
-              {t('Log in')}
-              <Img src={icon} alt="LogIn SVG" />
-            </Button>
-          </FormElement>
-        )}
+          return (
+            <FormElement autoComplete="off">
+              <InputWrap>
+                <Subtitle htmlFor="email" className={validateInput('email')}>
+                  {t('Email')}
+                  <Input
+                    type="email"
+                    name="email"
+                    placeholder={t('nadiia@gmail.com')}
+                    id="login_email"
+                    className={validateInput('email')}
+                  />
+                  {validateInput('email') === 'input-correct' && (
+                    <TextCorrect>This is an CORRECT email</TextCorrect>
+                  )}
+                  <ErrorText name="email" component="p" />
+                </Subtitle>
+
+                <Subtitle htmlFor="password" className={validateInput('password')}>
+                  {t('Password')}
+                  <Input
+                    type="password"
+                    name="password"
+                    placeholder="●●●●●●●"
+                    id="login_password"
+                    className={validateInput('password')}
+                  />
+                  {validateInput('password') === 'input-correct' && (
+                    <TextCorrect>This is an CORRECT password</TextCorrect>
+                  )}
+                  <ErrorText name="password" component="p" />
+                </Subtitle>
+              </InputWrap>
+
+              <Button type="submit">
+                {t('Log in')}
+                <Img src={icon} alt="LogIn SVG" />
+              </Button>
+            </FormElement>
+          );
+        }}
       </Formik>
     </Container>
   );

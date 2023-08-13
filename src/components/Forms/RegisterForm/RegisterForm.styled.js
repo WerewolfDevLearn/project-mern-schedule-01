@@ -77,6 +77,16 @@ export const Subtitle = styled.label`
   font-weight: 600;
   line-height: normal;
 
+  &.input-error {
+    color: #e74a3b;
+    font-weight: 400;
+  }
+
+  &.input-correct {
+    color: #3cbc81;
+    font-weight: 400;
+  }
+
   @media screen and (min-width: 768px) {
     font-size: 14px;
   }
@@ -102,16 +112,12 @@ export const Input = styled(Field)`
     border: 1px solid #111;
   }
 
-  /* &.static-input {
-    border-color: gray;
-  } */
-
   &.input-error {
-    border-color: red; // Приклад: червона рамка для невалідного вводу
+    border: 1px solid #e74a3b;
   }
 
   &.input-correct {
-    border-color: green; // Приклад: зелена рамка для валідного вводу
+    border: 1px solid #3cbc81;
   }
 
   @media screen and (min-width: 768px) {
@@ -123,6 +129,24 @@ export const Input = styled(Field)`
 export const ErrorText = styled(ErrorMessage)`
   position: absolute;
   color: #da1414;
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 14px;
+
+  left: 14px;
+  bottom: -18px;
+
+  @media screen and (min-width: 768px) {
+    font-size: 14px;
+    left: 18px;
+  }
+`;
+
+export const TextCorrect = styled.p`
+  position: absolute;
+  color: #3cbc81;
   font-family: Inter;
   font-size: 12px;
   font-style: normal;
