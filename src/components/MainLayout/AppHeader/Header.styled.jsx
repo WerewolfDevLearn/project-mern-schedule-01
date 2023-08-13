@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { themes } from 'src/styles/variables/themes';
 
 export const Header = styled.header`
   position: relative;
@@ -11,5 +12,11 @@ export const Header = styled.header`
   padding-top: 24px;
 `;
 export const LoactionSign = styled.h2`
-  display: none;
+  @media screen and (width <= ${themes.breakpoints.m}) {
+    display: none;
+  }
+
+  @media screen and (${themes.breakpoints.m} < width <= ${themes.breakpoints.l}) {
+    display: block;
+  }
 `;

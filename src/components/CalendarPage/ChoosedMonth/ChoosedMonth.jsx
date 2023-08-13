@@ -9,7 +9,6 @@ import { ChoosedMonthStyles } from './ChoosedMonth.styled';
 export default function ChoosedMonth() {
   return (
     <ChoosedMonthStyles>
-      <Link to="/calendar/day/2023-09-08">LINK</Link>
       <MonthCalendarHead />
       <CalendarTable />
     </ChoosedMonthStyles>
