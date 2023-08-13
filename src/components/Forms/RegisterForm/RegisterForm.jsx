@@ -116,6 +116,7 @@ export default function RegisterForm({ onSubmitForm }) {
                     <TextCorrect>This is an CORRECT password</TextCorrect>
                   )}
                   <ErrorText name="password" component="p" />
+
                   {validateInput('password') === 'input-correct' && (
                     <SvgIcon src={iconSuccess} alt="Success Icon" />
                   )}

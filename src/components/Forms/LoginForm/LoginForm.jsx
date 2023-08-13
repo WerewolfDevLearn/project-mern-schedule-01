@@ -3,6 +3,8 @@ import { useTranslation } from 'react-i18next';
 import { Formik } from 'formik';
 import PropTypes from 'prop-types';
 import icon from 'src/images/svg/login.svg';
+import iconError from 'src/images/svg/validation-error.svg';
+import iconSuccess from 'src/images/svg/validation-success.svg';
 
 import { validationLoginRules } from '../validationRules';
 
@@ -16,7 +18,8 @@ import {
   ErrorText,
   TextCorrect,
   Button,
-  Img
+  Img,
+  SvgIcon
 } from './LoginForm.styled';
 
 export default function LoginForm({ onSubmitForm }) {
@@ -70,6 +73,13 @@ export default function LoginForm({ onSubmitForm }) {
                     <TextCorrect>This is an CORRECT email</TextCorrect>
                   )}
                   <ErrorText name="email" component="p" />
+
+                  {validateInput('email') === 'input-correct' && (
+                    <SvgIcon src={iconSuccess} alt="Success Icon" />
+                  )}
+                  {validateInput('email') === 'input-error' && (
+                    <SvgIcon src={iconError} alt="Error Icon" />
+                  )}
                 </Subtitle>
 
                 <Subtitle htmlFor="password" className={validateInput('password')}>
@@ -85,6 +95,13 @@ export default function LoginForm({ onSubmitForm }) {
                     <TextCorrect>This is an CORRECT password</TextCorrect>
                   )}
                   <ErrorText name="password" component="p" />
+
+                  {validateInput('password') === 'input-correct' && (
+                    <SvgIcon src={iconSuccess} alt="Success Icon" />
+                  )}
+                  {validateInput('password') === 'input-error' && (
+                    <SvgIcon src={iconError} alt="Error Icon" />
+                  )}
                 </Subtitle>
               </InputWrap>
 

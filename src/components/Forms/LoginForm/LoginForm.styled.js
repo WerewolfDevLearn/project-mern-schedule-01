@@ -218,3 +218,14 @@ export const Img = styled.img`
     width: 20px;
   }
 `;
+
+export const SvgIcon = styled.img`
+  position: absolute;
+  right: 18px;
+  bottom: 11px;
+  width: 24px;
+
+  @media screen and (min-width: ${themes.breakpoints.m}) {
+    bottom: 18px;
+  }
+`;
