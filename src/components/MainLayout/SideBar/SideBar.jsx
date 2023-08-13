@@ -7,8 +7,8 @@ import { SideBarContainer } from './SideBar.styled';
 export default function SideBar() {
   return (
     <SideBarContainer>
-      <h3>User Panel</h3>
       <SideBarLogo />
+      <h3>User Panel</h3>
       <UserNav />
       <LogoutBtn />
     </SideBarContainer>

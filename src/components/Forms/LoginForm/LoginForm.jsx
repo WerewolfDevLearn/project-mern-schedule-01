@@ -1,9 +1,8 @@
 import { Formik } from 'formik';
 import PropTypes from 'prop-types';
+import icon from 'src/images/svg/login.svg';
 
 import { validationLoingRules } from '../validationRules';
-
-import icon from '/images/svg/login.svg';
 
 import {
   Container,

@@ -128,14 +128,14 @@ img {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
+  width: 66px;
+  height: 38px;
+  border-radius: 8px;
   background-color: #f0f0f0;
   overflow: hidden;
   object-fit: cover;
 }
 
 .circular-flag .fi {
-  font-size: 142px;
+  font-size: 184px;
 }
