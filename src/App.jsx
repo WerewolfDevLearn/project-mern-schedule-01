@@ -11,10 +11,10 @@ import ChoosedDay from './components/CalendarPage/ChoosedDay/ChoosedDay';
 import SatisticsPage from './components/SatisticsPage/StatisticsPage';
 import Loader from './components/shared/Loader/Loader';
 import MainPage from './pages/MainPage';
-import ErrorPage from './pages/ErrorPage';
-import LoginPage from './pages/LoginPage';
+import ErrorPage from './pages/ErrorPage/ErrorPage';
+import LoginPage from './pages/LoginPage/LoginPage';
 
-import RegisterPage from './pages/RegisterPage';
+import RegisterPage from './pages/RegisterPage/RegisterPage';
 
 import routes from './routes';
 
@@ -33,6 +33,7 @@ function App() {
             <Route path={routes.calendarPage} element={<CalendarPage />}>
               <Route path={routes.calendarMonth} element={<ChoosedMonth />} />
               <Route path={routes.calendarDay} element={<ChoosedDay />} />
+              {/* Вот сюда потом вернешь роут CalendarPage */}
             </Route>
             <Route path={routes.statisticsPage} element={<SatisticsPage />} />
           </Route>

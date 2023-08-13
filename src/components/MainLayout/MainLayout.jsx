@@ -1,26 +1,30 @@
-import { Outlet, useLocation } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import { useThemeColors } from 'src/components/MainLayout/ThemeToggler/ThemeContextProvider';
 import { ThemeProvider } from 'styled-components';
 import { useDispatch } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import Loader from '../shared/Loader/Loader';
 import { useisLoading, useisRefreshing } from '../../redux/selectors';
-import Container from '../shared/Container';
+
 import { getCurrent } from '../../redux/auth/authOps';
 
-import { LocationContext } from './LocationContext';
 import SideBar from './SideBar/SideBar';
 import AppHeader from './AppHeader/AppHeader';
 import 'react-toastify/dist/ReactToastify.css';
+import {
+  ChildrenContainer,
+  MainLayOutContainer,
+  MainLayOutSubContainer
+} from './MainLayout.styled';
 
 const Layout = () => {
+  const [open, setOpen] = useState(false);
   const isRefreshing = useisRefreshing();
   const dispatch = useDispatch();
-  const location = useLocation();
-
-  const activePage = location.pathname.split('/')[1];
+  const callBack = () => setOpen(true);
+  const callBackCls = () => setOpen(false);
 
   const theme = useThemeColors().theme;
   useEffect(() => {
@@ -31,14 +35,14 @@ const Layout = () => {
     <Loader />
   ) : (
     <ThemeProvider theme={theme}>
-      <Container>
-        <LocationContext.Provider value={activePage}>
-          <AppHeader />
-          <SideBar />
-        </LocationContext.Provider>
-        {isLoading ? <Loader /> : <Outlet />}
+      <MainLayOutContainer>
+        <SideBar open={open} callBackCls={callBackCls} />
+        <MainLayOutSubContainer>
+          <AppHeader callBack={callBack} />
+          <ChildrenContainer>{isLoading ? <Loader /> : <Outlet />}</ChildrenContainer>
+        </MainLayOutSubContainer>
         <ToastContainer />
-      </Container>
+      </MainLayOutContainer>
     </ThemeProvider>
   );
 };

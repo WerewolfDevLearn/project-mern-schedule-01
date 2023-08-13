@@ -1,24 +1,34 @@
+import PropTypes from 'prop-types';
+import { useLocation } from 'react-router-dom';
+
 import AddFeedbackBtn from '../AddFeedbackBtn/AddFeedbackBtn';
 import ThemeToggler from '../ThemeToggler/ThemeToggler';
-import { useLocationContext } from '../LocationContext.js';
+
 import UserInfo from '../UserInfo/UserInfo';
 
-function AppHeader() {
-  const activeAdress = useLocationContext();
+import UserMenuBTN from './UserMenuBTN/UserMenuBTN';
 
+import { Header, LoactionSign } from './Header.styled';
+
+export default function AppHeader({ callBack }) {
+  const location = useLocation();
+  const activePage = location.pathname.split('/')[1];
   const headerTitle = {
     account: 'User Profile',
     statistics: 'Statistics',
     calendar: 'Calendar'
   };
   return (
-    <header>
-      <h2>{headerTitle[activeAdress]}</h2>
+    <Header>
+      <UserMenuBTN callBack={callBack} />
+      <LoactionSign>{headerTitle[activePage]}</LoactionSign>
       <AddFeedbackBtn />
       <ThemeToggler />
       <UserInfo />
-    </header>
+    </Header>
   );
 }
 
-export default AppHeader;
+AppHeader.propTypes = {
+  callBack: PropTypes.func.isRequired
+};
