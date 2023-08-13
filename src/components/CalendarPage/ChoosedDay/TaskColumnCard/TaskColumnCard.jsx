@@ -1,16 +1,40 @@
 import PropTypes from 'prop-types';
 
-import { TaskColumnCardStyles } from './TaskColumnCard.styled';
+import { Avatar } from '../../../shared/Icons';
 
-export default function TaskColumnCard({ arg }) {
+import TaskToolbar from '../TaskToolbar/TaskToolbar';
+
+import {
+  TaskColumnCardStyles,
+  TaskTitle,
+  TaskCardWrap,
+  TaskCardInner,
+  OwnerAvatarOverlay,
+  TaskPriority
+} from './TaskColumnCard.styled';
+
+export default function TaskColumnCard({ task, tasksCount, openModal }) {
+  const { title, priority } = task;
   return (
-    <TaskColumnCardStyles>
-      <h2>TaskColumnCard</h2>
-      <p>{arg}</p>
-    </TaskColumnCardStyles>
+    <>
+      <TaskColumnCardStyles taskscount={tasksCount}>
+        <TaskTitle>{title}</TaskTitle>
+        <TaskCardWrap>
+          <TaskCardInner>
+            <OwnerAvatarOverlay>
+              <Avatar width="32" height="32" />
+            </OwnerAvatarOverlay>
+            <TaskPriority priority={priority}>{priority}</TaskPriority>
+          </TaskCardInner>
+          <TaskToolbar task={task} openModal={openModal} />
+        </TaskCardWrap>
+      </TaskColumnCardStyles>
+    </>
   );
 }
 
 TaskColumnCard.propTypes = {
-  arg: PropTypes.any
+  task: PropTypes.object.isRequired,
+  tasksCount: PropTypes.number,
+  openModal: PropTypes.func
 };

@@ -1,16 +1,19 @@
 import PropTypes from 'prop-types';
 
+import { Plus } from 'src/components/shared/Icons';
+
 import { AddTaskBtnStyles } from './AddTaskBtn.styled';
 
-export default function AddTaskBtn({ arg }) {
+export default function AddTaskBtn({ tasksCount, openModal }) {
   return (
-    <AddTaskBtnStyles>
-      <h2>AddTaskBtn</h2>
-      <p>{arg}</p>
+    <AddTaskBtnStyles taskscount={tasksCount} onClick={() => openModal()}>
+      <Plus width="24" height="24" />
+      Add task
     </AddTaskBtnStyles>
   );
 }
 
 AddTaskBtn.propTypes = {
-  arg: PropTypes.any
+  tasksCount: PropTypes.number,
+  openModal: PropTypes.func
 };

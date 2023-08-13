@@ -4,9 +4,7 @@ import { useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { addTask, editTask } from 'redux/tasks/operations';
-import { ReactComponent as IconAdd } from 'images/addIcon.svg';
-import { ReactComponent as IconEdit } from 'images/tasksSvg/edit.svg';
+import { useCreateTasksMutation, useUpdateTasksMutation } from '../../../redux/tasks/tasksApi';
 
 import {
   ButtonAction,
@@ -23,7 +21,9 @@ import {
   RadioLabel,
   RadioSpan,
   RadioWrapper,
-  TimeWrapper
+  TimeWrapper,
+  PlusIcon,
+  PencilIcon
 } from './TaskForm.styled';
 
 const TaskSchema = Yup.object().shape({
@@ -54,18 +54,22 @@ const TaskSchema = Yup.object().shape({
 });
 
 export const TaskForm = ({ onClose, action, column, taskToEdit }) => {
-  const { _id, title, start, end, priority, date } = taskToEdit;
+  let _id, title, start, end, priority, date;
+
+  if (typeof taskToEdit === 'object' && taskToEdit !== null && true) {
+    ({ _id, title, start, end, priority, date } = taskToEdit);
+  }
 
   const dispatch = useDispatch();
   const { currentDay } = useParams();
 
   const handleSubmit = (values, actions) => {
     if (action === 'add') {
-      dispatch(addTask(values));
+      dispatch(useCreateTasksMutation(values));
     }
 
     if (action === 'edit') {
-      dispatch(editTask({ _id, ...values }));
+      dispatch(useUpdateTasksMutation({ _id, ...values }));
     }
 
     actions.resetForm();
@@ -85,7 +89,7 @@ export const TaskForm = ({ onClose, action, column, taskToEdit }) => {
         start: (action === 'edit' && start) || '09:00',
         end: (action === 'edit' && end) || '10:00',
         priority: (action === 'edit' && priority) || 'low',
-        date: date || currentDay,
+        date: (action === 'edit' && date) || currentDay,
         category: setCategory()
       }}
       validationSchema={TaskSchema}
@@ -132,12 +136,12 @@ export const TaskForm = ({ onClose, action, column, taskToEdit }) => {
         <ButtonWrapper>
           {action === 'add' ? (
             <ButtonAction type="submit">
-              <IconAdd />
+              <PlusIcon />
               Add
             </ButtonAction>
           ) : (
             <ButtonAction type="submit">
-              <IconEdit stroke="#fff" />
+              <PencilIcon color="#fff" />
               Edit
             </ButtonAction>
           )}

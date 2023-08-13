@@ -1,16 +1,31 @@
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 
-import { TaskToolbarStyles } from './TaskToolbar.styled';
+import { ArrowCircleBrokenRight, Pencil, Trash } from '../../../shared/Icons';
 
-export default function TaskToolbar({ arg }) {
+import { TaskToolbarStyles, TaskToolbarBtn, RelocateMenu } from './TaskToolbar.styled';
+
+export default function TaskToolbar({ task, openModal }) {
+  const [popperIsOpen, togglePopper] = useState(false);
+
   return (
     <TaskToolbarStyles>
-      <h2>TaskToolbar</h2>
-      <p>{arg}</p>
+      <TaskToolbarBtn id="menu-btn" onClick={() => togglePopper((x) => !x)}>
+        <ArrowCircleBrokenRight width="14" height="14" />
+      </TaskToolbarBtn>
+
+      <TaskToolbarBtn onClick={() => openModal(task)}>
+        <Pencil width="14" height="14" />
+      </TaskToolbarBtn>
+
+      <TaskToolbarBtn>
+        <Trash width="14" height="14" />
+      </TaskToolbarBtn>
     </TaskToolbarStyles>
   );
 }
 
 TaskToolbar.propTypes = {
-  arg: PropTypes.any
+  task: PropTypes.object,
+  openModal: PropTypes.func
 };
