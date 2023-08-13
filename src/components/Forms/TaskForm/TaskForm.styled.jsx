@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 import { Form as FormikForm, Field, ErrorMessage as FormikErrorMessage } from 'formik';
+import { backgroundColor, colorText } from 'src/styles/variables/Variables';
 
 import { XClose, Plus, Pencil } from '../../shared/Icons';
-import { backgroundColor, colorText } from 'src/styles/variables/Variables';
 
 export const Form = styled(FormikForm)`
   position: relative;
