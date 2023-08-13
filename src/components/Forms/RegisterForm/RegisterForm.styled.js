@@ -97,6 +97,23 @@ export const Input = styled(Field)`
   font-weight: 400;
   line-height: 18px;
 
+  &:hover,
+  &:focus {
+    border: 1px solid #111;
+  }
+
+  /* &.static-input {
+    border-color: gray;
+  } */
+
+  &.input-error {
+    border-color: red; // Приклад: червона рамка для невалідного вводу
+  }
+
+  &.input-correct {
+    border-color: green; // Приклад: зелена рамка для валідного вводу
+  }
+
   @media screen and (min-width: 768px) {
     padding: 18px;
     font-size: 18px;
@@ -125,8 +142,9 @@ export const Button = styled.button`
   display: flex;
   width: 100%;
   padding: 14px;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
+  justify-content: center;
   gap: 10px;
 
   border-radius: 16px;
@@ -154,5 +172,16 @@ export const Button = styled.button`
   &:hover,
   &:focus {
     transform: scale(1.1);
+  }
+`;
+
+export const Img = styled.img`
+  display: inline;
+  width: 18px;
+  stroke: red;
+  fill: red;
+
+  @media screen and (min-width: 768px) {
+    width: 20px;
   }
 `;

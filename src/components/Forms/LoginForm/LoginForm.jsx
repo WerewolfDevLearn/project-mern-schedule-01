@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { Formik } from 'formik';
 import PropTypes from 'prop-types';
 import icon from 'src/images/svg/login.svg';
@@ -17,6 +18,8 @@ import {
 } from './LoginForm.styled';
 
 export default function LoginForm({ onSubmitForm }) {
+  const { t } = useTranslation();
+
   const onSubmit = (data, { resetForm }) => {
     onSubmitForm(data);
     resetForm();
@@ -24,7 +27,7 @@ export default function LoginForm({ onSubmitForm }) {
 
   return (
     <Container>
-      <Title>Log In</Title>
+      <Title>{t('Log In')}</Title>
 
       <Formik
         validationSchema={validationLoingRules}
@@ -37,20 +40,25 @@ export default function LoginForm({ onSubmitForm }) {
           <FormElement autoComplete="off">
             <InputWrap>
               <Subtitle htmlFor="email">
-                Email
-                <Input type="email" name="email" placeholder="nadiia@gmail.com" id="login_email" />
+                {t('Email')}
+                <Input
+                  type="email"
+                  name="email"
+                  placeholder={t('nadiia@gmail.com')}
+                  id="login_email"
+                />
                 <ErrorText name="email" component="p" />
               </Subtitle>
 
               <Subtitle htmlFor="password">
-                Password
+                {t('Password')}
                 <Input type="password" name="password" placeholder="●●●●●●●" id="login_password" />
                 <ErrorText name="password" component="p" />
               </Subtitle>
             </InputWrap>
 
             <Button type="submit">
-              Log in
+              {t('Log in')}
               <Img src={icon} alt="LogIn SVG" />
             </Button>
           </FormElement>

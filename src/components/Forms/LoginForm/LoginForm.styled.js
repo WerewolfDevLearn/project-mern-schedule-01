@@ -97,6 +97,11 @@ export const Input = styled(Field)`
   font-weight: 400;
   line-height: 18px;
 
+  &:hover,
+  &:focus {
+    border: 1px solid #111;
+  }
+
   &::placeholder {
     color: #dce3e5;
   }
