@@ -1,49 +1,65 @@
+import { useState } from 'react';
 import PropTypes from 'prop-types';
-import { startOfWeek, eachDayOfInterval } from 'date-fns'
+import { addDays, eachDayOfInterval, format, startOfWeek } from 'date-fns';
+import { useNavigate } from 'react-router-dom';
 
 import {
   DayCalendarHeadStyles,
   DayCalendarHeadItem,
   WeekDay,
+  DateDayWrap,
   DateDay
 } from './DayCalendarHead.styled';
 
-export default function DayCalendarHead({ currentDate }) {
-  // Сокращения дней недели должны будут сокращаться до 3х букв начиная с 768px screen
+export default function DayCalendarHead({ date }) {
+  const [selectedDay, setSelectedDay] = useState(date);
+  const navigate = useNavigate();
+
+  console.log(date);
+
+  const screenWidth = window.innerWidth;
+
+  const firstWeekDay = startOfWeek(new Date(date), { weekStartsOn: 1 });
+  const weekDays = eachDayOfInterval({
+    start: firstWeekDay,
+    end: addDays(firstWeekDay, 6)
+  });
+
+  const getWeekDay = (day) => {
+    if (screenWidth >= 768) {
+      return format(day, 'eee');
+    }
+    return format(day, 'eeeee');
+  };
+
+  const formatDate = (date) => {
+    return format(date, 'yyyy-MM-dd');
+  };
+
+  const onSelectDay = (date) => {
+    const path = `/calendar/day/${formatDate(date)}`;
+
+    setSelectedDay(formatDate(date));
+
+    navigate(path, { replace: true });
+  };
+
   return (
     <DayCalendarHeadStyles>
-      <DayCalendarHeadItem>
-        <WeekDay max >Mon</WeekDay>
-        <DateDay currentDay={true}>6</DateDay>
-      </DayCalendarHeadItem>
-      <DayCalendarHeadItem>
-        <WeekDay>Tue</WeekDay>
-        <DateDay>7</DateDay>
-      </DayCalendarHeadItem>
-      <DayCalendarHeadItem>
-        <WeekDay>Wed</WeekDay>
-        <DateDay>8</DateDay>
-      </DayCalendarHeadItem>
-      <DayCalendarHeadItem>
-        <WeekDay>Thu</WeekDay>
-        <DateDay>9</DateDay>
-      </DayCalendarHeadItem>
-      <DayCalendarHeadItem>
-        <WeekDay>Fri</WeekDay>
-        <DateDay>10</DateDay>
-      </DayCalendarHeadItem>
-      <DayCalendarHeadItem>
-        <WeekDay>Sat</WeekDay>
-        <DateDay>11</DateDay>
-      </DayCalendarHeadItem>
-      <DayCalendarHeadItem>
-        <WeekDay>Sun</WeekDay>
-        <DateDay>12</DateDay>
-      </DayCalendarHeadItem>
+      {weekDays.map((day) => (
+        <DayCalendarHeadItem key={day}>
+          <a onClick={() => onSelectDay(day)}>
+            <WeekDay>{getWeekDay(day)}</WeekDay>
+            <DateDayWrap selectedDay={formatDate(day) === selectedDay ? true : false}>
+              <DateDay>{format(day, 'd')}</DateDay>
+            </DateDayWrap>
+          </a>
+        </DayCalendarHeadItem>
+      ))}
     </DayCalendarHeadStyles>
   );
 }
 
 DayCalendarHead.propTypes = {
-  arg: PropTypes.any
+  date: PropTypes.string
 };

@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { useParams } from 'react-router-dom';
 
 import TasksColumnsList from './TasksColumnsList/TasksColumnsList';
 import DayCalendarHead from './DayCalendarHead/DayCalendarHead';
@@ -92,9 +93,11 @@ const tasksList = [
 ];
 
 export default function ChoosedDay({ arg }) {
+  const { currentDate } = useParams();
+
   return (
     <ChoosedDayStyles>
-      <DayCalendarHead />
+      <DayCalendarHead date={currentDate} />
       <TasksColumnsList tasks={tasksList} />
     </ChoosedDayStyles>
   );

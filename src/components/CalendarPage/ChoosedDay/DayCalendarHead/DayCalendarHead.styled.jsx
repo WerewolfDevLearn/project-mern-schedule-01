@@ -23,10 +23,13 @@ export const DayCalendarHeadStyles = styled.ul`
 `;
 
 export const DayCalendarHeadItem = styled.li`
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  text-align: center;
+  a {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 6px;
+    text-align: center;
+  }
 
   p {
     text-transform: uppercase;
@@ -46,18 +49,21 @@ export const WeekDay = styled.p`
   }
 `;
 
-export const DateDay = styled.p`
+export const DateDayWrap = styled.div`
+  width: fit-content;
   padding: 4px 6px;
   border-radius: 6px;
 
+  background-color: ${(props) =>
+    props.selectedDay ? backgroundColor.primaryBlue : backgroundColor.transparent};
+  color: ${(props) => (props.selectedDay ? colorText.white : colorText.black)};
+`;
+
+export const DateDay = styled.p`
   font-size: 12px;
   font-style: normal;
   font-weight: 700;
   line-height: 14px;
-
-  background-color: ${(props) =>
-    props.currentDay ? backgroundColor.primaryBlue : backgroundColor.transparent};
-  color: ${(props) => (props.currentDay ? colorText.white : colorText.black)};
 
   @media screen and (min-width: 768px) {
     font-size: 16px;
