@@ -1,6 +1,3 @@
-// import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-
 import CalendarTable from './CalendarTable/CalendarTable';
 import MonthCalendarHead from './MonthCalendarHead/MonthCalendarHead';
 

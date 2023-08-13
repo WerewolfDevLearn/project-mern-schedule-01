@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const AddTaskBtnStyles = styled.button`
-  ${(props) => (props.taskscount > 2 ? 'position: absolute;' : 'position: static;')};
+  ${(props) => (props.count > 2 ? 'position: absolute;' : 'position: static;')};
   bottom: 10px;
 
   width: 100%;
@@ -22,7 +22,7 @@ export const AddTaskBtnStyles = styled.button`
   font-weight: 600;
   line-height: 18px;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (width >= 768px) {
     max-width: 304px;
     position: static;
     margin-top: 32px;

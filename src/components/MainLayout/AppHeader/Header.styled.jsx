@@ -15,7 +15,7 @@ export const LoactionSign = styled.h2`
   @media screen and (width <= ${themes.breakpoints.m}) {
     display: none;
   }
-
+  /*  */
   @media screen and (${themes.breakpoints.m} < width <= ${themes.breakpoints.l}) {
     display: block;
   }
