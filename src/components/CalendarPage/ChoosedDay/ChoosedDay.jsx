@@ -43,6 +43,18 @@ const tasksList = [
     updatedAt: '2023-08-09T18:49:48.655+00:00'
   },
   {
+    _id: '64d3dfcc877bb30f41b94be9',
+    title: 'Fitness',
+    start: '16:00',
+    end: '18:30',
+    priority: 'high',
+    date: '2023-09-05',
+    category: 'to-do',
+    owner: '64d387e745021a7e4d683ba0',
+    createdAt: '2023-08-09T18:49:48.655+00:00',
+    updatedAt: '2023-08-09T18:49:48.655+00:00'
+  },
+  {
     _id: '64d3dfdb877bb30f41b94ben',
     title: 'Swimming-pool',
     start: '14:00',

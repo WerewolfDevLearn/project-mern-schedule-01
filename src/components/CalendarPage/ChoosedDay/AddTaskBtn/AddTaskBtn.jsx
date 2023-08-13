@@ -6,7 +6,7 @@ import { AddTaskBtnStyles } from './AddTaskBtn.styled';
 
 export default function AddTaskBtn({ tasksCount, openModal }) {
   return (
-    <AddTaskBtnStyles taskscount={tasksCount} onClick={() => openModal()}>
+    <AddTaskBtnStyles count={tasksCount} onClick={() => openModal()}>
       <Plus width="24" height="24" />
       Add task
     </AddTaskBtnStyles>

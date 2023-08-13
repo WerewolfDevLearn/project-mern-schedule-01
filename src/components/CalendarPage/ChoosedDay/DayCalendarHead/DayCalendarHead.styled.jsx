@@ -13,11 +13,11 @@ export const DayCalendarHeadStyles = styled.ul`
 
   background-color: #fff;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (width >= 768px) {
     padding: 10px 32px;
   }
 
-  @media screen and (min-width: 1440px) {
+  @media screen and (width >= 1440px) {
     padding: 10px 46px;
   }
 `;
@@ -44,7 +44,7 @@ export const WeekDay = styled.p`
   font-weight: 600;
   line-height: 18px;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (width >= 768px) {
     font-size: 14px;
   }
 `;
@@ -55,8 +55,8 @@ export const DateDayWrap = styled.div`
   border-radius: 6px;
 
   background-color: ${(props) =>
-    props.selectedday ? backgroundColor.primaryBlue : backgroundColor.transparent};
-  color: ${(props) => (props.selectedDay ? colorText.white : colorText.black)};
+    props.selected ? backgroundColor.primaryBlue : backgroundColor.transparent};
+  color: ${(props) => (props.selected ? colorText.white : colorText.black)};
 `;
 
 export const DateDay = styled.p`
@@ -65,7 +65,7 @@ export const DateDay = styled.p`
   font-weight: 700;
   line-height: 14px;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (width >= 768px) {
     font-size: 16px;
   }
 `;

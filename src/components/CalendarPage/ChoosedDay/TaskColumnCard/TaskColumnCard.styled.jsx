@@ -10,8 +10,8 @@ export const TaskColumnCardStyles = styled.li`
 
   &:last-child {
     margin-bottom: ${(props) => (props.taskscount > 2 ? '55px' : '14px')};
-    
-    @media screen and (min-width: 768px) {
+
+    @media screen and (width >= 768px) {
       margin-bottom: 0;
     }
   }
