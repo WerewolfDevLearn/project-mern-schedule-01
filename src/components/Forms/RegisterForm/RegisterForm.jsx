@@ -1,5 +1,7 @@
+import { useTranslation } from 'react-i18next';
 import { Formik } from 'formik';
 import PropTypes from 'prop-types';
+import icon from 'src/images/svg/login.svg';
 
 import { validationRegisterRules } from '../validationRules';
 
@@ -11,10 +13,14 @@ import {
   Subtitle,
   Input,
   ErrorText,
-  Button
+  TextCorrect,
+  Button,
+  Img
 } from './RegisterForm.styled';
 
 export default function RegisterForm({ onSubmitForm }) {
+  const { t } = useTranslation();
+
   const onSubmit = (data, { resetForm }) => {
     onSubmitForm(data);
     resetForm();
@@ -22,44 +28,76 @@ export default function RegisterForm({ onSubmitForm }) {
 
   return (
     <Container>
-      <Title>Sign Up</Title>
+      <Title>{t('Sign Up')}</Title>
+     
       <Formik
         validationSchema={validationRegisterRules}
         initialValues={{ name: '', email: '', password: '' }}
-        validateOnChange={false}
         validateOnBlur={false}
+        validateOnMount={false}
         onSubmit={onSubmit}
       >
-        {() => (
-          <FormElement autoComplete="off">
-            <InputWrap>
-              <Subtitle htmlFor="name">
-                Name
-                <Input type="name" name="name" placeholder="Enter your name" id="signup_name" />
-                <ErrorText name="name" component="p" />
-              </Subtitle>
+        {(formik) => {
+          const { errors, touched } = formik;
 
-              <Subtitle htmlFor="email">
-                Email
-                <Input type="email" name="email" placeholder="Enter email" id="signup_email" />
-                <ErrorText name="email" component="p" />
-              </Subtitle>
+          const validateInput = (input) =>
+            touched[input] && errors[input] ? 'input-error' : touched[input] ? 'input-correct' : '';
 
-              <Subtitle htmlFor="password">
-                Password
-                <Input
-                  type="password"
-                  name="password"
-                  placeholder="Enter password"
-                  id="signup_password"
-                />
-                <ErrorText name="password" component="p" />
-              </Subtitle>
-            </InputWrap>
+          return (
+            <FormElement autoComplete="off">
+              <InputWrap>
+                <Subtitle htmlFor="name" className={validateInput('name')}>
+                  {t('Name')}
+                  <Input
+                    type="name"
+                    name="name"
+                    placeholder={t('Enter your name')}
+                    id="signup_name"
+                    className={validateInput('name')}
+                  />
+                  {validateInput('name') === 'input-correct' && (
+                    <TextCorrect>This is an CORRECT name</TextCorrect>
+                  )}
+                  <ErrorText name="name" component="p" />
+                </Subtitle>
 
-            <Button type="submit">Sign Up</Button>
-          </FormElement>
-        )}
+                <Subtitle htmlFor="email" className={validateInput('email')}>
+                  {t('Email')}
+                  <Input
+                    type="email"
+                    name="email"
+                    placeholder={t('Enter email')}
+                    id="signup_email"
+                    className={validateInput('email')}
+                  />
+                  {validateInput('email') === 'input-correct' && (
+                    <TextCorrect>This is an CORRECT email</TextCorrect>
+                  )}
+                  <ErrorText name="email" component="p" />
+                </Subtitle>
+
+                <Subtitle htmlFor="password" className={validateInput('password')}>
+                  {t('Password')}
+                  <Input
+                    type="password"
+                    name="password"
+                    placeholder={t('Enter password')}
+                    id="signup_password"
+                    className={validateInput('password')}
+                  />
+                  {validateInput('password') === 'input-correct' && (
+                    <TextCorrect>This is an CORRECT password</TextCorrect>
+                  )}
+                  <ErrorText name="password" component="p" />
+                </Subtitle>
+              </InputWrap>
+
+              <Button type="submit">
+                {t('Sign Up')} <Img src={icon} alt="LogIn SVG" />
+              </Button>
+            </FormElement>
+          );
+        }}
       </Formik>
     </Container>
   );

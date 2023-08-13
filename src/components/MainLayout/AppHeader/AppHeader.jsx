@@ -1,23 +1,30 @@
+import { useLocation } from 'react-router-dom';
+
 import AddFeedbackBtn from '../AddFeedbackBtn/AddFeedbackBtn';
 import ThemeToggler from '../ThemeToggler/ThemeToggler';
-import { useLocationContext } from '../LocationContext.js';
+
 import UserInfo from '../UserInfo/UserInfo';
 
-function AppHeader() {
-  const activeAdress = useLocationContext();
+import UserMenuBTN from './UserMenuBTN';
 
+import { Header, LoactionSign } from './Header.styled';
+
+function AppHeader() {
+  const location = useLocation();
+  const activePage = location.pathname.split('/')[1];
   const headerTitle = {
     account: 'User Profile',
     statistics: 'Statistics',
     calendar: 'Calendar'
   };
   return (
-    <header>
-      <h2>{headerTitle[activeAdress]}</h2>
+    <Header>
+      <UserMenuBTN stroke="#000000" />
+      <LoactionSign>{headerTitle[activePage]}</LoactionSign>
       <AddFeedbackBtn />
       <ThemeToggler />
       <UserInfo />
-    </header>
+    </Header>
   );
 }
 

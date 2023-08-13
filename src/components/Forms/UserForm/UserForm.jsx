@@ -1,10 +1,12 @@
-import React, { useState, useRef } from 'react';
+import { useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Formik, Form } from 'formik';
 import * as yup from 'yup';
 // import { toast } from 'react-hot-toast';
 import { BsPlusCircle } from 'react-icons/bs';
-import { usePHBState } from '../../../redux/selectors';
+
+import { usePHBState } from 'src/redux/selectors';
+
 import {
   FormContainer,
   AvatarAddIcon,

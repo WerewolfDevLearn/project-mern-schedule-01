@@ -1,4 +1,4 @@
-import { Outlet, useLocation } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import { useThemeColors } from 'src/components/MainLayout/ThemeToggler/ThemeContextProvider';
 import { ThemeProvider } from 'styled-components';
@@ -10,17 +10,18 @@ import { useisLoading, useisRefreshing } from '../../redux/selectors';
 import Container from '../shared/Container';
 import { getCurrent } from '../../redux/auth/authOps';
 
-import { LocationContext } from './LocationContext';
 import SideBar from './SideBar/SideBar';
 import AppHeader from './AppHeader/AppHeader';
 import 'react-toastify/dist/ReactToastify.css';
+import {
+  ChildrenContainer,
+  MainLayOutContainer,
+  MainLayOutSubContainer
+} from './MainLayout.styled';
 
 const Layout = () => {
   const isRefreshing = useisRefreshing();
   const dispatch = useDispatch();
-  const location = useLocation();
-
-  const activePage = location.pathname.split('/')[1];
 
   const theme = useThemeColors().theme;
   useEffect(() => {
@@ -31,14 +32,14 @@ const Layout = () => {
     <Loader />
   ) : (
     <ThemeProvider theme={theme}>
-      <Container>
-        <LocationContext.Provider value={activePage}>
+      <MainLayOutContainer>
+        {/* <SideBar /> */}
+        <MainLayOutSubContainer>
           <AppHeader />
-          <SideBar />
-        </LocationContext.Provider>
-        {isLoading ? <Loader /> : <Outlet />}
+          <ChildrenContainer>{isLoading ? <Loader /> : <Outlet />}</ChildrenContainer>
+        </MainLayOutSubContainer>
         <ToastContainer />
-      </Container>
+      </MainLayOutContainer>
     </ThemeProvider>
   );
 };

@@ -5,7 +5,6 @@ import { FaRegMoon } from 'react-icons/fa';
 import { device } from '../../../styles/variables/mediaVeriables';
 
 export const ThemeTogglerStyles = styled.div`
-  margin-right: 14px;
   display: flex;
   align-items: center;
 `;
@@ -23,8 +22,12 @@ export const ToggleThemeBtn = styled.button`
 `;
 
 export const IconLight = styled(FiSun)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 24px;
   height: 24px;
+  margin-right: 8px;
 
   color: #3e85f3;
   /* color: white; */
@@ -38,7 +41,10 @@ export const IconLight = styled(FiSun)`
 export const IconDark = styled(FaRegMoon)`
   width: 24px;
   height: 24px;
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 8px;
   color: #3e85f3;
   /* color: white; */
 

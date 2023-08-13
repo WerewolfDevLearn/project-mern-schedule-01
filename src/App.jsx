@@ -11,7 +11,7 @@ import ChoosedDay from './components/CalendarPage/ChoosedDay/ChoosedDay';
 import SatisticsPage from './components/SatisticsPage/StatisticsPage';
 import Loader from './components/shared/Loader/Loader';
 import MainPage from './pages/MainPage';
-import ErrorPage from './pages/ErrorPage';
+import ErrorPage from './pages/ErrorPage/ErrorPage';
 import LoginPage from './pages/LoginPage/LoginPage';
 
 import RegisterPage from './pages/RegisterPage/RegisterPage';
