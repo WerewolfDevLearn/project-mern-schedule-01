@@ -18,7 +18,7 @@ export const Scrollbar = styled(SimpleBar)`
 
     transform: scale(1);
 
-    @media screen and (min-width: 768px) {
+    @media screen and (width >= 768px) {
       height: 14px;
       left: 30px;
       right: 30px;
@@ -39,7 +39,7 @@ export const Scrollbar = styled(SimpleBar)`
 
     transform: scale(1);
 
-    @media screen and (min-width: 768px) {
+    @media screen and (width >= 768px) {
       left: 30px;
       right: 30px;
       height: 14px;
@@ -58,7 +58,7 @@ export const Scrollbar = styled(SimpleBar)`
     background-color: #e7e5e5;
     opacity: 1;
 
-    @media screen and (min-width: 768px) {
+    @media screen and (width >= 768px) {
       height: 14px;
     }
   }

@@ -13,7 +13,7 @@ export const TasksColumnStyles = styled.li`
 
   background-color: ${backgroundColor.white};
 
-  @media screen and (min-width: 768px) {
+  @media screen and (width >= 768px) {
     min-width: 344px;
     padding: 20px;
   }

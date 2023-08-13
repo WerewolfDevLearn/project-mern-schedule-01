@@ -14,7 +14,7 @@ export const Scrollbar = styled(SimpleBar)`
 
     background-color: #f2f2f2;
 
-    @media screen and (min-width: 768px) {
+    @media screen and (width >= 768px) {
       right: -14px;
 
       width: 8px;
@@ -27,7 +27,7 @@ export const Scrollbar = styled(SimpleBar)`
 
     background-color: #e7e5e5;
 
-    @media screen and (min-width: 768px) {
+    @media screen and (width >= 768px) {
       width: 8px;
     }
   }
