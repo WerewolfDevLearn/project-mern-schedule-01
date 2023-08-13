@@ -117,6 +117,13 @@ export default function UserForm() {
     );
   };
 
+  FormikInput.propTypes = {
+    label: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    placeholder: PropTypes.string.isRequired
+  };
+
   return (
     <>
       <Formik

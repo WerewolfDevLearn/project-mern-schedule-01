@@ -53,6 +53,7 @@ export const AvatarImgContainer = styled.div`
   height: 124px;
   border: 2px solid #3e85f3;
   border-radius: 50%;
+  color: grey;
 `;
 
 export const AvatarImg = styled.img`
