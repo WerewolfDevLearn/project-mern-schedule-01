@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom';
 
 import { ModalDiv, Overlay } from './Modal.styled';
 
-const modalRoot = document.querySelector('#modal-root');
+const modalRoot = document.querySelector('#modal');
 
 export const Modal = ({ onClose, children }) => {
   useEffect(() => {
