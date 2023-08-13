@@ -28,10 +28,7 @@ export const IconLight = styled(FiSun)`
   width: 24px;
   height: 24px;
   margin-right: 8px;
-
-  color: #3e85f3;
-  /* color: white; */
-
+  color: ${({ theme }) => theme.colors.darkBlue};
   @media ${device.tablet} {
     width: 32px;
     height: 32px;
@@ -45,9 +42,7 @@ export const IconDark = styled(FaRegMoon)`
   justify-content: center;
   align-items: center;
   margin-right: 8px;
-  color: #3e85f3;
-  /* color: white; */
-
+  color: ${({ theme }) => theme.colors.darkBlue};
   @media ${device.tablet} {
     width: 32px;
     height: 32px;
