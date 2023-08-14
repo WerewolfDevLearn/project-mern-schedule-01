@@ -33,6 +33,6 @@ export const Scrollbar = styled(SimpleBar)`
   }
 
   .simplebar-scrollbar::before {
-    background: ${({ theme }) => theme.colors.scrollSwitchVertical};
+    opacity: 0;
   }
 `;
