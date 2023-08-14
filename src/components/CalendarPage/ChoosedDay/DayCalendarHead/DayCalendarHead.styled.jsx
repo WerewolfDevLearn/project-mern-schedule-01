@@ -4,14 +4,14 @@ import styled from 'styled-components';
 export const DayCalendarHeadStyles = styled.ul`
   padding: 14px 18px;
   border-radius: 8px;
-  border: 1px solid rgba(220, 227, 229, 0.5);
+  border: 1px solid ${({ theme }) => theme.colors.tasksListBorder};
   margin-bottom: 14px;
 
   display: flex;
   justify-content: space-between;
   align-items: center;
 
-  background-color: #fff;
+  background: ${({ theme }) => theme.colors.tasksListBackground};
 
   @media screen and (width >= 768px) {
     padding: 10px 32px;
@@ -37,7 +37,7 @@ export const DayCalendarHeadItem = styled.li`
 `;
 
 export const WeekDay = styled.p`
-  color: ${colorText.black};
+  color: ${({ theme }) => theme.colors.textAndIconTodo};
 
   font-size: 16px;
   font-style: normal;
@@ -56,7 +56,7 @@ export const DateDayWrap = styled.div`
 
   background-color: ${(props) =>
     props.selected ? backgroundColor.primaryBlue : backgroundColor.transparent};
-  color: ${(props) => (props.selected ? colorText.white : colorText.black)};
+  color: ${(props) => (props.selected ? colorText.white : props.theme.colors.textAndIconTodo)};
 `;
 
 export const DateDay = styled.p`

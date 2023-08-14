@@ -10,6 +10,8 @@ export const TaskToolbarStyles = styled.div`
 export const TaskToolbarBtn = styled.button`
   width: 14px;
   height: 14px;
+
+  color: ${({ theme }) => theme.colors.textAndIconTodo};
 `;
 
 export const RelocateMenu = styled(Menu)`
