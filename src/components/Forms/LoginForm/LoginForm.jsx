@@ -58,7 +58,7 @@ export default function LoginForm({ onSubmitForm }) {
           };
 
           return (
-            <FormElement autoComplete="off">
+            <FormElement autoComplete="off" onSubmit={onSubmit}>
               <InputWrap>
                 <Subtitle htmlFor="email" className={validateInput('email')}>
                   {t('Email')}

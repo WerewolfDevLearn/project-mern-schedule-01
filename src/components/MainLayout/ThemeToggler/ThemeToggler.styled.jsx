@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { FiSun } from 'react-icons/fi';
 import { FaRegMoon } from 'react-icons/fa';
 
-import { device } from '../../../styles/variables/mediaVeriables';
+import { device } from 'src/styles/variables/mediaVeriables';
 
 export const ThemeTogglerStyles = styled.div`
   display: flex;
