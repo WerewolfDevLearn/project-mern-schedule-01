@@ -16,7 +16,7 @@ export const IoCloseIcon = styled(IoClose)`
     height: 34px;
   }
 
-  @media screen and (${themes.breakpoints.m} < width <=${themes.breakpoints.l}) {
+  @media screen and (${themes.breakpoints.m} < width) {
     display: none;
   }
 `;

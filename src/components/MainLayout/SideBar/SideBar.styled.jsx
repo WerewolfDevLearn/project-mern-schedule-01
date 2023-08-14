@@ -10,7 +10,7 @@ export const SideBarContainer = styled.aside`
   flex-direction: column;
   width: 225px;
   height: 100vh;
-  padding: 20px;
+  padding: 24px 20px;
   transform: ${({ open }) => (open ? 'translateX(100%)' : 'translateX(0)')};
   transition: transform 0.3 ease-in-out;
   @media screen and (${themes.breakpoints.s} < width <=${themes.breakpoints.m}) {
@@ -18,12 +18,16 @@ export const SideBarContainer = styled.aside`
     z-index: 2;
     left: -290px;
     width: 290px;
+    padding: 32px;
   }
-  @media screen and (${themes.breakpoints.m} < width <=${themes.breakpoints.l}) {
+  @media screen and (${themes.breakpoints.m} < width) {
     position: absolute;
     z-index: 2;
     left: 0px;
     width: 290px;
+    padding: 24px;
+    transform: none;
+    transition: none;
   }
 `;
 export const SideBarHeading = styled.h3`

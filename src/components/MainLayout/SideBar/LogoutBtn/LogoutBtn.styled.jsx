@@ -10,6 +10,9 @@ export const LogOutBtn = styled.button`
   letter-spacing: -0.02em;
 
   cursor: pointer;
+  position: absolute;
+  bottom: 24px;
+  left: 20px;
   width: 130px;
   display: flex;
   gap: 6px;
@@ -29,12 +32,19 @@ export const LogOutBtn = styled.button`
   &:focus {
     transform: scale(1.1);
   }
-  @media screen and (width > ${themes.breakpoints.s}) {
+  @media screen and (${themes.breakpoints.s}< width <= ${themes.breakpoints.m}) {
+    bottom: 24px;
+    left: 32px;
     width: 141px;
     font-size: 18px;
     line-height: 1.3;
     padding: 14px 22px;
     gap: 10px;
+  }
+
+  @media screen and (${themes.breakpoints.m}< width <= ${themes.breakpoints.l}) {
+    bottom: 24px;
+    left: 24px;
   }
 `;
 export const IconDiv = styled.div`

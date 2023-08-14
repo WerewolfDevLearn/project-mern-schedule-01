@@ -7,6 +7,9 @@ export const NavUl = styled.ul`
   display: flex;
   flex-direction: column;
   margin-bottom: 424px;
+  @media screen and (${themes.breakpoints.m} < width) {
+    margin-bottom: 439px;
+  }
 `;
 
 export const NavLinkStyled = styled(NavLink)`
@@ -22,7 +25,7 @@ export const NavLinkStyled = styled(NavLink)`
   font-size: 14px;
   font-weight: 600;
   line-height: 1.2;
-  @media screen and (${themes.breakpoints.m} < width <=${themes.breakpoints.l}) {
+  @media screen and (${themes.breakpoints.m} < width) {
     font-size: 16px;
   }
   &:hover {
