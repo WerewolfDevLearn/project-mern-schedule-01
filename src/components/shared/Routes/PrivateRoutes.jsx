@@ -1,9 +1,9 @@
 import { Outlet, Navigate } from 'react-router-dom';
 
-import { useVerifiedEmail } from '../../../redux/selectors';
+import { useToken } from 'src/redux/selectors';
 
-import routes from '../../../routes';
+import routes from 'src/routes';
 export default function PrivateRoutes() {
-  const verifiedEmail = useVerifiedEmail();
-  return verifiedEmail ? <Outlet /> : <Navigate to={routes.mainPage} />;
+  const token = useToken();
+  return token ? <Outlet /> : <Navigate to={routes.mainPage} />;
 }

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useLocation } from 'react-router-dom';
 
 import AddFeedbackBtn from '../AddFeedbackBtn/AddFeedbackBtn';
@@ -5,11 +6,11 @@ import ThemeToggler from '../ThemeToggler/ThemeToggler';
 
 import UserInfo from '../UserInfo/UserInfo';
 
-import UserMenuBTN from './UserMenuBTN';
+import UserMenuBTN from './UserMenuBTN/UserMenuBTN';
 
 import { Header, LoactionSign } from './Header.styled';
 
-function AppHeader() {
+export default function AppHeader({ callBack }) {
   const location = useLocation();
   const activePage = location.pathname.split('/')[1];
   const headerTitle = {
@@ -19,7 +20,7 @@ function AppHeader() {
   };
   return (
     <Header>
-      <UserMenuBTN stroke="#000000" />
+      <UserMenuBTN callBack={callBack} />
       <LoactionSign>{headerTitle[activePage]}</LoactionSign>
       <AddFeedbackBtn />
       <ThemeToggler />
@@ -28,4 +29,6 @@ function AppHeader() {
   );
 }
 
-export default AppHeader;
+AppHeader.propTypes = {
+  callBack: PropTypes.func.isRequired
+};

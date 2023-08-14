@@ -1,20 +1,38 @@
 import PropTypes from 'prop-types';
+import { useParams } from 'react-router-dom';
 
 import TasksColumn from '../TasksColumn/TasksColumn';
+import CustomHorizontalScrollbar from '../CustomHorizontalScrollbar/CustomHorizontalScrollbar';
 
 import { TasksColumnsListStyles } from './TasksColumnsList.styled';
 
-export default function TasksColumnsList({ arg }) {
+export default function TasksColumnsList({ tasks }) {
+  const { currentDate } = useParams();
+
+  const filteredTasks = tasks.filter((task) => task.date === currentDate);
+
   return (
-    <TasksColumnsListStyles>
-      <h2>TasksColumnsList</h2>
-      <TasksColumn key="To do" />
-      <TasksColumn key="In progress" />
-      <TasksColumn key="Done" />
-    </TasksColumnsListStyles>
+    <CustomHorizontalScrollbar>
+      <TasksColumnsListStyles>
+        <TasksColumn
+          tasks={filteredTasks.filter((task) => task.category === 'to-do')}
+          title="To do"
+        />
+
+        <TasksColumn
+          tasks={filteredTasks.filter((task) => task.category === 'in-progress')}
+          title="In progress"
+        />
+
+        <TasksColumn
+          tasks={filteredTasks.filter((task) => task.category === 'done')}
+          title="Done"
+        />
+      </TasksColumnsListStyles>
+    </CustomHorizontalScrollbar>
   );
 }
 
 TasksColumnsList.propTypes = {
-  arg: PropTypes.any
+  tasks: PropTypes.array
 };

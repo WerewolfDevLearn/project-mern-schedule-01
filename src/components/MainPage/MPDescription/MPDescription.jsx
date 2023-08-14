@@ -2,9 +2,7 @@ import React, { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import Container from 'src/components/shared/Container';
 
-// import calendarMobile1x from '../../../../public/images/others/mobile/feature-calendar1x.png';
 import calendarMobile1x from 'src/images/others/mobile/feature-calendar1x.png';
-
 import calendarMobile2x from 'src/images/others/mobile/feature-calendar2x.png';
 import calendarMobile3x from 'src/images/others/mobile/feature-calendar3x.png';
 import sidebarMobile1x from 'src/images/others/mobile/feature-sidebar1x.png';

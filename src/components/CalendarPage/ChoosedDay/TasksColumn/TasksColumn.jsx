@@ -1,21 +1,53 @@
+import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
 import ColumnHeadBar from '../ColumnHeadBar/ColumnHeadBar';
-import ColumnTaskList from '../ColumnsTasksList/ColumnsTasksList';
+import ColumnTasksList from '../ColumnTasksList/ColumnTasksList';
 import AddTaskBtn from '../AddTaskBtn/AddTaskBtn';
+import { Modal } from '../../../shared/Modal/Modal';
+import { TaskForm } from '../../../Forms/TaskForm/TaskForm';
 
 import { TasksColumnStyles } from './TasksColumn.styled';
 
-export default function TasksColumn({ arg }) {
+export default function TasksColumn({ tasks, title }) {
+  const [modalOptions, setModalOptions] = useState({ isOpen: false, action: '', taskToEdit: null });
+
+  const openModal = (task) => {
+    if (task) {
+      setModalOptions({ isOpen: true, action: 'edit', taskToEdit: task });
+    }
+
+    if (!task) {
+      setModalOptions({ isOpen: true, action: 'add', taskToEdit: null });
+    }
+  };
+
+  const closeModal = () => {
+    setModalOptions({ isOpen: false, action: '', taskToEdit: null });
+  };
+
   return (
-    <TasksColumnStyles>
-      <ColumnHeadBar />
-      <ColumnTaskList />
-      <AddTaskBtn />
-    </TasksColumnStyles>
+    <>
+      <TasksColumnStyles>
+        <ColumnHeadBar title={title} openModal={openModal} column={title} />
+        <ColumnTasksList tasks={tasks} openModal={openModal} />
+        <AddTaskBtn tasksCount={tasks.length} openModal={openModal} />
+      </TasksColumnStyles>
+      {modalOptions.isOpen && (
+        <Modal onClose={closeModal}>
+          <TaskForm
+            onClose={closeModal}
+            action={modalOptions.action}
+            column={title}
+            taskToEdit={modalOptions.taskToEdit}
+          />
+        </Modal>
+      )}
+    </>
   );
 }
 
 TasksColumn.propTypes = {
-  arg: PropTypes.any
+  tasks: PropTypes.array,
+  title: PropTypes.string
 };

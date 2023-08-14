@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Form, Field, ErrorMessage } from 'formik';
+import { themes } from 'src/styles/variables/themes';
 
 export const Container = styled.div`
   display: flex;
@@ -12,13 +13,13 @@ export const Container = styled.div`
   gap: 32px;
 
   border-radius: 8px;
-  background: #fff;
+  background: ${themes.colors.backgroundUserForm};
 
-  @media screen and (min-width: 375px) {
+  @media screen and (min-width: ${themes.breakpoints.s}) {
     width: 335px;
   }
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: ${themes.breakpoints.m}) {
     width: 480px;
     gap: 40px;
     padding: 40px 40px;
@@ -26,17 +27,16 @@ export const Container = styled.div`
 `;
 
 export const Title = styled.h1`
-  color: #3e85f3;
-  text-shadow: 0px 9.399999618530273px 57.6875px rgba(0, 0, 0, 0.04),
-    0px 47px 355px rgba(0, 0, 0, 0.07);
+  color: ${themes.colors.accent};
+  text-shadow: ${themes.shadows.authHeading};
   font-family: Inter;
-  font-size: 18px;
+  font-size: ${themes.fontSizes.l};
   font-style: normal;
-  font-weight: 600;
+  font-weight: ${themes.fontWeight.sb};
   line-height: 24px;
 
-  @media screen and (min-width: 768px) {
-    font-size: 24px;
+  @media screen and (min-width: ${themes.breakpoints.m}) {
+    font-size: ${themes.fontSizes.xxl};
   }
 `;
 
@@ -46,7 +46,7 @@ export const FormElement = styled(Form)`
   gap: 32px;
   width: 100%;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: ${themes.breakpoints.m}) {
     gap: 48px;
   }
 `;
@@ -57,7 +57,7 @@ export const InputWrap = styled.div`
   align-items: flex-start;
   gap: 24px;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: ${themes.breakpoints.m}) {
     gap: 18px;
   }
 `;
@@ -70,25 +70,25 @@ export const Subtitle = styled.label`
   gap: 8px;
   width: 100%;
 
-  color: #111;
+  color: ${themes.colors.textAndIconTodo};
   font-family: Inter;
-  font-size: 12px;
+  font-size: ${themes.fontSizes.xs};
   font-style: normal;
-  font-weight: 600;
+  font-weight: ${themes.fontWeight.sb};
   line-height: normal;
 
   &.input-error {
-    color: #e74a3b;
-    font-weight: 400;
+    color: ${themes.colors.failed};
+    font-weight: ${themes.fontWeight.r};
   }
 
   &.input-correct {
-    color: #3cbc81;
-    font-weight: 400;
+    color: ${themes.colors.saccess};
+    font-weight: ${themes.fontWeight.r};
   }
 
-  @media screen and (min-width: 768px) {
-    font-size: 14px;
+  @media screen and (min-width: ${themes.breakpoints.m}) {
+    font-size: ${themes.fontSizes.s};
   }
 `;
 
@@ -97,46 +97,41 @@ export const Input = styled(Field)`
   padding: 14px;
 
   border-radius: 8px;
-  border: 1px solid #dce3e5;
-  background: #fff;
+  border: 1px solid ${themes.colors.placegolderAuth};
+  background: ${themes.colors.backgroundUserForm};
 
-  color: #111;
+  color: ${themes.colors.textAndIconTodo};
   font-family: Inter;
-  font-size: 14px;
+  font-size: ${themes.fontSizes.s};
   font-style: normal;
-  font-weight: 400;
+  font-weight: ${themes.fontWeight.r};
   line-height: 18px;
 
   &:hover,
   &:focus {
-    border: 1px solid #111;
+    border: 1px solid ${themes.colors.textAndIconTodo};
   }
 
   &::placeholder {
-    color: #dce3e5;
+    color: ${themes.colors.placegolderAuth};
   }
 
   &#login_password::placeholder {
-    font-size: 12px;
+    font-size: ${themes.fontSizes.xs};
     letter-spacing: 4px;
   }
 
   &.input-error {
-    border: 1px solid #e74a3b;
+    border: 1px solid ${themes.colors.failed};
   }
 
   &.input-correct {
-    border: 1px solid #3cbc81;
+    border: 1px solid ${themes.colors.saccess};
   }
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: ${themes.breakpoints.m}) {
     padding: 18px;
-    font-size: 18px;
-
-    &#login_password::placeholder {
-      font-size: 14px;
-      letter-spacing: 4px;
-    }
+    font-size: ${themes.fontSizes.l};
   }
 `;
 
@@ -144,34 +139,34 @@ export const ErrorText = styled(ErrorMessage)`
   position: absolute;
   color: #da1414;
   font-family: Inter;
-  font-size: 12px;
+  font-size: ${themes.fontSizes.xs};
   font-style: normal;
-  font-weight: 400;
+  font-weight: ${themes.fontWeight.r};
   line-height: 14px;
 
   left: 14px;
   bottom: -18px;
 
-  @media screen and (min-width: 768px) {
-    font-size: 14px;
+  @media screen and (min-width: ${themes.breakpoints.m}) {
+    font-size: ${themes.fontSizes.s};
     left: 18px;
   }
 `;
 
 export const TextCorrect = styled.p`
   position: absolute;
-  color: #3cbc81;
+  color: ${themes.colors.saccess};
   font-family: Inter;
-  font-size: 12px;
+  font-size: ${themes.fontSizes.xs};
   font-style: normal;
-  font-weight: 400;
+  font-weight: ${themes.fontWeight.r};
   line-height: 14px;
 
   left: 14px;
   bottom: -18px;
 
-  @media screen and (min-width: 768px) {
-    font-size: 14px;
+  @media screen and (min-width: ${themes.breakpoints.m}) {
+    font-size: ${themes.fontSizes.s};
     left: 18px;
   }
 `;
@@ -186,23 +181,23 @@ export const Button = styled.button`
   gap: 10px;
 
   border-radius: 16px;
-  background: #3e85f3;
-  box-shadow: 4px 2px 16px 0px rgba(136, 165, 191, 0.48);
+  background: ${themes.colors.accent};
+  box-shadow: ${themes.shadows.authButton};
 
   transform: scale(1);
   transition-property: transform;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0, 0.11, 0.35, 2);
+  transition-duration: ${themes.animations.duration};
+  transition-timing-function: ${themes.animations.cubicBezier};
 
-  color: #fff;
+  color: ${themes.colors.white};
   font-family: Inter;
-  font-size: 14px;
+  font-size: ${themes.fontSizes.s};
   font-style: normal;
-  font-weight: 600;
+  font-weight: ${themes.fontWeight.sb};
   line-height: 18px;
   letter-spacing: -0.28px;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: ${themes.breakpoints.m}) {
     padding: 16px;
     font-size: 18px;
   }
@@ -219,7 +214,18 @@ export const Img = styled.img`
   stroke: red;
   fill: red;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: ${themes.breakpoints.m}) {
     width: 20px;
+  }
+`;
+
+export const SvgIcon = styled.img`
+  position: absolute;
+  right: 18px;
+  bottom: 11px;
+  width: 24px;
+
+  @media screen and (min-width: ${themes.breakpoints.m}) {
+    bottom: 18px;
   }
 `;

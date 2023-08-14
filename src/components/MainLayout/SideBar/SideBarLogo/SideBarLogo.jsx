@@ -8,10 +8,12 @@ import gooseDesk1x from 'src/images/others/desktop/goose1x.png';
 import gooseDesk2x from 'src/images/others/desktop/goose2x.png';
 import gooseDesk3x from 'src/images/others/desktop/goose3x.png';
 
+import { LogoText, LogoDiv, LogoIMG } from './SideBarLogo.styled';
+
 export default function SideBarLogo() {
   return (
-    <div>
-      <img
+    <LogoDiv>
+      <LogoIMG
         srcSet={`${gooseMob1x} 1x,
         ${gooseMob2x} 2x,
         ${gooseMob3x} 3x,
@@ -25,7 +27,9 @@ export default function SideBarLogo() {
         alt="SideBarLogo"
         type="image/png"
       />
-      <h1>GooseTrack</h1>
-    </div>
+      <LogoText>
+        G<i>oo</i>seTrack
+      </LogoText>
+    </LogoDiv>
   );
 }
