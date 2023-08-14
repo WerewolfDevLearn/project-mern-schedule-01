@@ -23,6 +23,7 @@ export const PopoverWrapper = styled.div`
   gap: 18px;
 
   background: ${({ theme }) => theme.colors.backgroundModalTodo};
+  border: 1px solid ${({ theme }) => theme.colors.tasksListBorder};
   box-shadow: 0px 4px 16px 0px rgba(17, 17, 17, 0.1);
 `;
 
