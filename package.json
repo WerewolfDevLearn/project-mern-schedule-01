@@ -17,6 +17,7 @@
     "@mui/material": "^5.14.4",
     "@redux-devtools/extension": "^3.2.5",
     "@reduxjs/toolkit": "^1.9.5",
+    "@szhsin/react-menu": "^4.0.3",
     "axios": "^1.4.0",
     "date-fns": "^2.30.0",
     "flag-icons": "^6.9.3",

@@ -3,16 +3,41 @@ import PropTypes from 'prop-types';
 
 import { ArrowCircleBrokenRight, Pencil, Trash } from '../../../shared/Icons';
 
-import { TaskToolbarStyles, TaskToolbarBtn, RelocateMenu } from './TaskToolbar.styled';
+import {
+  TaskToolbarStyles,
+  TaskToolbarBtn,
+  MenuStyles,
+  MenuItemStyles,
+  RelocateButton
+} from './TaskToolbar.styled';
 
 export default function TaskToolbar({ task, openModal }) {
-  const [popperIsOpen, togglePopper] = useState(false);
 
   return (
     <TaskToolbarStyles>
-      <TaskToolbarBtn id="menu-btn" onClick={() => togglePopper((x) => !x)}>
-        <ArrowCircleBrokenRight width="14" height="14" />
-      </TaskToolbarBtn>
+      <MenuStyles
+        menuClassName="relocate-menu"
+        direction="bottom"
+        align="start"
+        position="10px"
+        gap={12}
+        menuButton={
+          <TaskToolbarBtn>
+            <ArrowCircleBrokenRight width="14" height="14" />
+          </TaskToolbarBtn>
+        }
+      >
+        <MenuItemStyles>
+          <RelocateButton>
+            In progress <ArrowCircleBrokenRight width="16" height="16" />
+          </RelocateButton>
+        </MenuItemStyles>
+        <MenuItemStyles>
+          <RelocateButton>
+            Done <ArrowCircleBrokenRight width="16" height="16" />
+          </RelocateButton>
+        </MenuItemStyles>
+      </MenuStyles>
 
       <TaskToolbarBtn onClick={() => openModal(task)}>
         <Pencil width="14" height="14" />
