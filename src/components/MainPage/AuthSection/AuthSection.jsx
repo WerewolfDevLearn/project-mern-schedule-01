@@ -20,7 +20,8 @@ import {
   HeroTitleSpan,
   Wrapper,
   AuthWrapper,
-  AuthLink
+  AuthLink,
+  StyledTogglerWrapper
 } from './AuthSection.styled.jsx';
 
 export default function AuthSection() {
@@ -28,7 +29,9 @@ export default function AuthSection() {
 
   return (
     <StyledHero>
-      <LangToggler />
+      <StyledTogglerWrapper>
+        <LangToggler />
+      </StyledTogglerWrapper>
       <StyledImg>
         <source
           media="(max-width: 767px)"

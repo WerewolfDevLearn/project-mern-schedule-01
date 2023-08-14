@@ -2,7 +2,13 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import { themes } from 'src/styles/variables/themes';
 
-import { device } from '../../../styles/variables/mediaVeriables';
+import { device } from 'src/styles/variables/mediaVeriables';
+
+export const StyledTogglerWrapper = styled.div`
+  position: absolute;
+  top: 10%;
+  right: 5%;
+`;
 
 export const MainWrapper = styled.main`
   display: flex;
@@ -123,7 +129,7 @@ export const AuthLink = styled(NavLink)`
   }
   @media ${device.tablet} {
     font-size: ${({ colorbtn }) =>
-      colorbtn === 'white' ? themes.fontSizes.s : themes.fontSizes.l};
+    colorbtn === 'white' ? themes.fontSizes.s : themes.fontSizes.l};
     line-height: 1.3;
     padding: 14px 22px;
   }
