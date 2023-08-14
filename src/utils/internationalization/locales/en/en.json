@@ -19,7 +19,7 @@
   "REVIEWS": "REVIEWS",
 
   "QuicklyRegister": "Quickly register and familiarize yourself with the application!",
-  "QuicklyCome": "Швиденько заходьте і записуйте свої завдання на сьогодні!",
+  "QuicklyCome": "Quickly come in and write down your tasks for the day!",
 
   "Log In": "Log In",
   "Sign Up": "Sign Up",
@@ -33,6 +33,15 @@
   "Enter password": "Enter password",
   "Error password": "This is an ERROR password",
   "Correct password": "This is an CORRECT password",
+
+  "Too Short": "Too Short!",
+  "Too Long": "Too Long!",
+  "Only letters": "Only letters, underscores and numbers are allowed",
+  "Name Required": "Name is a required field",
+  "Email Required": "Email is a required field",
+  "Invalid Email": "Invalid email format",
+  "Password Required": "Password is a required field",
+  "Password Characters": "Password must be at least 6 characters",
 
   "User Profile": "User Profile",
   "Feedback": "Feedback",

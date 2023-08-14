@@ -1,5 +1,3 @@
-// import PropTypes from 'prop-types';
-
 import CalendarTable from './CalendarTable/CalendarTable';
 import MonthCalendarHead from './MonthCalendarHead/MonthCalendarHead';
 

@@ -33,6 +33,7 @@ function App() {
             <Route path={routes.calendarPage} element={<CalendarPage />}>
               <Route path={routes.calendarMonth} element={<ChoosedMonth />} />
               <Route path={routes.calendarDay} element={<ChoosedDay />} />
+              {/* Вот сюда потом вернешь роут CalendarPage */}
             </Route>
             <Route path={routes.statisticsPage} element={<SatisticsPage />} />
           </Route>

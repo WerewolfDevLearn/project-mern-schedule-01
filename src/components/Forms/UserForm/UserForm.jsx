@@ -1,14 +1,19 @@
 import { useState, useRef } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
+// import { useDispatch } from 'react-redux';
 import { Formik, Form } from 'formik';
 import * as yup from 'yup';
-// import { toast } from 'react-hot-toast';
-import { BsPlusCircle } from 'react-icons/bs';
+import i18n from 'i18next';
+import { useTranslation } from 'react-i18next';
 
-import { usePHBState } from 'src/redux/selectors';
+// import { toast } from 'react-hot-toast';
+import { useUser } from 'src/redux/selectors';
+
+import { Avatar, Plus } from '../../shared/Icons';
 
 import {
   FormContainer,
+  FormWrap,
   AvatarAddIcon,
   AvatarContainer,
   AvatarInputField,
@@ -20,7 +25,10 @@ import {
   InputField,
   DateInput,
   ErrorMessage,
-  FormBtn
+  FormBtn,
+  BtnWrapper,
+  ChangePassBtn,
+  DeleteProfileBtn
 } from './UserForm.styled';
 
 const SUPPORTED_FORMATS = ['image/webp', 'image/jpg', 'image/jpeg', 'image/gif', 'image/png'];
@@ -41,23 +49,24 @@ const schema = yup.object().shape({
   phone: yup.string().matches(PATTERN_FOR_PHONE, 'Invalid phone number'),
   birthday: yup.date('yyyy - mm - dd'),
   skype: yup.string().max(16, 'Too long - should be 16 chars maximum.'),
-  email: yup.string('Enter your email').email('Invalid email').required('Email is required')
+  email: yup.string('Enter your email').email(i18n.t('Error email')).required('Email is required')
 });
 
-export default function UserForm({ avatarUrl, name, phone, birthday, skype, email }) {
-  const dispatch = useDispatch();
-  const userData = useSelector(usePHBState);
+export default function UserForm() {
+  const { t } = useTranslation();
+  // const dispatch = useDispatch();
+  const user = useUser();
   const fileInputRef = useRef(null);
 
   const initialValues = {
-    avatarUrl: avatarUrl || '',
-    name,
-    phone: phone || '',
-    birthday,
-    skype: skype || '',
-    email
+    avatarUrl: user.avatarUrl || '',
+    name: user.name,
+    phone: user.phone || '',
+    birthday: user.birthday,
+    skype: user.skype || '',
+    email: user.email
   };
-
+  // console.log(defaultAvatar);
   const [selectedAvatar, setSelectedAvatar] = useState(null);
   const [imagePreview, setImagePreview] = useState(initialValues.avatarUrl);
   const [selectedDate, setSelectedDate] = useState(new Date(initialValues.birthday || new Date()));
@@ -88,14 +97,14 @@ export default function UserForm({ avatarUrl, name, phone, birthday, skype, emai
       formData.append('email', values.email.trim());
     }
 
-    dispatch(getState(formData));
+    // dispatch(getState(formData));
 
-    const formDataObject = {};
-    for (let [key, value] of formData.entries()) {
-      formDataObject[key] = value;
+    // const formDataObject = {};
+    // for (let [key, value] of formData.entries()) {
+    // formDataObject[key] = value;
 
-      console.log(formDataObject);
-    }
+    // console.log(formDataObject);
+    // }
 
     // console.log(values);
     // console.log(formData);
@@ -111,7 +120,12 @@ export default function UserForm({ avatarUrl, name, phone, birthday, skype, emai
       </label>
     );
   };
-
+  FormikInput.propTypes = {
+    label: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    placeholder: PropTypes.string.isRequired
+  };
   return (
     <>
       <Formik
@@ -122,66 +136,97 @@ export default function UserForm({ avatarUrl, name, phone, birthday, skype, emai
       >
         {(formik) => {
           return (
-            <Form encType="multipart/form-data">
-              <FormContainer>
-                <AvatarContainer>
-                  <AvatarAddIcon>
-                    <BsPlusCircle onClick={handleAddImageClick} />
-                  </AvatarAddIcon>
-                  <label>
-                    <AvatarInputField
-                      type="file"
-                      name="avatarUrl"
-                      ref={fileInputRef}
-                      onBlur={() => formik.setTouched({ avatar: true })}
-                      onChange={(e) => {
-                        const avatar = e.target.files[0];
-                        console.log('AVATAR', avatar);
+            <FormContainer>
+              <Form encType="multipart/form-data" onSubmit={handleSubmit}>
+                <FormWrap>
+                  <AvatarContainer>
+                    <AvatarAddIcon>
+                      <Plus width="18px" height="18px" onClick={handleAddImageClick} />
+                    </AvatarAddIcon>
+                    <label>
+                      <AvatarInputField
+                        type="file"
+                        name="avatarUrl"
+                        ref={fileInputRef}
+                        onBlur={() => formik.setTouched({ avatar: true })}
+                        onChange={(e) => {
+                          const avatar = e.target.files[0];
+                          // console.log('AVATAR', avatar);
 
-                        if (avatar && SUPPORTED_FORMATS.includes(avatar.type)) {
-                          formik.setFieldValue('avatar', avatar);
-                          setSelectedAvatar(URL.createObjectURL(avatar));
-                          setImagePreview('');
-                          return;
-                        }
-                      }}
+                          if (avatar && SUPPORTED_FORMATS.includes(avatar.type)) {
+                            formik.setFieldValue('avatar', avatar);
+                            setSelectedAvatar(URL.createObjectURL(avatar));
+                            setImagePreview('');
+                            // return;
+                          }
+                        }}
+                      />
+                      {!selectedAvatar && (
+                        <AvatarImgContainer>
+                          <Avatar width="48px" height="48px" />
+                        </AvatarImgContainer>
+                      )}
+                      {selectedAvatar && (
+                        <AvatarImgContainer>
+                          <AvatarImg src={selectedAvatar} alt={initialValues.name} />
+                        </AvatarImgContainer>
+                      )}
+                      {/* {imagePreview && (
+                        <AvatarImgContainer>
+                          <AvatarImg src={imagePreview} alt={initialValues.name} />
+                        </AvatarImgContainer>
+                      )} */}
+                    </label>
+                  </AvatarContainer>
+                  <UserNameTitle>{user.name}</UserNameTitle>
+                  <h3>{t('User')}</h3>
+                  <FormInputContainer>
+                    <FormikInput
+                      label={t('UserName')}
+                      type="text"
+                      name="name"
+                      placeholder={t('Enter your name')}
                     />
-                    {selectedAvatar && (
-                      <AvatarImgContainer>
-                        <AvatarImg src={selectedAvatar} alt={initialValues.name} />
-                      </AvatarImgContainer>
-                    )}
-                    {imagePreview && (
-                      <AvatarImgContainer>
-                        <AvatarImg src={imagePreview} alt={initialValues.name} />
-                      </AvatarImgContainer>
-                    )}
-                  </label>
-                </AvatarContainer>
-                <UserNameTitle>{name}</UserNameTitle>
-                <h3>User</h3>
-                <FormInputContainer>
-                  <FormikInput label="User Name" type="text" name="name" placeholder="Enter name" />
-                  <FormikInput label="Phone" type="tel" name="phone" placeholder="+380971234567" />
-                  <label htmlFor="birthday">
-                    <FormLabelSpan>Birthday</FormLabelSpan>
-                    <DateInput
-                      id="birthday"
-                      name="birthday"
-                      selected={selectedDate}
-                      dateFormat="dd/MM/yyyy"
-                      onChange={handleDateChange}
+                    <FormikInput
+                      label={t('Phone')}
+                      type="tel"
+                      name="phone"
+                      placeholder="+380971234567"
                     />
-                    <ErrorMessage name="birthday" component="div" />
-                  </label>
-                  <FormikInput label="Skype" type="text" name="skype" placeholder="Enter skype" />
-                  <FormikInput label="Email" type="email" name="email" placeholder="Enter email" />
-                </FormInputContainer>
-                <FormBtn type="submit" disabled={!formik.isValid || formik.isSubmitting}>
-                  Save changes
-                </FormBtn>
-              </FormContainer>
-            </Form>
+                    <label htmlFor="birthday">
+                      <FormLabelSpan>{t('Birthday')}</FormLabelSpan>
+                      <DateInput
+                        id="birthday"
+                        name="birthday"
+                        selected={selectedDate}
+                        dateFormat="dd/MM/yyyy"
+                        onChange={handleDateChange}
+                      />
+                      <ErrorMessage name="birthday" component="div" />
+                    </label>
+                    <FormikInput
+                      label={t('Skype')}
+                      type="text"
+                      name="skype"
+                      placeholder={t('Add a skype number')}
+                    />
+                    <FormikInput
+                      label={t('UserEmail')}
+                      type="email"
+                      name="email"
+                      placeholder={t('Enter email')}
+                    />
+                    <BtnWrapper>
+                      <ChangePassBtn type="button">Change password</ChangePassBtn>
+                      <DeleteProfileBtn type="button">Delete profile</DeleteProfileBtn>
+                    </BtnWrapper>
+                  </FormInputContainer>
+                  <FormBtn type="submit" disabled={!formik.isValid || formik.isSubmitting}>
+                    {t('Save changes')}
+                  </FormBtn>
+                </FormWrap>
+              </Form>
+            </FormContainer>
           );
         }}
       </Formik>

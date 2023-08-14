@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { FiSun } from 'react-icons/fi';
 import { FaRegMoon } from 'react-icons/fa';
 
-import { device } from '../../../styles/variables/mediaVeriables';
+import { device } from 'src/styles/variables/mediaVeriables';
 
 export const ThemeTogglerStyles = styled.div`
   display: flex;
@@ -28,10 +28,7 @@ export const IconLight = styled(FiSun)`
   width: 24px;
   height: 24px;
   margin-right: 8px;
-
-  color: #3e85f3;
-  /* color: white; */
-
+  color: ${({ theme }) => theme.colors.darkBlue};
   @media ${device.tablet} {
     width: 32px;
     height: 32px;
@@ -45,9 +42,7 @@ export const IconDark = styled(FaRegMoon)`
   justify-content: center;
   align-items: center;
   margin-right: 8px;
-  color: #3e85f3;
-  /* color: white; */
-
+  color: ${({ theme }) => theme.colors.darkBlue};
   @media ${device.tablet} {
     width: 32px;
     height: 32px;
