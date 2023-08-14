@@ -5,7 +5,6 @@ import 'react-datepicker/dist/react-datepicker.css';
 
 export const FormContainer = styled.div`
   padding: 60px 165px 60px 164px;
-  /* background-color: black; */
 `;
 
 export const FormWrap = styled.div`
@@ -53,6 +52,7 @@ export const AvatarImgContainer = styled.div`
   height: 124px;
   border: 2px solid #3e85f3;
   border-radius: 50%;
+  color: grey;
 `;
 
 export const AvatarImg = styled.img`
@@ -60,7 +60,7 @@ export const AvatarImg = styled.img`
   height: 124px;
   border: 2px solid #3e85f3;
   border-radius: 50%;
-  background-size: center;
+  object-fit: cover;
 `;
 
 export const UserNameTitle = styled.h2`
@@ -130,16 +130,9 @@ export const FormBtn = styled.button`
 export const BtnWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  /* margin-top: 50px; */
-
   position: absolute;
-  /* top: 100%;
-  left: 70%; */
   bottom: 8%;
   right: -8%;
-
-  /* bottom: 240px;
-  right: 500px; */
 `;
 
 export const ChangePassBtn = styled.button`
