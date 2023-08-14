@@ -12,7 +12,7 @@ export const Scrollbar = styled(SimpleBar)`
     border-radius: 12px;
     padding: 0;
 
-    background-color: #f2f2f2;
+    background: ${({ theme }) => theme.colors.lineSwitchVertical};
 
     @media screen and (width >= 768px) {
       right: -14px;
@@ -25,7 +25,7 @@ export const Scrollbar = styled(SimpleBar)`
     width: 6px;
     border-radius: 12px;
 
-    background-color: #e7e5e5;
+    background: ${({ theme }) => theme.colors.scrollSwitchVertical};
 
     @media screen and (width >= 768px) {
       width: 8px;
@@ -33,6 +33,6 @@ export const Scrollbar = styled(SimpleBar)`
   }
 
   .simplebar-scrollbar::before {
-    background-color: #e7e5e5;
+    background: ${({ theme }) => theme.colors.scrollSwitchVertical};
   }
 `;
