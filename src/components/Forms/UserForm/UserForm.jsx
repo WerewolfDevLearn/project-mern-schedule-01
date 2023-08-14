@@ -8,6 +8,7 @@ import { useTranslation } from 'react-i18next';
 // import { toast } from 'react-hot-toast';
 import { usePHBState } from '../../../redux/selectors';
 import { Avatar, Plus } from '../../shared/Icons';
+import { Modal } from '../../shared/Modal/Modal';
 import {
   FormContainer,
   FormWrap,
@@ -27,6 +28,7 @@ import {
   ChangePassBtn,
   DeleteProfileBtn
 } from './UserForm.styled';
+import ChangePasswordForm from '../ChangePasswordForm/ChangePasswordForm';
 
 const SUPPORTED_FORMATS = ['image/webp', 'image/jpg', 'image/jpeg', 'image/gif', 'image/png'];
 const PATTERN_FOR_PHONE = /^\+380\d{9}$/;
@@ -67,6 +69,7 @@ export default function UserForm() {
   const [selectedAvatar, setSelectedAvatar] = useState(null);
   const [imagePreview, setImagePreview] = useState(initialValues.avatarUrl);
   const [selectedDate, setSelectedDate] = useState(new Date(initialValues.birthday || new Date()));
+  const [show, setShow] = useState(false);
 
   const handleAddImageClick = () => fileInputRef.current.click();
 
@@ -106,6 +109,14 @@ export default function UserForm() {
     // console.log(values);
     // console.log(formData);
     // resetForm();
+  };
+
+  const showModal = () => {
+    setShow(true);
+  };
+
+  const closeModal = () => {
+    setShow(false);
   };
 
   const FormikInput = ({ label, type, name, placeholder }) => {
@@ -216,9 +227,14 @@ export default function UserForm() {
                       placeholder={t('Enter email')}
                     />
                     <BtnWrapper>
-                      <ChangePassBtn type="button">Change password</ChangePassBtn>
+                      <ChangePassBtn type="button" onClick={() => showModal()}>
+                        Change password
+                      </ChangePassBtn>
                       <DeleteProfileBtn type="button">Delete profile</DeleteProfileBtn>
                     </BtnWrapper>
+                    <Modal isOpen={show} onClose={closeModal}>
+                      {<ChangePasswordForm />}
+                    </Modal>
                   </FormInputContainer>
                   <FormBtn type="submit" disabled={!formik.isValid || formik.isSubmitting}>
                     {t('Save changes')}
