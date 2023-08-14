@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'http://localhost:6000/api';
+axios.defaults.baseURL = 'http://localhost:3001/api';
 
 export async function userRegister(userData) {
   const response = await axios.post('/users/register', userData);
