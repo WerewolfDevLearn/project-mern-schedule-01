@@ -5,14 +5,11 @@ import * as Yup from 'yup';
 import Rating from '@mui/material/Rating';
 import { useDispatch } from 'react-redux';
 
-import { RatingStar } from 'src/components/shared/Icons';
-
 import {
   useCreateReviewsMutation,
   useDeleteReviewsMutation,
   useUpdateReviewsMutation
 } from '../../../redux/reviews/reviewsApi';
-
 
 import {
   FeedbackFormStyles,
@@ -29,7 +26,9 @@ import {
   ButtonsWrapper,
   ButtonAction,
   ButtonCancel,
-  ErrorMessage
+  ErrorMessage,
+  RatingStarActive,
+  RatingStarDisable
 } from './FeedbackForm.styled';
 
 export default function FeedbackForm({ onClose, action = 'add', reviewToEdit }) {
@@ -44,13 +43,15 @@ export default function FeedbackForm({ onClose, action = 'add', reviewToEdit }) 
   const dispatch = useDispatch();
 
   const handleSubmit = (values, actions) => {
-    if (action === 'add') {
-      dispatch(useCreateReviewsMutation(values));
-    }
+    // if (selectAction === 'add') {
+    //   dispatch(useCreateReviewsMutation(values));
+    // }
 
-    if (action === 'edit') {
-      dispatch(useUpdateReviewsMutation({ _id, ...values }));
-    }
+    // if (selectAction === 'edit') {
+    //   dispatch(useUpdateReviewsMutation({ _id, ...values }));
+    // }
+
+    console.log(values);
 
     actions.resetForm();
     onClose();
@@ -83,14 +84,14 @@ export default function FeedbackForm({ onClose, action = 'add', reviewToEdit }) 
             <Rating
               name="rating"
               defaultValue={formik.values.rating}
-              icon={<RatingStar color="#FFAC33" />}
-              emptyIcon={<RatingStar color="#CEC9C1" />}
+              icon={<RatingStarActive />}
+              emptyIcon={<RatingStarDisable  />}
               onChange={(_, value) => formik.setFieldValue('rating', value)}
             />
             <ErrorMessage name="rating" component="div" />
           </Label>
 
-          <Label>
+          <Label for="reviewText">
             <LabelInner>
               Review
               {selectAction !== 'add' && (
