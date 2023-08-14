@@ -38,7 +38,7 @@ export default function RegisterPage() {
         </StyledImg>
 
         <Wrap>
-          <RegisterForm onSubmitForm={callBack} />
+          <RegisterForm callBack={callBack} />
           <AuthNavigate formType="register" />
         </Wrap>
       </ContentWrap>

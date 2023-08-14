@@ -22,13 +22,13 @@ import {
   SvgIcon
 } from './RegisterForm.styled';
 
-export default function RegisterForm({ onSubmitForm }) {
+export default function RegisterForm({ callBack }) {
   const { t } = useTranslation();
 
   const [validateAfterSubmit, setValidateAfterSubmit] = useState(false);
 
-  const onSubmit = (data, { resetForm, setSubmitting }) => {
-    onSubmitForm(data);
+  const onSubmit = (data, { setSubmitting, resetForm }) => {
+    callBack(data);
     setSubmitting(false);
     resetForm();
   };
@@ -145,5 +145,5 @@ export default function RegisterForm({ onSubmitForm }) {
 }
 
 RegisterForm.propTypes = {
-  onSubmitForm: PropTypes.func.isRequired
+  callBack: PropTypes.func.isRequired
 };
