@@ -8,8 +8,8 @@ export const Modal = styled.div`
 
   width: 550px;
   height: 550px;
-  border: 5px solid #3e85f3;
-  border-radius: 7px;
+  /* border: 5px solid #3e85f3; */
+  border-radius: 16px;
   background-color: #edf0f8;
 `;
 
