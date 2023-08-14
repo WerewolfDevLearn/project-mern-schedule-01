@@ -4,6 +4,7 @@ import { Formik, useFormik } from 'formik';
 import * as Yup from 'yup';
 import Rating from '@mui/material/Rating';
 import { useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
 import {
   useCreateReviewsMutation,
@@ -33,6 +34,7 @@ import {
 
 export default function FeedbackForm({ onClose, action = 'add', reviewToEdit }) {
   const [selectAction, setSelectAction] = useState(action);
+  const { t } = useTranslation();
 
   let _id, rating, reviewText;
 
@@ -80,12 +82,13 @@ export default function FeedbackForm({ onClose, action = 'add', reviewToEdit }) 
       <Formik>
         <form onSubmit={formik.handleSubmit}>
           <Label>
-            Rating
+            {t('Rating')}
             <Rating
               name="rating"
+              readOnly={selectAction === 'view'}
               defaultValue={formik.values.rating}
               icon={<RatingStarActive />}
-              emptyIcon={<RatingStarDisable  />}
+              emptyIcon={<RatingStarDisable />}
               onChange={(_, value) => formik.setFieldValue('rating', value)}
             />
             <ErrorMessage name="rating" component="div" />
@@ -93,7 +96,7 @@ export default function FeedbackForm({ onClose, action = 'add', reviewToEdit }) 
 
           <Label for="reviewText">
             <LabelInner>
-              Review
+              {t('Review')}
               {selectAction !== 'add' && (
                 <ReviewActions>
                   <EditBtn type="button" onClick={() => setSelectAction('edit')}>
@@ -119,8 +122,10 @@ export default function FeedbackForm({ onClose, action = 'add', reviewToEdit }) 
 
           {(selectAction === 'add' || selectAction === 'edit') && (
             <ButtonsWrapper>
-              <ButtonAction type="submit">{selectAction === 'add' ? 'Save' : 'Edit'}</ButtonAction>
-              <ButtonCancel onClick={onClose}>Cancel</ButtonCancel>
+              <ButtonAction type="submit">
+                {selectAction === 'add' ? t('Save') : t('Edit')}
+              </ButtonAction>
+              <ButtonCancel onClick={onClose}>{t('Cancel')}</ButtonCancel>
             </ButtonsWrapper>
           )}
 
