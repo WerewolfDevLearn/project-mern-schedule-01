@@ -11,12 +11,12 @@ export const IoCloseIcon = styled(IoClose)`
   color: ${({ theme }) => theme.colors.loaderWrapper};
   width: 24px;
   height: 24px;
-  @media (min-width: ${themes.breakpoints.m}) {
+  @media screen and (${themes.breakpoints.s} < width <=${themes.breakpoints.m}) {
     width: 34px;
     height: 34px;
   }
 
-  @media (min-width: ${themes.breakpoints.l}) {
+  @media screen and (${themes.breakpoints.m} < width) {
     display: none;
   }
 `;

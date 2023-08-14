@@ -1,14 +1,18 @@
 import { useState, useRef } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
+// import { useDispatch } from 'react-redux';
 import { Formik, Form } from 'formik';
 import { PropTypes } from 'prop-types';
 import * as yup from 'yup';
 import i18n from 'i18next';
 import { useTranslation } from 'react-i18next';
+
 // import { toast } from 'react-hot-toast';
-import { usePHBState } from '../../../redux/selectors';
+import { useUser } from 'src/redux/selectors';
+
 import { Avatar, Plus } from '../../shared/Icons';
 import { Modal } from '../../shared/Modal/Modal';
+
 import {
   FormContainer,
   FormWrap,
@@ -54,8 +58,8 @@ const schema = yup.object().shape({
 
 export default function UserForm() {
   const { t } = useTranslation();
-  const dispatch = useDispatch();
-  const { user } = usePHBState();
+  // const dispatch = useDispatch();
+  const user = useUser();
   const fileInputRef = useRef(null);
 
   const initialValues = {
@@ -99,14 +103,14 @@ export default function UserForm() {
       formData.append('email', values.email.trim());
     }
 
-    dispatch(getState(formData));
+    // dispatch(getState(formData));
 
-    const formDataObject = {};
-    for (let [key, value] of formData.entries()) {
-      formDataObject[key] = value;
+    // const formDataObject = {};
+    // for (let [key, value] of formData.entries()) {
+    // formDataObject[key] = value;
 
-      console.log(formDataObject);
-    }
+    // console.log(formDataObject);
+    // }
 
     // console.log(values);
     // console.log(formData);
@@ -171,13 +175,13 @@ export default function UserForm() {
                         onBlur={() => formik.setTouched({ avatar: true })}
                         onChange={(e) => {
                           const avatar = e.target.files[0];
-                          console.log('AVATAR', avatar);
+                          // console.log('AVATAR', avatar);
 
                           if (avatar && SUPPORTED_FORMATS.includes(avatar.type)) {
                             formik.setFieldValue('avatar', avatar);
                             setSelectedAvatar(URL.createObjectURL(avatar));
                             setImagePreview('');
-                            return;
+                            // return;
                           }
                         }}
                       />
