@@ -1,8 +1,10 @@
+import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
 import { ErrorPageStyles, ErrorCode, Text, HomeBtn, IconWrapper } from './ErrorPage.styled';
 
 export default function ErrorPage() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
 
   return (
@@ -23,9 +25,11 @@ export default function ErrorPage() {
         4
       </ErrorCode>
       <Text>
-        We’re sorry, the page you requested could not be found. Please go back to the homepage.
+        {t(
+          '404'
+        )}
       </Text>
-      <HomeBtn onClick={() => navigate('/')}>Back to home</HomeBtn>
+      <HomeBtn onClick={() => navigate('/')}>{t('BackHome')}</HomeBtn>
     </ErrorPageStyles>
   );
 }

@@ -9,6 +9,8 @@ export const ErrorPageStyles = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  background: ${({ theme }) => theme.colors.background};
 `;
 
 export const ErrorCode = styled.h1`
@@ -44,7 +46,6 @@ export const IconWrapper = styled.span`
     transform: translate(-50%, -50%) scale(1.4);
 
     @media screen and (min-width: 768px) {
-        
     }
   }
 `;
@@ -59,6 +60,8 @@ export const Text = styled.p`
   font-weight: 500;
   line-height: 18px;
 
+  color: ${({ theme }) => theme.colors.borderInputUserForm};
+  
   @media screen and (min-width: 768px) {
     width: 387px;
   }
