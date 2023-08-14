@@ -7,15 +7,16 @@ import {
   getCurrentUser,
   verifyByCode,
   sendVEmail,
-  token
-} from '../../../services/authAxApi';
+  token,
+  updateUser
+} from 'src/services/authAxApi';
 
 export const register = createAsyncThunk(
   'user/Register',
   async function (user, { rejectWithValue }) {
     try {
       const response = await userRegister(user);
-      // token.set(response.token);
+      token.set(response.token);
       return response;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -63,7 +64,6 @@ export const getCurrent = createAsyncThunk(
 export const verify = createAsyncThunk('user/VerifyEmail', async (code, { rejectWithValue }) => {
   try {
     const credentials = await verifyByCode(code);
-    token.set(credentials.token);
     return credentials;
   } catch (error) {
     return rejectWithValue(error.message);
@@ -77,3 +77,18 @@ export const sendEmail = createAsyncThunk('user/SendEmail', async (email, { reje
     return rejectWithValue(error.message);
   }
 });
+
+export const updUser = createAsyncThunk(
+  'user/Update',
+  async (userData, { rejectWithValue, getState }) => {
+    try {
+      const state = getState();
+      const stateToken = state.user.token;
+      if (!stateToken) return rejectWithValue('Please register or login!');
+      const credentials = await updateUser(userData, stateToken);
+      return credentials;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
