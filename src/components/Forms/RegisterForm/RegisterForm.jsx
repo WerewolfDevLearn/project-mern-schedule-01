@@ -29,8 +29,6 @@ export default function RegisterForm({ callBack }) {
 
   const onSubmit = (data, { setSubmitting, resetForm }) => {
     callBack(data);
-    setSubmitting(false);
-    resetForm();
   };
 
   return (
@@ -43,6 +41,7 @@ export default function RegisterForm({ callBack }) {
         validateOnBlur={false}
         validateOnChange={validateAfterSubmit}
         validateOnMount={false}
+        // setSubmitting={false}
         onSubmit={onSubmit}
       >
         {(formik) => {
