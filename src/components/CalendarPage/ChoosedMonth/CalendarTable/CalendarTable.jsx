@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { CalendarTableStyles } from './CalendarTable.styled';
+import { CalendarTableStyles, Fragment, Calendar } from './CalendarTable.styled';
 
 export default function CalendarTable() {
   const [currentDate, setCurrentDate] = useState(new Date());
@@ -40,23 +40,49 @@ export default function CalendarTable() {
 
     return calendar;
   };
+  // const nextMonth = () => {
+  //   const newDate = new Date(currentDate);
+  //   newDate.setMonth(newDate.getMonth() + 1);
+  //   setCurrentDate(newDate);
+  // };
+  // const prevMonth = () => {
+  //   const newDate = new Date(currentDate);
+  //   newDate.setMonth(newDate.getMonth() - 1);
+  //   setCurrentDate(newDate);
+  // };
 
   const calendar = generateCalendar();
   return (
     <CalendarTableStyles>
-      <h2>CalendarTable</h2>
-
-      <table>
+      {/* <div>
+        <button onClick={prevMonth}>Previous Month</button>
+        <h2>
+          {currentDate.toLocaleString('default', { month: 'long' })} {currentDate.getFullYear()}
+        </h2>
+        <button onClick={nextMonth}>Next Month</button>
+      </div> */}
+      <Calendar>
+        {/* <thead>
+          <tr>
+            <th>Mon</th>
+            <th>Tue</th>
+            <th>Wed</th>
+            <th>Thu</th>
+            <th>Fri</th>
+            <th>Sat</th>
+            <th>Sun</th>
+          </tr>
+        </thead> */}
         <tbody>
           {calendar.map((week, index) => (
             <tr key={index}>
               {week.map((day, dayIndex) => (
-                <td key={dayIndex}>{day}</td>
+                <Fragment key={dayIndex}>{day}</Fragment>
               ))}
             </tr>
           ))}
         </tbody>
-      </table>
+      </Calendar>
     </CalendarTableStyles>
   );
 }
