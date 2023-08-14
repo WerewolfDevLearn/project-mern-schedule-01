@@ -40,7 +40,7 @@ export async function sendVEmail(email) {
   return data;
 }
 export async function updateUser(email) {
-  const response = await axios.post('/users/verify', { email });
+  const response = await axios.post('/users/profile', { email });
   const data = response.data;
   return data;
 }
