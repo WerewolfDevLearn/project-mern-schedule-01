@@ -1,4 +1,5 @@
 import { Formik } from 'formik';
+import { useTranslation } from 'react-i18next';
 import * as Yup from 'yup';
 import { useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
@@ -54,6 +55,7 @@ const TaskSchema = Yup.object().shape({
 });
 
 export const TaskForm = ({ onClose, action, column, taskToEdit }) => {
+  const { t } = useTranslation();
   let _id, title, start, end, priority, date;
 
   if (typeof taskToEdit === 'object' && taskToEdit !== null && true) {
@@ -97,19 +99,19 @@ export const TaskForm = ({ onClose, action, column, taskToEdit }) => {
     >
       <Form>
         <Label>
-          Title
-          <InputTitle type="text" name="title" placeholder="Enter text" />
+          {t('Title')}
+          <InputTitle type="text" name="title" placeholder={t('Enter text')} />
           <ErrorMessage name="title" component="div" />
         </Label>
 
         <TimeWrapper>
           <Label>
-            Start
+            {t('Start')}
             <InputTime type="time" name="start" />
             <ErrorMessage name="start" component="div" />
           </Label>
           <Label>
-            End
+            {t('End')}
             <InputTime type="time" name="end" />
             <ErrorMessage name="end" component="div" />
           </Label>
@@ -119,17 +121,17 @@ export const TaskForm = ({ onClose, action, column, taskToEdit }) => {
           <RadioLabel>
             <RadioField type="radio" name="priority" value="low" />
             <RadioSpan value="low" />
-            Low
+            {t('Low')}
           </RadioLabel>
           <RadioLabel>
             <RadioField type="radio" name="priority" value="medium" />
             <RadioSpan value="medium" />
-            Medium
+            {t('Medium')}
           </RadioLabel>
           <RadioLabel>
             <RadioField type="radio" name="priority" value="high" />
             <RadioSpan value="high" />
-            High
+            {t('High')}
           </RadioLabel>
         </RadioWrapper>
 
@@ -137,17 +139,17 @@ export const TaskForm = ({ onClose, action, column, taskToEdit }) => {
           {action === 'add' ? (
             <ButtonAction type="submit">
               <PlusIcon />
-              Add
+              {t('Add')}
             </ButtonAction>
           ) : (
             <ButtonAction type="submit">
-              <PencilIcon color="#fff" />
-              Edit
+              <PencilIcon />
+              {t('Edit')}
             </ButtonAction>
           )}
 
           <ButtonCancel type="button" onClick={onClose}>
-            Cancel
+            {t('Cancel')}
           </ButtonCancel>
         </ButtonWrapper>
 

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 import { addDays, eachDayOfInterval, format, startOfWeek } from 'date-fns';
 import { useNavigate } from 'react-router-dom';
@@ -12,6 +13,7 @@ import {
 } from './DayCalendarHead.styled';
 
 export default function DayCalendarHead({ date }) {
+  const { t } = useTranslation();
   const [selectedDay, setSelectedDay] = useState(date);
   const navigate = useNavigate();
 
@@ -25,9 +27,9 @@ export default function DayCalendarHead({ date }) {
 
   const getWeekDay = (day) => {
     if (screenWidth >= 768) {
-      return format(day, 'eee');
+      return t(format(day, 'eee'));
     }
-    return format(day, 'eeeee');
+    return t(`mob_${format(day, 'eee')}`)
   };
 
   const formatDate = (date) => {
