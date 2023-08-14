@@ -3,8 +3,10 @@ import { PropTypes } from 'prop-types';
 import * as yup from 'yup';
 import i18n from 'i18next';
 import { useTranslation } from 'react-i18next';
+import { XClose } from '../../shared/Icons';
 import {
   Modal,
+  XCloseWrap,
   ChangePasswordTitle,
   InputsContainer,
   FormLabelSpan,
@@ -14,11 +16,10 @@ import {
   UpdateBtn,
   CancelBtn
 } from './ChangePasswordForm.styled';
-import { BtnWrapper } from '../UserForm/UserForm.styled';
 
 const schema = yup.object().shape({});
 
-export default function ChangePasswordForm() {
+export default function ChangePasswordForm({ onClose }) {
   const initialValues = {};
   const handleSubmit = (values) => {
     console.log(values);
@@ -48,6 +49,9 @@ export default function ChangePasswordForm() {
           return (
             <>
               <Modal>
+                <XCloseWrap onClick={onClose}>
+                  <XClose width="24" height="24" />
+                </XCloseWrap>
                 <ChangePasswordTitle>Change password</ChangePasswordTitle>
                 <InputsContainer>
                   <FormikInput
@@ -71,7 +75,9 @@ export default function ChangePasswordForm() {
                 </InputsContainer>
                 <BtnWrap>
                   <UpdateBtn type="submit">Update password</UpdateBtn>
-                  <CancelBtn type="button">Cancel</CancelBtn>
+                  <CancelBtn type="button" onClick={onClose}>
+                    Cancel
+                  </CancelBtn>
                 </BtnWrap>
               </Modal>
             </>

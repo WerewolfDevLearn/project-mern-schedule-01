@@ -29,6 +29,7 @@ import {
   DeleteProfileBtn
 } from './UserForm.styled';
 import ChangePasswordForm from '../ChangePasswordForm/ChangePasswordForm';
+import DeleteProfileForm from '../DeleteProfileForm/DeleteProfileForm';
 
 const SUPPORTED_FORMATS = ['image/webp', 'image/jpg', 'image/jpeg', 'image/gif', 'image/png'];
 const PATTERN_FOR_PHONE = /^\+380\d{9}$/;
@@ -69,7 +70,8 @@ export default function UserForm() {
   const [selectedAvatar, setSelectedAvatar] = useState(null);
   const [imagePreview, setImagePreview] = useState(initialValues.avatarUrl);
   const [selectedDate, setSelectedDate] = useState(new Date(initialValues.birthday || new Date()));
-  const [show, setShow] = useState(false);
+  const [showChangePasswordModal, setShowChangePasswordModal] = useState(false);
+  const [showDeleteProfileModal, setShowDeleteProfileModal] = useState(false);
 
   const handleAddImageClick = () => fileInputRef.current.click();
 
@@ -111,12 +113,20 @@ export default function UserForm() {
     // resetForm();
   };
 
-  const showModal = () => {
-    setShow(true);
+  const openChangePasswordModal = () => {
+    setShowChangePasswordModal(true);
   };
 
-  const closeModal = () => {
-    setShow(false);
+  const closeChangePasswordModal = () => {
+    setShowChangePasswordModal(false);
+  };
+
+  const openDeleteProfileModal = () => {
+    setShowDeleteProfileModal(true);
+  };
+
+  const closeDeleteProfileModal = () => {
+    setShowDeleteProfileModal(false);
   };
 
   const FormikInput = ({ label, type, name, placeholder }) => {
@@ -227,14 +237,23 @@ export default function UserForm() {
                       placeholder={t('Enter email')}
                     />
                     <BtnWrapper>
-                      <ChangePassBtn type="button" onClick={() => showModal()}>
+                      <ChangePassBtn type="button" onClick={openChangePasswordModal}>
                         Change password
                       </ChangePassBtn>
-                      <DeleteProfileBtn type="button">Delete profile</DeleteProfileBtn>
+                      <DeleteProfileBtn type="button" onClick={openDeleteProfileModal}>
+                        Delete profile
+                      </DeleteProfileBtn>
                     </BtnWrapper>
-                    <Modal isOpen={show} onClose={closeModal}>
-                      {<ChangePasswordForm />}
-                    </Modal>
+                    {showChangePasswordModal && (
+                      <Modal isOpen={showChangePasswordModal} onClose={closeChangePasswordModal}>
+                        {<ChangePasswordForm onClose={closeChangePasswordModal} />}
+                      </Modal>
+                    )}
+                    {showDeleteProfileModal && (
+                      <Modal isOpen={showDeleteProfileModal} onClose={closeDeleteProfileModal}>
+                        {<DeleteProfileForm onClose={closeDeleteProfileModal} />}
+                      </Modal>
+                    )}
                   </FormInputContainer>
                   <FormBtn type="submit" disabled={!formik.isValid || formik.isSubmitting}>
                     {t('Save changes')}

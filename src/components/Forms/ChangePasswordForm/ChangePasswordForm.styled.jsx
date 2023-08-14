@@ -14,6 +14,19 @@ export const Modal = styled.div`
   background-color: #edf0f8;
 `;
 
+export const XCloseWrap = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 3%;
+  right: 3%;
+
+  &:hover {
+    color: #cf0202;
+  }
+`;
+
 export const ChangePasswordTitle = styled.h1`
   margin-bottom: 30px;
 `;
@@ -69,9 +82,9 @@ export const CancelBtn = styled.button`
   width: 100px;
   height: 48px;
   border-radius: 16px;
-  color: #3e85f3;
-  background-color: white;
-  border: 3px solid #3e85f3;
+  color: white;
+  background-color: #3e85f3;
+  /* border: 3px solid #3e85f3; */
   margin-left: 100px;
   margin-bottom: 10px;
 
