@@ -1,29 +1,33 @@
-import { MonthCalendarHeadStyles, Day, DaysOfWeek } from './MonthCalendarHead.styled';
+import {
+  MonthCalendarHeadStyles,
+  WorkDay,
+  WeekendDay,
+  MobileDaysList,
+  DesktopDayList
+} from './MonthCalendarHead.styled';
 
-const longDaysOfWeek = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'];
-const shortDaysOfWeek = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
-
-// const arr = [];
-
-// function elemToObj(elem) {
-//   return {
-//     name: elem,
-//     id: nanoid()
-//   };
-// }
-// const arrOfDays = arr.map((item) => elemToObj(item));
+const workDayNames = ['MON', 'TUE', 'WED', 'THU', 'FRI'];
+const weekendDayNames = ['SAT', 'SUN'];
 
 export default function MonthCalendarHead() {
   return (
     <MonthCalendarHeadStyles>
-      <DaysOfWeek>
-        {shortDaysOfWeek.map((day, index) => (
-          <Day key={index}>{day}</Day>
+      <DesktopDayList>
+        {workDayNames.map((day) => (
+          <WorkDay key={day}>{day}</WorkDay>
         ))}
-        {/* {longDaysOfWeek.map((day) => (
-          <Day key={day}>{day}</Day>
-        ))} */}
-      </DaysOfWeek>
+        {weekendDayNames.map((day) => (
+          <WeekendDay key={day}>{day}</WeekendDay>
+        ))}
+      </DesktopDayList>
+      <MobileDaysList>
+        {workDayNames.map((day) => (
+          <WorkDay key={day}>{day[0]}</WorkDay>
+        ))}
+        {weekendDayNames.map((day) => (
+          <WeekendDay key={day}>{day[0]}</WeekendDay>
+        ))}
+      </MobileDaysList>
     </MonthCalendarHeadStyles>
   );
 }

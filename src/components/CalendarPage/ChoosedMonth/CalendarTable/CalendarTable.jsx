@@ -1,88 +1,103 @@
-import { useState } from 'react';
+import { useSelector } from 'react-redux';
 
-import { CalendarTableStyles, Fragment, Calendar } from './CalendarTable.styled';
+import { nanoid } from 'nanoid';
+import { useState, useEffect } from 'react';
+import {
+  format,
+  isToday,
+  getUnixTime,
+  isSameMonth,
+  startOfDay,
+  endOfDay,
+  addDays,
+  startOfWeek,
+  isSameDay
+} from 'date-fns';
+
+import { useisLoading } from '../../../../redux/selectors';
+
+import {
+  CellWrapper,
+  DayWrapper,
+  GridWrapper,
+  RowInCell,
+  CurrentDay,
+  ShowDayWrapper,
+  TaskListWrapper,
+  TaskItem,
+  TasksMoreLabel
+} from './CalendarTable.styled';
 
 export default function CalendarTable() {
-  const [currentDate, setCurrentDate] = useState(new Date());
+  const [calendar, setCalendar] = useState([]);
+  const [askDay, setAskDay] = useState(new Date());
 
-  const daysInMonth = (date) => {
-    const year = date.getFullYear();
-    const month = date.getMonth();
-    return new Date(year, month + 1, 0).getDate();
-  };
-
-  const firstDayOfMonth = (date) => {
-    const year = date.getFullYear();
-    const month = date.getMonth();
-    const firstDay = new Date(year, month, 1).getDay();
-    return (firstDay + 6) % 7;
-  };
+  const isTasksLoading = useSelector(useisLoading);
+  const tasks = useSelector((state) => state.tasks.items);
 
   const generateCalendar = () => {
-    const totalDays = daysInMonth(currentDate);
-    const startDay = firstDayOfMonth(currentDate);
+    const startDay = startOfWeek(new Date(), { weekStartsOn: 1 });
+    const firstDayOfNextMonth = new Date();
 
     const calendar = [];
-    let dayCounter = 1;
+    let day = startDay;
 
-    for (let i = 0; i < 6; i++) {
-      const week = [];
-      for (let j = 0; j < 7; j++) {
-        if ((i === 0 && j < startDay) || dayCounter > totalDays) {
-          week.push(null);
-        } else {
-          week.push(dayCounter);
-          dayCounter++;
-        }
-      }
-      calendar.push(week);
+    while (!isSameDay(day, firstDayOfNextMonth)) {
+      calendar.push(day);
+      day = addDays(day, 1);
     }
 
-    return calendar;
+    setCalendar(calendar);
   };
-  // const nextMonth = () => {
-  //   const newDate = new Date(currentDate);
-  //   newDate.setMonth(newDate.getMonth() + 1);
-  //   setCurrentDate(newDate);
-  // };
-  // const prevMonth = () => {
-  //   const newDate = new Date(currentDate);
-  //   newDate.setMonth(newDate.getMonth() - 1);
-  //   setCurrentDate(newDate);
-  // };
 
-  const calendar = generateCalendar();
+  useEffect(() => {
+    generateCalendar();
+  }, []);
+
+  const isCurrentMonth = (day) => isSameMonth(askDay, day);
+
+  let filteredTasks = [];
+
+  const getDayTasks = (day) => {
+    filteredTasks = tasks?.filter(
+      (task) =>
+        getUnixTime(new Date(task.date)) >= getUnixTime(startOfDay(day)) &&
+        getUnixTime(new Date(task.date)) < getUnixTime(endOfDay(day))
+    );
+  };
+
   return (
-    <CalendarTableStyles>
-      {/* <div>
-        <button onClick={prevMonth}>Previous Month</button>
-        <h2>
-          {currentDate.toLocaleString('default', { month: 'long' })} {currentDate.getFullYear()}
-        </h2>
-        <button onClick={nextMonth}>Next Month</button>
-      </div> */}
-      <Calendar>
-        {/* <thead>
-          <tr>
-            <th>Mon</th>
-            <th>Tue</th>
-            <th>Wed</th>
-            <th>Thu</th>
-            <th>Fri</th>
-            <th>Sat</th>
-            <th>Sun</th>
-          </tr>
-        </thead> */}
-        <tbody>
-          {calendar.map((week, index) => (
-            <tr key={index}>
-              {week.map((day, dayIndex) => (
-                <Fragment key={dayIndex}>{day}</Fragment>
-              ))}
-            </tr>
-          ))}
-        </tbody>
-      </Calendar>
-    </CalendarTableStyles>
+    <GridWrapper>
+      {calendar.map((dayItem) => (
+        <CellWrapper
+          to={`/calendar/day/${format(dayItem, 'ddMMMMyyyy')}`}
+          key={nanoid()}
+          iscurrentmonth={isCurrentMonth(dayItem).toString()}
+        >
+          <RowInCell justifyContent={'flex-end'}>
+            <ShowDayWrapper>
+              <DayWrapper>
+                {isToday(dayItem) ? (
+                  <CurrentDay>{format(dayItem, 'd')}</CurrentDay>
+                ) : (
+                  format(dayItem, 'd')
+                )}
+              </DayWrapper>
+            </ShowDayWrapper>
+            {!isTasksLoading && (
+              <TaskListWrapper>
+                {getDayTasks(dayItem)}
+                {filteredTasks?.slice(0, 2).map((task) => (
+                  <TaskItem key={nanoid()} priority={task.priority}>
+                    {task.title}
+                  </TaskItem>
+                ))}
+              </TaskListWrapper>
+            )}
+            {filteredTasks?.length > 2 && <TasksMoreLabel>...</TasksMoreLabel>}
+          </RowInCell>
+        </CellWrapper>
+      ))}
+    </GridWrapper>
   );
 }

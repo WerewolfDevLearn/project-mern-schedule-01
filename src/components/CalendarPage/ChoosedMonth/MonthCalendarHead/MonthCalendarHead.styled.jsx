@@ -1,38 +1,67 @@
 import styled from 'styled-components';
 import { themes } from 'src/styles/variables/themes';
 
-export const MonthCalendarHeadStyles = styled.div`
-  /* display: block;
-  width: 100%;
-  max-width: 400px;
-  color: ${themes.colors.white};
-  font-size: ${themes.fontSizes.logoMobile};
-  font-weight: ${themes.fontWeight.r};
-  text-shadow: ${themes.shadows.authHeading};
-
- @media (min-width: ${themes.breakpoints.m}) {
-    padding-block: 64px 100px;
-  } */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+export const MonthCalendarHeadStyles = styled.div``;
+export const MobileDaysList = styled.ul`
   width: 335px;
   height: 50px;
-  background-color: ${themes.colors.white};
-  border: 1px solid #dce3e580;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 34px;
+  padding: 16px 16px;
+  margin: auto;
+  margin-bottom: 14px;
+
+  background: ${themes.colors.white};
+  border: 1px solid ${themes.colors.borderModaAddToDo};
   border-radius: 8px;
-  font-size: ${themes.fontSizes.m};
-  font-weight: ${themes.fontWeight.sb};
+
+  @media screen and (min-width: ${themes.breakpoints.m}) {
+    display: none;
+  }
 `;
 
-export const Day = styled.div``;
+export const DesktopDayList = styled.ul`
+  display: none;
+  @media screen and (min-width: ${themes.breakpoints.m}) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 65px;
 
-export const DaysOfWeek = styled.div`
-  display: flex;
-  justify-content: space-around;
-  font-family: Inter;
+    padding: 14px 40px;
+    margin: 0 auto;
+    margin-bottom: 18px;
 
-  &:nth-last-child(even) {
-    color: ${themes.colors.accent};
+    width: 704px;
+    height: 46px;
+
+    background: ${themes.colors.white};
+    border: 1px solid ${themes.colors.borderModaAddToDo};
+    border-radius: 8px;
+
+    @media screen and (min-width: ${themes.breakpoints.l}) {
+      width: 1087px;
+      height: 46px;
+
+      padding: 14px 60px;
+      margin-bottom: 15px;
+
+      gap: 122px;
+    }
   }
+`;
+export const WorkDay = styled.li`
+  color: ${themes.colors.black};
+  font-family: Inter;
+  font-size: ${themes.fontSizes.m};
+  font-weight: ${themes.fontWeight.sb};
+  line-height: 18px;
+  text-transform: uppercase;
+`;
+
+export const WeekendDay = styled(WorkDay)`
+  color: ${themes.colors.accent};
 `;
