@@ -9,7 +9,11 @@ import { useTranslation } from 'react-i18next';
 // import { toast } from 'react-hot-toast';
 import { useUser } from 'src/redux/selectors';
 
-import { Avatar, Plus } from '../../shared/Icons';
+import { Avatar, Plus } from 'src/components/shared/Icons';
+import Modal from 'src/components/shared/Modal/Modal';
+
+import ChangePasswordForm from '../ChangePasswordForm/ChangePasswordForm';
+import DeleteProfileForm from '../DeleteProfileForm/DeleteProfileForm';
 
 import {
   FormContainer,
@@ -52,9 +56,8 @@ const schema = yup.object().shape({
   email: yup.string('Enter your email').email(i18n.t('Error email')).required('Email is required')
 });
 
-export default function UserForm() {
+export default function UserForm({ callBack }) {
   const { t } = useTranslation();
-  // const dispatch = useDispatch();
   const user = useUser();
   const fileInputRef = useRef(null);
 
@@ -70,32 +73,36 @@ export default function UserForm() {
   const [selectedAvatar, setSelectedAvatar] = useState(null);
   const [imagePreview, setImagePreview] = useState(initialValues.avatarUrl);
   const [selectedDate, setSelectedDate] = useState(new Date(initialValues.birthday || new Date()));
+  const [showChangePasswordModal, setShowChangePasswordModal] = useState(false);
+  const [showDeleteProfileModal, setShowDeleteProfileModal] = useState(false);
 
   const handleAddImageClick = () => fileInputRef.current.click();
 
   const handleDateChange = (date) => setSelectedDate(date);
 
-  const handleSubmit = (values) => {
-    const formData = new FormData();
+  const onSubmit = (data, actions) => {
+    // const formData = new FormData();
 
-    if (values.avatar) {
-      formData.append('avatarUrl', values.avatar);
-    }
-    if (values.name) {
-      formData.append('name', values.name.trim());
-    }
-    if (values.phone) {
-      formData.append('phone', values.phone);
-    }
-    if (values.birthday) {
-      formData.append('birthday', values.birthday);
-    }
-    if (values.skype) {
-      formData.append('skype', values.skype.trim());
-    }
-    if (values.email) {
-      formData.append('email', values.email.trim());
-    }
+    // if (values.avatar) {
+    //   formData.append('avatarUrl', values.avatar);
+    // }
+    // if (values.name) {
+    //   formData.append('name', values.name.trim());
+    // }
+    // if (values.phone) {
+    //   formData.append('phone', values.phone);
+    // }
+    // if (values.birthday) {
+    //   formData.append('birthday', values.birthday);
+    // }
+    // if (values.skype) {
+    //   formData.append('skype', values.skype.trim());
+    // }
+    // if (values.email) {
+    //   formData.append('email', values.email.trim());
+    // }
+    console.log(data);
+    callBack(data);
 
     // dispatch(getState(formData));
 
@@ -111,6 +118,22 @@ export default function UserForm() {
     // resetForm();
   };
 
+  const openChangePasswordModal = () => {
+    setShowChangePasswordModal(true);
+  };
+
+  const closeChangePasswordModal = () => {
+    setShowChangePasswordModal(false);
+  };
+
+  const openDeleteProfileModal = () => {
+    setShowDeleteProfileModal(true);
+  };
+
+  const closeDeleteProfileModal = () => {
+    setShowDeleteProfileModal(false);
+  };
+
   const FormikInput = ({ label, type, name, placeholder }) => {
     return (
       <label htmlFor={name}>
@@ -120,24 +143,26 @@ export default function UserForm() {
       </label>
     );
   };
+
   FormikInput.propTypes = {
     label: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     placeholder: PropTypes.string.isRequired
   };
+
   return (
     <>
       <Formik
         initialValues={initialValues}
         validationSchema={schema}
-        onSubmit={handleSubmit}
+        onSubmit={onSubmit}
         // enableReinitialize
       >
         {(formik) => {
           return (
             <FormContainer>
-              <Form encType="multipart/form-data" onSubmit={handleSubmit}>
+              <Form encType="multipart/form-data" onSubmit={onSubmit}>
                 <FormWrap>
                   <AvatarContainer>
                     <AvatarAddIcon>
@@ -167,9 +192,9 @@ export default function UserForm() {
                         </AvatarImgContainer>
                       )}
                       {selectedAvatar && (
-                        <AvatarImgContainer>
-                          <AvatarImg src={selectedAvatar} alt={initialValues.name} />
-                        </AvatarImgContainer>
+                        <div>
+                          <AvatarImg src={selectedAvatar} alt={user.name} />
+                        </div>
                       )}
                       {/* {imagePreview && (
                         <AvatarImgContainer>
@@ -217,11 +242,31 @@ export default function UserForm() {
                       placeholder={t('Enter email')}
                     />
                     <BtnWrapper>
-                      <ChangePassBtn type="button">Change password</ChangePassBtn>
-                      <DeleteProfileBtn type="button">Delete profile</DeleteProfileBtn>
+                      <ChangePassBtn type="button" onClick={openChangePasswordModal}>
+                        Change password
+                      </ChangePassBtn>
+                      <DeleteProfileBtn type="button" onClick={openDeleteProfileModal}>
+                        Delete profile
+                      </DeleteProfileBtn>
                     </BtnWrapper>
+                    {showChangePasswordModal && (
+                      <Modal isOpen={showChangePasswordModal} onClose={closeChangePasswordModal}>
+                        {<ChangePasswordForm onClose={closeChangePasswordModal} />}
+                      </Modal>
+                    )}
+                    {showDeleteProfileModal && (
+                      <Modal isOpen={showDeleteProfileModal} onClose={closeDeleteProfileModal}>
+                        {<DeleteProfileForm onClose={closeDeleteProfileModal} />}
+                      </Modal>
+                    )}
                   </FormInputContainer>
-                  <FormBtn type="submit" disabled={!formik.isValid || formik.isSubmitting}>
+                  <FormBtn
+                    type="submit"
+                    disabled={!formik.isValid || formik.isSubmitting}
+                    onClick={() => {
+                      formik.handleSubmit();
+                    }}
+                  >
                     {t('Save changes')}
                   </FormBtn>
                 </FormWrap>
@@ -233,3 +278,6 @@ export default function UserForm() {
     </>
   );
 }
+UserForm.propTypes = {
+  callBack: PropTypes.func.isRequired
+};
