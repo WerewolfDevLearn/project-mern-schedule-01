@@ -26,12 +26,6 @@ export default function LoginForm({ onSubmitForm }) {
   const { t } = useTranslation();
 
   const [validateAfterSubmit, setValidateAfterSubmit] = useState(false);
-
-  // const onSubmit = (data, { reset }) => {
-  //   onSubmitForm(data);
-  //   setSubmitting(false);
-  // };
-
   return (
     <Container>
       <Title>{t('Log In')}</Title>
@@ -41,18 +35,20 @@ export default function LoginForm({ onSubmitForm }) {
         initialValues={{ email: '', password: '' }}
         validateOnBlur={false}
         validateOnChange={validateAfterSubmit}
-        onSubmit={(data) => {
-          onSubmitForm(data);
+        validateOnMount={false}
+        onSubmit={async (data) => {
           setValidateAfterSubmit(true);
+          onSubmitForm(data);
+          setValidateAfterSubmit(false);
         }}
       >
         {(formik) => {
-          const { errors, handleSubmit } = formik;
+          const { errors, handleSubmit, submitCount } = formik;
 
           const validateInput = (input) => {
-            if (validateAfterSubmit && errors[input]) {
+            if ((validateAfterSubmit || submitCount > 0) && errors[input]) {
               return 'input-error';
-            } else if (validateAfterSubmit && !errors[input]) {
+            } else if (submitCount > 0 && !errors[input]) {
               return 'input-correct';
             }
             return '';
@@ -106,13 +102,7 @@ export default function LoginForm({ onSubmitForm }) {
                 </Subtitle>
               </InputWrap>
 
-              <Button
-                type="submit"
-                // onClick={() => {
-                //   setValidateAfterSubmit(true);
-                //   handleSubmit();
-                // }}
-              >
+              <Button type="submit" onClick={handleSubmit}>
                 {t('Log in')}
                 <Img src={icon} alt="LogIn SVG" />
               </Button>
