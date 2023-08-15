@@ -40,7 +40,7 @@ export default function DeleteProfileForm({ onClose }) {
                   <XClose width="24" height="24" />
                 </XCloseWrap>
                 <ValidationErrorWrap>
-                  <ValidationError width="200" height="200" />
+                  <ValidationError width="240" height="240" />
                 </ValidationErrorWrap>
                 <Title>Are you sure?</Title>
                 <Description>This action will permanently delete the profile data.</Description>

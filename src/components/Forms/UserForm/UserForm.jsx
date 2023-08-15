@@ -21,6 +21,7 @@ import {
   AvatarImgContainer,
   AvatarImg,
   UserNameTitle,
+  RoleTitle,
   FormInputContainer,
   FormLabelSpan,
   InputField,
@@ -186,7 +187,7 @@ export default function UserForm() {
                       />
                       {!selectedAvatar && (
                         <AvatarImgContainer>
-                          <Avatar width="48px" height="48px" />
+                          {/* <Avatar width="48px" height="48px" /> */}
                         </AvatarImgContainer>
                       )}
                       {selectedAvatar && (
@@ -202,19 +203,13 @@ export default function UserForm() {
                     </label>
                   </AvatarContainer>
                   <UserNameTitle>{user.name}</UserNameTitle>
-                  <h3>{t('User')}</h3>
+                  <RoleTitle>{t('User')}</RoleTitle>
                   <FormInputContainer>
                     <FormikInput
                       label={t('UserName')}
                       type="text"
                       name="name"
                       placeholder={t('Enter your name')}
-                    />
-                    <FormikInput
-                      label={t('Phone')}
-                      type="tel"
-                      name="phone"
-                      placeholder="+380971234567"
                     />
                     <label htmlFor="birthday">
                       <FormLabelSpan>{t('Birthday')}</FormLabelSpan>
@@ -228,25 +223,23 @@ export default function UserForm() {
                       <ErrorMessage name="birthday" component="div" />
                     </label>
                     <FormikInput
-                      label={t('Skype')}
-                      type="text"
-                      name="skype"
-                      placeholder={t('Add a skype number')}
-                    />
-                    <FormikInput
                       label={t('UserEmail')}
                       type="email"
                       name="email"
                       placeholder={t('Enter email')}
                     />
-                    <BtnWrapper>
-                      <ChangePassBtn type="button" onClick={openChangePasswordModal}>
-                        Change password
-                      </ChangePassBtn>
-                      <DeleteProfileBtn type="button" onClick={openDeleteProfileModal}>
-                        Delete profile
-                      </DeleteProfileBtn>
-                    </BtnWrapper>
+                    <FormikInput
+                      label={t('Phone')}
+                      type="tel"
+                      name="phone"
+                      placeholder="+380971234567"
+                    />
+                    <FormikInput
+                      label={t('Skype')}
+                      type="text"
+                      name="skype"
+                      placeholder={t('Add a skype number')}
+                    />
                     {showChangePasswordModal && (
                       <Modal isOpen={showChangePasswordModal} onClose={closeChangePasswordModal}>
                         {<ChangePasswordForm onClose={closeChangePasswordModal} />}
@@ -261,6 +254,14 @@ export default function UserForm() {
                   <FormBtn type="submit" disabled={!formik.isValid || formik.isSubmitting}>
                     {t('Save changes')}
                   </FormBtn>
+                  <BtnWrapper>
+                    <ChangePassBtn type="button" onClick={openChangePasswordModal}>
+                      Change password
+                    </ChangePassBtn>
+                    <DeleteProfileBtn type="button" onClick={openDeleteProfileModal}>
+                      Delete profile
+                    </DeleteProfileBtn>
+                  </BtnWrapper>
                 </FormWrap>
               </Form>
             </FormContainer>

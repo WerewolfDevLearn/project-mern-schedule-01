@@ -6,7 +6,7 @@ export const MainLayOutContainer = styled.div`
   /* background-color: ${({ theme }) => theme.colors.backgroundAuth}; */
   background-color: ${backgroundColor.grey};
   padding-left: 0;
-  padding-right: 20px;
+  /* padding-right: 20px; */
   height: 100vh;
 `;
 export const MainLayOutSubContainer = styled.div`

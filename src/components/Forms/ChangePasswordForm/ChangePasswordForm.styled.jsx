@@ -9,9 +9,9 @@ export const Modal = styled.div`
 
   width: 550px;
   height: 550px;
-  border: 5px solid darkgrey;
-  border-radius: 7px;
+  border-radius: 16px;
   background-color: #edf0f8;
+  box-shadow: rgb(0, 0, 0) 0px 0px 80px;
 `;
 
 export const XCloseWrap = styled.button`
