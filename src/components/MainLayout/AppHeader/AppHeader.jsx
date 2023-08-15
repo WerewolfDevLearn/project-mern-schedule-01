@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom';
 
 import AddFeedbackBtn from '../AddFeedbackBtn/AddFeedbackBtn';
 import ThemeToggler from '../ThemeToggler/ThemeToggler';
-import { Modal } from '../../shared/Modal/Modal';
+import Modal from '../../shared/Modal/Modal';
 import FeedbackForm from '../../Forms/FeedbackForm/FeedbackForm';
 
 import UserInfo from '../UserInfo/UserInfo';
