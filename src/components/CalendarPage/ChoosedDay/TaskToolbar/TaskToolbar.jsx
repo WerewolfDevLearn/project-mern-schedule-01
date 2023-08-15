@@ -2,7 +2,9 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Popover } from 'react-tiny-popover';
 
-import { ArrowCircleBrokenRight, Pencil, Trash } from '../../../shared/Icons';
+import { useDeleteTasksMutation } from 'src/redux/tasks/tasksApi';
+
+import { ArrowCircleBrokenRight, Pencil, Trash } from 'src/components/shared/Icons';
 
 import {
   TaskToolbarStyles,
@@ -13,7 +15,9 @@ import {
 
 export default function TaskToolbar({ task, openModal }) {
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
-  
+
+  const [deleteTask, deleteResult] = useDeleteTasksMutation();
+
   return (
     <TaskToolbarStyles>
       <Popover

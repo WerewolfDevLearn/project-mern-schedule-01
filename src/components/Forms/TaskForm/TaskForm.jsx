@@ -5,7 +5,10 @@ import { useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { useCreateTasksMutation, useUpdateTasksMutation } from '../../../redux/tasks/tasksApi';
+import {
+  useCreateTasksMutation,
+  useUpdateTasksMutation
+} from 'src/redux/tasks/tasksApi';
 
 import {
   ButtonAction,
@@ -62,16 +65,18 @@ export const TaskForm = ({ onClose, action, column, taskToEdit }) => {
     ({ _id, title, start, end, priority, date } = taskToEdit);
   }
 
-  const dispatch = useDispatch();
+  const [createTask, ctreateResult] = useCreateTasksMutation();
+  const [updateTask, updateResult] = useUpdateTasksMutation();
+
   const { currentDay } = useParams();
 
   const handleSubmit = (values, actions) => {
     if (action === 'add') {
-      dispatch(useCreateTasksMutation(values));
+      // createTask;
     }
 
     if (action === 'edit') {
-      dispatch(useUpdateTasksMutation({ _id, ...values }));
+      // updateTask;
     }
 
     actions.resetForm();
