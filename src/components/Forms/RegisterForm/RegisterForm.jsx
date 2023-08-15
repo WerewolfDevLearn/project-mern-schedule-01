@@ -22,16 +22,10 @@ import {
   SvgIcon
 } from './RegisterForm.styled';
 
-export default function RegisterForm({ onSubmitForm }) {
+export default function RegisterForm({ callBack }) {
   const { t } = useTranslation();
 
   const [validateAfterSubmit, setValidateAfterSubmit] = useState(false);
-
-  const onSubmit = (data, { resetForm, setSubmitting }) => {
-    onSubmitForm(data);
-    setSubmitting(false);
-    resetForm();
-  };
 
   return (
     <Container>
@@ -43,22 +37,26 @@ export default function RegisterForm({ onSubmitForm }) {
         validateOnBlur={false}
         validateOnChange={validateAfterSubmit}
         validateOnMount={false}
-        onSubmit={onSubmit}
+        onSubmit={(data) => {
+          setValidateAfterSubmit(true);
+          callBack(data);
+          setValidateAfterSubmit(false);
+        }}
       >
         {(formik) => {
-          const { errors, handleSubmit, isValid, isSubmitting } = formik;
+          const { errors, handleSubmit, submitCount } = formik;
 
           const validateInput = (input) => {
-            if (validateAfterSubmit && errors[input]) {
+            if ((validateAfterSubmit || submitCount > 0) && errors[input]) {
               return 'input-error';
-            } else if (validateAfterSubmit && !errors[input]) {
+            } else if (submitCount > 0 && !errors[input]) {
               return 'input-correct';
             }
             return '';
           };
 
           return (
-            <FormElement autoComplete="off" onSubmit={onSubmit}>
+            <FormElement autoComplete="off">
               <InputWrap>
                 <Subtitle htmlFor="name" className={validateInput('name')}>
                   {t('Name')}
@@ -126,14 +124,7 @@ export default function RegisterForm({ onSubmitForm }) {
                 </Subtitle>
               </InputWrap>
 
-              <Button
-                type="submit"
-                disabled={!isValid || isSubmitting}
-                onClick={() => {
-                  setValidateAfterSubmit(true);
-                  handleSubmit();
-                }}
-              >
+              <Button type="submit" onClick={handleSubmit}>
                 {t('Sign Up')} <Img src={icon} alt="LogIn SVG" />
               </Button>
             </FormElement>
@@ -145,5 +136,5 @@ export default function RegisterForm({ onSubmitForm }) {
 }
 
 RegisterForm.propTypes = {
-  onSubmitForm: PropTypes.func.isRequired
+  callBack: PropTypes.func.isRequired
 };

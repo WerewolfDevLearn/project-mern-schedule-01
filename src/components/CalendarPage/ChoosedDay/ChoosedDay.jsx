@@ -1,5 +1,11 @@
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
+import {
+  useGetTasksQuery,
+  useCreateTasksMutation,
+  useDeleteTasksMutation,
+  useUpdateTasksMutation
+} from 'src/redux/tasks/tasksApi';
 
 import TasksColumnsList from './TasksColumnsList/TasksColumnsList';
 import DayCalendarHead from './DayCalendarHead/DayCalendarHead';
@@ -106,6 +112,13 @@ const tasksList = [
 
 export default function ChoosedDay({ arg }) {
   const { currentDate } = useParams();
+  const year = currentDate.split('-')[0];
+  const month = currentDate.split('-')[1];
+  const data = { year, month };
+  const { data: task, isFetching, isLoading } = useGetTasksQuery(data);
+  const [createTask, ctreateResult] = useCreateTasksMutation();
+  const [deleteTask, deleteResult] = useDeleteTasksMutation();
+  const [updateTask, updateResult] = useUpdateTasksMutation();
 
   return (
     <ChoosedDayStyles>

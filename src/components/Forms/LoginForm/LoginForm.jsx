@@ -26,13 +26,6 @@ export default function LoginForm({ onSubmitForm }) {
   const { t } = useTranslation();
 
   const [validateAfterSubmit, setValidateAfterSubmit] = useState(false);
-
-  const onSubmit = (data, { resetForm, setSubmitting }) => {
-    onSubmitForm(data);
-    setSubmitting(false);
-    resetForm();
-  };
-
   return (
     <Container>
       <Title>{t('Log In')}</Title>
@@ -43,22 +36,26 @@ export default function LoginForm({ onSubmitForm }) {
         validateOnBlur={false}
         validateOnChange={validateAfterSubmit}
         validateOnMount={false}
-        onSubmit={onSubmit}
+        onSubmit={async (data) => {
+          setValidateAfterSubmit(true);
+          onSubmitForm(data);
+          setValidateAfterSubmit(false);
+        }}
       >
         {(formik) => {
-          const { errors, handleSubmit, isValid, isSubmitting } = formik;
+          const { errors, handleSubmit, submitCount } = formik;
 
           const validateInput = (input) => {
-            if (validateAfterSubmit && errors[input]) {
+            if ((validateAfterSubmit || submitCount > 0) && errors[input]) {
               return 'input-error';
-            } else if (validateAfterSubmit && !errors[input]) {
+            } else if (submitCount > 0 && !errors[input]) {
               return 'input-correct';
             }
             return '';
           };
 
           return (
-            <FormElement autoComplete="off" onSubmit={onSubmit}>
+            <FormElement autoComplete="off">
               <InputWrap>
                 <Subtitle htmlFor="email" className={validateInput('email')}>
                   {t('Email')}
@@ -105,14 +102,7 @@ export default function LoginForm({ onSubmitForm }) {
                 </Subtitle>
               </InputWrap>
 
-              <Button
-                type="submit"
-                disabled={!isValid || isSubmitting}
-                onClick={() => {
-                  setValidateAfterSubmit(true);
-                  handleSubmit();
-                }}
-              >
+              <Button type="submit" onClick={handleSubmit}>
                 {t('Log in')}
                 <Img src={icon} alt="LogIn SVG" />
               </Button>
