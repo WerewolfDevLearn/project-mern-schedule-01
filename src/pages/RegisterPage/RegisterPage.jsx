@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+
 import { useState } from 'react';
 import logo from 'src/images/others/desktop/goose-quote1x.png';
 import logo2x from 'src/images/others/desktop/goose-quote2x.png';
@@ -14,20 +14,10 @@ import { Container, ContentWrap, Wrap, StyledImg } from './RegisterPage.styled';
 
 export default function RegisterPage() {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const currentDay = new Date();
-  const [emailSend, setEmailSend] = useState(false);
-  const error = useError();
-  const isLoading = useisLoading();
 
   const callBack = (data) => {
     dispatch(register(data));
-    setEmailSend(true);
   };
-
-  if (!error && !isLoading && emailSend) {
-    navigate(`/calendar/month/${currentDay}`);
-  }
 
   return (
     <Container>

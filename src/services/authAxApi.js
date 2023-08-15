@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://project-mern-schedule-03.onrender.com/api';
+axios.defaults.baseURL = 'http://localhost:3001/api';
 
 export async function userRegister(userData) {
   const response = await axios.post('/users/register', userData);
