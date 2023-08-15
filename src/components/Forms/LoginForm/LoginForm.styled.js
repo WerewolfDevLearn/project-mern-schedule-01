@@ -206,6 +206,9 @@ export const Button = styled.button`
   &:focus {
     transform: scale(1.1);
   }
+  &.disabled {
+    background: ${themes.colors.black};
+  }
 `;
 
 export const Img = styled.img`
