@@ -48,6 +48,7 @@ export default function RegisterForm({ callBack }) {
 
           const validateInput = (input) => {
             if ((validateAfterSubmit || submitCount > 0) && errors[input]) {
+              setValidateAfterSubmit(true);
               return 'input-error';
             } else if (submitCount > 0 && !errors[input]) {
               return 'input-correct';
@@ -68,7 +69,7 @@ export default function RegisterForm({ callBack }) {
                     className={validateInput('name')}
                   />
                   {validateInput('name') === 'input-correct' && (
-                    <TextCorrect>This is an CORRECT name</TextCorrect>
+                    <TextCorrect>{t('Correct name')}</TextCorrect>
                   )}
                   <ErrorText name="name" component="p" />
                   {validateInput('name') === 'input-correct' && (
@@ -89,7 +90,7 @@ export default function RegisterForm({ callBack }) {
                     className={validateInput('email')}
                   />
                   {validateInput('email') === 'input-correct' && (
-                    <TextCorrect>This is an CORRECT email</TextCorrect>
+                    <TextCorrect>{t('Correct email')}</TextCorrect>
                   )}
                   <ErrorText name="email" component="p" />
 
@@ -111,7 +112,7 @@ export default function RegisterForm({ callBack }) {
                     className={validateInput('password')}
                   />
                   {validateInput('password') === 'input-correct' && (
-                    <TextCorrect>This is an CORRECT password</TextCorrect>
+                    <TextCorrect>{t('Correct password')}</TextCorrect>
                   )}
                   <ErrorText name="password" component="p" />
 

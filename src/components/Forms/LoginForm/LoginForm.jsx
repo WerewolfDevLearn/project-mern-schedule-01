@@ -47,6 +47,7 @@ export default function LoginForm({ onSubmitForm }) {
 
           const validateInput = (input) => {
             if ((validateAfterSubmit || submitCount > 0) && errors[input]) {
+              setValidateAfterSubmit(true);
               return 'input-error';
             } else if (submitCount > 0 && !errors[input]) {
               return 'input-correct';
@@ -67,7 +68,7 @@ export default function LoginForm({ onSubmitForm }) {
                     className={validateInput('email')}
                   />
                   {validateInput('email') === 'input-correct' && (
-                    <TextCorrect>This is an CORRECT email</TextCorrect>
+                    <TextCorrect>{t('Correct email')}</TextCorrect>
                   )}
                   <ErrorText name="email" component="p" />
 
@@ -88,9 +89,6 @@ export default function LoginForm({ onSubmitForm }) {
                     id="login_password"
                     className={validateInput('password')}
                   />
-                  {validateInput('password') === 'input-correct' && (
-                    <TextCorrect>This is an CORRECT password</TextCorrect>
-                  )}
                   <ErrorText name="password" component="p" />
 
                   {validateInput('password') === 'input-correct' && (
