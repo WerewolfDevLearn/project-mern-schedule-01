@@ -1,19 +1,27 @@
-import PropTypes from 'prop-types';
+import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
 import PeriodPaginator from '../PeriodPaginator/PeriodPaginator';
-import PeriodTypeSelect from '../PeriodTypeSelect/PeriodTypeSelect';
+import { PeriodTypeSelect } from '../PeriodTypeSelect/PeriodTypeSelect';
+import { ToolbarWrapper } from './CalendarToolbar.styled';
+export const CalendarToolbar = ({ today, prevHandler, nextHandler }) => {
+  const [type, setType] = useState('month');
 
-import { CalendarToolbarStyles } from './CalendarToolbar.styled';
+  const location = useLocation();
 
-export default function CalendarToolbar({ children }) {
+  const pathname = location.pathname.slice(0, -11);
+
+  useEffect(() => {
+    if (pathname.endsWith('/calendar/day')) {
+      setType('day');
+      return;
+    }
+    setType('month');
+  }, [pathname]);
   return (
-    <CalendarToolbarStyles>
-      <PeriodPaginator />
-      <PeriodTypeSelect />
-      {children}
-    </CalendarToolbarStyles>
+    <ToolbarWrapper>
+      <PeriodPaginator prevHandler={prevHandler} nextHandler={nextHandler} type={type} />
+      <PeriodTypeSelect today={today} onChangeType={setType} />
+    </ToolbarWrapper>
   );
-}
-CalendarToolbar.propTypes = {
-  children: PropTypes.node.isRequired
 };
