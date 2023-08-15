@@ -13,6 +13,7 @@ import {
   Title,
   FormElement,
   InputWrap,
+  InputContainer,
   Subtitle,
   Input,
   ErrorText,
@@ -47,6 +48,7 @@ export default function LoginForm({ onSubmitForm }) {
 
           const validateInput = (input) => {
             if ((validateAfterSubmit || submitCount > 0) && errors[input]) {
+              setValidateAfterSubmit(true);
               return 'input-error';
             } else if (submitCount > 0 && !errors[input]) {
               return 'input-correct';
@@ -59,46 +61,47 @@ export default function LoginForm({ onSubmitForm }) {
               <InputWrap>
                 <Subtitle htmlFor="email" className={validateInput('email')}>
                   {t('Email')}
-                  <Input
-                    type="email"
-                    name="email"
-                    placeholder={t('nadiia@gmail.com')}
-                    id="login_email"
-                    className={validateInput('email')}
-                  />
-                  {validateInput('email') === 'input-correct' && (
-                    <TextCorrect>This is an CORRECT email</TextCorrect>
-                  )}
-                  <ErrorText name="email" component="p" />
+                  <InputContainer>
+                    <Input
+                      type="email"
+                      name="email"
+                      placeholder={t('nadiia@gmail.com')}
+                      id="login_email"
+                      className={validateInput('email')}
+                    />
+                    {validateInput('email') === 'input-correct' && (
+                      <SvgIcon src={iconSuccess} alt="Success Icon" />
+                    )}
+                    {validateInput('email') === 'input-error' && (
+                      <SvgIcon src={iconError} alt="Error Icon" />
+                    )}
+                  </InputContainer>
 
                   {validateInput('email') === 'input-correct' && (
-                    <SvgIcon src={iconSuccess} alt="Success Icon" />
+                    <TextCorrect>{t('Correct email')}</TextCorrect>
                   )}
-                  {validateInput('email') === 'input-error' && (
-                    <SvgIcon src={iconError} alt="Error Icon" />
-                  )}
+                  <ErrorText name="email" component="p" />
                 </Subtitle>
 
                 <Subtitle htmlFor="password" className={validateInput('password')}>
                   {t('Password')}
-                  <Input
-                    type="password"
-                    name="password"
-                    placeholder="●●●●●●●"
-                    id="login_password"
-                    className={validateInput('password')}
-                  />
-                  {validateInput('password') === 'input-correct' && (
-                    <TextCorrect>This is an CORRECT password</TextCorrect>
-                  )}
-                  <ErrorText name="password" component="p" />
+                  <InputContainer>
+                    <Input
+                      type="password"
+                      name="password"
+                      placeholder="●●●●●●●"
+                      id="login_password"
+                      className={validateInput('password')}
+                    />
+                    {validateInput('password') === 'input-correct' && (
+                      <SvgIcon src={iconSuccess} alt="Success Icon" />
+                    )}
+                    {validateInput('password') === 'input-error' && (
+                      <SvgIcon src={iconError} alt="Error Icon" />
+                    )}
+                  </InputContainer>
 
-                  {validateInput('password') === 'input-correct' && (
-                    <SvgIcon src={iconSuccess} alt="Success Icon" />
-                  )}
-                  {validateInput('password') === 'input-error' && (
-                    <SvgIcon src={iconError} alt="Error Icon" />
-                  )}
+                  <ErrorText name="password" component="p" />
                 </Subtitle>
               </InputWrap>
 
