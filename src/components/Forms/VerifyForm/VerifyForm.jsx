@@ -16,7 +16,6 @@ import {
 
 export default function VerifyForm({ onSubmitForm }) {
   const onSubmit = (data) => {
-    console.log(data);
     onSubmitForm(data);
   };
 

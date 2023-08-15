@@ -6,7 +6,7 @@ import {
   userLogOut,
   getCurrentUser,
   verifyByCode,
-  sendVEmail,
+  // sendVEmail,
   token,
   updateUser
 } from 'src/services/authAxApi';
