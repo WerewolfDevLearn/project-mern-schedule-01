@@ -27,10 +27,6 @@ export default function RegisterForm({ callBack }) {
 
   const [validateAfterSubmit, setValidateAfterSubmit] = useState(false);
 
-  const onSubmit = (data, { setSubmitting, resetForm }) => {
-    callBack(data);
-  };
-
   return (
     <Container>
       <Title>{t('Sign Up')}</Title>
@@ -41,11 +37,12 @@ export default function RegisterForm({ callBack }) {
         validateOnBlur={false}
         validateOnChange={validateAfterSubmit}
         validateOnMount={false}
-        // setSubmitting={false}
-        onSubmit={onSubmit}
+        onSubmit={(data) => {
+          callBack(data);
+        }}
       >
         {(formik) => {
-          const { errors, handleSubmit, isValid, isSubmitting } = formik;
+          const { errors, handleSubmit } = formik;
 
           const validateInput = (input) => {
             if (validateAfterSubmit && errors[input]) {
@@ -57,7 +54,7 @@ export default function RegisterForm({ callBack }) {
           };
 
           return (
-            <FormElement autoComplete="off" onSubmit={onSubmit}>
+            <FormElement autoComplete="off">
               <InputWrap>
                 <Subtitle htmlFor="name" className={validateInput('name')}>
                   {t('Name')}
@@ -127,10 +124,9 @@ export default function RegisterForm({ callBack }) {
 
               <Button
                 type="submit"
-                disabled={!isValid || isSubmitting}
                 onClick={() => {
                   setValidateAfterSubmit(true);
-                  handleSubmit();
+                  // handleSubmit();
                 }}
               >
                 {t('Sign Up')} <Img src={icon} alt="LogIn SVG" />

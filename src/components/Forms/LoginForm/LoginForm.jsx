@@ -27,9 +27,10 @@ export default function LoginForm({ onSubmitForm }) {
 
   const [validateAfterSubmit, setValidateAfterSubmit] = useState(false);
 
-  const onSubmit = (data) => {
-    onSubmitForm(data);
-  };
+  // const onSubmit = (data, { reset }) => {
+  //   onSubmitForm(data);
+  //   setSubmitting(false);
+  // };
 
   return (
     <Container>
@@ -40,11 +41,13 @@ export default function LoginForm({ onSubmitForm }) {
         initialValues={{ email: '', password: '' }}
         validateOnBlur={false}
         validateOnChange={validateAfterSubmit}
-        validateOnMount={false}
-        onSubmit={onSubmit}
+        onSubmit={(data) => {
+          onSubmitForm(data);
+          setValidateAfterSubmit(true);
+        }}
       >
         {(formik) => {
-          const { errors, handleSubmit, isValid, isSubmitting } = formik;
+          const { errors, handleSubmit } = formik;
 
           const validateInput = (input) => {
             if (validateAfterSubmit && errors[input]) {
@@ -56,7 +59,7 @@ export default function LoginForm({ onSubmitForm }) {
           };
 
           return (
-            <FormElement autoComplete="off" onSubmit={onSubmit}>
+            <FormElement autoComplete="off">
               <InputWrap>
                 <Subtitle htmlFor="email" className={validateInput('email')}>
                   {t('Email')}
@@ -105,11 +108,10 @@ export default function LoginForm({ onSubmitForm }) {
 
               <Button
                 type="submit"
-                disabled={!isValid || isSubmitting}
-                onClick={() => {
-                  setValidateAfterSubmit(true);
-                  handleSubmit();
-                }}
+                // onClick={() => {
+                //   setValidateAfterSubmit(true);
+                //   handleSubmit();
+                // }}
               >
                 {t('Log in')}
                 <Img src={icon} alt="LogIn SVG" />
