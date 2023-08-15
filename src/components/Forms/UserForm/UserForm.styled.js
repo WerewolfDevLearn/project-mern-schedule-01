@@ -159,12 +159,15 @@ export const FormInputContainer = styled.div`
 
 export const FormLabelSpan = styled.span`
   display: flex;
-  margin-top: 16px;
   margin-bottom: 8px;
   font-size: 12px;
   line-height: 1.17;
   letter-spacing: -0.02em;
   color: #111111;
+
+  &:not(:first-child) {
+    margin-top: 16px;
+  }
 `;
 
 export const InputField = styled(Field)`
@@ -256,7 +259,7 @@ export const FormBtn = styled.button`
   font-weight: 600;
   line-height: 1.3;
   letter-spacing: -0.02em;
-  margin-top: 40px;
+  margin-top: 32px;
   margin-bottom: 60px;
   border-radius: 16px;
   color: white; //  color: ${({ theme }) => theme.colors.white};
@@ -332,7 +335,6 @@ export const DeleteProfileBtn = styled.button`
   font-weight: 600;
   line-height: 1.29;
   letter-spacing: -0.02em;
-  margin-bottom: 10px;
   border-radius: 16px;
   color: white; //  color: ${({ theme }) => theme.colors.white};
   background-color: #fad91b;
