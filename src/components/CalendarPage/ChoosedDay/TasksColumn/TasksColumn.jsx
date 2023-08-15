@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import Modal from 'src/components/shared/Modal/Modal';
 
 import ColumnHeadBar from '../ColumnHeadBar/ColumnHeadBar';
 import ColumnTasksList from '../ColumnTasksList/ColumnTasksList';
 import AddTaskBtn from '../AddTaskBtn/AddTaskBtn';
-import { Modal } from '../../../shared/Modal/Modal';
+
 import { TaskForm } from '../../../Forms/TaskForm/TaskForm';
 
 import { TasksColumnStyles } from './TasksColumn.styled';

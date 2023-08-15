@@ -10,7 +10,7 @@ import UserMenuBTN from './UserMenuBTN/UserMenuBTN';
 
 import { Header, LoactionSign } from './Header.styled';
 
-export default function AppHeader({ callBack }) {
+export default function AppHeader({ callBack, onGiveFeedBack }) {
   const location = useLocation();
   const activePage = location.pathname.split('/')[1];
   const headerTitle = {
@@ -22,7 +22,7 @@ export default function AppHeader({ callBack }) {
     <Header>
       <UserMenuBTN callBack={callBack} />
       <LoactionSign>{headerTitle[activePage]}</LoactionSign>
-      <AddFeedbackBtn />
+      <AddFeedbackBtn onGiveFeedBack={onGiveFeedBack} />
       <ThemeToggler />
       <UserInfo />
     </Header>
@@ -30,5 +30,6 @@ export default function AppHeader({ callBack }) {
 }
 
 AppHeader.propTypes = {
-  callBack: PropTypes.func.isRequired
+  callBack: PropTypes.func.isRequired,
+  onGiveFeedBack: PropTypes.func.isRequired
 };

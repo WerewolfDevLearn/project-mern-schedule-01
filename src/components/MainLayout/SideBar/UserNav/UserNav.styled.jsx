@@ -6,14 +6,16 @@ import { themes } from 'src/styles/variables/themes';
 export const NavUl = styled.ul`
   display: flex;
   flex-direction: column;
+  gap: 18px;
   margin-bottom: 424px;
   @media screen and (${themes.breakpoints.m} < width) {
     margin-bottom: 439px;
+    gap: 16px;
   }
 `;
 
 export const NavLinkStyled = styled(NavLink)`
-  color: ${({ theme }) => theme.colors.labelInForm};
+  color: ${({ theme }) => theme.colors.goose};
   background-color: ${({ theme }) => theme.colors.white};
   display: flex;
   align-items: center;
