@@ -60,8 +60,8 @@ export const Text = styled.p`
   font-weight: 500;
   line-height: 18px;
 
-  color: ${({ theme }) => theme.colors.borderInputUserForm};
-  
+  color: ${({ theme }) => theme.colors.textAndIconTodo};
+
   @media screen and (min-width: 768px) {
     width: 387px;
   }
