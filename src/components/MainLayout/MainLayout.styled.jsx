@@ -15,10 +15,8 @@ export const MainLayOutSubContainer = styled.div`
 `;
 
 export const ChildrenContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  @media screen and (${themes.breakpoints.m} < width <=${themes.breakpoints.l}) {
+
+  @media screen and (${themes.breakpoints.m} < width) {
     margin-left: 321px;
     padding-left: 32px;
   }

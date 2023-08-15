@@ -33,45 +33,45 @@ import {
 } from './FeedbackForm.styled';
 
 export default function FeedbackForm({ onClose, action = 'add', reviewToEdit }) {
+  const [createReview, createResult] = useCreateReviewsMutation();
+  const [deleteReview, deleteResult] = useDeleteReviewsMutation();
+  const [updateReview, updateResult] = useUpdateReviewsMutation();
   const [selectAction, setSelectAction] = useState(action);
   const { t } = useTranslation();
 
-  let _id, rating, reviewText;
+  let _id, rating, comment;
 
   if (typeof reviewToEdit === 'object' && reviewToEdit !== null && true) {
-    ({ _id, rating, reviewText } = reviewToEdit);
+    ({ _id, rating, comment } = reviewToEdit);
   }
 
-  const dispatch = useDispatch();
-
   const handleSubmit = (values, actions) => {
-    // if (selectAction === 'add') {
-    //   dispatch(useCreateReviewsMutation(values));
-    // }
+    if (selectAction === 'add') {
+      createReview(values);
+    }
 
-    // if (selectAction === 'edit') {
-    //   dispatch(useUpdateReviewsMutation({ _id, ...values }));
-    // }
-
-    console.log(values);
+    if (selectAction === 'edit') {
+      updateReview({ id: _id, ...values });
+    }
 
     actions.resetForm();
     onClose();
   };
 
   const removeReview = () => {
-    dispatch(useDeleteReviewsMutation(_id));
+    deleteReview(_id);
+    onClose();
   };
 
   const validationSchema = Yup.object({
     rating: Yup.number().required('Select a grade'),
-    reviewText: Yup.string('Review must be a string').required('Review is required')
+    comment: Yup.string('Review must be a string').required('Review is required')
   });
 
   const formik = useFormik({
     initialValues: {
       rating: ((selectAction === 'edit' || selectAction === 'view') && rating) || 0,
-      reviewText: ((selectAction === 'edit' || selectAction === 'view') && reviewText) || ''
+      comment: ((selectAction === 'edit' || selectAction === 'view') && comment) || ''
     },
     validationSchema,
     onSubmit: handleSubmit
@@ -94,7 +94,7 @@ export default function FeedbackForm({ onClose, action = 'add', reviewToEdit }) 
             <ErrorMessage name="rating" component="div" />
           </Label>
 
-          <Label for="reviewText">
+          <Label for="comment">
             <LabelInner>
               {t('Review')}
               {selectAction !== 'add' && (
@@ -109,15 +109,15 @@ export default function FeedbackForm({ onClose, action = 'add', reviewToEdit }) 
               )}
             </LabelInner>
             <InputReview
-              name="reviewText"
+              name="comment"
               as="textarea"
               disabled={selectAction === 'view'}
-              placeholder="Enter text"
+              placeholder="Enter comment"
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              value={formik.values.reviewText}
+              value={formik.values.comment}
             />
-            <ErrorMessage name="reviewText" component="div" />
+            <ErrorMessage name="comment" component="div" />
           </Label>
 
           {(selectAction === 'add' || selectAction === 'edit') && (
@@ -144,6 +144,6 @@ FeedbackForm.propTypes = {
   reviewToEdit: PropTypes.shape({
     _id: PropTypes.string,
     rating: PropTypes.number,
-    reviewText: PropTypes.string
+    comment: PropTypes.string
   })
 };

@@ -2,6 +2,8 @@ import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
+import { useGetReviewOwnQuery } from 'src/redux/reviews/reviewsApi';
+
 import AddFeedbackBtn from '../AddFeedbackBtn/AddFeedbackBtn';
 import ThemeToggler from '../ThemeToggler/ThemeToggler';
 import Modal from '../../shared/Modal/Modal';
@@ -14,6 +16,16 @@ import UserMenuBTN from './UserMenuBTN/UserMenuBTN';
 import { Header, LoactionSign } from './Header.styled';
 
 export default function AppHeader({ callBack }) {
+  let action = 'add';
+  const { data: reviews, isFetching, isLoading } = useGetReviewOwnQuery();
+  if (!isLoading) {
+    console.log(reviews);
+
+    if (reviews.length) {
+      action = 'view';
+    }
+  }
+
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const location = useLocation();
   const activePage = location.pathname.split('/')[1];
@@ -40,11 +52,7 @@ export default function AppHeader({ callBack }) {
       <UserInfo />
       {modalIsOpen && (
         <Modal onClose={closeModal}>
-          <FeedbackForm
-            onClose={closeModal}
-            action="view"
-            reviewToEdit={{ rating: 4, reviewText: '🐹' }}
-          />
+          <FeedbackForm onClose={closeModal} action={action} reviewToEdit={reviews[0]} />
         </Modal>
       )}
     </Header>
