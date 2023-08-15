@@ -16,7 +16,7 @@ export const FormContainer = styled.div`
     padding: 40px 175px 40px 175px;
   }
 
-  @media screen and (${themes.breakpoints.l} > width {
+  @media screen and (${themes.breakpoints.l} < width {
     padding: 60px 165px 60px 164px;
   }
 `;
@@ -61,7 +61,7 @@ export const AvatarAddIcon = styled.div`
     
   }
   
-  @media screen and (${themes.breakpoints.l} > width {
+  @media screen and (${themes.breakpoints.l} < width {
     width: 24px;
     height: 24px;
     
@@ -87,7 +87,7 @@ border-radius: 50%;
     
   }
 
-  @media screen and (${themes.breakpoints.l} > width {
+  @media screen and (${themes.breakpoints.l} < width {
     width: 124px;
     height: 124px;
   }
@@ -107,7 +107,7 @@ object-fit: cover;
     
   }
 
-  @media screen and (${themes.breakpoints.l} > width {
+  @media screen and (${themes.breakpoints.l} < width {
     width: 124px;
     height: 124px;
   }
@@ -133,7 +133,7 @@ color: #343434;
     
   }
 
-  @media screen and (${themes.breakpoints.l} > width {
+  @media screen and (${themes.breakpoints.l} < width {
     
   }
 `;
@@ -146,7 +146,7 @@ export const FormInputContainer = styled.div`
     
   }
 
-  @media screen and (${themes.breakpoints.l} > width {
+  @media screen and (${themes.breakpoints.l} < width {
     /* display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -190,7 +190,7 @@ margin-bottom: 8px;
    
   }
 
-  @media screen and (${themes.breakpoints.l} > width {
+  @media screen and (${themes.breakpoints.l} < width {
    
     width: 354px;
     height: 46px;
@@ -223,7 +223,7 @@ color: #111111;
    
   }
 
-  @media screen and (${themes.breakpoints.l} > width {
+  @media screen and (${themes.breakpoints.l} < width {
   width: 354px;
   height: 46px;
   border: 1px solid rgba(17, 17, 17, 15%);
