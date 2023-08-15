@@ -118,5 +118,10 @@
   "Tasks": "Tasks",
 
   "404": "We’re sorry, the page you requested could not be found. Please go back to the homepage.",
-  "BackHome": "Back to home"
+  "BackHome": "Back to home",
+  "Rating": "Rating",
+  "Review": "Review",
+  "Save": "Save",
+  "Edit": "Edit",
+  "Cancel": "Cancel"
 }
