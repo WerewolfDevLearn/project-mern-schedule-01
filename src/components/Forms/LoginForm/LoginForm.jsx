@@ -26,12 +26,6 @@ export default function LoginForm({ onSubmitForm }) {
   const { t } = useTranslation();
 
   const [validateAfterSubmit, setValidateAfterSubmit] = useState(false);
-
-  // const onSubmit = (data, { reset }) => {
-  //   onSubmitForm(data);
-  //   setSubmitting(false);
-  // };
-
   return (
     <Container>
       <Title>{t('Log In')}</Title>
