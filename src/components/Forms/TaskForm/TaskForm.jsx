@@ -65,11 +65,11 @@ export const TaskForm = ({ onClose, action, column, taskToEdit }) => {
 
   const handleSubmit = (values, actions) => {
     if (action === 'add') {
-      dispatch(useCreateTasksMutation(values));
+      // dispatch(useCreateTasksMutation(values));
     }
 
     if (action === 'edit') {
-      dispatch(useUpdateTasksMutation({ _id, ...values }));
+      // dispatch(useUpdateTasksMutation({ _id, ...values }));
     }
 
     actions.resetForm();

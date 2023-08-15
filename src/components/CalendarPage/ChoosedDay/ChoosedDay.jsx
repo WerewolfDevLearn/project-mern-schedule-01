@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
+import { useUser } from 'src/redux/selectors';
 import {
   useGetTasksQuery,
   useCreateTasksMutation,
@@ -97,16 +98,12 @@ const tasksList = [
     updatedAt: '2023-08-09T18:50:03.612+00:00'
   },
   {
-    _id: '64d3dfef877bb30f41b94bef',
     title: 'Team Meeting',
     start: '11:30',
     end: '12:30',
     priority: 'medium',
     date: '2023-08-28',
-    category: 'in-progress',
-    owner: '64d387e745021a7e4d683ba0',
-    createdAt: '2023-08-09T18:50:23.418+00:00',
-    updatedAt: '2023-08-09T18:50:23.418+00:00'
+    category: 'in-progress'
   }
 ];
 
@@ -115,11 +112,20 @@ export default function ChoosedDay({ arg }) {
   const year = currentDate.split('-')[0];
   const month = currentDate.split('-')[1];
   const data = { year, month };
+  // const user = useUser();
   const { data: task, isFetching, isLoading } = useGetTasksQuery(data);
-  const [createTask, ctreateResult] = useCreateTasksMutation();
-  const [deleteTask, deleteResult] = useDeleteTasksMutation();
-  const [updateTask, updateResult] = useUpdateTasksMutation();
-
+  // const [createTask] = useCreateTasksMutation();
+  // createTask({
+  //   title: 'Team Meeting',
+  //   start: '11:30',
+  //   end: '12:30',
+  //   priority: 'medium',
+  //   date: '2023-08-28',
+  //   category: 'in-progress'
+  // });
+  // // const [deleteTask, deleteResult] = useDeleteTasksMutation();
+  // // const [updateTask, updateResult] = useUpdateTasksMutation();
+  // // if (user.token) createTask();
   return (
     <ChoosedDayStyles>
       <DayCalendarHead date={currentDate} />
