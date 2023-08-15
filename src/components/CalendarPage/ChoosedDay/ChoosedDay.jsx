@@ -116,16 +116,12 @@ const tasksList = [
     updatedAt: '2023-08-09T18:50:03.612+00:00'
   },
   {
-    _id: '64d3dfef877bb30f41b94bef',
     title: 'Team Meeting',
     start: '11:30',
     end: '12:30',
     priority: 'medium',
     date: '2023-08-28',
-    category: 'in-progress',
-    owner: '64d387e745021a7e4d683ba0',
-    createdAt: '2023-08-09T18:50:23.418+00:00',
-    updatedAt: '2023-08-09T18:50:23.418+00:00'
+    category: 'in-progress'
   }
 ];
 
