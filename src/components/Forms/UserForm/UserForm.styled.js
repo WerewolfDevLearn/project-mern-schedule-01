@@ -123,7 +123,7 @@ font-size: 12px;
 font-weight: 600;
 line-height: 1.17;
 letter-spacing: -0.02em;
-margin-bottom: 40px;
+margin-bottom: 24px;
 color: #343434;
 
 @media screen and (${themes.breakpoints.s} < width <= ${themes.breakpoints.m}) {
@@ -139,6 +139,7 @@ color: #343434;
 `;
 
 export const FormInputContainer = styled.div`
+
  /* @media screen and (${themes.breakpoints.s} < width <= ${themes.breakpoints.m}) {
   } 
 
@@ -163,11 +164,8 @@ export const FormLabelSpan = styled.span`
   font-size: 12px;
   line-height: 1.17;
   letter-spacing: -0.02em;
+  margin-top: 16px;
   color: #111111;
-
-  &:not(:first-child) {
-    margin-top: 16px;
-  }
 `;
 
 export const InputField = styled(Field)`
@@ -212,6 +210,7 @@ font-weight: 600;
 letter-spacing: -0.02em;
 border: 1px solid rgba(17, 17, 17, 15%);
 border-radius: 8px;
+margin-bottom: 8px;
 padding: 0 18px;
 color: #111111;
 @media screen and (${themes.breakpoints.s} < width <= ${themes.breakpoints.m}) {
