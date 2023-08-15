@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 import { Form as FormikForm, Field, ErrorMessage as FormikErrorMessage } from 'formik';
-import { backgroundColor, colorText } from 'src/styles/variables/Variables';
 
 import { XClose, Plus, Pencil } from '../../shared/Icons';
 
@@ -10,12 +9,10 @@ export const Form = styled(FormikForm)`
   width: 303px;
   max-height: 420px;
   padding: 48px 18px 40px;
-  /* background-color: ${(props) => props.theme.task_modal_bg}; */
-  background-color: ${backgroundColor.white};
+  background: ${({ theme }) => theme.colors.backgroundModalTodo};
 
   border-radius: 8px;
-  /* border: 1px solid ${(props) => props.theme.task_modal_border}; */
-  border: 1px solid ${backgroundColor.grey};
+  border: 1px solid ${({ theme }) => theme.colors.borderModaAddToDo};
   box-shadow: 0px 4px 16px 0px rgba(17, 17, 17, 0.1);
 
   @media (min-width: 768px) {
@@ -29,7 +26,7 @@ export const Label = styled.label`
   flex-direction: column;
   gap: 8px;
 
-  color: ${(props) => props.theme.text_3};
+  color: ${({ theme }) => theme.colors.labelInForm};
   font-size: 12px;
   font-family: Inter;
   font-weight: 500;
@@ -41,12 +38,10 @@ export const InputTitle = styled(Field)`
   height: 42px;
   padding: 12px 14px;
   border-radius: 8px;
-  /* background: ${(props) => props.theme.input_bg}; */
-  border: 1px solid ${(props) => props.theme.input_border};
-  background-color: ${backgroundColor.grey};
-  border-color: transparent;
+  border: 1px solid ${({ theme }) => theme.colors.borderInTextArea};
+  background: ${({ theme }) => theme.colors.backgroundTextArea};
 
-  color: ${(props) => props.theme.text_3};
+  color: ${({ theme }) => theme.colors.textAndIconTodo};
   font-size: 14px;
   font-family: Inter;
   font-weight: 600;
@@ -60,7 +55,7 @@ export const InputTitle = styled(Field)`
 
   &::placeholder {
     opacity: 1;
-    color: ${(props) => props.theme.text_3};
+    color: ${({ theme }) => theme.colors.textAndIconTodo};
     font-size: 14px;
     font-family: Inter;
     font-weight: 600;
@@ -83,13 +78,11 @@ export const InputTime = styled(Field)`
   height: 42px;
   padding: 12px 14px;
   border-radius: 8px;
-  /* background: ${(props) => props.theme.input_bg};
-  border: 1px solid ${(props) => props.theme.input_border}; */
-  background-color: ${backgroundColor.grey};
-  border-color: transparent;
+  border: 1px solid ${({ theme }) => theme.colors.borderInTextArea};
+  background: ${({ theme }) => theme.colors.backgroundTextArea};
   cursor: pointer;
 
-  color: ${(props) => props.theme.text_3};
+  color: ${({ theme }) => theme.colors.textAndIconTodo};
   font-size: 14px;
   font-family: Inter;
   font-weight: 600;
@@ -124,7 +117,7 @@ export const RadioLabel = styled.label`
   align-items: center;
   margin-top: 16px;
 
-  color: ${(props) => props.theme.text_3};
+  color: ${({ theme }) => theme.colors.textAndIconTodo};
   font-size: 12px;
   font-family: Inter;
   font-weight: 600;
@@ -221,10 +214,10 @@ export const ButtonCancel = styled.button`
 
   border-radius: 8px;
   border: none;
-  background: #efefef;
+  background: ${({ theme }) => theme.colors.canceledInTodo};
   cursor: pointer;
 
-  color: #111;
+  color: ${({ theme }) => theme.colors.textCancelBtnIntodo};
   text-align: center;
   font-size: 14px;
   font-family: Inter;
@@ -271,8 +264,7 @@ export const CloseIcon = styled(XClose)`
   height: 24px;
 
   transition: stroke 250ms linear;
-  color: ${colorText.black};
-  /* stroke: ${(props) => props.theme.title}; */
+  color: ${({theme}) => theme.colors.textAndIconTodo};
 
   &:hover,
   &:focus {
@@ -283,9 +275,11 @@ export const CloseIcon = styled(XClose)`
 export const PlusIcon = styled(Plus)`
   width: 24px;
   height: 24px;
+  color: white;
 `;
 
 export const PencilIcon = styled(Pencil)`
   width: 24px;
   height: 24px;
+  color: white;
 `;

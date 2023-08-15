@@ -1,11 +1,6 @@
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
-import {
-  useGetTasksQuery,
-  useCreateTasksMutation,
-  useDeleteTasksMutation,
-  useUpdateTasksMutation
-} from 'src/redux/tasks/tasksApi';
+import { useGetTasksQuery } from 'src/redux/tasks/tasksApi';
 
 import TasksColumnsList from './TasksColumnsList/TasksColumnsList';
 import DayCalendarHead from './DayCalendarHead/DayCalendarHead';
@@ -37,7 +32,7 @@ const tasksList = [
     updatedAt: '2023-08-09T18:49:19.553+00:00'
   },
   {
-    _id: '64d3dfcc877bb30f41b94be9',
+    _id: '64d3dfcc877bb30f41b94be8',
     title: 'Fitness',
     start: '16:00',
     end: '18:30',
@@ -79,6 +74,30 @@ const tasksList = [
     end: '15:30',
     priority: 'low',
     date: '2023-08-15',
+    category: 'in-progress',
+    owner: '64d387e745021a7e4d683ba0',
+    createdAt: '2023-08-09T18:50:03.612+00:00',
+    updatedAt: '2023-08-09T18:50:03.612+00:00'
+  },
+  {
+    _id: '64d3dfdb877bb30f41b94ben',
+    title: 'Swimming-pool',
+    start: '14:00',
+    end: '15:30',
+    priority: 'low',
+    date: '2023-08-15',
+    category: 'to-do',
+    owner: '64d387e745021a7e4d683ba0',
+    createdAt: '2023-08-09T18:50:03.612+00:00',
+    updatedAt: '2023-08-09T18:50:03.612+00:00'
+  },
+  {
+    _id: '64d3dfdb877bb30f41b94be6',
+    title: 'Swimming-pool',
+    start: '14:00',
+    end: '15:30',
+    priority: 'low',
+    date: '2023-08-15',
     category: 'to-do',
     owner: '64d387e745021a7e4d683ba0',
     createdAt: '2023-08-09T18:50:03.612+00:00',
@@ -115,10 +134,9 @@ export default function ChoosedDay({ arg }) {
   const year = currentDate.split('-')[0];
   const month = currentDate.split('-')[1];
   const data = { year, month };
-  const { data: task, isFetching, isLoading } = useGetTasksQuery(data);
-  const [createTask, ctreateResult] = useCreateTasksMutation();
-  const [deleteTask, deleteResult] = useDeleteTasksMutation();
-  const [updateTask, updateResult] = useUpdateTasksMutation();
+  // const { data: tasks, isFetching, isLoading } = useGetTasksQuery(data);
+
+  // console.log(tasks);
 
   return (
     <ChoosedDayStyles>

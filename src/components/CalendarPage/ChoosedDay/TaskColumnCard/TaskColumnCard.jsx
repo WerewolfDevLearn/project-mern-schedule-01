@@ -15,6 +15,7 @@ import {
 
 export default function TaskColumnCard({ task, tasksCount, openModal }) {
   const { title, priority } = task;
+
   return (
     <>
       <TaskColumnCardStyles taskscount={tasksCount}>
