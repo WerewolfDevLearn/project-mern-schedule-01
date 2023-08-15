@@ -5,18 +5,16 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { themes } from 'src/styles/variables/themes';
 
 export const FormContainer = styled.div`
-    padding: 0 18px 40px 18px;
-    background-color: white;
-    border-radius: 16px;
-    position: relative;
-  /* @media screen and (${themes.breakpoints.s} < width <= ${themes.breakpoints.m}) {
-  } */
+  padding: 0 18px 40px 18px;
+  background-color: white;
+  border-radius: 16px;
+  position: relative;
 
-  @media screen and (${themes.breakpoints.m} < width <= ${themes.breakpoints.l}) {
+  @media screen and (${themes.breakpoints.m} <= width < ${themes.breakpoints.l}) {
     padding: 40px 175px 40px 175px;
   }
 
-  @media screen and (${themes.breakpoints.l} < width {
+  @media screen and (${themes.breakpoints.l} <= width) {
     padding: 60px 165px 60px 164px;
   }
 `;
@@ -28,12 +26,16 @@ export const FormWrap = styled.div`
 `;
 
 export const AvatarContainer = styled.div`
-  top: -31px;
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
   margin-bottom: 14px;
+  top: -31px;
+
+  @media screen and (${themes.breakpoints.m} <= width < ${themes.breakpoints.l}) {
+    top: 0;
+  }
 `;
 
 export const AvatarAddIcon = styled.div`
@@ -54,118 +56,134 @@ export const AvatarAddIcon = styled.div`
     background-color: #2b78ef;
   }
   
-  @media screen and (${themes.breakpoints.s} < width <= ${themes.breakpoints.m}) {
+  @media screen and (${themes.breakpoints.s} <= width < ${themes.breakpoints.m}) {
   }
   
-  @media screen and (${themes.breakpoints.m} < width <= ${themes.breakpoints.l}) {
-    
-  }
-  
-  @media screen and (${themes.breakpoints.l} < width {
+  @media screen and (${themes.breakpoints.m} <= width < ${themes.breakpoints.l}) {
     width: 24px;
     height: 24px;
     
   }
-`;
+  
+  @media screen and (${themes.breakpoints.l} <= width {
+    
+  }
+  `;
 
 export const AvatarInputField = styled.input`
   display: none;
 `;
 
 export const AvatarImgContainer = styled.div`
-display: flex;
-justify-content: center;
-align-items: center;
-width: 72px;
-height: 72px;
-border: 2px solid #3e85f3;
-border-radius: 50%;
-@media screen and (${themes.breakpoints.s} < width <= ${themes.breakpoints.m}) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 72px;
+  height: 72px;
+  border: 2px solid #3e85f3;
+  border-radius: 50%;
+  @media screen and (${themes.breakpoints.s} <= width < ${themes.breakpoints.m}) {
   }
-
-  @media screen and (${themes.breakpoints.m} < width <= ${themes.breakpoints.l}) {
-    
-  }
-
-  @media screen and (${themes.breakpoints.l} < width {
+  
+  @media screen and (${themes.breakpoints.m} <= width < ${themes.breakpoints.l}) {
     width: 124px;
     height: 124px;
+    
   }
-`;
+  
+  @media screen and (${themes.breakpoints.l} <= width {
+  }
+  `;
 
 export const AvatarImg = styled.img`
-width: 72px;
-height: 72px;
-border: 2px solid #3e85f3;
-border-radius: 50%;
-object-fit: cover;
-
-@media screen and (${themes.breakpoints.s} < width <= ${themes.breakpoints.m}) {
+  width: 72px;
+  height: 72px;
+  border: 2px solid #3e85f3;
+  border-radius: 50%;
+  object-fit: cover;
+  
+  @media screen and (${themes.breakpoints.s} <= width < ${themes.breakpoints.m}) {
   }
-
-  @media screen and (${themes.breakpoints.m} < width <= ${themes.breakpoints.l}) {
-    
-  }
-
-  @media screen and (${themes.breakpoints.l} < width {
+  
+  @media screen and (${themes.breakpoints.m} <= width < ${themes.breakpoints.l}) {
     width: 124px;
     height: 124px;
+    
   }
-`;
+  
+  @media screen and (${themes.breakpoints.l} <= width {
+  }
+  `;
 
 export const UserNameTitle = styled.h2`
   margin: 0;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
+
+  @media screen and (${themes.breakpoints.m} <= width < ${themes.breakpoints.l}) {
+    margin-bottom: 8px;
+  }
 `;
 
 export const RoleTitle = styled.p`
-font-size: 12px;
-font-weight: 600;
-line-height: 1.17;
-letter-spacing: -0.02em;
-margin-bottom: 24px;
-color: #343434;
-
-@media screen and (${themes.breakpoints.s} < width <= ${themes.breakpoints.m}) {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.17;
+  letter-spacing: -0.02em;
+  margin-bottom: 24px;
+  color: #343434;
+  
+  @media screen and (${themes.breakpoints.s} <= width < ${themes.breakpoints.m}) {
   }
+  
+  @media screen and (${themes.breakpoints.m} <= width < ${themes.breakpoints.l}) {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.29;
+  letter-spacing: -0.02em;
+}
 
-  @media screen and (${themes.breakpoints.m} < width <= ${themes.breakpoints.l}) {
-    
-  }
-
-  @media screen and (${themes.breakpoints.l} < width {
-    
-  }
+@media screen and (${themes.breakpoints.l} <= width {
+  
+}
 `;
 
 export const FormInputContainer = styled.div`
 
- /* @media screen and (${themes.breakpoints.s} < width <= ${themes.breakpoints.m}) {
-  } 
+/* @media screen and (${themes.breakpoints.s} < width <= ${themes.breakpoints.m}) {
+} 
 
-  @media screen and (${themes.breakpoints.m} < width <= ${themes.breakpoints.l}) {
-    
-  }
+@media screen and (${themes.breakpoints.m} < width <= ${themes.breakpoints.l}) {
+  
+}
 
-  @media screen and (${themes.breakpoints.l} < width {
-    /* display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    padding: 44px 0 88px 0;
-    width: 758px;
-    position: relative; */
-  } */
+@media screen and (${themes.breakpoints.l} < width {
+  /* display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 44px 0 88px 0;
+  width: 758px;
+  position: relative; */
+} */
 
 `;
 
 export const FormLabelSpan = styled.span`
-  display: flex;
-  margin-bottom: 8px;
-  font-size: 12px;
-  line-height: 1.17;
-  letter-spacing: -0.02em;
-  margin-top: 16px;
-  color: #111111;
+display: flex;
+margin-bottom: 8px;
+font-size: 12px;
+line-height: 1.17;
+letter-spacing: -0.02em;
+margin-top: 16px;
+color: #111111;
+
+@media screen and (${themes.breakpoints.m} <= width < ${themes.breakpoints.l}) {
+  font-size: 14px;
+  line-height: 1.29;
+}
+
+@media screen and (${themes.breakpoints.l} <= width {
+  
+  }
 `;
 
 export const InputField = styled(Field)`
@@ -178,18 +196,12 @@ border: 1px solid rgba(17, 17, 17, 15%);
 border-radius: 8px;
 padding: 0 18px;
 margin-bottom: 8px;
+width: 299px;
+height: 42px;
 
-@media screen and (${themes.breakpoints.s} < width <= ${themes.breakpoints.m}) {
-  width: 299px;
-  height: 42px;
-  }
-
-  @media screen and (${themes.breakpoints.m} < width <= ${themes.breakpoints.l}) {
-   
-  }
-
-  @media screen and (${themes.breakpoints.l} < width {
-   
+  @media screen and (${themes.breakpoints.m} <= width < ${themes.breakpoints.l}) {
+    font-size: 16px;
+    line-height: 1.13;
     width: 354px;
     height: 46px;
     border: 1px solid rgba(17, 17, 17, 15%);
@@ -200,6 +212,11 @@ margin-bottom: 8px;
     &:hover {
       border: 1px solid black;
     }
+   
+  }
+
+  @media screen and (${themes.breakpoints.l} <= width {
+   
   }
 `;
 
@@ -213,25 +230,24 @@ border-radius: 8px;
 margin-bottom: 8px;
 padding: 0 18px;
 color: #111111;
-@media screen and (${themes.breakpoints.s} < width <= ${themes.breakpoints.m}) {
-  width: 299px;
-  height: 42px;
+width: 299px;
+height: 42px;
+
+  @media screen and (${themes.breakpoints.m} <= width < ${themes.breakpoints.l}) {
+    font-size: 16px;
+    line-height: 1.13;
+    width: 354px;
+    height: 46px;
+    border: 1px solid rgba(17, 17, 17, 15%);
+    border-radius: 8px;
+    padding: 0 18px;
+  
+    &:hover {
+      border: 1px solid black;
+    }
   }
 
-  @media screen and (${themes.breakpoints.m} < width <= ${themes.breakpoints.l}) {
-   
-  }
-
-  @media screen and (${themes.breakpoints.l} < width {
-  width: 354px;
-  height: 46px;
-  border: 1px solid rgba(17, 17, 17, 15%);
-  border-radius: 8px;
-  padding: 0 18px;
-
-  &:hover {
-    border: 1px solid black;
-  }
+  @media screen and (${themes.breakpoints.l} <= width {
 }
 `;
 
@@ -239,13 +255,13 @@ export const ErrorMessage = styled(FormikErrorMessage)`
   font-size: 12px;
   padding-left: 14px;
   color: red;
-  @media screen and (${themes.breakpoints.s} < width <= ${themes.breakpoints.m}) {
+  @media screen and (${themes.breakpoints.s} <= width < ${themes.breakpoints.m}) {
   }
 
-  @media screen and (${themes.breakpoints.m} < width <= ${themes.breakpoints.l}) {
+  @media screen and (${themes.breakpoints.m} <= width < ${themes.breakpoints.l}) {
   }
 
-  @media screen and (${themes.breakpoints.l} < width) {
+  @media screen and (${themes.breakpoints.l} <= width) {
     padding-left: 18px;
   }
 `;
@@ -256,7 +272,7 @@ export const FormBtn = styled.button`
   font-family: Inter;
   font-size: 14px;
   font-weight: 600;
-  line-height: 1.3;
+  line-height: 1.29;
   letter-spacing: -0.02em;
   margin-top: 32px;
   margin-bottom: 60px;
@@ -274,7 +290,7 @@ export const FormBtn = styled.button`
     transform: scale(1.1);
   }
 
-  @media screen and (${themes.breakpoints.l}< width) {
+  @media screen and (${themes.breakpoints.m} <= width < ${themes.breakpoints.l}) {
     width: 262px;
     height: 48px;
   }
@@ -284,13 +300,13 @@ export const BtnWrapper = styled.div`
   display: flex;
   flex-direction: column;
 
-  @media screen and (${themes.breakpoints.s} < width <= ${themes.breakpoints.m}) {
+  @media screen and (${themes.breakpoints.s} <= width < ${themes.breakpoints.m}) {
   }
 
-  @media screen and (${themes.breakpoints.m} < width <= ${themes.breakpoints.l}) {
+  @media screen and (${themes.breakpoints.m} <= width < ${themes.breakpoints.l}) {
   }
 
-  @media screen and (${themes.breakpoints.l} < width) {
+  @media screen and (${themes.breakpoints.l} <= width) {
     flex-direction: column;
     bottom: 8%;
     right: -8%;
@@ -320,10 +336,15 @@ export const ChangePassBtn = styled.button`
     transform: scale(1.1);
   }
 
-  @media screen and (${themes.breakpoints.l}< width) {
+  /* @media screen and (${themes.breakpoints.m} <= width < ${themes.breakpoints.l}) {
+    width: 195px;
+    height: 46px;
+  }
+
+  @media screen and (${themes.breakpoints.l} <= width) {
     width: 262px;
     height: 48px;
-  }
+  } */
 `;
 
 export const DeleteProfileBtn = styled.button`
@@ -348,8 +369,8 @@ export const DeleteProfileBtn = styled.button`
     transform: scale(1.1);
   }
 
-  @media screen and (${themes.breakpoints.l}< width) {
+  /* @media screen and (${themes.breakpoints.l} <= width) {
     width: 262px;
     height: 48px;
-  }
+  } */
 `;
