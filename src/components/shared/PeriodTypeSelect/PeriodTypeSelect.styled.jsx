@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import { themes } from 'src/styles/variables/themes';
 
 export const List = styled.ul`
   display: flex;
@@ -16,6 +17,13 @@ export const Item = styled.li`
   display: flex;
 `;
 export const StyledNavLink = styled(NavLink)`
+  color: #3e85f3;
+  background-color: #e3f3ff;
+  &.active {
+    background-color: #cae8ff;
+    color: #3e85f3;
+  }
+
   &.month {
     padding: 8px 16px;
     border-radius: 8px 0 0 8px;

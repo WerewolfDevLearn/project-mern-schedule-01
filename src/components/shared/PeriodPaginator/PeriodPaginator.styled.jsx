@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { themes } from 'src/styles/variables/themes';
 
 //export const PeriodPaginatorStyles = styled.div``;
 export const DivWrapper = styled('div')`
@@ -45,6 +46,9 @@ export const ButtonsWrapper = styled('div')`
 export const ButtonWrapper1 = styled('button')`
   height: 34px;
   width: 35px;
+  background-color: ${({ colorbtn }) =>
+    colorbtn === 'white' ? themes.colors.white : 'transparent'};
+  color: ${({ color }) => (color === 'blue' ? themes.colors.accent : themes.colors.white)};
 
   font-size: 20px;
 
@@ -57,7 +61,9 @@ export const ButtonWrapper1 = styled('button')`
 export const ButtonWrapper2 = styled('button')`
   height: 34px;
   width: 35px;
-
+  background-color: ${({ colorbtn }) =>
+    colorbtn === 'white' ? themes.colors.white : 'transparent'};
+  color: ${({ color }) => (color === 'blue' ? themes.colors.accent : themes.colors.white)};
   font-size: 20px;
   color: rgba(220, 227, 229, 0.8);
   border: 1px solid rgba(220, 227, 229, 0.8);
