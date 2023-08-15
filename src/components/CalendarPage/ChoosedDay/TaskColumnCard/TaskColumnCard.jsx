@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 
 import { Avatar } from '../../../shared/Icons';
 
@@ -14,6 +15,7 @@ import {
 } from './TaskColumnCard.styled';
 
 export default function TaskColumnCard({ task, tasksCount, openModal }) {
+  const { t } = useTranslation();
   const { title, priority } = task;
 
   return (
@@ -25,7 +27,7 @@ export default function TaskColumnCard({ task, tasksCount, openModal }) {
             <OwnerAvatarOverlay>
               <Avatar width="32" height="32" />
             </OwnerAvatarOverlay>
-            <TaskPriority priority={priority}>{priority}</TaskPriority>
+            <TaskPriority priority={priority}>{t(priority)}</TaskPriority>
           </TaskCardInner>
           <TaskToolbar task={task} openModal={openModal} />
         </TaskCardWrap>

@@ -34,5 +34,5 @@ export default function TasksColumnsList({ tasks }) {
 }
 
 TasksColumnsList.propTypes = {
-  tasks: PropTypes.array
+  // tasks: PropTypes.array
 };
