@@ -9,8 +9,9 @@ import { useTranslation } from 'react-i18next';
 // import { toast } from 'react-hot-toast';
 import { useUser } from 'src/redux/selectors';
 
-import { Avatar, Plus } from '../../shared/Icons';
-import { Modal } from '../../shared/Modal/Modal';
+import { Avatar, Plus } from 'src/components/shared/Icons';
+import Modal from 'src/components/shared/Modal/Modal';
+
 import ChangePasswordForm from '../ChangePasswordForm/ChangePasswordForm';
 import DeleteProfileForm from '../DeleteProfileForm/DeleteProfileForm';
 

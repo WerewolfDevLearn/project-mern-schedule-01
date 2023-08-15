@@ -5,6 +5,7 @@ import { persistStore, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from 
 import { ErrorLogger } from '../utils/notify-MD';
 
 import { reviewsApi } from './reviews/reviewsApi';
+import { tasksApi } from './tasks/tasksApi';
 import { persistedUserReducer } from './auth/slices/authfulfilledSlice';
 import { isRefreshingReducer } from './auth/slices/authRefreshingSlice';
 import { errorReducer } from './auth/slices/authErrorSlice';
@@ -18,6 +19,7 @@ export const store = configureStore({
     isLoading: isLoadingReducer,
     isRefreshing: isRefreshingReducer,
     [reviewsApi.reducerPath]: reviewsApi.reducer,
+    [tasksApi.reducerPath]: tasksApi.reducer,
     filter: filterReducer
   },
   middleware: (gDM) =>
@@ -27,6 +29,7 @@ export const store = configureStore({
       }
     })
       .concat(reviewsApi.middleware)
+      .concat(tasksApi.middleware)
       .concat(ErrorLogger),
   devTools: process.env.NODE_ENV === 'development'
 });

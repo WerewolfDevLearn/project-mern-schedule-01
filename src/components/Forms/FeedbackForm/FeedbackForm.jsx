@@ -1,16 +1,16 @@
 import PropTypes from 'prop-types';
 
-import { TemplatNameStyles } from './TemplatName.styled';
+import { FeedbackFormStyles } from './FeedbackForm.styled';
 
-export default function TemplatName({ arg }) {
+export default function FeedbackForm({ arg }) {
   return (
-    <TemplatNameStyles>
-      <h2>TemplatName</h2>
+    <FeedbackFormStyles>
+      <h2>FeedbackForm</h2>
       <p>{arg}</p>
-    </TemplatNameStyles>
+    </FeedbackFormStyles>
   );
 }
 
-TemplatName.propTypes = {
+FeedbackForm.propTypes = {
   arg: PropTypes.any
 };
