@@ -38,16 +38,18 @@ export default function RegisterForm({ callBack }) {
         validateOnChange={validateAfterSubmit}
         validateOnMount={false}
         onSubmit={(data) => {
+          setValidateAfterSubmit(true);
           callBack(data);
+          setValidateAfterSubmit(false);
         }}
       >
         {(formik) => {
-          const { errors, handleSubmit } = formik;
+          const { errors, handleSubmit, submitCount } = formik;
 
           const validateInput = (input) => {
-            if (validateAfterSubmit && errors[input]) {
+            if ((validateAfterSubmit || submitCount > 0) && errors[input]) {
               return 'input-error';
-            } else if (validateAfterSubmit && !errors[input]) {
+            } else if (submitCount > 0 && !errors[input]) {
               return 'input-correct';
             }
             return '';
@@ -122,13 +124,7 @@ export default function RegisterForm({ callBack }) {
                 </Subtitle>
               </InputWrap>
 
-              <Button
-                type="submit"
-                onClick={() => {
-                  setValidateAfterSubmit(true);
-                  // handleSubmit();
-                }}
-              >
+              <Button type="submit" onClick={handleSubmit}>
                 {t('Sign Up')} <Img src={icon} alt="LogIn SVG" />
               </Button>
             </FormElement>
