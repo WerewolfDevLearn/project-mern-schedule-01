@@ -23,14 +23,21 @@ export default function TaskToolbar({ task, openModal }) {
   const categoriesFiltered = categories.filter((category) => category !== task.category);
 
   const getCategory = (category) => {
-    if (category === 'to-do') {
-      return 'To do';
-    }
-    if (category === 'in-progress') {
-      return 'In progress';
-    }
-    if (category === 'done') {
-      return 'Done';
+    switch (category) {
+      case 'to-do':
+        return 'To do';
+      case 'To do':
+        return 'to-do';
+      case 'In progress':
+        return 'in-progress';
+      case 'in-progress':
+        return 'In progress';
+      case 'Done':
+        return 'done';
+      case 'done':
+        return 'Done';
+      default:
+        break;
     }
   };
 
@@ -39,8 +46,15 @@ export default function TaskToolbar({ task, openModal }) {
   };
 
   const replaceTask = (newCategory) => {
-    console.log(newCategory);
-    // updateTask({task._id, })
+    updateTask({
+      id: task._id,
+      title: task.title,
+      start: task.start,
+      end: task.end,
+      priority: task.priority,
+      date: task.date,
+      category: getCategory(newCategory)
+    });
   };
 
   return (

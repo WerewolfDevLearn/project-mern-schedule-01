@@ -68,13 +68,12 @@ export const TaskForm = ({ onClose, action, column, taskToEdit }) => {
   const { currentDate } = useParams();
 
   const handleSubmit = (values, actions) => {
-    console.log(values);
     if (action === 'add') {
       createTask(values);
     }
 
     if (action === 'edit') {
-      updateTask({ id, values });
+      updateTask({ id, ...values });
     }
 
     actions.resetForm();
