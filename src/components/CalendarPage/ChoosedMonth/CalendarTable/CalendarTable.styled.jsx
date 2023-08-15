@@ -31,7 +31,9 @@ export const CellWrapper = styled(NavLink)`
   font-size: ${themes.fontSizes.xs};
   line-height: 1.17;
   color: ${(props) =>
-    props.iscurrentmonth === 'true'
+    props.istoday === 'true'
+      ? props.theme.backgroundModalTodo
+      : props.iscurrentmonth === 'true'
       ? props.theme.textCancelBtnIntodo
       : props.theme.backgroundModalTodo};
 
@@ -69,14 +71,18 @@ export const CellWrapper = styled(NavLink)`
 
 export const RowInCell = styled.div`
   display: flex;
-  justify-content: ${(props) => (props.justifyContent ? props.justifyContent : 'flex-start')};
   flex-direction: column;
+  ${(props) =>
+    props.$justifyContent
+      ? `justify-content: ${props.$justifyContent};`
+      : 'justify-content: flex-start;'}
 `;
 
 export const DayWrapper = styled.div`
   padding: 10px 12px;
   font-weight: ${themes.fontWeight.b};
   font-family: Inter;
+  color: ${themes.colors.black};
 
   @media screen and (min-width: ${themes.breakpoints.m}) {
     padding: 18px 22px;

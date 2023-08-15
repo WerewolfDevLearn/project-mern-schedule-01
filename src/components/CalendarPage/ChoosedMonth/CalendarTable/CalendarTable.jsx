@@ -1,11 +1,8 @@
-import { useSelector } from 'react-redux';
-
-import { nanoid } from 'nanoid';
 import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import {
   format,
   isToday,
-  getUnixTime,
   isSameMonth,
   startOfDay,
   endOfDay,
@@ -14,7 +11,7 @@ import {
   isSameDay
 } from 'date-fns';
 
-import { useisLoading } from '../../../../redux/selectors';
+import { useGetTasksQuery } from 'src/redux/tasks/tasksApi';
 
 import {
   CellWrapper,
@@ -30,19 +27,20 @@ import {
 
 export default function CalendarTable() {
   const [calendar, setCalendar] = useState([]);
-  const [askDay, setAskDay] = useState(new Date());
-
-  const isTasksLoading = useSelector(useisLoading);
-  const tasks = useSelector((state) => state.tasks.items);
+  const { currentDate } = useParams();
+  const year = currentDate.split('-')[0];
+  const month = currentDate.split('-')[1];
+  const data = { year, month };
+  const { data: tasks = [], isLoading: isTasksLoading } = useGetTasksQuery(data);
 
   const generateCalendar = () => {
-    const startDay = startOfWeek(new Date(), { weekStartsOn: 1 });
-    const firstDayOfNextMonth = new Date();
+    const startDay = startOfWeek(new Date(year, month - 1, 1), { weekStartsOn: 1 });
+    const lastDayOfMonth = endOfDay(new Date(year, month, 0));
 
     const calendar = [];
     let day = startDay;
 
-    while (!isSameDay(day, firstDayOfNextMonth)) {
+    while (!isSameDay(day, lastDayOfMonth)) {
       calendar.push(day);
       day = addDays(day, 1);
     }
@@ -54,50 +52,49 @@ export default function CalendarTable() {
     generateCalendar();
   }, []);
 
-  const isCurrentMonth = (day) => isSameMonth(askDay, day);
+  const isCurrentMonth = (day) => isSameMonth(new Date(), day);
 
-  let filteredTasks = [];
-
-  const getDayTasks = (day) => {
-    filteredTasks = tasks?.filter(
+  const getDayTasks = (day) =>
+    tasks.filter(
       (task) =>
-        getUnixTime(new Date(task.date)) >= getUnixTime(startOfDay(day)) &&
-        getUnixTime(new Date(task.date)) < getUnixTime(endOfDay(day))
+        new Date(task.date).getTime() >= startOfDay(day).getTime() &&
+        new Date(task.date).getTime() < endOfDay(day).getTime()
     );
-  };
 
   return (
     <GridWrapper>
-      {calendar.map((dayItem) => (
-        <CellWrapper
-          to={`/calendar/day/${format(dayItem, 'ddMMMMyyyy')}`}
-          key={nanoid()}
-          iscurrentmonth={isCurrentMonth(dayItem).toString()}
-        >
-          <RowInCell justifyContent={'flex-end'}>
-            <ShowDayWrapper>
-              <DayWrapper>
+      {calendar.map((dayItem) => {
+        const filteredTasks = getDayTasks(dayItem);
+
+        return (
+          <CellWrapper
+            to={`/calendar/day/${format(dayItem, 'ddMMMMyyyy')}`}
+            key={dayItem.getTime()}
+            iscurrentmonth={isCurrentMonth(dayItem).toString()}
+            istoday={isToday(dayItem).toString()}
+          >
+            <RowInCell $justifyContent="flex-end">
+              <ShowDayWrapper>
                 {isToday(dayItem) ? (
                   <CurrentDay>{format(dayItem, 'd')}</CurrentDay>
                 ) : (
-                  format(dayItem, 'd')
+                  <DayWrapper>{format(dayItem, 'd')}</DayWrapper>
                 )}
-              </DayWrapper>
-            </ShowDayWrapper>
-            {!isTasksLoading && (
-              <TaskListWrapper>
-                {getDayTasks(dayItem)}
-                {filteredTasks?.slice(0, 2).map((task) => (
-                  <TaskItem key={nanoid()} priority={task.priority}>
-                    {task.title}
-                  </TaskItem>
-                ))}
-              </TaskListWrapper>
-            )}
-            {filteredTasks?.length > 2 && <TasksMoreLabel>...</TasksMoreLabel>}
-          </RowInCell>
-        </CellWrapper>
-      ))}
+              </ShowDayWrapper>
+              {!isTasksLoading && (
+                <TaskListWrapper>
+                  {filteredTasks.slice(0, 2).map((task) => (
+                    <TaskItem key={task.id} priority={task.priority}>
+                      {task.title}
+                    </TaskItem>
+                  ))}
+                </TaskListWrapper>
+              )}
+              {filteredTasks.length > 2 && <TasksMoreLabel>...</TasksMoreLabel>}
+            </RowInCell>
+          </CellWrapper>
+        );
+      })}
     </GridWrapper>
   );
 }
