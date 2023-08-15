@@ -74,7 +74,7 @@ const tasksList = [
     end: '15:30',
     priority: 'low',
     date: '2023-08-15',
-    category: 'to-do',
+    category: 'in-progress',
     owner: '64d387e745021a7e4d683ba0',
     createdAt: '2023-08-09T18:50:03.612+00:00',
     updatedAt: '2023-08-09T18:50:03.612+00:00'
@@ -134,12 +134,14 @@ export default function ChoosedDay({ arg }) {
   const year = currentDate.split('-')[0];
   const month = currentDate.split('-')[1];
   const data = { year, month };
-  const { data: tasks, isFetching, isLoading } = useGetTasksQuery(data);
+  // const { data: tasks, isFetching, isLoading } = useGetTasksQuery(data);
+
+  // console.log(tasks);
 
   return (
     <ChoosedDayStyles>
       <DayCalendarHead date={currentDate} />
-      <TasksColumnsList tasks={tasks} />
+      <TasksColumnsList tasks={tasksList} />
     </ChoosedDayStyles>
   );
 }

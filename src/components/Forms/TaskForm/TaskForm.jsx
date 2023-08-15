@@ -5,10 +5,7 @@ import { useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import {
-  useCreateTasksMutation,
-  useUpdateTasksMutation
-} from 'src/redux/tasks/tasksApi';
+import { useCreateTasksMutation, useUpdateTasksMutation } from 'src/redux/tasks/tasksApi';
 
 import {
   ButtonAction,
@@ -59,24 +56,25 @@ const TaskSchema = Yup.object().shape({
 
 export const TaskForm = ({ onClose, action, column, taskToEdit }) => {
   const { t } = useTranslation();
-  let _id, title, start, end, priority, date;
+  let id, title, start, end, priority, date;
 
   if (typeof taskToEdit === 'object' && taskToEdit !== null && true) {
-    ({ _id, title, start, end, priority, date } = taskToEdit);
+    ({ _id: id, title, start, end, priority, date } = taskToEdit);
   }
 
   const [createTask, ctreateResult] = useCreateTasksMutation();
   const [updateTask, updateResult] = useUpdateTasksMutation();
 
-  const { currentDay } = useParams();
+  const { currentDate } = useParams();
 
   const handleSubmit = (values, actions) => {
+    console.log(values);
     if (action === 'add') {
-      // createTask;
+      createTask(values);
     }
 
     if (action === 'edit') {
-      // updateTask;
+      updateTask({ id, values });
     }
 
     actions.resetForm();
@@ -96,7 +94,7 @@ export const TaskForm = ({ onClose, action, column, taskToEdit }) => {
         start: (action === 'edit' && start) || '09:00',
         end: (action === 'edit' && end) || '10:00',
         priority: (action === 'edit' && priority) || 'low',
-        date: (action === 'edit' && date) || currentDay,
+        date: (action === 'edit' && date) || currentDate,
         category: setCategory()
       }}
       validationSchema={TaskSchema}
