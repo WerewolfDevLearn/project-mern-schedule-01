@@ -5,8 +5,10 @@ import { ThemeProvider } from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 
-import Loader from '../shared/Loader/Loader';
-import { useisLoading, useisRefreshing } from '../../redux/selectors';
+import Loader from 'src/components/shared/Loader/Loader';
+import Modal from 'src/components/shared/Modal/Modal';
+
+import { useToken, useisLoading, useisRefreshing } from '../../redux/selectors';
 
 import { getCurrent } from '../../redux/auth/authOps';
 
@@ -22,14 +24,17 @@ import {
 const Layout = () => {
   const [open, setOpen] = useState(false);
   const isRefreshing = useisRefreshing();
+  const token = useToken;
   const dispatch = useDispatch();
   const callBack = () => setOpen(true);
   const callBackCls = () => setOpen(false);
 
   const theme = useThemeColors().theme;
   useEffect(() => {
-    dispatch(getCurrent());
-  }, [dispatch]);
+    if (token) {
+      dispatch(getCurrent());
+    }
+  }, [dispatch, token]);
   const isLoading = useisLoading();
   return isRefreshing ? (
     <Loader />

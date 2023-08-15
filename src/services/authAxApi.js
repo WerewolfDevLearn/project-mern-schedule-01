@@ -39,8 +39,10 @@ export async function sendVEmail(email) {
   const data = response.data;
   return data;
 }
-export async function updateUser(email) {
-  const response = await axios.post('/users/profile', { email });
+export async function updateUser(userDate, tokenAuth) {
+  axios.defaults.headers.common.Authorization = `Bearer ${tokenAuth}`;
+  axios.defaults.headers.post['Content-Type'] = 'multipart/form-data';
+  const response = await axios.patch('/users/profile', userDate);
   const data = response.data;
   return data;
 }
