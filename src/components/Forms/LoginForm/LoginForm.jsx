@@ -27,10 +27,8 @@ export default function LoginForm({ onSubmitForm }) {
 
   const [validateAfterSubmit, setValidateAfterSubmit] = useState(false);
 
-  const onSubmit = (data, { resetForm, setSubmitting }) => {
+  const onSubmit = (data) => {
     onSubmitForm(data);
-    setSubmitting(false);
-    resetForm();
   };
 
   return (

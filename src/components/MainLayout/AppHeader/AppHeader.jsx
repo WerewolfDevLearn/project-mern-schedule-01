@@ -52,5 +52,6 @@ export default function AppHeader({ callBack }) {
 }
 
 AppHeader.propTypes = {
-  callBack: PropTypes.func.isRequired
+  callBack: PropTypes.func.isRequired,
+  onGiveFeedBack: PropTypes.func.isRequired
 };
