@@ -8,14 +8,15 @@ export const AddTaskBtnStyles = styled.button`
   max-width: 299px;
   padding: 12px;
   border-radius: 8px;
-  border: 1px dashed #3e85f3;
 
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 8px;
 
-  background: #e3f3ff;
+  color: ${({ theme }) => theme.colors.textAndIconTodo};
+  background: ${({ theme }) => theme.colors.backColorBtnAddTask};
+  border: 1px dashed ${({ theme }) => theme.colors.borderBtnAddTask};
 
   font-family: 'Inter';
   font-size: 14px;

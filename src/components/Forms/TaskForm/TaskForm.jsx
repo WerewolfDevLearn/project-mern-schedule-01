@@ -1,10 +1,11 @@
 import { Formik } from 'formik';
+import { useTranslation } from 'react-i18next';
 import * as Yup from 'yup';
 import { useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { useCreateTasksMutation, useUpdateTasksMutation } from '../../../redux/tasks/tasksApi';
+import { useCreateTasksMutation, useUpdateTasksMutation } from 'src/redux/tasks/tasksApi';
 
 import {
   ButtonAction,
@@ -54,22 +55,25 @@ const TaskSchema = Yup.object().shape({
 });
 
 export const TaskForm = ({ onClose, action, column, taskToEdit }) => {
-  let _id, title, start, end, priority, date;
+  const { t } = useTranslation();
+  let id, title, start, end, priority, date;
 
   if (typeof taskToEdit === 'object' && taskToEdit !== null && true) {
-    ({ _id, title, start, end, priority, date } = taskToEdit);
+    ({ _id: id, title, start, end, priority, date } = taskToEdit);
   }
 
-  const dispatch = useDispatch();
-  const { currentDay } = useParams();
+  const [createTask, ctreateResult] = useCreateTasksMutation();
+  const [updateTask, updateResult] = useUpdateTasksMutation();
+
+  const { currentDate } = useParams();
 
   const handleSubmit = (values, actions) => {
     if (action === 'add') {
-      // dispatch(useCreateTasksMutation(values));
+      createTask(values);
     }
 
     if (action === 'edit') {
-      // dispatch(useUpdateTasksMutation({ _id, ...values }));
+      updateTask({ id, ...values });
     }
 
     actions.resetForm();
@@ -89,7 +93,7 @@ export const TaskForm = ({ onClose, action, column, taskToEdit }) => {
         start: (action === 'edit' && start) || '09:00',
         end: (action === 'edit' && end) || '10:00',
         priority: (action === 'edit' && priority) || 'low',
-        date: (action === 'edit' && date) || currentDay,
+        date: (action === 'edit' && date) || currentDate,
         category: setCategory()
       }}
       validationSchema={TaskSchema}
@@ -97,19 +101,19 @@ export const TaskForm = ({ onClose, action, column, taskToEdit }) => {
     >
       <Form>
         <Label>
-          Title
-          <InputTitle type="text" name="title" placeholder="Enter text" />
+          {t('Title')}
+          <InputTitle type="text" name="title" placeholder={t('Enter text')} />
           <ErrorMessage name="title" component="div" />
         </Label>
 
         <TimeWrapper>
           <Label>
-            Start
+            {t('Start')}
             <InputTime type="time" name="start" />
             <ErrorMessage name="start" component="div" />
           </Label>
           <Label>
-            End
+            {t('End')}
             <InputTime type="time" name="end" />
             <ErrorMessage name="end" component="div" />
           </Label>
@@ -119,17 +123,17 @@ export const TaskForm = ({ onClose, action, column, taskToEdit }) => {
           <RadioLabel>
             <RadioField type="radio" name="priority" value="low" />
             <RadioSpan value="low" />
-            Low
+            {t('Low')}
           </RadioLabel>
           <RadioLabel>
             <RadioField type="radio" name="priority" value="medium" />
             <RadioSpan value="medium" />
-            Medium
+            {t('Medium')}
           </RadioLabel>
           <RadioLabel>
             <RadioField type="radio" name="priority" value="high" />
             <RadioSpan value="high" />
-            High
+            {t('High')}
           </RadioLabel>
         </RadioWrapper>
 
@@ -137,17 +141,17 @@ export const TaskForm = ({ onClose, action, column, taskToEdit }) => {
           {action === 'add' ? (
             <ButtonAction type="submit">
               <PlusIcon />
-              Add
+              {t('Add')}
             </ButtonAction>
           ) : (
             <ButtonAction type="submit">
-              <PencilIcon color="#fff" />
-              Edit
+              <PencilIcon />
+              {t('Edit')}
             </ButtonAction>
           )}
 
           <ButtonCancel type="button" onClick={onClose}>
-            Cancel
+            {t('Cancel')}
           </ButtonCancel>
         </ButtonWrapper>
 
