@@ -22,16 +22,10 @@ import {
   SvgIcon
 } from './RegisterForm.styled';
 
-export default function RegisterForm({ onSubmitForm }) {
+export default function RegisterForm({ callBack }) {
   const { t } = useTranslation();
 
   const [validateAfterSubmit, setValidateAfterSubmit] = useState(false);
-
-  const onSubmit = (data, { resetForm, setSubmitting }) => {
-    onSubmitForm(data);
-    setSubmitting(false);
-    resetForm();
-  };
 
   return (
     <Container>
@@ -43,10 +37,12 @@ export default function RegisterForm({ onSubmitForm }) {
         validateOnBlur={false}
         validateOnChange={validateAfterSubmit}
         validateOnMount={false}
-        onSubmit={onSubmit}
+        onSubmit={(data) => {
+          callBack(data);
+        }}
       >
         {(formik) => {
-          const { errors, handleSubmit, isValid, isSubmitting } = formik;
+          const { errors, handleSubmit } = formik;
 
           const validateInput = (input) => {
             if (validateAfterSubmit && errors[input]) {
@@ -58,7 +54,7 @@ export default function RegisterForm({ onSubmitForm }) {
           };
 
           return (
-            <FormElement autoComplete="off" onSubmit={onSubmit}>
+            <FormElement autoComplete="off">
               <InputWrap>
                 <Subtitle htmlFor="name" className={validateInput('name')}>
                   {t('Name')}
@@ -128,10 +124,9 @@ export default function RegisterForm({ onSubmitForm }) {
 
               <Button
                 type="submit"
-                disabled={!isValid || isSubmitting}
                 onClick={() => {
                   setValidateAfterSubmit(true);
-                  handleSubmit();
+                  // handleSubmit();
                 }}
               >
                 {t('Sign Up')} <Img src={icon} alt="LogIn SVG" />
@@ -145,5 +140,5 @@ export default function RegisterForm({ onSubmitForm }) {
 }
 
 RegisterForm.propTypes = {
-  onSubmitForm: PropTypes.func.isRequired
+  callBack: PropTypes.func.isRequired
 };

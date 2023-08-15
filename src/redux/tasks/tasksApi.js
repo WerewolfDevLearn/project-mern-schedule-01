@@ -1,9 +1,9 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export const tasksApi = createApi({
-  reducerPath: 'reviews',
+  reducerPath: 'tasks',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://project-mern-schedule-03.onrender.com/api',
+    baseUrl: 'http://localhost:3001/api',
     prepareHeaders: (headers, { getState }) => {
       const token = getState().user.token;
       if (token) {
@@ -21,10 +21,10 @@ export const tasksApi = createApi({
       providesTags: ['tasks']
     }),
     createTasks: builder.mutation({
-      query: (review) => ({
+      query: (tasks) => ({
         url: '/tasks',
         method: 'POST',
-        body: review
+        body: tasks
       }),
       invalidatesTags: ['tasks']
     }),
