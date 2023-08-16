@@ -8,6 +8,7 @@ export const AccountPageWrap = styled.div`
     padding: 0 32px 38px 32px;
   }
 
-  @media screen and (${themes.breakpoints.l} > width) {
+  @media screen and (${themes.breakpoints.l} <= width) {
+    padding: 0 32px 32px 32px;
   }
 `;

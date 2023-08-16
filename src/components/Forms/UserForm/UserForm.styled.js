@@ -33,7 +33,7 @@ export const AvatarContainer = styled.div`
   margin-bottom: 14px;
   top: -31px;
 
-  @media screen and (${themes.breakpoints.m} <= width < ${themes.breakpoints.l}) {
+  @media screen and (${themes.breakpoints.m} <= width) {
     top: 0;
   }
 `;
@@ -50,25 +50,17 @@ export const AvatarAddIcon = styled.div`
   color: white;
   background-color: #3e85f3;
   border-radius: 50%;
-  
+
   &:hover {
     cursor: pointer;
     background-color: #2b78ef;
   }
-  
-  @media screen and (${themes.breakpoints.s} <= width < ${themes.breakpoints.m}) {
-  }
-  
-  @media screen and (${themes.breakpoints.m} <= width < ${themes.breakpoints.l}) {
+
+  @media screen and (${themes.breakpoints.m} <= width) {
     width: 24px;
     height: 24px;
-    
   }
-  
-  @media screen and (${themes.breakpoints.l} <= width {
-    
-  }
-  `;
+`;
 
 export const AvatarInputField = styled.input`
   display: none;
@@ -82,18 +74,12 @@ export const AvatarImgContainer = styled.div`
   height: 72px;
   border: 2px solid #3e85f3;
   border-radius: 50%;
-  @media screen and (${themes.breakpoints.s} <= width < ${themes.breakpoints.m}) {
-  }
-  
-  @media screen and (${themes.breakpoints.m} <= width < ${themes.breakpoints.l}) {
+
+  @media screen and (${themes.breakpoints.m} <= width) {
     width: 124px;
     height: 124px;
-    
   }
-  
-  @media screen and (${themes.breakpoints.l} <= width {
-  }
-  `;
+`;
 
 export const AvatarImg = styled.img`
   width: 72px;
@@ -101,19 +87,12 @@ export const AvatarImg = styled.img`
   border: 2px solid #3e85f3;
   border-radius: 50%;
   object-fit: cover;
-  
-  @media screen and (${themes.breakpoints.s} <= width < ${themes.breakpoints.m}) {
-  }
-  
-  @media screen and (${themes.breakpoints.m} <= width < ${themes.breakpoints.l}) {
+
+  @media screen and (${themes.breakpoints.m} <= width) {
     width: 124px;
     height: 124px;
-    
   }
-  
-  @media screen and (${themes.breakpoints.l} <= width {
-  }
-  `;
+`;
 
 export const UserNameTitle = styled.h2`
   margin: 0;
@@ -131,73 +110,63 @@ export const RoleTitle = styled.p`
   letter-spacing: -0.02em;
   margin-bottom: 24px;
   color: #343434;
-  
-  @media screen and (${themes.breakpoints.s} <= width < ${themes.breakpoints.m}) {
-  }
-  
-  @media screen and (${themes.breakpoints.m} <= width < ${themes.breakpoints.l}) {
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 1.29;
-  letter-spacing: -0.02em;
-}
 
-@media screen and (${themes.breakpoints.l} <= width {
-  
-}
+  @media screen and (${themes.breakpoints.m} <= width < ${themes.breakpoints.l}) {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.29;
+    letter-spacing: -0.02em;
+  }
+
+  @media screen and (${themes.breakpoints.l} <= width) {
+    margin-bottom: 28px;
+  }
 `;
 
 export const FormInputContainer = styled.div`
+  @media screen and (${themes.breakpoints.s} <= width < ${themes.breakpoints.m}) {
+  }
 
-/* @media screen and (${themes.breakpoints.s} < width <= ${themes.breakpoints.m}) {
-} 
+  @media screen and (${themes.breakpoints.m} <= width < ${themes.breakpoints.l}) {
+  }
 
-@media screen and (${themes.breakpoints.m} < width <= ${themes.breakpoints.l}) {
-  
-}
-
-@media screen and (${themes.breakpoints.l} < width {
-  /* display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  padding: 44px 0 88px 0;
-  width: 758px;
-  position: relative; */
-} */
-
+  @media screen and (${themes.breakpoints.l} <= width) {
+    padding: 44px 0 88px 0;
+    width: 758px;
+    position: relative;
+  }
 `;
 
 export const FormLabelSpan = styled.span`
-display: flex;
-margin-bottom: 8px;
-font-size: 12px;
-line-height: 1.17;
-letter-spacing: -0.02em;
-margin-top: 16px;
-color: #111111;
+  display: flex;
+  margin-bottom: 8px;
+  font-size: 12px;
+  line-height: 1.17;
+  letter-spacing: -0.02em;
+  margin-top: 16px;
+  color: #111111;
 
-@media screen and (${themes.breakpoints.m} <= width < ${themes.breakpoints.l}) {
-  font-size: 14px;
-  line-height: 1.29;
-}
+  @media screen and (${themes.breakpoints.m} <= width < ${themes.breakpoints.l}) {
+    font-size: 14px;
+    line-height: 1.29;
+  }
 
-@media screen and (${themes.breakpoints.l} <= width {
-  
+  @media screen and (${themes.breakpoints.l} <= width) {
   }
 `;
 
 export const InputField = styled(Field)`
-font-size: 14px;
-line-height: 1.29;
-font-weight: 600;
-letter-spacing: -0.02em;
-color: #111111;
-border: 1px solid rgba(17, 17, 17, 15%);
-border-radius: 8px;
-padding: 0 18px;
-margin-bottom: 8px;
-width: 299px;
-height: 42px;
+  font-size: 14px;
+  line-height: 1.29;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #111111;
+  border: 1px solid rgba(17, 17, 17, 15%);
+  border-radius: 8px;
+  padding: 0 18px;
+  margin-bottom: 8px;
+  width: 299px;
+  height: 42px;
 
   @media screen and (${themes.breakpoints.m} <= width < ${themes.breakpoints.l}) {
     font-size: 16px;
@@ -208,30 +177,28 @@ height: 42px;
     border-radius: 8px;
     padding: 0 18px;
     margin-bottom: 8px;
-  
+
     &:hover {
       border: 1px solid black;
     }
-   
   }
 
-  @media screen and (${themes.breakpoints.l} <= width {
-   
+  @media screen and (${themes.breakpoints.l} <= width) {
   }
 `;
 
 export const DateInput = styled(DatePicker)`
-font-size: 14px;
-line-height: 1.29;
-font-weight: 600;
-letter-spacing: -0.02em;
-border: 1px solid rgba(17, 17, 17, 15%);
-border-radius: 8px;
-margin-bottom: 8px;
-padding: 0 18px;
-color: #111111;
-width: 299px;
-height: 42px;
+  font-size: 14px;
+  line-height: 1.29;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  border: 1px solid rgba(17, 17, 17, 15%);
+  border-radius: 8px;
+  margin-bottom: 8px;
+  padding: 0 18px;
+  color: #111111;
+  width: 299px;
+  height: 42px;
 
   @media screen and (${themes.breakpoints.m} <= width < ${themes.breakpoints.l}) {
     font-size: 16px;
@@ -241,14 +208,14 @@ height: 42px;
     border: 1px solid rgba(17, 17, 17, 15%);
     border-radius: 8px;
     padding: 0 18px;
-  
+
     &:hover {
       border: 1px solid black;
     }
   }
 
-  @media screen and (${themes.breakpoints.l} <= width {
-}
+  @media screen and (${themes.breakpoints.l} <= width) {
+  }
 `;
 
 export const ErrorMessage = styled(FormikErrorMessage)`
@@ -293,6 +260,9 @@ export const FormBtn = styled.button`
   @media screen and (${themes.breakpoints.m} <= width < ${themes.breakpoints.l}) {
     width: 262px;
     height: 48px;
+  }
+
+  @media screen and (${themes.breakpoints.l} <= width) {
   }
 `;
 
