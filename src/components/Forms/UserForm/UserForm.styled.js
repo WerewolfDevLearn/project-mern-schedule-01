@@ -119,23 +119,24 @@ export const RoleTitle = styled.p`
   }
 
   @media screen and (${themes.breakpoints.l} <= width) {
-    margin-bottom: 28px;
+    margin-bottom: 44px;
   }
 `;
 
 export const FormInputContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 10px;
 
   @media screen and (${themes.breakpoints.m} <= width < ${themes.breakpoints.l}) {
-    gap: 26px;
+    gap: 16px;
   }
 
   @media screen and (${themes.breakpoints.l} <= width) {
+    flex-direction: row;
     flex-wrap: wrap;
-    gap: 24px 50px;
-    padding: 44px 0 88px 0;
+    gap: 16px 50px;
+    /* padding: 44px 0 88px 0; */
     width: 758px;
     position: relative;
   }
@@ -168,7 +169,7 @@ export const InputField = styled(Field)`
   border: 1px solid rgba(17, 17, 17, 15%);
   border-radius: 8px;
   padding: 0 18px;
-  /* margin-bottom: 8px; */
+  margin-bottom: 8px;
   width: 299px;
   height: 42px;
 
@@ -180,7 +181,7 @@ export const InputField = styled(Field)`
     border: 1px solid rgba(17, 17, 17, 15%);
     border-radius: 8px;
     padding: 0 18px;
-    /* margin-bottom: 8px; */
+    margin-bottom: 8px;
 
     &:hover {
       border: 1px solid black;
@@ -195,13 +196,13 @@ export const DateInput = styled(DatePicker)`
   letter-spacing: -0.02em;
   border: 1px solid rgba(17, 17, 17, 15%);
   border-radius: 8px;
-  /* margin-bottom: 8px; */
+  margin-bottom: 8px;
   padding: 0 18px;
   color: #111111;
   width: 299px;
   height: 42px;
 
-  @media screen and (${themes.breakpoints.m} <= width < ${themes.breakpoints.l}) {
+  @media screen and (${themes.breakpoints.m} <= width) {
     font-size: 16px;
     line-height: 1.13;
     width: 354px;
@@ -258,9 +259,10 @@ export const FormBtn = styled.button`
     transform: scale(1.1);
   }
 
-  @media screen and (${themes.breakpoints.m} <= width < ${themes.breakpoints.l}) {
+  @media screen and (${themes.breakpoints.m} <= width) {
     width: 262px;
     height: 48px;
+    margin-top: 80px;
   }
 
   @media screen and (${themes.breakpoints.l} <= width) {
@@ -271,9 +273,10 @@ export const BtnWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 20px;
 
   @media screen and (${themes.breakpoints.m} <= width < ${themes.breakpoints.l}) {
+    /* gap: 10px; */
   }
 
   @media screen and (${themes.breakpoints.l} <= width) {
@@ -325,10 +328,9 @@ export const ChangeValueBtn = styled.button`
     margin-bottom: 20px;
   } */
 
-  /* @media screen and (${themes.breakpoints.l} <= width) {
-    width: 262px;
-    height: 48px;
-  } */
+  @media screen and (${themes.breakpoints.l} <= width) {
+    width: 195px;
+  }
 `;
 
 export const DeleteProfileBtn = styled.button`
@@ -353,8 +355,7 @@ export const DeleteProfileBtn = styled.button`
     transform: scale(1.1);
   }
 
-  /* @media screen and (${themes.breakpoints.l} <= width) {
-    width: 262px;
-    height: 48px;
-  } */
+  @media screen and (${themes.breakpoints.l} <= width) {
+    width: 195px;
+  }
 `;
