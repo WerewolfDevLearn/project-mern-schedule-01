@@ -8,10 +8,10 @@ import { NavUl, NavLinkStyled, IconDiv } from './UserNav.styled';
 
 export default function UserNav() {
   const getCurrentCalendarPage = () => {
-    if (location.pathname.includes('/calendar/month')) {
-      return `${routes.navFromLogIn}/${getCurrentDate()}`;
+    if (location.pathname.includes('/calendar/day')) {
+      return `/calendar/day/${getCurrentDate()}`;
     }
-    return `/calendar/day/${getCurrentDate()}`;
+    return `${routes.navFromLogIn}/${getCurrentDate()}`;
   };
 
   return (
