@@ -10,7 +10,6 @@ import { persistedUserReducer } from './auth/slices/authfulfilledSlice';
 import { isRefreshingReducer } from './auth/slices/authRefreshingSlice';
 import { errorReducer } from './auth/slices/authErrorSlice';
 import { isLoadingReducer } from './auth/slices/authIsLoadingSlice';
-import { filterReducer } from './reviews/filterSlices';
 
 export const store = configureStore({
   reducer: {
@@ -19,8 +18,7 @@ export const store = configureStore({
     isLoading: isLoadingReducer,
     isRefreshing: isRefreshingReducer,
     [reviewsApi.reducerPath]: reviewsApi.reducer,
-    [tasksApi.reducerPath]: tasksApi.reducer,
-    filter: filterReducer
+    [tasksApi.reducerPath]: tasksApi.reducer
   },
   middleware: (gDM) =>
     gDM({
