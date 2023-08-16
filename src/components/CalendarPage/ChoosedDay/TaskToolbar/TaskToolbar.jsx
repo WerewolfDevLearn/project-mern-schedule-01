@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 import { Popover } from 'react-tiny-popover';
 
 import { useDeleteTasksMutation, useUpdateTasksMutation } from 'src/redux/tasks/tasksApi';
@@ -14,6 +15,7 @@ import {
 } from './TaskToolbar.styled';
 
 export default function TaskToolbar({ task, openModal }) {
+  const { t } = useTranslation();
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
 
   const [deleteTask, deleteResult] = useDeleteTasksMutation();
@@ -67,11 +69,11 @@ export default function TaskToolbar({ task, openModal }) {
         content={
           <PopoverWrapper>
             <RelocateButton onClick={() => replaceTask(getCategory(categoriesFiltered[0]))}>
-              {getCategory(categoriesFiltered[0])}
+              {t(getCategory(categoriesFiltered[0]))}
               <ArrowCircleBrokenRight width="16" height="16" />
             </RelocateButton>
             <RelocateButton onClick={() => replaceTask(getCategory(categoriesFiltered[1]))}>
-              {getCategory(categoriesFiltered[1])}
+              {t(getCategory(categoriesFiltered[1]))}
               <ArrowCircleBrokenRight width="16" height="16" />
             </RelocateButton>
           </PopoverWrapper>
