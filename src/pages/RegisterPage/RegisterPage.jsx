@@ -4,7 +4,7 @@ import { useisLoading } from 'src/redux/selectors';
 import logo from 'src/images/others/desktop/goose-quote1x.png';
 import logo2x from 'src/images/others/desktop/goose-quote2x.png';
 import logo3x from 'src/images/others/desktop/goose-quote3x.png';
-import { toast } from 'react-toastify';
+
 import { register, verify } from 'src/redux/auth/authOps';
 import RegisterForm from 'src/components/Forms/RegisterForm/RegisterForm';
 import VerifyForm from 'src/components/Forms/VerifyForm/VerifyForm';
@@ -18,6 +18,7 @@ import { Container, ContentWrap, Wrap, StyledImg } from './RegisterPage.styled';
 export default function RegisterPage() {
   const dispatch = useDispatch();
   const isLoading = useisLoading();
+
   const [openModal, setOpenModal] = useState(false);
   const onClose = () => {
     setOpenModal(false);
