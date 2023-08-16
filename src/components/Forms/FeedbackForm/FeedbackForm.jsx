@@ -93,7 +93,7 @@ export default function FeedbackForm({ onClose, action = 'add', reviewToEdit }) 
             <ErrorMessage name="rating" component="div" />
           </Label>
 
-          <Label for="comment">
+          <Label htmlFor="comment">
             <LabelInner>
               {t('Review')}
               {selectAction !== 'add' && (
