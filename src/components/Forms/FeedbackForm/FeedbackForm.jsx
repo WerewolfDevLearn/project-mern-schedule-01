@@ -85,7 +85,7 @@ export default function FeedbackForm({ onClose, action = 'add', reviewToEdit }) 
             <Rating
               name="rating"
               readOnly={selectAction === 'view'}
-              defaultValue={formik.values.rating}
+              value={formik.values.rating}
               icon={<RatingStarActive />}
               emptyIcon={<RatingStarDisable />}
               onChange={(_, value) => formik.setFieldValue('rating', value)}

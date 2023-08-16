@@ -16,7 +16,7 @@ export const TaskToolbarBtn = styled.button`
 
   &:hover,
   &:focus {
-    color: ${({ theme }) => theme.colors.backgroundActiveUserNavItem};
+    color: ${({ theme }) => theme.colors.accent};
   }
 `;
 
