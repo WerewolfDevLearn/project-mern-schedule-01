@@ -5,7 +5,7 @@ export const SideBarContainer = styled.aside`
   position: absolute;
   z-index: 2;
   left: -225px;
-  background-color: ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.colors.backgroundSidebar};
   display: flex;
   flex-direction: column;
   width: 225px;

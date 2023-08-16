@@ -15,8 +15,8 @@ export const NavUl = styled.ul`
 `;
 
 export const NavLinkStyled = styled(NavLink)`
-  color: ${({ theme }) => theme.colors.goose};
-  background-color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.userNavItem};
+  background-color: ${({ theme }) => theme.colors.backgroundSidebar};
   display: flex;
   align-items: center;
   gap: 10px;
@@ -31,13 +31,13 @@ export const NavLinkStyled = styled(NavLink)`
     font-size: 16px;
   }
   &:hover {
-    color: ${({ theme }) => theme.colors.goose};
-    background-color: ${({ theme }) => theme.colors.ligthBlue};
+    color: ${({ theme }) => theme.colors.activeUserNavItem};
+    background-color: ${({ theme }) => theme.colors.backgroundActiveUserNavItem};
     border-radius: 8px;
   }
   &.active {
-    color: ${({ theme }) => theme.colors.goose};
-    background-color: ${({ theme }) => theme.colors.ligthBlue};
+    color: ${({ theme }) => theme.colors.activeUserNavItem};
+    background-color: ${({ theme }) => theme.colors.backgroundActiveUserNavItem};
     border-radius: 8px;
   }
 `;
