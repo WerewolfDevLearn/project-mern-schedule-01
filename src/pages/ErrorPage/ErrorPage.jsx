@@ -26,7 +26,7 @@ export default function ErrorPage() {
                 type="image/svg"
                 srcSet={`${gooseRocketMobile} 375w, ${gooseRocketTablet} 768w, 1440w`}
                 sizes="(max-width: 767px) 375px, (max-width: 1439px) 768px, 1440px"
-                alt=""
+                alt="🦆"
               />
               <img src={`${gooseRocketTablet}`} alt="" />
             </picture>
