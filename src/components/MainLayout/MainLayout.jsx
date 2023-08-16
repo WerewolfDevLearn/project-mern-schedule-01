@@ -51,11 +51,6 @@ const Layout = () => {
         </MainLayOutSubContainer>
         <ToastContainer />
       </MainLayOutContainer>
-      {openModal && (
-        <Modal onClose={toggleModal}>
-          <FeedbackForm />
-        </Modal>
-      )}
     </ThemeProvider>
   );
 };

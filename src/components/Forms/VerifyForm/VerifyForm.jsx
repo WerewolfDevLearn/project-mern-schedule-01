@@ -22,12 +22,12 @@ export default function VerifyForm({ onSubmitForm }) {
   return (
     <Container>
       <Title>Verify</Title>
-      <Formik initialValues={{ code: '' }} onSubmit={onSubmit}>
+      <Formik initialValues={{ verificationCode: '' }} onSubmit={onSubmit}>
         {() => (
           <FormElement autoComplete="off">
             <InputWrap>
-              <Subtitle htmlFor="code">Code</Subtitle>
-              <Input type="text" name="code" placeholder="Enter your code" />
+              <Subtitle htmlFor="verificationCode">Code</Subtitle>
+              <Input type="text" name="verificationCode" placeholder="Enter your code" />
             </InputWrap>
             <Button type="submit">
               Confirm <Img src={icon} alt="LogIn SVG" />

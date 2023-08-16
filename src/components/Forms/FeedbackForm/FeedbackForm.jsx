@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { Formik, useFormik } from 'formik';
 import * as Yup from 'yup';
 import Rating from '@mui/material/Rating';
-import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
 import {
@@ -94,7 +93,7 @@ export default function FeedbackForm({ onClose, action = 'add', reviewToEdit }) 
             <ErrorMessage name="rating" component="div" />
           </Label>
 
-          <Label for="comment">
+          <Label htmlFor="comment">
             <LabelInner>
               {t('Review')}
               {selectAction !== 'add' && (
