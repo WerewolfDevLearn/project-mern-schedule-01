@@ -170,8 +170,12 @@ export const InputField = styled(Field)`
   border-radius: 8px;
   padding: 0 18px;
   margin-bottom: 8px;
-  width: 299px;
-  height: 42px;
+  width: 200px;
+
+  @media screen and (${themes.breakpoints.s} <= width < ${themes.breakpoints.m}) {
+    width: 299px;
+    height: 42px;
+  }
 
   @media screen and (${themes.breakpoints.m} <= width) {
     font-size: 16px;
@@ -199,8 +203,12 @@ export const DateInput = styled(DatePicker)`
   margin-bottom: 8px;
   padding: 0 18px;
   color: #111111;
-  width: 299px;
-  height: 42px;
+  width: 200px;
+
+  @media screen and (${themes.breakpoints.s} <= width < ${themes.breakpoints.m}) {
+    width: 299px;
+    height: 42px;
+  }
 
   @media screen and (${themes.breakpoints.m} <= width) {
     font-size: 16px;
@@ -280,7 +288,7 @@ export const BtnWrapper = styled.div`
   }
 
   @media screen and (${themes.breakpoints.l} <= width) {
-    flex-direction: column;
+    flex-direction: row;
     bottom: 8%;
     right: -8%;
     gap: 20px;
