@@ -6,5 +6,5 @@ export default function AddFeedbackBt({ openModal }) {
   return <AddFeedbackBtnStyles onClick={openModal}>Feedback</AddFeedbackBtnStyles>;
 }
 AddFeedbackBt.propTypes = {
-  onGiveFeedBack: PropTypes.func.isRequired
+  openModal: PropTypes.func.isRequired
 };
