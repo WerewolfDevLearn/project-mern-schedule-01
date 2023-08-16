@@ -1,4 +1,3 @@
-import { backgroundColor } from 'src/styles/variables/Variables';
 import styled from 'styled-components';
 
 export const Overlay = styled.div`
@@ -7,7 +6,7 @@ export const Overlay = styled.div`
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(62, 133, 243, 0.05);
+  background-color: ${({ background }) => background};
   z-index: 100;
 `;
 

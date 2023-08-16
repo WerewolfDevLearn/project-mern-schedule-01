@@ -10,6 +10,7 @@ import {
   endOfMonth,
   startOfMonth
 } from 'date-fns';
+
 import Loader from 'src/components/shared/Loader/Loader';
 import { useGetTasksQuery } from 'src/redux/tasks/tasksApi';
 

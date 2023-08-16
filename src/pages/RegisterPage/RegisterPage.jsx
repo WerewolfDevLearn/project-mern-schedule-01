@@ -4,12 +4,14 @@ import { useisLoading } from 'src/redux/selectors';
 import logo from 'src/images/others/desktop/goose-quote1x.png';
 import logo2x from 'src/images/others/desktop/goose-quote2x.png';
 import logo3x from 'src/images/others/desktop/goose-quote3x.png';
-
+import { toast } from 'react-toastify';
 import { register, verify } from 'src/redux/auth/authOps';
 import RegisterForm from 'src/components/Forms/RegisterForm/RegisterForm';
 import VerifyForm from 'src/components/Forms/VerifyForm/VerifyForm';
 import AuthNavigate from 'src/components/shared/AuthNavigate/AuthNavigate';
 import Modal from 'src/components/shared/Modal/Modal';
+import Loader from 'src/components/shared/Loader/Loader';
+import { modalBackdropcolors } from 'src/styles/variables/themes';
 
 import { Container, ContentWrap, Wrap, StyledImg } from './RegisterPage.styled';
 
@@ -17,11 +19,17 @@ export default function RegisterPage() {
   const dispatch = useDispatch();
   const isLoading = useisLoading();
   const [openModal, setOpenModal] = useState(false);
+  const onClose = () => {
+    setOpenModal(false);
+  };
   const callBack = (data) => {
     dispatch(register(data));
-    // if (isLoading) setOpenModal(true);
+    setOpenModal(true);
   };
-  const modalCallback = () => {};
+  const onSubmitVerifyForm = (data) => {
+    dispatch(verify(data));
+  };
+
   return (
     <Container>
       <ContentWrap>
@@ -35,9 +43,10 @@ export default function RegisterPage() {
           <AuthNavigate formType="register" />
         </Wrap>
       </ContentWrap>
-      {isLoading && (
-        <Modal>
-          <VerifyForm />
+
+      {openModal && (
+        <Modal onClose={onClose} color={modalBackdropcolors.black}>
+          {isLoading ? <Loader /> : <VerifyForm onSubmitForm={onSubmitVerifyForm} />}
         </Modal>
       )}
     </Container>
