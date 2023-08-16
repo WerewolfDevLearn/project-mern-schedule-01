@@ -1,26 +1,22 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
-
 import { useGetReviewOwnQuery } from 'src/redux/reviews/reviewsApi';
+import Modal from 'src/components/shared/Modal/Modal';
+import FeedbackForm from 'src/components/Forms/FeedbackForm/FeedbackForm';
 
 import AddFeedbackBtn from '../AddFeedbackBtn/AddFeedbackBtn';
 import ThemeToggler from '../ThemeToggler/ThemeToggler';
-import Modal from '../../shared/Modal/Modal';
-import FeedbackForm from '../../Forms/FeedbackForm/FeedbackForm';
 
 import UserInfo from '../UserInfo/UserInfo';
 
 import UserMenuBTN from './UserMenuBTN/UserMenuBTN';
-
 import { Header, LoactionSign } from './Header.styled';
 
 export default function AppHeader({ callBack }) {
   let action = 'add';
-  const { data: reviews, isFetching, isLoading } = useGetReviewOwnQuery();
+  const { data: reviews, isLoading } = useGetReviewOwnQuery();
   if (!isLoading) {
-    console.log(reviews);
-
     if (reviews.length) {
       action = 'view';
     }

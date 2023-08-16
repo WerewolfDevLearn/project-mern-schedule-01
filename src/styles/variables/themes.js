@@ -101,6 +101,11 @@ export const themes = Object.freeze({
   }
 });
 
+export const modalBackdropcolors = Object.freeze({
+  black: 'rgba(23, 24, 32, 0.5)',
+  grey: 'rgba(103, 103, 103, 0.5)'
+});
+
 export const dark = Object.freeze({
   colors: {
     background: '#171820',

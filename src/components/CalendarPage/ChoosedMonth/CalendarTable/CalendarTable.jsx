@@ -11,6 +11,7 @@ import {
   isSameDay
 } from 'date-fns';
 
+import Loader from 'src/components/shared/Loader/Loader';
 import { useGetTasksQuery } from 'src/redux/tasks/tasksApi';
 
 import {
@@ -54,17 +55,23 @@ export default function CalendarTable() {
 
   const isCurrentMonth = (day) => isSameMonth(new Date(), day);
 
-  const getDayTasks = (day) =>
-    tasks.filter(
-      (task) =>
-        new Date(task.date).getTime() >= startOfDay(day).getTime() &&
-        new Date(task.date).getTime() < endOfDay(day).getTime()
-    );
+  const getDayTasks = (day, tasks) => {
+    if (tasks) {
+      tasks.filter(
+        (task) =>
+          new Date(task.date).getTime() >= startOfDay(day).getTime() &&
+          new Date(task.date).getTime() < endOfDay(day).getTime()
+      );
+    }
+  };
 
-  return (
+  return isTasksLoading ? (
+    <Loader />
+  ) : (
     <GridWrapper>
       {calendar.map((dayItem) => {
-        const filteredTasks = getDayTasks(dayItem);
+        console.log(tasks);
+        const filteredTasks = getDayTasks(dayItem, tasks);
 
         return (
           <CellWrapper
