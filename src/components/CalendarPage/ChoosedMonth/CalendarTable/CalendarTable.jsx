@@ -32,46 +32,35 @@ export default function CalendarTable() {
   const year = currentDate.split('-')[0];
   const month = currentDate.split('-')[1];
   const data = { year, month };
-  const { data: tasks = [], isLoading: isTasksLoading } = useGetTasksQuery(data);
-  // const { data: items = [], isLoading, error } = useGetContatsQuery();
+  const { data: respons, isLoading: isTasksLoading } = useGetTasksQuery(data);
+  console.log('respons: ', respons);
+  console.log('time ', Date.now());
+
+  // const calendar = [];
   const generateCalendar = () => {
     const startDay = startOfWeek(new Date(year, month - 1, 1), { weekStartsOn: 1 });
     const lastDayOfMonth = endOfDay(new Date(year, month, 0));
-
-    const calendar = [];
     let day = startDay;
-
     while (!isSameDay(day, lastDayOfMonth)) {
       calendar.push(day);
       day = addDays(day, 1);
     }
-
-    setCalendar(calendar);
+    // setCalendar((calendar) => calendar);
   };
-
-  useEffect(() => {
-    generateCalendar();
-  }, []);
+  // generateCalendar();
 
   const isCurrentMonth = (day) => isSameMonth(new Date(), day);
 
   const getDayTasks = (day, tasks) => {
-    if (tasks) {
-
-      return tasks.filter(
-
-
-        (task) =>
-          new Date(task.date).getTime() >= startOfDay(day).getTime() &&
-          new Date(task.date).getTime() < endOfDay(day).getTime()
-      );
-    }
-
-    return [];
+    return tasks.filter(
+      (task) =>
+        new Date(task.date).getTime() >= startOfDay(day).getTime() &&
+        new Date(task.date).getTime() < endOfDay(day).getTime()
+    );
   };
 
   const renderedCalendar = calendar.map((dayItem) => {
-    const calendarWithTask = getDayTasks(dayItem, tasks);
+    const calendarWithTask = getDayTasks(dayItem, respons.tasks);
 
     return (
       <CellWrapper
@@ -88,21 +77,19 @@ export default function CalendarTable() {
               <DayWrapper>{format(dayItem, 'd')}</DayWrapper>
             )}
           </ShowDayWrapper>
-          {!isTasksLoading && (
-            <TaskListWrapper>
-              {calendarWithTask.slice(0, 2).map((task) => (
-                <TaskItem key={task.id} priority={task.priority}>
-                  {task.title}
-                </TaskItem>
-              ))}
-            </TaskListWrapper>
-          )}
-          {calendarWithTask.length > 2 && <TasksMoreLabel>...</TasksMoreLabel>}
+          (
+          <TaskListWrapper>
+            {calendarWithTask.slice(0, 2).map((task) => (
+              <TaskItem key={task.id} priority={task.priority}>
+                {task.title}
+              </TaskItem>
+            ))}
+          </TaskListWrapper>
+          ){calendarWithTask.length > 2 && <TasksMoreLabel>...</TasksMoreLabel>}
         </RowInCell>
       </CellWrapper>
     );
   });
-
 
   return isTasksLoading ? <Loader /> : <GridWrapper>{renderedCalendar}</GridWrapper>;
 }
