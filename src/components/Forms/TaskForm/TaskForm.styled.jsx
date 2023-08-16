@@ -139,14 +139,14 @@ export const RadioSpan = styled.span`
   border-radius: 50%;
   background-color: ${(props) => {
     switch (props.value) {
-      case 'low':
-        return '#72C2F8';
-      case 'medium':
-        return '#F3B249';
-      case 'high':
-        return '#EA3D65';
-      default:
-        return 'black';
+    case 'low':
+      return '#72C2F8';
+    case 'medium':
+      return '#F3B249';
+    case 'high':
+      return '#EA3D65';
+    default:
+      return 'black';
     }
   }};
 
@@ -264,7 +264,7 @@ export const CloseIcon = styled(XClose)`
   height: 24px;
 
   transition: stroke 250ms linear;
-  color: ${({theme}) => theme.colors.textAndIconTodo};
+  color: ${({ theme }) => theme.colors.textAndIconTodo};
 
   &:hover,
   &:focus {

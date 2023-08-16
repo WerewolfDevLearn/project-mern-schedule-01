@@ -71,6 +71,7 @@ export default function UserForm({ callBack }) {
   };
   // console.log(defaultAvatar);
   const [selectedAvatar, setSelectedAvatar] = useState(null);
+  // eslint-disable-next-line no-unused-vars
   const [imagePreview, setImagePreview] = useState(initialValues.avatarUrl);
   const [selectedDate, setSelectedDate] = useState(new Date(initialValues.birthday || new Date()));
   const [showChangePasswordModal, setShowChangePasswordModal] = useState(false);

@@ -1,8 +1,10 @@
+import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import PeriodPaginator from '../PeriodPaginator/PeriodPaginator';
 import { PeriodTypeSelect } from '../PeriodTypeSelect/PeriodTypeSelect';
+
 import { ToolbarWrapper } from './CalendarToolbar.styled';
 export const CalendarToolbar = ({ today, prevHandler, nextHandler }) => {
   const [type, setType] = useState('month');
@@ -24,4 +26,10 @@ export const CalendarToolbar = ({ today, prevHandler, nextHandler }) => {
       <PeriodTypeSelect today={today} onChangeType={setType} />
     </ToolbarWrapper>
   );
+};
+
+CalendarToolbar.propTypes = {
+  prevHandler: PropTypes.func.isRequired,
+  nextHandler: PropTypes.func.isRequired,
+  today: PropTypes.string.isRequired
 };

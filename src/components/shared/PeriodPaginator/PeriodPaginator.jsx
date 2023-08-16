@@ -1,5 +1,7 @@
-import React from 'react';
+import PropTypes from 'prop-types';
 import moment from 'moment';
+import { useParams } from 'react-router';
+
 import {
   DivWrapper,
   TitleWrapper,
@@ -7,7 +9,6 @@ import {
   ButtonWrapper1,
   ButtonWrapper2
 } from './PeriodPaginator.styled';
-import { useParams } from 'react-router';
 
 const PeriodPaginator = ({ prevHandler, nextHandler, type }) => {
   const params = useParams();
@@ -28,3 +29,9 @@ const PeriodPaginator = ({ prevHandler, nextHandler, type }) => {
   );
 };
 export default PeriodPaginator;
+
+PeriodPaginator.propTypes = {
+  prevHandler: PropTypes.func.isRequired,
+  nextHandler: PropTypes.func.isRequired,
+  type: PropTypes.string.isRequired
+};

@@ -1,7 +1,8 @@
-import { Item, List, StyledNavLink } from '../PeriodTypeSelect/PeriodTypeSelect.styled';
-import { useLocation } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import moment from 'moment';
-import React from 'react';
+import { useLocation } from 'react-router-dom';
+
+import { Item, List, StyledNavLink } from '../PeriodTypeSelect/PeriodTypeSelect.styled';
 
 export const PeriodTypeSelect = ({ today, onChangeType }) => {
   const location = useLocation();
@@ -31,4 +32,9 @@ export const PeriodTypeSelect = ({ today, onChangeType }) => {
       </Item>
     </List>
   );
+};
+
+PeriodTypeSelect.propTypes = {
+  today: PropTypes.string.isRequired,
+  onChangeType: PropTypes.func.isRequired
 };

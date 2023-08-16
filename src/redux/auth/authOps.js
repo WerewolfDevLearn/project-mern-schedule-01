@@ -68,14 +68,14 @@ export const verify = createAsyncThunk('user/VerifyEmail', async (code, { reject
     return rejectWithValue(error.message);
   }
 });
-export const sendEmail = createAsyncThunk('user/SendEmail', async (email, { rejectWithValue }) => {
-  try {
-    const credentials = await sendVEmail(email);
-    return credentials;
-  } catch (error) {
-    return rejectWithValue(error.message);
-  }
-});
+// export const sendEmail = createAsyncThunk('user/SendEmail', async (email, { rejectWithValue }) => {
+//   try {
+//     // const credentials = await sendVEmail(email);
+//     return credentials;
+//   } catch (error) {
+//     return rejectWithValue(error.message);
+//   }
+// });
 
 export const updUser = createAsyncThunk(
   'user/Update',

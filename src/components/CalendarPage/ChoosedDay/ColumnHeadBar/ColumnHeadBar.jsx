@@ -6,10 +6,10 @@ import { Add } from 'src/components/shared/Icons';
 import { ColumnHeadBarStyles, TodoTitle, AddBtn } from './ColumnHeadBar.styled';
 
 export default function ColumnHeadBar({ title, openModal }) {
-    const { t } = useTranslation();
+  const { t } = useTranslation();
   return (
     <ColumnHeadBarStyles>
-      <TodoTitle>{t(title) }</TodoTitle>
+      <TodoTitle>{t(title)}</TodoTitle>
       <AddBtn onClick={() => openModal()}>
         <Add width="22" height="22" />
       </AddBtn>

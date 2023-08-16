@@ -29,7 +29,7 @@ export default function DayCalendarHead({ date }) {
     if (screenWidth >= 768) {
       return t(format(day, 'eee'));
     }
-    return t(`mob_${format(day, 'eee')}`)
+    return t(`mob_${format(day, 'eee')}`);
   };
 
   const formatDate = (date) => {

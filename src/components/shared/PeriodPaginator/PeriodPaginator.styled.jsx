@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { themes } from 'src/styles/variables/themes';
 
-//export const PeriodPaginatorStyles = styled.div``;
 export const DivWrapper = styled('div')`
   display: flex;
   position: relative;

@@ -9,5 +9,5 @@
   "useTabs": false,
   "arrowParens": "always",
   "endOfLine": "auto",
-  "multiline-ternary":"true"
+  "multiline-ternary": "true"
 }

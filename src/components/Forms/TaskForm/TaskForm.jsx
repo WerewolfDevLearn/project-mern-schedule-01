@@ -2,7 +2,6 @@ import { Formik } from 'formik';
 import { useTranslation } from 'react-i18next';
 import * as Yup from 'yup';
 import { useParams } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import { useCreateTasksMutation, useUpdateTasksMutation } from 'src/redux/tasks/tasksApi';

@@ -1,4 +1,3 @@
-import { backgroundColor } from 'src/styles/variables/Variables';
 import styled from 'styled-components';
 
 export const TasksColumnStyles = styled.li`
