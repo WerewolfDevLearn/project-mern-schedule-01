@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import * as Yup from 'yup';
 import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { parse } from 'date-fns';
 
 import { useCreateTasksMutation, useUpdateTasksMutation } from 'src/redux/tasks/tasksApi';
 
@@ -34,8 +35,8 @@ const TaskSchema = Yup.object().shape({
     .test('is-greater', 'End time should be greater than start time', function (value) {
       const { start } = this.parent;
       if (start && value) {
-        const startTime = new Date(`2000-01-01T${start}`);
-        const endTime = new Date(`2000-01-01T${value}`);
+        const startTime = parse(start, 'HH:mm', new Date());
+        const endTime = parse(value, 'HH:mm', new Date());
         return endTime > startTime;
       }
       return true;
@@ -45,8 +46,7 @@ const TaskSchema = Yup.object().shape({
     .required('Date is required')
     .transform((value, originalValue) => {
       if (originalValue) {
-        const [year, month, day] = originalValue.split('-');
-        return new Date(`${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`);
+        return parse(originalValue, 'yyyy-MM-dd', new Date());
       }
       return value;
     }),

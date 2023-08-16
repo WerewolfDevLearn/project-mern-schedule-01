@@ -1,5 +1,7 @@
 import { Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import { useError } from 'src/redux/selectors';
 
 import PrivateRoutes from './components/shared/Routes/PrivateRoutes';
 import PubliceRourtes from './components/shared/Routes/PubliceRoutes';
@@ -19,28 +21,35 @@ import RegisterPage from './pages/RegisterPage/RegisterPage';
 import routes from './routes';
 
 function App() {
+  const error = useError();
+  if (error) {
+    toast.error(error.message);
+  }
   return (
-    <Suspense fallback={<Loader />}>
-      <Routes>
-        <Route element={<PubliceRourtes />}>
-          <Route path={routes.mainPage} element={<MainPage />} />
-          <Route path={routes.registerPage} element={<RegisterPage />} />
-          <Route path={routes.loginPage} element={<LoginPage />} />
-        </Route>
-        <Route element={<PrivateRoutes />}>
-          <Route path={routes.mainLayout} element={<MainLayout />}>
-            <Route path={routes.accountPage} element={<AccountPage />} />
-            <Route path={routes.calendarPage} element={<CalendarPage />}>
-              <Route path={routes.calendarMonth} element={<ChoosedMonth />} />
-              <Route path={routes.calendarDay} element={<ChoosedDay />} />
-            </Route>
-            <Route path={routes.statisticsPage} element={<SatisticsPage />} />
+    <>
+      <Suspense fallback={<Loader />}>
+        <Routes>
+          <Route element={<PubliceRourtes />}>
+            <Route path={routes.mainPage} element={<MainPage />} />
+            <Route path={routes.registerPage} element={<RegisterPage />} />
+            <Route path={routes.loginPage} element={<LoginPage />} />
           </Route>
-        </Route>
+          <Route element={<PrivateRoutes />}>
+            <Route path={routes.mainLayout} element={<MainLayout />}>
+              <Route path={routes.accountPage} element={<AccountPage />} />
+              <Route path={routes.calendarPage} element={<CalendarPage />}>
+                <Route path={routes.calendarMonth} element={<ChoosedMonth />} />
+                <Route path={routes.calendarDay} element={<ChoosedDay />} />
+              </Route>
+              <Route path={routes.statisticsPage} element={<SatisticsPage />} />
+            </Route>
+          </Route>
 
-        <Route path="*" element={<ErrorPage />} />
-      </Routes>
-    </Suspense>
+          <Route path="*" element={<ErrorPage />} />
+        </Routes>
+      </Suspense>
+      <ToastContainer />
+    </>
   );
 }
 
