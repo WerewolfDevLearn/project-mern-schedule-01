@@ -18,12 +18,8 @@ import { Header, LoactionSign } from './Header.styled';
 export default function AppHeader({ callBack }) {
   let action = 'add';
   const { data: reviews, isFetching, isLoading } = useGetReviewOwnQuery();
-  if (!isLoading) {
-    console.log(reviews);
-
-    if (reviews.length) {
-      action = 'view';
-    }
+  if (!isLoading && reviews.length) {
+    action = 'view';
   }
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
