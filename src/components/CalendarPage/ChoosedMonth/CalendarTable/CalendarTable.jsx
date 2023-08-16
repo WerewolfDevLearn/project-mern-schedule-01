@@ -10,6 +10,7 @@ import {
   startOfWeek,
   isSameDay
 } from 'date-fns';
+
 import Loader from 'src/components/shared/Loader/Loader';
 import { useGetTasksQuery } from 'src/redux/tasks/tasksApi';
 
@@ -56,12 +57,16 @@ export default function CalendarTable() {
 
   const getDayTasks = (day, tasks) => {
     if (tasks) {
+
       return tasks.filter(
+
+
         (task) =>
           new Date(task.date).getTime() >= startOfDay(day).getTime() &&
           new Date(task.date).getTime() < endOfDay(day).getTime()
       );
     }
+
     return [];
   };
 
@@ -97,6 +102,7 @@ export default function CalendarTable() {
       </CellWrapper>
     );
   });
+
 
   return isTasksLoading ? <Loader /> : <GridWrapper>{renderedCalendar}</GridWrapper>;
 }
