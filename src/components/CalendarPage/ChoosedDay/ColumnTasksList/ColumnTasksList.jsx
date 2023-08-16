@@ -6,7 +6,6 @@ import CustomScrollbar from '../CustomVerticalScrollbar/CustomVerticalScrollbar'
 import { ColumnTasksListStyles } from './ColumnTasksList.styled';
 
 export default function ColumnTasksList({ tasks, openModal }) {
-
   return (
     <CustomScrollbar>
       <ColumnTasksListStyles>

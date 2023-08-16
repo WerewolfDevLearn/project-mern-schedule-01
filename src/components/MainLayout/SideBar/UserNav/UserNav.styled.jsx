@@ -6,15 +6,17 @@ import { themes } from 'src/styles/variables/themes';
 export const NavUl = styled.ul`
   display: flex;
   flex-direction: column;
+  gap: 18px;
   margin-bottom: 424px;
   @media screen and (${themes.breakpoints.m} < width) {
     margin-bottom: 439px;
+    gap: 16px;
   }
 `;
 
 export const NavLinkStyled = styled(NavLink)`
-  color: ${({ theme }) => theme.colors.labelInForm};
-  background-color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.userNavItem};
+  background-color: ${({ theme }) => theme.colors.backgroundSidebar};
   display: flex;
   align-items: center;
   gap: 10px;
@@ -29,13 +31,13 @@ export const NavLinkStyled = styled(NavLink)`
     font-size: 16px;
   }
   &:hover {
-    color: ${({ theme }) => theme.colors.goose};
-    background-color: ${({ theme }) => theme.colors.ligthBlue};
+    color: ${({ theme }) => theme.colors.activeUserNavItem};
+    background-color: ${({ theme }) => theme.colors.backgroundActiveUserNavItem};
     border-radius: 8px;
   }
   &.active {
-    color: ${({ theme }) => theme.colors.goose};
-    background-color: ${({ theme }) => theme.colors.ligthBlue};
+    color: ${({ theme }) => theme.colors.activeUserNavItem};
+    background-color: ${({ theme }) => theme.colors.backgroundActiveUserNavItem};
     border-radius: 8px;
   }
 `;

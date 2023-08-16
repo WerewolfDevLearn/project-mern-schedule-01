@@ -1,16 +1,33 @@
-import PropTypes from 'prop-types';
+import {
+  MonthCalendarHeadStyles,
+  WorkDay,
+  WeekendDay,
+  MobileDaysList,
+  DesktopDayList
+} from './MonthCalendarHead.styled';
 
-import { MonthCalendarHeadStyles } from './MonthCalendarHead.styled';
+const workDayNames = ['MON', 'TUE', 'WED', 'THU', 'FRI'];
+const weekendDayNames = ['SAT', 'SUN'];
 
-export default function MonthCalendarHead({ arg }) {
+export default function MonthCalendarHead() {
   return (
     <MonthCalendarHeadStyles>
-      <h2>MonthCalendarHead</h2>
-      <p>{arg}</p>
+      <DesktopDayList>
+        {workDayNames.map((day) => (
+          <WorkDay key={day}>{day}</WorkDay>
+        ))}
+        {weekendDayNames.map((day) => (
+          <WeekendDay key={day}>{day}</WeekendDay>
+        ))}
+      </DesktopDayList>
+      <MobileDaysList>
+        {workDayNames.map((day) => (
+          <WorkDay key={day}>{day[0]}</WorkDay>
+        ))}
+        {weekendDayNames.map((day) => (
+          <WeekendDay key={day}>{day[0]}</WeekendDay>
+        ))}
+      </MobileDaysList>
     </MonthCalendarHeadStyles>
   );
 }
-
-MonthCalendarHead.propTypes = {
-  arg: PropTypes.any
-};

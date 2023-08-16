@@ -1,14 +1,14 @@
 import { Outlet } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
 import { useThemeColors } from 'src/components/MainLayout/ThemeToggler/ThemeContextProvider';
 import { ThemeProvider } from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 
-import Loader from '../shared/Loader/Loader';
-import { useisLoading, useisRefreshing } from '../../redux/selectors';
+import Loader from 'src/components/shared/Loader/Loader';
 
-import { getCurrent } from '../../redux/auth/authOps';
+import { useToken, useisLoading, useisRefreshing } from 'src/redux/selectors';
+
+import { getCurrent } from 'src/redux/auth/authOps';
 
 import SideBar from './SideBar/SideBar';
 import AppHeader from './AppHeader/AppHeader';
@@ -21,15 +21,20 @@ import {
 
 const Layout = () => {
   const [open, setOpen] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
   const isRefreshing = useisRefreshing();
+  const token = useToken;
   const dispatch = useDispatch();
+  const toggleModal = (openModal) => setOpenModal(!openModal);
   const callBack = () => setOpen(true);
   const callBackCls = () => setOpen(false);
 
   const theme = useThemeColors().theme;
   useEffect(() => {
-    dispatch(getCurrent());
-  }, [dispatch]);
+    if (token) {
+      dispatch(getCurrent());
+    }
+  }, [dispatch, token]);
   const isLoading = useisLoading();
   return isRefreshing ? (
     <Loader />
@@ -38,10 +43,9 @@ const Layout = () => {
       <MainLayOutContainer>
         <SideBar open={open} callBackCls={callBackCls} />
         <MainLayOutSubContainer>
-          <AppHeader callBack={callBack} />
+          <AppHeader callBack={callBack} onGiveFeedBack={toggleModal} />
           <ChildrenContainer>{isLoading ? <Loader /> : <Outlet />}</ChildrenContainer>
         </MainLayOutSubContainer>
-        <ToastContainer />
       </MainLayOutContainer>
     </ThemeProvider>
   );

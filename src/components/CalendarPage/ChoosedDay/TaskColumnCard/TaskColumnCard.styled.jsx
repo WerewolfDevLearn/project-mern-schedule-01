@@ -1,12 +1,13 @@
-import { backgroundColor, colorText } from 'src/styles/variables/Variables';
+import { colorText } from 'src/styles/variables/Variables';
 import styled from 'styled-components';
 
 export const TaskColumnCardStyles = styled.li`
   padding: 14px;
   border-radius: 8px;
-  border: 1px solid rgba(220, 227, 229, 0.8);
 
-  background-color: ${backgroundColor.grey};
+  color: ${({ theme }) => theme.colors.textAndIconTodo};
+  background: ${({ theme }) => theme.colors.background};
+  border: 1px solid ${({ theme }) => theme.colors.tasksListBorder};
 
   &:last-child {
     margin-bottom: ${(props) => (props.taskscount > 2 ? '55px' : '14px')};
@@ -19,8 +20,6 @@ export const TaskColumnCardStyles = styled.li`
 
 export const TaskTitle = styled.h3`
   margin-bottom: 28px;
-
-  color: ${colorText.black};
 
   font-size: 14px;
   font-weight: 500;
@@ -44,8 +43,18 @@ export const OwnerAvatarOverlay = styled.div`
 
   width: 32px;
   height: 32px;
+  padding: 1px;
   border-radius: 50%;
+  overflow: hidden;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border: 1.8px solid ${({ theme }) => theme.colors.accent};
 `;
+
+export const UserAvatar = styled.img``;
 
 export const TaskPriority = styled.p`
   display: inline-block;

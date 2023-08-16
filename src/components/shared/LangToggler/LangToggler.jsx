@@ -7,6 +7,8 @@ import { FlagBtn, Label } from './LangToggler.styled';
 
 export default function LangToggler() {
   const [searchParams, setSearchParams] = useSearchParams();
+
+  // eslint-disable-next-line no-unused-vars
   const lang = searchParams.get('lang') ?? 'en';
 
   const { i18n } = useTranslation();

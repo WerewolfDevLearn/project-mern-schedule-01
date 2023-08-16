@@ -1,11 +1,12 @@
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
+import PropTypes from 'prop-types';
 
 import { ModalDiv, Overlay } from './Modal.styled';
 
 const modalRoot = document.querySelector('#modal');
 
-export const Modal = ({ onClose, children }) => {
+export default function Modal({ onClose, color, children }) {
   useEffect(() => {
     document.body.style.overflow = 'hidden';
 
@@ -19,7 +20,6 @@ export const Modal = ({ onClose, children }) => {
 
     return () => {
       document.body.style.overflow = 'auto';
-
       document.removeEventListener('keydown', closeModalByEsc);
     };
   }, [onClose]);
@@ -31,9 +31,15 @@ export const Modal = ({ onClose, children }) => {
   };
 
   return createPortal(
-    <Overlay onClick={handleOverlayClick}>
+    <Overlay onClick={handleOverlayClick} background={color}>
       <ModalDiv>{children}</ModalDiv>
     </Overlay>,
     modalRoot
   );
+}
+
+Modal.propTypes = {
+  onClose: PropTypes.func.isRequired,
+  color: PropTypes.string.isRequired,
+  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired
 };

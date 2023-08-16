@@ -34,5 +34,14 @@ export default function TasksColumnsList({ tasks }) {
 }
 
 TasksColumnsList.propTypes = {
-  tasks: PropTypes.array
+  tasks: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      start: PropTypes.string.isRequired,
+      end: PropTypes.string.isRequired,
+      priority: PropTypes.string.isRequired,
+      date: PropTypes.string.isRequired,
+      category: PropTypes.string.isRequired
+    })
+  )
 };

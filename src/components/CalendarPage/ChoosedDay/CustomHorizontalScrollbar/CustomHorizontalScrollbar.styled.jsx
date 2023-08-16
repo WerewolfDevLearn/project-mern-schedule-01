@@ -14,7 +14,7 @@ export const Scrollbar = styled(SimpleBar)`
     height: 12px;
     border-radius: 12px;
 
-    background-color: #f2f2f2;
+    background: ${({ theme }) => theme.colors.lineHorizontScroll};
 
     transform: scale(1);
 
@@ -35,7 +35,7 @@ export const Scrollbar = styled(SimpleBar)`
     height: 12px;
     border-radius: 12px;
 
-    background-color: #e7e5e5;
+    background: ${({ theme }) => theme.colors.scrollSwitchHorizont};
 
     transform: scale(1);
 
@@ -55,7 +55,7 @@ export const Scrollbar = styled(SimpleBar)`
     width: auto;
     height: 12px;
 
-    background-color: #e7e5e5;
+    background: ${({ theme }) => theme.colors.scrollSwitchHorizont};
     opacity: 1;
 
     @media screen and (width >= 768px) {

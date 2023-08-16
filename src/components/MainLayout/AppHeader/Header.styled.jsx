@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { themes } from 'src/styles/variables/themes';
 
 export const Header = styled.header`
+  color: ${({ theme }) => theme.colors.textAndIconTodo};
   position: relative;
   z-index: 1;
   display: flex;

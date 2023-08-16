@@ -26,6 +26,7 @@
   "Name": "Name",
   "Enter your name": "Enter your name",
   "Email": "Email",
+  "Correct name": "This is an CORRECT name",
   "Enter email": "Enter email",
   "Error email": "This is an ERROR email",
   "Correct email": "This is an CORRECT email",
@@ -75,9 +76,12 @@
   "Enter text": "Enter text",
   "Start": "Start",
   "End": "End",
-  "Low": "low",
-  "Medium": "medium",
-  "High": "high",
+  "Low": "Low",
+  "start": "Start",
+  "end": "End",
+  "low": "Low",
+  "Medium": "Medium",
+  "High": "High",
   "Add": "Add",
   "Cancel": "Cancel",
   "Edit": "Edit",
@@ -114,5 +118,10 @@
   "Tasks": "Tasks",
 
   "404": "We’re sorry, the page you requested could not be found. Please go back to the homepage.",
-  "BackHome": "Back to home"
+  "BackHome": "Back to home",
+  "Rating": "Rating",
+  "Review": "Review",
+  "Save": "Save",
+  "Edit": "Edit",
+  "Cancel": "Cancel"
 }

@@ -63,6 +63,7 @@ export const InputWrap = styled.div`
 `;
 
 export const Subtitle = styled.label`
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -91,15 +92,9 @@ export const Subtitle = styled.label`
   }
 `;
 
-export const InputContainer = styled.div`
-  position: relative;
-  width: 100%;
-`;
-
 export const Input = styled(Field)`
   width: 100%;
   padding: 14px;
-  padding-right: 44px;
 
   border-radius: 8px;
   border: 1px solid ${themes.colors.placegolderAuth};
@@ -117,15 +112,6 @@ export const Input = styled(Field)`
     border: 1px solid ${themes.colors.textAndIconTodo};
   }
 
-  &::placeholder {
-    color: ${themes.colors.placegolderAuth};
-  }
-
-  &#login_password::placeholder {
-    font-size: ${themes.fontSizes.xs};
-    letter-spacing: 4px;
-  }
-
   &.input-error {
     border: 1px solid ${themes.colors.failed};
   }
@@ -141,6 +127,7 @@ export const Input = styled(Field)`
 `;
 
 export const ErrorText = styled(ErrorMessage)`
+  position: absolute;
   color: #da1414;
   font-family: Inter;
   font-size: ${themes.fontSizes.xs};
@@ -158,6 +145,7 @@ export const ErrorText = styled(ErrorMessage)`
 `;
 
 export const TextCorrect = styled.p`
+  position: absolute;
   color: ${themes.colors.saccess};
   font-family: Inter;
   font-size: ${themes.fontSizes.xs};
@@ -208,9 +196,6 @@ export const Button = styled.button`
   &:hover,
   &:focus {
     transform: scale(1.1);
-  }
-  &.disabled {
-    background: ${themes.colors.black};
   }
 `;
 

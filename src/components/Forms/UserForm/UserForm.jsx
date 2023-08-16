@@ -9,8 +9,11 @@ import { useTranslation } from 'react-i18next';
 // import { toast } from 'react-hot-toast';
 import { useUser } from 'src/redux/selectors';
 
-import { Avatar, Plus } from '../../shared/Icons';
-import { Modal } from '../../shared/Modal/Modal';
+import { Avatar, Plus } from 'src/components/shared/Icons';
+import Modal from 'src/components/shared/Modal/Modal';
+
+import ChangePasswordForm from '../ChangePasswordForm/ChangePasswordForm';
+import DeleteProfileForm from '../DeleteProfileForm/DeleteProfileForm';
 
 import {
   FormContainer,
@@ -33,8 +36,6 @@ import {
   ChangeValueBtn,
   DeleteProfileBtn
 } from './UserForm.styled';
-import ChangePasswordForm from '../ChangePasswordForm/ChangePasswordForm';
-import DeleteProfileForm from '../DeleteProfileForm/DeleteProfileForm';
 
 const SUPPORTED_FORMATS = ['image/webp', 'image/jpg', 'image/jpeg', 'image/gif', 'image/png'];
 const PATTERN_FOR_PHONE = /^\+380\d{9}$/;
@@ -57,9 +58,8 @@ const schema = yup.object().shape({
   email: yup.string('Enter your email').email(i18n.t('Error email')).required('Email is required')
 });
 
-export default function UserForm() {
+export default function UserForm({ callBack }) {
   const { t } = useTranslation();
-  // const dispatch = useDispatch();
   const user = useUser();
   const fileInputRef = useRef(null);
 
@@ -73,6 +73,7 @@ export default function UserForm() {
   };
   // console.log(defaultAvatar);
   const [selectedAvatar, setSelectedAvatar] = useState(null);
+  // eslint-disable-next-line no-unused-vars
   const [imagePreview, setImagePreview] = useState(initialValues.avatarUrl);
   const [selectedDate, setSelectedDate] = useState(new Date(initialValues.birthday || new Date()));
   const [showChangePasswordModal, setShowChangePasswordModal] = useState(false);
@@ -82,27 +83,29 @@ export default function UserForm() {
 
   const handleDateChange = (date) => setSelectedDate(date);
 
-  const handleSubmit = (values) => {
-    const formData = new FormData();
+  const onSubmit = (data, actions) => {
+    // const formData = new FormData();
 
-    if (values.avatar) {
-      formData.append('avatarUrl', values.avatar);
-    }
-    if (values.name) {
-      formData.append('name', values.name.trim());
-    }
-    if (values.phone) {
-      formData.append('phone', values.phone);
-    }
-    if (values.birthday) {
-      formData.append('birthday', values.birthday);
-    }
-    if (values.skype) {
-      formData.append('skype', values.skype.trim());
-    }
-    if (values.email) {
-      formData.append('email', values.email.trim());
-    }
+    // if (values.avatar) {
+    //   formData.append('avatarUrl', values.avatar);
+    // }
+    // if (values.name) {
+    //   formData.append('name', values.name.trim());
+    // }
+    // if (values.phone) {
+    //   formData.append('phone', values.phone);
+    // }
+    // if (values.birthday) {
+    //   formData.append('birthday', values.birthday);
+    // }
+    // if (values.skype) {
+    //   formData.append('skype', values.skype.trim());
+    // }
+    // if (values.email) {
+    //   formData.append('email', values.email.trim());
+    // }
+    console.log(data);
+    callBack(data);
 
     // dispatch(getState(formData));
 
@@ -156,13 +159,13 @@ export default function UserForm() {
       <Formik
         initialValues={initialValues}
         validationSchema={schema}
-        onSubmit={handleSubmit}
+        onSubmit={onSubmit}
         // enableReinitialize
       >
         {(formik) => {
           return (
             <FormContainer>
-              <Form encType="multipart/form-data" onSubmit={handleSubmit}>
+              <Form encType="multipart/form-data" onSubmit={onSubmit}>
                 <FormWrap>
                   <AvatarContainer>
                     <AvatarAddIcon>
@@ -252,7 +255,13 @@ export default function UserForm() {
                       </Modal>
                     )}
                   </FormInputContainer>
-                  <FormBtn type="submit" disabled={!formik.isValid || formik.isSubmitting}>
+                  <FormBtn
+                    type="submit"
+                    disabled={!formik.isValid || formik.isSubmitting}
+                    onClick={() => {
+                      formik.handleSubmit();
+                    }}
+                  >
                     {t('Save changes')}
                   </FormBtn>
                   <BtnWrapper>
@@ -277,3 +286,6 @@ export default function UserForm() {
     </>
   );
 }
+UserForm.propTypes = {
+  callBack: PropTypes.func.isRequired
+};

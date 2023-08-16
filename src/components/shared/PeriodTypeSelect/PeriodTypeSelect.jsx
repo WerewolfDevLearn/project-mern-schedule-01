@@ -1,16 +1,40 @@
 import PropTypes from 'prop-types';
+import moment from 'moment';
+import { useLocation } from 'react-router-dom';
 
-import { PeriodTypeSelectStyles } from './PeriodTypeSelect.styled';
+import { Item, List, StyledNavLink } from '../PeriodTypeSelect/PeriodTypeSelect.styled';
 
-export default function PeriodTypeSelect({ arg }) {
+export const PeriodTypeSelect = ({ today, onChangeType }) => {
+  const location = useLocation();
+  const isMonthRoute = location.pathname.includes('month');
+  const isDayRoute = location.pathname.includes('day');
+  const formattedToday = moment(today).format('YYYY-MM-DD');
+
   return (
-    <PeriodTypeSelectStyles>
-      <h2>PeriodTypeSelect</h2>
-      <p>{arg}</p>
-    </PeriodTypeSelectStyles>
+    <List>
+      <Item>
+        <StyledNavLink
+          className={`${isMonthRoute ? 'active' : ''} month`}
+          to={`/month/${formattedToday}`}
+          onClick={() => onChangeType('month')}
+        >
+          Month
+        </StyledNavLink>
+      </Item>
+      <Item>
+        <StyledNavLink
+          className={`${isDayRoute ? 'active' : ''} day`}
+          to={`/day/${formattedToday}`}
+          onClick={() => onChangeType('day')}
+        >
+          Day
+        </StyledNavLink>
+      </Item>
+    </List>
   );
-}
+};
 
 PeriodTypeSelect.propTypes = {
-  arg: PropTypes.any
+  today: PropTypes.string.isRequired,
+  onChangeType: PropTypes.func.isRequired
 };
