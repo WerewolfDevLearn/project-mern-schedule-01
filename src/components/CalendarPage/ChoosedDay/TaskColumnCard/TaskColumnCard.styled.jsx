@@ -43,8 +43,18 @@ export const OwnerAvatarOverlay = styled.div`
 
   width: 32px;
   height: 32px;
+  padding: 1px;
   border-radius: 50%;
+  overflow: hidden;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border: 1.8px solid ${({ theme }) => theme.colors.accent};
 `;
+
+export const UserAvatar = styled.img``;
 
 export const TaskPriority = styled.p`
   display: inline-block;

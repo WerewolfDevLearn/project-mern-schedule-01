@@ -11,6 +11,13 @@ export const TaskToolbarBtn = styled.button`
   height: 14px;
 
   color: ${({ theme }) => theme.colors.textAndIconTodo};
+
+  transition: color 100ms linear;
+
+  &:hover,
+  &:focus {
+    color: ${({ theme }) => theme.colors.accent};
+  }
 `;
 
 export const PopoverWrapper = styled.div`

@@ -22,23 +22,13 @@ export async function getCurrentUser(tokenAuth) {
   const data = response.data;
   return data;
 }
-export async function updateAvatar(tokenAuth, formData) {
-  axios.defaults.headers.common.Authorization = `Bearer ${tokenAuth}`;
-  axios.defaults.headers.post['Content-Type'] = 'multipart/form-data';
-  const response = await axios.post('/users/avatar', formData);
-  const data = response.data;
-  return data;
-}
+
 export async function verifyByCode(verifyCode) {
-  const response = await axios.get('/users/verify', { verifyCode });
+  const response = await axios.post('/users/verify', verifyCode);
   const data = response.data;
   return data;
 }
-// export async function sendVEmail(email) {
-//   const response = await axios.post('/users/verify', { email });
-//   const data = response.data;
-//   return data;
-// }
+
 export async function updateUser(userDate, tokenAuth) {
   axios.defaults.headers.common.Authorization = `Bearer ${tokenAuth}`;
   axios.defaults.headers.post['Content-Type'] = 'multipart/form-data';

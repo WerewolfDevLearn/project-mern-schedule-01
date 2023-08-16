@@ -1,6 +1,9 @@
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
+import gooseRocketMobile from 'src/images/others/mobile/gooseRocketMobile.svg';
+import gooseRocketTablet from 'src/images/others/tablet/gooseRocketTablet.svg';
+
 import { useThemeColors } from 'src/components/MainLayout/ThemeToggler/ThemeContextProvider';
 import { ThemeProvider } from 'styled-components';
 
@@ -21,11 +24,11 @@ export default function ErrorPage() {
             <picture>
               <source
                 type="image/svg"
-                srcSet="/src/images/others/mobile/gooseRocketMobile.svg 375w, /src/images/others/tablet/gooseRocketTablet.svg 768w, 1440w"
+                srcSet={`${gooseRocketMobile} 375w, ${gooseRocketTablet} 768w, 1440w`}
                 sizes="(max-width: 767px) 375px, (max-width: 1439px) 768px, 1440px"
-                alt=""
+                alt="🦆"
               />
-              <img src="/src/images/others/tablet/gooseRocketTablet.svg" alt="" />
+              <img src={`${gooseRocketTablet}`} alt="" />
             </picture>
           </IconWrapper>
           4

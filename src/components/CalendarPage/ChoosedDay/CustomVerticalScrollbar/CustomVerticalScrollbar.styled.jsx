@@ -33,6 +33,6 @@ export const Scrollbar = styled(SimpleBar)`
   }
 
   .simplebar-scrollbar::before {
-    opacity: 0;
+    display: none;
   }
 `;

@@ -1,13 +1,10 @@
 import { Outlet } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
 import { useThemeColors } from 'src/components/MainLayout/ThemeToggler/ThemeContextProvider';
 import { ThemeProvider } from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 
 import Loader from 'src/components/shared/Loader/Loader';
-import Modal from 'src/components/shared/Modal/Modal';
-import FeedbackForm from 'src/components/Forms/FeedbackForm/FeedbackForm';
 
 import { useToken, useisLoading, useisRefreshing } from 'src/redux/selectors';
 
@@ -49,13 +46,7 @@ const Layout = () => {
           <AppHeader callBack={callBack} onGiveFeedBack={toggleModal} />
           <ChildrenContainer>{isLoading ? <Loader /> : <Outlet />}</ChildrenContainer>
         </MainLayOutSubContainer>
-        <ToastContainer />
       </MainLayOutContainer>
-      {openModal && (
-        <Modal onClose={toggleModal}>
-          <FeedbackForm />
-        </Modal>
-      )}
     </ThemeProvider>
   );
 };
