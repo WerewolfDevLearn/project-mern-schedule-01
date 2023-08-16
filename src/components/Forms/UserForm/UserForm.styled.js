@@ -124,13 +124,17 @@ export const RoleTitle = styled.p`
 `;
 
 export const FormInputContainer = styled.div`
-  @media screen and (${themes.breakpoints.s} <= width < ${themes.breakpoints.m}) {
-  }
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
 
   @media screen and (${themes.breakpoints.m} <= width < ${themes.breakpoints.l}) {
+    gap: 26px;
   }
 
   @media screen and (${themes.breakpoints.l} <= width) {
+    flex-wrap: wrap;
+    gap: 24px 50px;
     padding: 44px 0 88px 0;
     width: 758px;
     position: relative;
@@ -143,7 +147,7 @@ export const FormLabelSpan = styled.span`
   font-size: 12px;
   line-height: 1.17;
   letter-spacing: -0.02em;
-  margin-top: 16px;
+  /* margin-top: 16px; */
   color: #111111;
 
   @media screen and (${themes.breakpoints.m} <= width < ${themes.breakpoints.l}) {
@@ -164,11 +168,11 @@ export const InputField = styled(Field)`
   border: 1px solid rgba(17, 17, 17, 15%);
   border-radius: 8px;
   padding: 0 18px;
-  margin-bottom: 8px;
+  /* margin-bottom: 8px; */
   width: 299px;
   height: 42px;
 
-  @media screen and (${themes.breakpoints.m} <= width < ${themes.breakpoints.l}) {
+  @media screen and (${themes.breakpoints.m} <= width) {
     font-size: 16px;
     line-height: 1.13;
     width: 354px;
@@ -176,14 +180,11 @@ export const InputField = styled(Field)`
     border: 1px solid rgba(17, 17, 17, 15%);
     border-radius: 8px;
     padding: 0 18px;
-    margin-bottom: 8px;
+    /* margin-bottom: 8px; */
 
     &:hover {
       border: 1px solid black;
     }
-  }
-
-  @media screen and (${themes.breakpoints.l} <= width) {
   }
 `;
 
@@ -194,7 +195,7 @@ export const DateInput = styled(DatePicker)`
   letter-spacing: -0.02em;
   border: 1px solid rgba(17, 17, 17, 15%);
   border-radius: 8px;
-  margin-bottom: 8px;
+  /* margin-bottom: 8px; */
   padding: 0 18px;
   color: #111111;
   width: 299px;
@@ -269,9 +270,8 @@ export const FormBtn = styled.button`
 export const BtnWrapper = styled.div`
   display: flex;
   flex-direction: column;
-
-  @media screen and (${themes.breakpoints.s} <= width < ${themes.breakpoints.m}) {
-  }
+  align-items: center;
+  gap: 10px;
 
   @media screen and (${themes.breakpoints.m} <= width < ${themes.breakpoints.l}) {
   }
@@ -280,10 +280,26 @@ export const BtnWrapper = styled.div`
     flex-direction: column;
     bottom: 8%;
     right: -8%;
+    gap: 20px;
   }
 `;
 
-export const ChangePassBtn = styled.button`
+export const ChangeValueBtnWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  @media screen and (${themes.breakpoints.m} <= width < ${themes.breakpoints.l}) {
+    flex-direction: row;
+  }
+
+  @media screen and (${themes.breakpoints.l} <= width) {
+    flex-direction: row;
+    gap: 20px;
+  }
+`;
+
+export const ChangeValueBtn = styled.button`
   width: 172px;
   height: 48px;
   font-family: Inter;
@@ -291,7 +307,6 @@ export const ChangePassBtn = styled.button`
   font-weight: 600;
   line-height: 1.29;
   letter-spacing: -0.02em;
-  margin-bottom: 10px;
   border-radius: 16px;
   color: white; //  color: ${({ theme }) => theme.colors.white};
   background-color: #3e85f3; //  background-color: ${({ theme }) => theme.colors.activeUserNavIcon};
@@ -307,11 +322,10 @@ export const ChangePassBtn = styled.button`
   }
 
   /* @media screen and (${themes.breakpoints.m} <= width < ${themes.breakpoints.l}) {
-    width: 195px;
-    height: 46px;
-  }
+    margin-bottom: 20px;
+  } */
 
-  @media screen and (${themes.breakpoints.l} <= width) {
+  /* @media screen and (${themes.breakpoints.l} <= width) {
     width: 262px;
     height: 48px;
   } */

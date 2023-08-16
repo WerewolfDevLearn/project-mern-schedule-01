@@ -29,7 +29,8 @@ import {
   ErrorMessage,
   FormBtn,
   BtnWrapper,
-  ChangePassBtn,
+  ChangeValueBtnWrap,
+  ChangeValueBtn,
   DeleteProfileBtn
 } from './UserForm.styled';
 import ChangePasswordForm from '../ChangePasswordForm/ChangePasswordForm';
@@ -222,12 +223,12 @@ export default function UserForm() {
                       />
                       <ErrorMessage name="birthday" component="div" />
                     </label>
-                    <FormikInput
+                    {/* <FormikInput
                       label={t('UserEmail')}
                       type="email"
                       name="email"
                       placeholder={t('Enter email')}
-                    />
+                    /> */}
                     <FormikInput
                       label={t('Phone')}
                       type="tel"
@@ -255,9 +256,14 @@ export default function UserForm() {
                     {t('Save changes')}
                   </FormBtn>
                   <BtnWrapper>
-                    <ChangePassBtn type="button" onClick={openChangePasswordModal}>
-                      Change password
-                    </ChangePassBtn>
+                    <ChangeValueBtnWrap>
+                      <ChangeValueBtn type="button" onClick={openChangePasswordModal}>
+                        Change email
+                      </ChangeValueBtn>
+                      <ChangeValueBtn type="button" onClick={openChangePasswordModal}>
+                        Change password
+                      </ChangeValueBtn>
+                    </ChangeValueBtnWrap>
                     <DeleteProfileBtn type="button" onClick={openDeleteProfileModal}>
                       Delete profile
                     </DeleteProfileBtn>
