@@ -31,7 +31,8 @@ export const userlogin = createAsyncThunk(
       token.set(response.token);
       return response;
     } catch (error) {
-      return rejectWithValue(error.message);
+      console.log(error.response.data.message);
+      return rejectWithValue(error.response.data.message);
     }
   }
 );
@@ -65,6 +66,7 @@ export const verify = createAsyncThunk('user/VerifyEmail', async (code, { reject
     const credentials = await verifyByCode(code);
     return credentials;
   } catch (error) {
+    console.log(error);
     return rejectWithValue(error.message);
   }
 });
