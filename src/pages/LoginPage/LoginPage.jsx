@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { userlogin, verify } from 'src/redux/auth/authOps';
-import { useisLoading } from 'src/redux/selectors';
+import { useisLoading, useError } from 'src/redux/selectors';
 import LoginForm from 'src/components/Forms/LoginForm/LoginForm';
 import VerifyForm from 'src/components/Forms/VerifyForm/VerifyForm';
 import AuthNavigate from 'src/components/shared/AuthNavigate/AuthNavigate';
@@ -18,6 +18,8 @@ export default function LoginPage() {
   const dispatch = useDispatch();
   const isLoading = useisLoading();
   const [openModal, setOpenModal] = useState(false);
+  const errorMessage = useError();
+
   const onClose = () => {
     setOpenModal(false);
   };
@@ -27,6 +29,9 @@ export default function LoginPage() {
   };
   const onSubmitVerifyForm = (data) => {
     dispatch(verify(data));
+    if (errorMessage === 'Action Required: Verify Your Email') {
+      setOpenModal(true);
+    }
   };
 
   return (
@@ -43,7 +48,7 @@ export default function LoginPage() {
       </ContentWrap>
       {openModal && (
         <Modal onClose={onClose} color={modalBackdropcolors.black}>
-          {isLoading ? <Loader /> : <VerifyForm onSubmitForm={onSubmitVerifyForm} />}
+          <VerifyForm onSubmitForm={onSubmitVerifyForm} />
         </Modal>
       )}
     </Container>
