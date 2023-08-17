@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 const baseURL = import.meta.env.VITE_BASE_DEV
   ? import.meta.env.VITE_BASE_DEV
-  : 'https://project-mern-schedule-03.onrender.co/api';
+  : 'https://project-mern-schedule-03.onrender.com/api';
 export const tasksApi = createApi({
   reducerPath: 'tasks',
   baseQuery: fetchBaseQuery({

@@ -5,8 +5,8 @@ import { ChoosedMonthStyles } from './ChoosedMonth.styled';
 export default function ChoosedMonth() {
   return (
     <ChoosedMonthStyles>
-      <MonthCalendarHead />
-      <CalendarTable />
+      {/* <MonthCalendarHead />
+      <CalendarTable /> */}
     </ChoosedMonthStyles>
   );
 }
