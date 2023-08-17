@@ -1,10 +1,9 @@
 import PropTypes from 'prop-types';
-import { Container } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { useSearchParams } from 'react-router-dom';
 
 import '/node_modules/flag-icons/css/flag-icons.min.css';
-import { FlagBtn, Label } from './LangToggler.styled';
+import { Container, FlagBtn, Label } from './LangToggler.styled';
 
 export default function LangToggler({ isHomePage }) {
   const [searchParams, setSearchParams] = useSearchParams();
