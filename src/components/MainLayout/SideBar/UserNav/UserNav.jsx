@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { BsBarChart } from 'react-icons/bs';
 import UserCheck from 'src/components/shared/Icons/UserCheck';
 import CalendarCheck from 'src/components/shared/Icons/CalendarCheck';
@@ -7,12 +8,10 @@ import routes from 'src/routes.js';
 import { NavUl, NavLinkStyled, IconDiv } from './UserNav.styled';
 
 export default function UserNav() {
-  const getCurrentCalendarPage = () => {
-    if (location.pathname.includes('/calendar/day')) {
-      return `/calendar/day/${getCurrentDate()}`;
-    }
-    return `${routes.navFromLogIn}/${getCurrentDate()}`;
-  };
+  const isMonthViewActive = location.pathname.includes('/calendar/month');
+  const isDayViewActive = location.pathname.includes('/calendar/day');
+
+  const { t } = useTranslation();
 
   return (
     <NavUl>
@@ -21,16 +20,18 @@ export default function UserNav() {
           <IconDiv>
             <UserCheck />
           </IconDiv>
-          My account
+          {t('My Account')}
         </NavLinkStyled>
       </li>
       <li key="CalendarPage">
-        {/* <NavLinkStyled to={`${routes.navFromLogIn}/${getCurrentDate()}`}> */}
-        <NavLinkStyled to={getCurrentCalendarPage()}>
+        <NavLinkStyled
+          to={`${routes.navFromLogIn}/${getCurrentDate()}`}
+          className={isMonthViewActive || isDayViewActive ? 'active' : ''}
+        >
           <IconDiv>
             <CalendarCheck />
           </IconDiv>
-          Calendar
+          {t('Calendar')}
         </NavLinkStyled>
       </li>
       <li key="SatisticsPage">
@@ -38,7 +39,7 @@ export default function UserNav() {
           <IconDiv>
             <BsBarChart />
           </IconDiv>
-          Statistics
+          {t('Statistics')}
         </NavLinkStyled>
       </li>
     </NavUl>

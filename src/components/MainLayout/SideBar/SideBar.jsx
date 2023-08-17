@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 
 import UserNav from './UserNav/UserNav';
@@ -7,11 +8,12 @@ import UserMenuBTNClose from './UserMenuBTNClose/UserMenuBTNClose';
 import { SideBarContainer, SideBarHeading } from './SideBar.styled';
 
 export default function SideBar({ open, callBackCls }) {
+  const { t } = useTranslation();
   return (
     <SideBarContainer open={open}>
       <UserMenuBTNClose callBackCls={callBackCls} />
       <SideBarLogo />
-      <SideBarHeading>User Panel</SideBarHeading>
+      <SideBarHeading> {t('User Panel')}</SideBarHeading>
       <UserNav />
       <LogoutBtn />
     </SideBarContainer>

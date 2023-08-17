@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { register, userlogin, logOut, getCurrent, verify } from '../authOps';
+import { register, userlogin, logOut, getCurrent, verify, updUser } from '../authOps';
 
 const initialState = '';
 
@@ -14,12 +14,14 @@ const errorSlice = createSlice({
       .addCase(userlogin.pending, () => '')
       .addCase(logOut.pending, () => '')
       .addCase(verify.pending, () => '')
+      .addCase(updUser.pending, () => '')
 
       .addCase(register.rejected, (_, { payload }) => payload)
       .addCase(userlogin.rejected, (_, { payload }) => payload)
       .addCase(logOut.rejected, (_, { payload }) => payload)
       .addCase(getCurrent.rejected, (_, { payload }) => payload)
-      .addCase(verify.rejected, (_, { payload }) => payload);
+      .addCase(verify.rejected, (_, { payload }) => payload)
+      .addCase(updUser.rejected, (_, { payload }) => payload);
   }
 });
 

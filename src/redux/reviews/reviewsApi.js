@@ -1,9 +1,11 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-
+const baseURL = import.meta.env.VITE_BASE_DEV
+  ? import.meta.env.VITE_BASE_DEV
+  : 'https://project-mern-schedule-03.onrender.com/api';
 export const reviewsApi = createApi({
   reducerPath: 'reviews',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://project-mern-schedule-03.onrender.com/api',
+    baseUrl: baseURL,
     prepareHeaders: (headers, { getState }) => {
       const token = getState().user.token;
       if (token) {

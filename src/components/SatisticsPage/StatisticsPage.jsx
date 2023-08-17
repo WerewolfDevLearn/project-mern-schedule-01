@@ -39,7 +39,6 @@ const StatisticsPage = () => {
 
   return (
     <>
-      <h1>StatisticsPage</h1>
       <PeriodPaginator prevHandler={onPrev} nextHandler={onNext} />
       <StatisticsChart tasksByDay={tasksByDay} tasksByMonth={tasksByMonth} />
     </>

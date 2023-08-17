@@ -58,12 +58,13 @@ export default function CalendarTable() {
   };
   const RC = () => {
     if (!isTasksLoading) {
-      const renderedCalendar = calendar.map((dayItem) => {
+      const renderedCalendar = calendar.map((dayItem, idx) => {
         const calendarWithTask = getDayTasks(dayItem, respons?.tasks);
+
         return (
           <CellWrapper
-            to={`/calendar/day/${format(dayItem, 'ddMMMMyyyy')}`}
-            key={dayItem.getTime()}
+            to={`/calendar/day/${format(dayItem, 'yyyy-MM-dd')}`}
+            key={idx}
             iscurrentmonth={isCurrentMonth(dayItem).toString()}
             istoday={isToday(dayItem).toString()}
           >
@@ -77,7 +78,7 @@ export default function CalendarTable() {
               </ShowDayWrapper>
               <TaskListWrapper>
                 {calendarWithTask.slice(0, 2).map((task) => (
-                  <TaskItem key={task.id} priority={task.priority}>
+                  <TaskItem key={task._id} priority={task.priority}>
                     {task.title}
                   </TaskItem>
                 ))}
