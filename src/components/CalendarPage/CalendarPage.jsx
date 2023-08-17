@@ -12,6 +12,7 @@ export default function CalendarPage() {
   const currMonth = date.getMonth();
   const [month, setMonth] = useState(currMonth + 1);
   const [year, setYear] = useState(currYear);
+
   const onPrev = () => {
     setMonth((month) => month - 1);
     if (month <= 1) {
@@ -29,7 +30,7 @@ export default function CalendarPage() {
 
   return (
     <>
-      <CalendarToolbar />
+      <CalendarToolbar prevHandler={onPrev} nextHandler={onNext} today={today} />
       <Suspense fallback={<Loader />}>
         <Outlet />
       </Suspense>

@@ -102,7 +102,6 @@ export default function UserForm({ callBack }) {
     // if (values.email) {
     //   formData.append('email', values.email.trim());
     // }
-    console.log(data);
     callBack(data);
 
     // dispatch(getState(formData));
