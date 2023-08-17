@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { Formik, Form } from 'formik';
+import { format } from 'date-fns';
 import * as yup from 'yup';
 import i18n from 'i18next';
 import { useTranslation } from 'react-i18next';
@@ -47,6 +48,7 @@ const schema = yup.object().shape({
     ),
   name: yup
     .string('Enter your name')
+    .min(4)
     .max(16, 'Name is too long - should be 16 chars maximum.')
     .required('Name is required'),
   phone: yup.string().matches(PATTERN_FOR_PHONE, 'Invalid phone number'),
@@ -68,54 +70,50 @@ export default function UserForm({ callBack }) {
     skype: user.skype || '',
     email: user.email
   };
-  // console.log(defaultAvatar);
+  console.log(initialValues.birthday);
   const [selectedAvatar, setSelectedAvatar] = useState(null);
-  // eslint-disable-next-line no-unused-vars
   const [imagePreview, setImagePreview] = useState(initialValues.avatarUrl);
-  const [selectedDate, setSelectedDate] = useState(new Date(initialValues.birthday || new Date()));
+  const [selectedDate, setSelectedDate] = useState(initialValues.birthday);
   const [showChangeEmailModal, setShowChangeEmailModal] = useState(false);
   const [showChangePasswordModal, setShowChangePasswordModal] = useState(false);
   const [showDeleteProfileModal, setShowDeleteProfileModal] = useState(false);
 
   const handleAddImageClick = () => fileInputRef.current.click();
 
-  const handleDateChange = (date) => setSelectedDate(date);
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
 
-  const onSubmit = (data, actions) => {
-    // const formData = new FormData();
+    console.log(date);
+  };
 
-    // if (values.avatar) {
-    //   formData.append('avatarUrl', values.avatar);
-    // }
-    // if (values.name) {
-    //   formData.append('name', values.name.trim());
-    // }
-    // if (values.phone) {
-    //   formData.append('phone', values.phone);
-    // }
-    // if (values.birthday) {
-    //   formData.append('birthday', values.birthday);
-    // }
-    // if (values.skype) {
-    //   formData.append('skype', values.skype.trim());
-    // }
-    // if (values.email) {
-    //   formData.append('email', values.email.trim());
-    // }
-    callBack(data);
+  const onSubmit = (data) => {
+    const formData = new FormData();
 
-    // dispatch(getState(formData));
+    if (data.avatar) {
+      formData.append('avatar', data.avatar);
+    }
 
-    // const formDataObject = {};
-    // for (let [key, value] of formData.entries()) {
-    // formDataObject[key] = value;
+    if (data.name) {
+      formData.append('name', data.name.trim());
+    }
 
-    // console.log(formDataObject);
-    // }
+    if (data.phone) {
+      formData.append('phone', data.phone);
+    }
 
-    // console.log(values);
-    // console.log(formData);
-    // resetForm();
+    if (data.birthday) {
+      formData.append('birthday', data.birthday);
+    }
+
+    if (data.skype) {
+      formData.append('skype', data.skype.trim());
+    }
+
+    if (data.email) {
+      formData.append('email', data.email.trim());
+    }
+
+    callBack(formData);
   };
 
   const openChangeEmailModal = () => {
@@ -170,7 +168,7 @@ export default function UserForm({ callBack }) {
         {(formik) => {
           return (
             <FormContainer>
-              <Form encType="multipart/form-data" onSubmit={onSubmit}>
+              <Form encType="multipart/form-data">
                 <FormWrap>
                   <AvatarContainer>
                     <AvatarAddIcon>
@@ -179,7 +177,7 @@ export default function UserForm({ callBack }) {
                     <label>
                       <AvatarInputField
                         type="file"
-                        name="avatarUrl"
+                        name="avatar"
                         ref={fileInputRef}
                         onBlur={() => formik.setTouched({ avatar: true })}
                         onChange={(e) => {
@@ -190,14 +188,14 @@ export default function UserForm({ callBack }) {
                             formik.setFieldValue('avatar', avatar);
                             setSelectedAvatar(URL.createObjectURL(avatar));
                             setImagePreview('');
-                            // return;
+                            return;
                           }
                         }}
                       />
                       {!selectedAvatar && (
-                        <AvatarImgContainer>
-                          {/* <Avatar width="48px" height="48px" /> */}
-                        </AvatarImgContainer>
+                        <div>
+                          <AvatarImg src={imagePreview} alt={initialValues.name} />
+                        </div>
                       )}
                       {selectedAvatar && (
                         <div>
@@ -220,17 +218,23 @@ export default function UserForm({ callBack }) {
                       name="name"
                       placeholder={t('Enter your name')}
                     />
-                    <label htmlFor="birthday">
+                    <FormikInput
+                      label={t('Birthday')}
+                      type="date"
+                      name="birthday"
+                      views={['year', 'month', 'day']}
+                    />
+                    {/* <label htmlFor="birthday">
                       <FormLabelSpan>{t('Birthday')}</FormLabelSpan>
                       <DateInput
                         id="birthday"
                         name="birthday"
                         selected={selectedDate}
-                        dateFormat="dd/MM/yyyy"
-                        onChange={handleDateChange}
+                        dateFormat="dd-MM-yyyy"
+                        onSelect={handleDateChange}
                       />
                       <ErrorMessage name="birthday" component="div" />
-                    </label>
+                    </label> */}
                     {/* <FormikInput
                       label={t('UserEmail')}
                       type="email"
@@ -267,10 +271,7 @@ export default function UserForm({ callBack }) {
                   </FormInputContainer>
                   <FormBtn
                     type="submit"
-                    disabled={!formik.isValid || formik.isSubmitting}
-                    onClick={() => {
-                      formik.handleSubmit();
-                    }}
+                    // disabled={!formik.isValid || formik.isSubmitting}
                   >
                     {t('Save changes')}
                   </FormBtn>
