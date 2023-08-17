@@ -1,3 +1,8 @@
+import oldPaper from 'src/images/others/old-paper-texture.jpg';
+import reallyOldPaper from 'src/images/others/really-old-paper-texture.jpg';
+import oldBlackPaper from 'src/images/others/old-black-paper-texture.jpg';
+import reallyOldBlackPaper from 'src/images/others/really-old-black-paper-texture.jpg';
+
 export const themes = Object.freeze({
   colors: {
     goose: '#3E85F3',
@@ -98,6 +103,10 @@ export const themes = Object.freeze({
   shadows: {
     authHeading: '0px 47px 355px rgba(0, 0, 0, 0.07), 0px 9.4px 57.6875px rgba(0, 0, 0, 0.035)',
     authButton: '4px 2px 16px rgba(136, 165, 191, 0.48)'
+  },
+  backgroundImages: {
+    oldPaper: oldPaper,
+    reallyOldPaper: reallyOldPaper
   }
 });
 
@@ -205,5 +214,9 @@ export const dark = Object.freeze({
   shadows: {
     authHeading: '0px 47px 355px rgba(0, 0, 0, 0.07), 0px 9.4px 57.6875px rgba(0, 0, 0, 0.035)',
     authButton: '4px 2px 16px rgba(136, 165, 191, 0.3)'
+  },
+  backgroundImages: {
+    oldPaper: oldBlackPaper,
+    reallyOldPaper: reallyOldBlackPaper
   }
 });

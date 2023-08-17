@@ -9,6 +9,17 @@ export const TaskColumnCardStyles = styled.li`
   background: ${({ theme }) => theme.colors.background};
   border: 1px solid ${({ theme }) => theme.colors.tasksListBorder};
 
+  /* background-image: url(${(props) =>
+    props.daysago >= 3
+      ? `${props.theme.backgroundImages.reallyOldPaper}`
+      : props.daysago >= 2
+      ? `${props.theme.backgroundImages.oldPaper}`
+      : 'none'}); */
+  background-image: url(${(props) =>
+    props.shouldTexture && `${props.theme.backgroundImages.oldPaper}`});
+  background-size: 110%;
+  background-position: center;
+
   &:last-child {
     margin-bottom: ${(props) => (props.taskscount > 2 ? '55px' : '14px')};
 
