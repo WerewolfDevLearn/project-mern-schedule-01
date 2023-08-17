@@ -15,7 +15,7 @@ export const PeriodTypeSelect = ({ today, onChangeType }) => {
       <Item>
         <StyledNavLink
           className={`${isMonthRoute ? 'active' : ''} month`}
-          to={`/month/${formattedToday}`}
+          to={`/calendar/month/${formattedToday}`}
           onClick={() => onChangeType('month')}
         >
           Month
@@ -24,7 +24,7 @@ export const PeriodTypeSelect = ({ today, onChangeType }) => {
       <Item>
         <StyledNavLink
           className={`${isDayRoute ? 'active' : ''} day`}
-          to={`/day/${formattedToday}`}
+          to={`/calendar/day/${formattedToday}`}
           onClick={() => onChangeType('day')}
         >
           Day
