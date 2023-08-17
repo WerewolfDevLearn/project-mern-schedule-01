@@ -1,110 +1,90 @@
+import { getYear, getMonth, getDate, format } from 'date-fns';
+
 import { useState } from 'react';
-
-// export default function SatisticsPage() {
-//   return (
-//     <>
-//       <h1>SatisticsPage</h1>;
-//       <StatisticsChart />
-//     </>
-//   );
-// }
-// import { getYear, getMonth, parse } from 'date-fns';
-
-// import { useParams } from 'react-router-dom';
-
-// import { useGetTasksQuery } from 'src/redux/tasks/tasksApi';
-
-// import PeriodPaginator from '../shared/PeriodPaginator/PeriodPaginator';
-
-// import StatisticsChart from './StatisticsChart/StatisticsChart';
-
-// const StatisticsPage = () => {
-//   const currentDate = '2023-8-16';
-//   const year = getYear(parse(currentDate, 'yyyy-MM-dd', new Date()));
-//   const month = getMonth(parse(currentDate, 'yyyy-MM-dd', new Date())) + 1;
-//   const date = { year, month };
-//   const { data, isFetching, isLoading } = useGetTasksQuery(date);
-//   const { tasks } = data;
-//   const tasksByDay = {
-//     todo: 10,
-//     inprogress: 5,
-//     done: 15
-//   };
-//   const tasksByMonth = {
-//     todo: 50,
-//     inprogress: 25,
-//     done: 75
-//   };
-
-//   return (
-//     <>
-//       <h1>StatisticsPage</h1>
-//       <PeriodPaginator />
-//       <StatisticsChart tasksByDay={tasksByDay} tasksByMonth={tasksByMonth} />
-//     </>
-//   );
-// };
-
-// export default StatisticsPage;
-
-import { getYear, getMonth, parse } from 'date-fns';
 
 // import { useParams } from 'react-router-dom';
 
 import { useGetTasksQuery } from 'src/redux/tasks/tasksApi';
 
-// import PeriodPaginator from '../shared/PeriodPaginator/PeriodPaginator';
+import PeriodPaginator from '../shared/PeriodPaginator/PeriodPaginator';
 
 import StatisticsChart from './StatisticsChart/StatisticsChart';
 
 const StatisticsPage = () => {
-  const currentDate = '2023-8-16';
-  const year = getYear(parse(currentDate, 'yyyy-MM-dd', new Date()));
-  const month = getMonth(parse(currentDate, 'yyyy-MM-dd', new Date())) + 1;
-  const date = { year, month };
-  // const { data, isFetching, isLoading } = useGetTasksQuery(date);
-  const { data, isLoading } = useGetTasksQuery(date);
+  const currentDate = format(new Date(), 'yyyy-MM-dd');
+  const currMonth = getMonth(new Date(currentDate));
+  const currYear = getYear(new Date(currentDate));
+  const currDay = getDate(new Date(currentDate));
+  const [month, setMonth] = useState(currMonth + 1);
+  const [year, setYear] = useState(currYear);
+  const [day, setDate] = useState(currDay);
+
+  // const year = getYear(parse(currentDate, 'yyyy-MM-dd', new Date()));
+  // const month = getMonth(parse(currentDate, 'yyyy-MM-dd', new Date())) + 1;
+  // const date = { year, month };
+  const { data: respons, isLoading } = useGetTasksQuery({ year, month, day });
+  const onPrev = () => {
+    setMonth((month) => month - 1);
+    if (month <= 1) {
+      setYear((year) => year - 1);
+      setMonth(12);
+    }
+  };
+  const onNext = () => {
+    setMonth((month) => month + 1);
+    if (month >= 12) {
+      setYear((year) => year + 1);
+      setMonth(1);
+    }
+  };
 
   if (isLoading) {
     return <p>Loading...</p>;
   }
 
-  if (!data) {
-    return <p>No data available.</p>;
-  }
-
-  const { tasks } = data;
-
-  const calculateTaskStatusCount = (tasks) => {
-    const taskStatusCount = {
+  const calculateTaskStatusCount = (response) => {
+    const taskStatusCountDay = {
       todo: 0,
       inprogress: 0,
       done: 0
     };
 
-    tasks.forEach((task) => {
-      if (task.status === 'todo') {
-        taskStatusCount.todo++;
-      } else if (task.status === 'inprogress') {
-        taskStatusCount.inprogress++;
-      } else if (task.status === 'done') {
-        taskStatusCount.done++;
+    const taskStatusCountMonth = {
+      todo: 0,
+      inprogress: 0,
+      done: 0
+    };
+
+    response.tasksByDay.forEach((task) => {
+      if (task.category === 'todo') {
+        taskStatusCountDay.todo++;
+      } else if (task.category === 'inprogress') {
+        taskStatusCountDay.inprogress++;
+      } else if (task.category === 'done') {
+        taskStatusCountDay.done++;
       }
     });
 
-    return taskStatusCount;
+    response.tasks.forEach((task) => {
+      if (task.category === 'todo') {
+        taskStatusCountMonth.todo++;
+      } else if (task.category === 'inprogress') {
+        taskStatusCountMonth.inprogress++;
+      } else if (task.category === 'done') {
+        taskStatusCountMonth.done++;
+      }
+    });
+    return [taskStatusCountDay, taskStatusCountMonth];
   };
 
-  const taskStatusCountByDay = calculateTaskStatusCount(tasks);
-  // const taskStatusCountByMonth = calculateTaskStatusCount(tasksForCurrentMonth);
-  const taskStatusCountByMonth = calculateTaskStatusCount(tasks);
+  const [taskStatusCountDay, taskStatusCountMonth] = calculateTaskStatusCount(respons);
 
   return (
     <>
-      <h1>StatisticsPage</h1>
-      {/* <PeriodPaginator /> */}
-      {/* <StatisticsChart tasksByDay={taskStatusCountByDay} /> */}
-      <StatisticsChart tasksByDay={taskStatusCountByDay} tasksByMonth={taskStatusCountByMonth} />
+      <PeriodPaginator prevHandler={onPrev} nextHandler={onNext} type={currentDate} />
+      {!isLoading && (
+        <StatisticsChart tasksByDay={taskStatusCountDay} tasksByMonth={taskStatusCountMonth} />
+      )}
     </>
   );
 };
