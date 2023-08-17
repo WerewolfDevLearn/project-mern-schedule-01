@@ -7,6 +7,13 @@ import routes from 'src/routes.js';
 import { NavUl, NavLinkStyled, IconDiv } from './UserNav.styled';
 
 export default function UserNav() {
+  const getCurrentCalendarPage = () => {
+    if (location.pathname.includes('/calendar/day')) {
+      return `/calendar/day/${getCurrentDate()}`;
+    }
+    return `${routes.navFromLogIn}/${getCurrentDate()}`;
+  };
+
   return (
     <NavUl>
       <li key="AccountPage">
@@ -18,7 +25,8 @@ export default function UserNav() {
         </NavLinkStyled>
       </li>
       <li key="CalendarPage">
-        <NavLinkStyled to={`${routes.navFromLogIn}/${getCurrentDate()}`}>
+        {/* <NavLinkStyled to={`${routes.navFromLogIn}/${getCurrentDate()}`}> */}
+        <NavLinkStyled to={getCurrentCalendarPage()}>
           <IconDiv>
             <CalendarCheck />
           </IconDiv>

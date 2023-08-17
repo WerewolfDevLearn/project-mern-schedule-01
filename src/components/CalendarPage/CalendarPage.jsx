@@ -29,10 +29,16 @@ export default function CalendarPage() {
 
   return (
     <>
+      <CalendarToolbar />
       <Suspense fallback={<Loader />}>
-        <CalendarToolbar today={today} prevHandler={onPrev} nextHandler={onNext} />
         <Outlet />
       </Suspense>
+
+      {/* <CalendarToolbar> */}
+      {/* <Suspense fallback={<Loader />}>
+        <Outlet />
+      </Suspense> */}
+      {/* </CalendarToolbar> */}
     </>
   );
 }
