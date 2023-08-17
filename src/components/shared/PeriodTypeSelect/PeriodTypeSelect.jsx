@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import moment from 'moment';
+import { format } from 'date-fns';
 import { useLocation } from 'react-router-dom';
 
 import { Item, List, StyledNavLink } from '../PeriodTypeSelect/PeriodTypeSelect.styled';
@@ -8,14 +8,15 @@ export const PeriodTypeSelect = ({ today, onChangeType }) => {
   const location = useLocation();
   const isMonthRoute = location.pathname.includes('month');
   const isDayRoute = location.pathname.includes('day');
-  const formattedToday = moment(today).format('YYYY-MM-DD');
+
+  const formattedToday = format(new Date(today), 'yyyy-MM-dd');
 
   return (
     <List>
       <Item>
         <StyledNavLink
           className={`${isMonthRoute ? 'active' : ''} month`}
-          to={`/month/${formattedToday}`}
+          to={`/calendar/month/${formattedToday}`}
           onClick={() => onChangeType('month')}
         >
           Month
@@ -24,7 +25,7 @@ export const PeriodTypeSelect = ({ today, onChangeType }) => {
       <Item>
         <StyledNavLink
           className={`${isDayRoute ? 'active' : ''} day`}
-          to={`/day/${formattedToday}`}
+          to={`/calendar/day/${formattedToday}`}
           onClick={() => onChangeType('day')}
         >
           Day
