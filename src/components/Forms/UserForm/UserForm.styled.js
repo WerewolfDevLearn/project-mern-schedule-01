@@ -322,6 +322,8 @@ export const ChangeValueBtn = styled.button`
   color: white; //  color: ${({ theme }) => theme.colors.white};
   background-color: #3e85f3; //  background-color: ${({ theme }) => theme.colors.activeUserNavIcon};
   text-shadow: 0px 47px 355px rgba(0, 0, 0, 0.07), 0px 9.4px 57.6875px rgba(0, 0, 0, 0.035);
+
+  transform: scale(1);
   transition-property: transform;
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0, 0.11, 0.35, 2);
@@ -353,13 +355,15 @@ export const DeleteProfileBtn = styled.button`
   color: white; //  color: ${({ theme }) => theme.colors.white};
   background-color: #fad91b;
   text-shadow: 0px 47px 355px rgba(0, 0, 0, 0.07), 0px 9.4px 57.6875px rgba(0, 0, 0, 0.035);
+
+  transform: scale(1);
   transition-property: transform;
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0, 0.11, 0.35, 2);
 
   &:hover,
   &:focus {
-    background-color: red;
+    background-color: #bb0202;
     transform: scale(1.1);
   }
 

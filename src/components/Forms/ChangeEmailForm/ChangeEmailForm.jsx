@@ -82,8 +82,8 @@ export default function ChangeEmailForm({ onClose }) {
                     <BtnWrap>
                       <UpdateBtn type="submit">Verify</UpdateBtn>
                       {/* <CloseBtn type="button" onClick={onClose}>
-                    Close
-                  </CloseBtn> */}
+                        Close
+                      </CloseBtn> */}
                     </BtnWrap>
                   </Verify>
                 )}

@@ -79,8 +79,14 @@ export const UpdateBtn = styled.button`
   background-color: #3e85f3;
   margin-bottom: 10px;
 
+  transform: scale(1);
+  transition-property: transform;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0, 0.11, 0.35, 2);
+
   &:hover {
     background-color: #2b78ef;
+    transform: scale(1.1);
   }
 `;
 
@@ -94,9 +100,15 @@ export const CancelBtn = styled.button`
   margin-left: 100px;
   margin-bottom: 10px;
 
-  &:hover {
-    border: none;
+  transform: scale(1);
+  transition-property: transform;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0, 0.11, 0.35, 2);
+
+  &:hover,
+  &:focus {
     color: white;
     background-color: #2b78ef;
+    transform: scale(1.1);
   }
 `;
