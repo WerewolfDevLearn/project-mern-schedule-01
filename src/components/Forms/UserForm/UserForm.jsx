@@ -1,17 +1,14 @@
 import { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
-// import { useDispatch } from 'react-redux';
 import { Formik, Form } from 'formik';
 import * as yup from 'yup';
 import i18n from 'i18next';
 import { useTranslation } from 'react-i18next';
-
 // import { toast } from 'react-hot-toast';
 import { useUser } from 'src/redux/selectors';
-
-import { Avatar, Plus } from 'src/components/shared/Icons';
+import { Plus } from 'src/components/shared/Icons';
 import Modal from 'src/components/shared/Modal/Modal';
-
+import ChangeEmailForm from '../ChangeEmailForm/ChangeEmailForm';
 import ChangePasswordForm from '../ChangePasswordForm/ChangePasswordForm';
 import DeleteProfileForm from '../DeleteProfileForm/DeleteProfileForm';
 
@@ -24,6 +21,7 @@ import {
   AvatarImgContainer,
   AvatarImg,
   UserNameTitle,
+  RoleTitle,
   FormInputContainer,
   FormLabelSpan,
   InputField,
@@ -31,7 +29,8 @@ import {
   ErrorMessage,
   FormBtn,
   BtnWrapper,
-  ChangePassBtn,
+  ChangeValueBtnWrap,
+  ChangeValueBtn,
   DeleteProfileBtn
 } from './UserForm.styled';
 
@@ -74,6 +73,7 @@ export default function UserForm({ callBack }) {
   // eslint-disable-next-line no-unused-vars
   const [imagePreview, setImagePreview] = useState(initialValues.avatarUrl);
   const [selectedDate, setSelectedDate] = useState(new Date(initialValues.birthday || new Date()));
+  const [showChangeEmailModal, setShowChangeEmailModal] = useState(false);
   const [showChangePasswordModal, setShowChangePasswordModal] = useState(false);
   const [showDeleteProfileModal, setShowDeleteProfileModal] = useState(false);
 
@@ -116,6 +116,14 @@ export default function UserForm({ callBack }) {
     // console.log(values);
     // console.log(formData);
     // resetForm();
+  };
+
+  const openChangeEmailModal = () => {
+    setShowChangeEmailModal(true);
+  };
+
+  const closeChangeEmailModal = () => {
+    setShowChangeEmailModal(false);
   };
 
   const openChangePasswordModal = () => {
@@ -188,7 +196,7 @@ export default function UserForm({ callBack }) {
                       />
                       {!selectedAvatar && (
                         <AvatarImgContainer>
-                          <Avatar width="48px" height="48px" />
+                          {/* <Avatar width="48px" height="48px" /> */}
                         </AvatarImgContainer>
                       )}
                       {selectedAvatar && (
@@ -204,19 +212,13 @@ export default function UserForm({ callBack }) {
                     </label>
                   </AvatarContainer>
                   <UserNameTitle>{user.name}</UserNameTitle>
-                  <h3>{t('User')}</h3>
+                  <RoleTitle>{t('User')}</RoleTitle>
                   <FormInputContainer>
                     <FormikInput
                       label={t('UserName')}
                       type="text"
                       name="name"
                       placeholder={t('Enter your name')}
-                    />
-                    <FormikInput
-                      label={t('Phone')}
-                      type="tel"
-                      name="phone"
-                      placeholder="+380971234567"
                     />
                     <label htmlFor="birthday">
                       <FormLabelSpan>{t('Birthday')}</FormLabelSpan>
@@ -229,26 +231,29 @@ export default function UserForm({ callBack }) {
                       />
                       <ErrorMessage name="birthday" component="div" />
                     </label>
+                    {/* <FormikInput
+                      label={t('UserEmail')}
+                      type="email"
+                      name="email"
+                      placeholder={t('Enter email')}
+                    /> */}
+                    <FormikInput
+                      label={t('Phone')}
+                      type="tel"
+                      name="phone"
+                      placeholder="+380971234567"
+                    />
                     <FormikInput
                       label={t('Skype')}
                       type="text"
                       name="skype"
                       placeholder={t('Add a skype number')}
                     />
-                    <FormikInput
-                      label={t('UserEmail')}
-                      type="email"
-                      name="email"
-                      placeholder={t('Enter email')}
-                    />
-                    <BtnWrapper>
-                      <ChangePassBtn type="button" onClick={openChangePasswordModal}>
-                        Change password
-                      </ChangePassBtn>
-                      <DeleteProfileBtn type="button" onClick={openDeleteProfileModal}>
-                        Delete profile
-                      </DeleteProfileBtn>
-                    </BtnWrapper>
+                    {showChangeEmailModal && (
+                      <Modal isOpen={showChangeEmailModal} onClose={closeChangeEmailModal}>
+                        {<ChangeEmailForm onClose={closeChangeEmailModal} />}
+                      </Modal>
+                    )}
                     {showChangePasswordModal && (
                       <Modal isOpen={showChangePasswordModal} onClose={closeChangePasswordModal}>
                         {<ChangePasswordForm onClose={closeChangePasswordModal} />}
@@ -269,6 +274,19 @@ export default function UserForm({ callBack }) {
                   >
                     {t('Save changes')}
                   </FormBtn>
+                  <BtnWrapper>
+                    <ChangeValueBtnWrap>
+                      <ChangeValueBtn type="button" onClick={openChangeEmailModal}>
+                        Change email
+                      </ChangeValueBtn>
+                      <ChangeValueBtn type="button" onClick={openChangePasswordModal}>
+                        Change password
+                      </ChangeValueBtn>
+                    </ChangeValueBtnWrap>
+                    <DeleteProfileBtn type="button" onClick={openDeleteProfileModal}>
+                      Delete profile
+                    </DeleteProfileBtn>
+                  </BtnWrapper>
                 </FormWrap>
               </Form>
             </FormContainer>
@@ -278,6 +296,7 @@ export default function UserForm({ callBack }) {
     </>
   );
 }
+
 UserForm.propTypes = {
   callBack: PropTypes.func.isRequired
 };

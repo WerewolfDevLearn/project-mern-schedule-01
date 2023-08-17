@@ -6,6 +6,7 @@ export const Overlay = styled.div`
   left: 0;
   width: 100vw;
   height: 100vh;
+  backdrop-filter: blur(3px);
   background-color: ${({ background }) => background};
   z-index: 100;
 `;

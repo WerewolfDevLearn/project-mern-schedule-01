@@ -5,15 +5,16 @@ import { useGetReviewOwnQuery } from 'src/redux/reviews/reviewsApi';
 import Modal from 'src/components/shared/Modal/Modal';
 import FeedbackForm from 'src/components/Forms/FeedbackForm/FeedbackForm';
 import { modalBackdropcolors } from 'src/styles/variables/themes';
+import LangToggler from 'src/components/shared/LangToggler/LangToggler';
 
 import AddFeedbackBtn from '../AddFeedbackBtn/AddFeedbackBtn';
 import ThemeToggler from '../ThemeToggler/ThemeToggler';
 import UserInfo from '../UserInfo/UserInfo';
 
 import UserMenuBTN from './UserMenuBTN/UserMenuBTN';
-import { Header, LoactionSign } from './Header.styled';
+import { Header, LoactionSign, WrapTogglers } from './Header.styled';
 
-export default function AppHeader({ callBack }) {
+export default function AppHeader({ callBack, isHomePage }) {
   let action = 'add';
   const { data: reviews, isFetching, isLoading } = useGetReviewOwnQuery();
   if (!isLoading && reviews) {
@@ -43,8 +44,13 @@ export default function AppHeader({ callBack }) {
     <Header>
       <UserMenuBTN callBack={callBack} />
       <LoactionSign>{headerTitle[activePage]}</LoactionSign>
+
       <AddFeedbackBtn openModal={openModal} />
-      <ThemeToggler />
+      <WrapTogglers>
+        <LangToggler isHomePage={isHomePage} />
+        <ThemeToggler />
+      </WrapTogglers>
+
       <UserInfo />
       {modalIsOpen && (
         <Modal onClose={closeModal} color={modalBackdropcolors.grey}>
@@ -57,5 +63,6 @@ export default function AppHeader({ callBack }) {
 
 AppHeader.propTypes = {
   callBack: PropTypes.func.isRequired,
-  onGiveFeedBack: PropTypes.func.isRequired
+  onGiveFeedBack: PropTypes.func.isRequired,
+  isHomePage: PropTypes.bool
 };

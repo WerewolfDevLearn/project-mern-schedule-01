@@ -10,7 +10,6 @@ export const Modal = styled.div`
   width: 550px;
   height: 550px;
   border-radius: 16px;
-  /* background-color: white; */
   background-color: #edf0f8;
   box-shadow: rgb(0, 0, 0) 0px 0px 80px;
 `;
@@ -31,15 +30,17 @@ export const XCloseWrap = styled.button`
   }
 `;
 
-export const ChangePasswordTitle = styled.h1`
+export const ChangeEmailTitle = styled.h1`
   margin-bottom: 30px;
   text-align: center;
   color: #3e85f3;
 `;
 
 export const InputsContainer = styled.div`
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 `;
+
+export const Verify = styled.div``;
 
 export const FormLabelSpan = styled.span`
   display: flex;
@@ -84,31 +85,31 @@ export const UpdateBtn = styled.button`
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0, 0.11, 0.35, 2);
 
-  &:hover {
-    background-color: #2b78ef;
-    transform: scale(1.1);
-  }
-`;
-
-export const CancelBtn = styled.button`
-  width: 100px;
-  height: 48px;
-  border-radius: 16px;
-  color: white;
-  background-color: #3e85f3;
-  /* border: 3px solid #3e85f3; */
-  margin-left: 100px;
-  margin-bottom: 10px;
-
-  transform: scale(1);
-  transition-property: transform;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0, 0.11, 0.35, 2);
-
   &:hover,
   &:focus {
-    color: white;
     background-color: #2b78ef;
     transform: scale(1.1);
   }
 `;
+
+// export const CloseBtn = styled.button`
+//   width: 100px;
+//   height: 48px;
+//   border-radius: 16px;
+//   color: white;
+//   background-color: #3e85f3;
+//   /* border: 3px solid #3e85f3; */
+//   margin-left: 100px;
+//   margin-bottom: 10px;
+
+// transform: scale(1);
+//   transition-property: transform;
+//   transition-duration: 250ms;
+//   transition-timing-function: cubic-bezier(0, 0.11, 0.35, 2);
+
+//   &:hover {
+//     border: none;
+//     color: white;
+//     background-color: #2b78ef;
+//   }
+// `;

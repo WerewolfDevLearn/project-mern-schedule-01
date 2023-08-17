@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Container } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { useSearchParams } from 'react-router-dom';
@@ -5,7 +6,7 @@ import { useSearchParams } from 'react-router-dom';
 import '/node_modules/flag-icons/css/flag-icons.min.css';
 import { FlagBtn, Label } from './LangToggler.styled';
 
-export default function LangToggler() {
+export default function LangToggler({ isHomePage }) {
   const [searchParams, setSearchParams] = useSearchParams();
 
   // eslint-disable-next-line no-unused-vars
@@ -27,14 +28,14 @@ export default function LangToggler() {
     <Container>
       {currentLanguage === 'uk' ? (
         <FlagBtn type="button" onClick={handleLangChange} value="gb">
-          <span className="circular-flag">
+          <span className={isHomePage ? 'circular-flag square-flag' : 'circular-flag'}>
             <span className="fi fi-ua"></span>
           </span>
           <Label>UA</Label>
         </FlagBtn>
       ) : (
         <FlagBtn type="button" onClick={handleLangChange} value="uk">
-          <div className="circular-flag">
+          <div className={isHomePage ? 'circular-flag square-flag' : 'circular-flag'}>
             <span className="fi fi-gb"></span>
           </div>
           <Label>EN</Label>
@@ -43,3 +44,7 @@ export default function LangToggler() {
     </Container>
   );
 }
+
+LangToggler.propTypes = {
+  isHomePage: PropTypes.bool
+};
