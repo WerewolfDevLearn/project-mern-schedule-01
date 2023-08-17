@@ -3031,9 +3031,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 `,vYe=L.h1`
   color: ${I.colors.accent};
   text-shadow: ${I.shadows.authHeading};
-  font-family: Inter;
   font-size: ${I.fontSizes.l};
-  font-style: normal;
   font-weight: ${I.fontWeight.sb};
   line-height: 24px;
 
@@ -3066,9 +3064,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   width: 100%;
 
   color: ${I.colors.textAndIconTodo};
-  font-family: Inter;
   font-size: ${I.fontSizes.xs};
-  font-style: normal;
   font-weight: ${I.fontWeight.sb};
   line-height: normal;
 
@@ -3098,9 +3094,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   background: ${I.colors.backgroundUserForm};
 
   color: ${I.colors.textAndIconTodo};
-  font-family: Inter;
   font-size: ${I.fontSizes.s};
-  font-style: normal;
   font-weight: ${I.fontWeight.r};
   line-height: 18px;
 
@@ -3132,9 +3126,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   }
 `,mL=L(Ys)`
   color: #da1414;
-  font-family: Inter;
   font-size: ${I.fontSizes.xs};
-  font-style: normal;
   font-weight: ${I.fontWeight.r};
   line-height: 14px;
 
@@ -3147,9 +3139,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   }
 `,wYe=L.p`
   color: ${I.colors.saccess};
-  font-family: Inter;
   font-size: ${I.fontSizes.xs};
-  font-style: normal;
   font-weight: ${I.fontWeight.r};
   line-height: 14px;
 
@@ -3179,9 +3169,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   transition-timing-function: ${I.animations.cubicBezier};
 
   color: ${I.colors.white};
-  font-family: Inter;
   font-size: ${I.fontSizes.s};
-  font-style: normal;
   font-weight: ${I.fontWeight.sb};
   line-height: 18px;
   letter-spacing: -0.28px;
@@ -3228,7 +3216,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   @media screen and (min-width: ${I.breakpoints.m}) {
     bottom: 18px;
   }
-`;function qH({onSubmitForm:e}){const[t,r]=C.useState(!1),[n,i]=C.useState(!1),{t:a}=Zt(),o=()=>{r(!t)};return E.jsxs(gYe,{children:[E.jsx(vYe,{children:a("Log In")}),E.jsx(Hs,{validationSchema:mYe,initialValues:{email:"",password:""},validateOnBlur:!1,validateOnChange:n,validateOnMount:!1,onSubmit:async s=>{i(!0),e(s),i(!1)},children:s=>{const{errors:l,handleSubmit:u,submitCount:c}=s,f=d=>(n||c>0)&&l[d]?(i(!0),"input-error"):c>0&&!l[d]?"input-correct":"";return E.jsxs(yYe,{autoComplete:"off",children:[E.jsxs(bYe,{children:[E.jsxs(dL,{htmlFor:"email",className:f("email"),children:[a("Email"),E.jsxs(pL,{children:[E.jsx(hL,{type:"email",name:"email",placeholder:a("nadiia@gmail.com"),id:"login_email",className:f("email")}),f("email")==="input-correct"&&E.jsx(xg,{src:mp,alt:"Success Icon"}),f("email")==="input-error"&&E.jsx(xg,{src:hp,alt:"Error Icon"})]}),f("email")==="input-correct"&&E.jsx(wYe,{children:a("Correct email")}),E.jsx(mL,{name:"email",component:"p"})]}),E.jsxs(dL,{htmlFor:"password",className:f("password"),children:[a("Password"),E.jsxs(pL,{children:[E.jsx(hL,{type:t?"text":"password",name:"password",placeholder:"●●●●●●●",id:"login_password",className:f("password")}),E.jsx("button",{onClick:o,children:E.jsx(OYe,{src:t?VH:YH,alt:"Success Icon",className:f("password")!==""?"right":"left"})}),f("password")==="input-correct"&&E.jsx(xg,{src:mp,alt:"Success Icon"}),f("password")==="input-error"&&E.jsx(xg,{src:hp,alt:"Error Icon"})]}),E.jsx(mL,{name:"password",component:"p"})]})]}),E.jsxs(xYe,{type:"submit",onClick:u,children:[a("Log in"),E.jsx(SYe,{src:vC,alt:"LogIn SVG"})]})]})}})]})}qH.propTypes={onSubmitForm:te.func.isRequired};const EYe=L(Wh)`
+`;function qH({onSubmitForm:e}){const[t,r]=C.useState(!1),[n,i]=C.useState(!1),{t:a}=Zt(),o=()=>{r(!t)};return E.jsxs(gYe,{children:[E.jsx(vYe,{children:a("Log In")}),E.jsx(Hs,{validationSchema:mYe,initialValues:{email:"",password:""},validateOnBlur:!1,validateOnChange:n,validateOnMount:!1,onSubmit:async s=>{i(!0),e(s),i(!1)},children:s=>{const{errors:l,handleSubmit:u,submitCount:c}=s,f=d=>(n||c>0)&&l[d]?(i(!0),"input-error"):c>0&&!l[d]?"input-correct":"";return E.jsxs(yYe,{autoComplete:"off",children:[E.jsxs(bYe,{children:[E.jsxs(dL,{htmlFor:"email",className:f("email"),children:[a("Email"),E.jsxs(pL,{children:[E.jsx(hL,{type:"email",name:"email",placeholder:a("nadiia@gmail.com"),id:"login_email",className:f("email")}),f("email")==="input-correct"&&E.jsx(xg,{src:mp,alt:"Success Icon"}),f("email")==="input-error"&&E.jsx(xg,{src:hp,alt:"Error Icon"})]}),f("email")==="input-correct"&&E.jsx(wYe,{children:a("Correct email")}),E.jsx(mL,{name:"email",component:"p"})]}),E.jsxs(dL,{htmlFor:"password",className:f("password"),children:[a("Password"),E.jsxs(pL,{children:[E.jsx(hL,{type:t?"text":"password",name:"password",placeholder:"●●●●●●●",id:"login_password",className:f("password")}),E.jsx("button",{type:"button",onClick:o,children:E.jsx(OYe,{src:t?VH:YH,alt:"Success Icon",className:f("password")!==""?"right":"left"})}),f("password")==="input-correct"&&E.jsx(xg,{src:mp,alt:"Success Icon"}),f("password")==="input-error"&&E.jsx(xg,{src:hp,alt:"Error Icon"})]}),E.jsx(mL,{name:"password",component:"p"})]})]}),E.jsxs(xYe,{type:"submit",onClick:u,children:[a("Log in"),E.jsx(SYe,{src:vC,alt:"LogIn SVG"})]})]})}})]})}qH.propTypes={onSubmitForm:te.func.isRequired};const EYe=L(Wh)`
   color: #3e85f3;
   text-shadow: 0px 9.399999618530273px 57.6875px rgba(0, 0, 0, 0.04),
     0px 47px 355px rgba(0, 0, 0, 0.07);
@@ -3312,9 +3300,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 `,RYe=L.h1`
   color: ${I.colors.accent};
   text-shadow: ${I.shadows.authHeading};
-  font-family: Inter;
   font-size: ${I.fontSizes.l};
-  font-style: normal;
   font-weight: ${I.fontWeight.sb};
   line-height: 24px;
 
@@ -3347,9 +3333,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   width: 100%;
 
   color: ${I.colors.textAndIconTodo};
-  font-family: Inter;
   font-size: ${I.fontSizes.xs};
-  font-style: normal;
   font-weight: ${I.fontWeight.sb};
   line-height: normal;
 
@@ -3379,9 +3363,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   background: ${I.colors.backgroundUserForm};
 
   color: ${I.colors.textAndIconTodo};
-  font-family: Inter;
   font-size: ${I.fontSizes.s};
-  font-style: normal;
   font-weight: ${I.fontWeight.r};
   line-height: 18px;
 
@@ -3404,9 +3386,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   }
 `,HS=L(Ys)`
   color: #da1414;
-  font-family: Inter;
   font-size: ${I.fontSizes.xs};
-  font-style: normal;
   font-weight: ${I.fontWeight.r};
   line-height: 14px;
 
@@ -3419,9 +3399,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   }
 `,YS=L.p`
   color: ${I.colors.saccess};
-  font-family: Inter;
   font-size: ${I.fontSizes.xs};
-  font-style: normal;
   font-weight: ${I.fontWeight.r};
   line-height: 14px;
 
@@ -3451,9 +3429,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   transition-timing-function: ${I.animations.cubicBezier};
 
   color: ${I.colors.white};
-  font-family: Inter;
   font-size: ${I.fontSizes.s};
-  font-style: normal;
   font-weight: ${I.fontWeight.sb};
   line-height: 18px;
   letter-spacing: -0.28px;
@@ -3497,7 +3473,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   @media screen and (min-width: ${I.breakpoints.m}) {
     bottom: 18px;
   }
-`;function GH({callBack:e}){const[t,r]=C.useState(!1),[n,i]=C.useState(!1),{t:a}=Zt(),o=()=>{r(!t)};return E.jsxs(IYe,{children:[E.jsx(RYe,{children:a("Sign Up")}),E.jsx(Hs,{validationSchema:hYe,initialValues:{name:"",email:"",password:""},validateOnBlur:!1,validateOnChange:n,validateOnMount:!1,onSubmit:s=>{i(!0),e(s),i(!1)},children:s=>{const{errors:l,handleSubmit:u,submitCount:c}=s,f=d=>(n||c>0)&&l[d]?(i(!0),"input-error"):c>0&&!l[d]?"input-correct":"";return E.jsxs(jYe,{autoComplete:"off",children:[E.jsxs(NYe,{children:[E.jsxs(BS,{htmlFor:"name",className:f("name"),children:[a("Name"),E.jsxs(US,{children:[E.jsx(WS,{type:"name",name:"name",placeholder:a("Enter your name"),id:"signup_name",className:f("name")}),f("name")==="input-correct"&&E.jsx(Du,{src:mp,alt:"Success Icon"}),f("name")==="input-error"&&E.jsx(Du,{src:hp,alt:"Error Icon"})]}),f("name")==="input-correct"&&E.jsx(YS,{children:a("Correct name")}),E.jsx(HS,{name:"name",component:"p"})]}),E.jsxs(BS,{htmlFor:"email",className:f("email"),children:[a("Email"),E.jsxs(US,{children:[E.jsx(WS,{type:"email",name:"email",placeholder:a("Enter email"),id:"signup_email",className:f("email")}),f("email")==="input-correct"&&E.jsx(Du,{src:mp,alt:"Success Icon"}),f("email")==="input-error"&&E.jsx(Du,{src:hp,alt:"Error Icon"})]}),f("email")==="input-correct"&&E.jsx(YS,{children:a("Correct email")}),E.jsx(HS,{name:"email",component:"p"})]}),E.jsxs(BS,{htmlFor:"password",className:f("password"),children:[a("Password"),E.jsxs(US,{children:[" ",E.jsx(WS,{type:t?"text":"password",name:"password",placeholder:a("Enter password"),id:"signup_password",className:f("password")}),E.jsx("button",{onClick:o,children:E.jsx(zYe,{src:t?VH:YH,alt:"Success Icon",className:f("password")!==""?"right":"left"})}),f("password")==="input-correct"&&E.jsx(Du,{src:mp,alt:"Success Icon"}),f("password")==="input-error"&&E.jsx(Du,{src:hp,alt:"Error Icon"})]}),f("password")==="input-correct"&&E.jsx(YS,{children:a("Correct password")}),E.jsx(HS,{name:"password",component:"p"})]})]}),E.jsxs(LYe,{type:"submit",onClick:u,children:[a("Sign Up")," ",E.jsx(FYe,{src:vC,alt:"LogIn SVG"})]})]})}})]})}GH.propTypes={callBack:te.func.isRequired};const BYe=L.div`
+`;function GH({callBack:e}){const[t,r]=C.useState(!1),[n,i]=C.useState(!1),{t:a}=Zt(),o=()=>{r(!t)};return E.jsxs(IYe,{children:[E.jsx(RYe,{children:a("Sign Up")}),E.jsx(Hs,{validationSchema:hYe,initialValues:{name:"",email:"",password:""},validateOnBlur:!1,validateOnChange:n,validateOnMount:!1,onSubmit:s=>{i(!0),e(s),i(!1)},children:s=>{const{errors:l,handleSubmit:u,submitCount:c}=s,f=d=>(n||c>0)&&l[d]?(i(!0),"input-error"):c>0&&!l[d]?"input-correct":"";return E.jsxs(jYe,{autoComplete:"off",children:[E.jsxs(NYe,{children:[E.jsxs(BS,{htmlFor:"name",className:f("name"),children:[a("Name"),E.jsxs(US,{children:[E.jsx(WS,{type:"name",name:"name",placeholder:a("Enter your name"),id:"signup_name",className:f("name")}),f("name")==="input-correct"&&E.jsx(Du,{src:mp,alt:"Success Icon"}),f("name")==="input-error"&&E.jsx(Du,{src:hp,alt:"Error Icon"})]}),f("name")==="input-correct"&&E.jsx(YS,{children:a("Correct name")}),E.jsx(HS,{name:"name",component:"p"})]}),E.jsxs(BS,{htmlFor:"email",className:f("email"),children:[a("Email"),E.jsxs(US,{children:[E.jsx(WS,{type:"email",name:"email",placeholder:a("Enter email"),id:"signup_email",className:f("email")}),f("email")==="input-correct"&&E.jsx(Du,{src:mp,alt:"Success Icon"}),f("email")==="input-error"&&E.jsx(Du,{src:hp,alt:"Error Icon"})]}),f("email")==="input-correct"&&E.jsx(YS,{children:a("Correct email")}),E.jsx(HS,{name:"email",component:"p"})]}),E.jsxs(BS,{htmlFor:"password",className:f("password"),children:[a("Password"),E.jsxs(US,{children:[" ",E.jsx(WS,{type:t?"text":"password",name:"password",placeholder:a("Enter password"),id:"signup_password",className:f("password")}),E.jsx("button",{type:"button",onClick:o,children:E.jsx(zYe,{src:t?VH:YH,alt:"Success Icon",className:f("password")!==""?"right":"left"})}),f("password")==="input-correct"&&E.jsx(Du,{src:mp,alt:"Success Icon"}),f("password")==="input-error"&&E.jsx(Du,{src:hp,alt:"Error Icon"})]}),f("password")==="input-correct"&&E.jsx(YS,{children:a("Correct password")}),E.jsx(HS,{name:"password",component:"p"})]})]}),E.jsxs(LYe,{type:"submit",onClick:u,children:[a("Sign Up")," ",E.jsx(FYe,{src:vC,alt:"LogIn SVG"})]})]})}})]})}GH.propTypes={callBack:te.func.isRequired};const BYe=L.div`
   height: 100vh;
   width: 100vw;
 
