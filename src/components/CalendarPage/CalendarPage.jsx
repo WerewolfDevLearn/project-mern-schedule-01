@@ -34,12 +34,6 @@ export default function CalendarPage() {
       <Suspense fallback={<Loader />}>
         <Outlet />
       </Suspense>
-
-      {/* <CalendarToolbar> */}
-      {/* <Suspense fallback={<Loader />}>
-        <Outlet />
-      </Suspense> */}
-      {/* </CalendarToolbar> */}
     </>
   );
 }

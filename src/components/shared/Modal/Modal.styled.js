@@ -6,12 +6,8 @@ export const Overlay = styled.div`
   left: 0;
   width: 100vw;
   height: 100vh;
-<<<<<<< HEAD
-  background-color: rgba(62, 133, 243, 0.05);
-  backdrop-filter: blur(3px);
-=======
   background-color: ${({ background }) => background};
->>>>>>> main
+  backdrop-filter: blur(3px);
   z-index: 100;
 `;
 

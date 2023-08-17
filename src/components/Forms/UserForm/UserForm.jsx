@@ -9,6 +9,7 @@ import { useTranslation } from 'react-i18next';
 import { useUser } from 'src/redux/selectors';
 import { Plus } from 'src/components/shared/Icons';
 import Modal from 'src/components/shared/Modal/Modal';
+
 import ChangeEmailForm from '../ChangeEmailForm/ChangeEmailForm';
 import ChangePasswordForm from '../ChangePasswordForm/ChangePasswordForm';
 import DeleteProfileForm from '../DeleteProfileForm/DeleteProfileForm';
@@ -82,8 +83,6 @@ export default function UserForm({ callBack }) {
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
-
-    console.log(date);
   };
 
   const onSubmit = (data) => {
@@ -188,7 +187,6 @@ export default function UserForm({ callBack }) {
                             formik.setFieldValue('avatar', avatar);
                             setSelectedAvatar(URL.createObjectURL(avatar));
                             setImagePreview('');
-                            return;
                           }
                         }}
                       />
@@ -222,6 +220,7 @@ export default function UserForm({ callBack }) {
                       label={t('Birthday')}
                       type="date"
                       name="birthday"
+                      placeholder="Pick a date of your birthday"
                       views={['year', 'month', 'day']}
                     />
                     {/* <label htmlFor="birthday">

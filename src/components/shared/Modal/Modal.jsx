@@ -33,7 +33,7 @@ export default function Modal({ onClose, color, clickable, children }) {
   };
 
   return createPortal(
-    <Overlay onClick={handleOverlayClick} background={color}>
+    <Overlay onClick={handleOverlayClick} $background={color}>
       <ModalDiv>{children}</ModalDiv>
     </Overlay>,
     modalRoot
