@@ -1706,7 +1706,7 @@ ye.version="2.29.4";awe(Pt);ye.fn=fe;ye.min=Vxe;ye.max=qxe;ye.now=Gxe;ye.utc=Da;
   @media screen and (min-width: 768px) {
     font-size: 16px;
   }
-`,yU=({today:e,onChangeType:t})=>{const r=Vi(),n=r.pathname.includes("month"),i=r.pathname.includes("day"),a=ye(e).format("YYYY-MM-DD");return E.jsxs(aEe,{children:[E.jsx(s3,{children:E.jsx(l3,{className:`${n?"active":""} month`,to:`/month/${a}`,onClick:()=>t("month"),children:"Month"})}),E.jsx(s3,{children:E.jsx(l3,{className:`${i?"active":""} day`,to:`/day/${a}`,onClick:()=>t("day"),children:"Day"})})]})};yU.propTypes={today:te.string.isRequired,onChangeType:te.func.isRequired};const oEe=L.div`
+`,yU=({today:e,onChangeType:t})=>{const r=Vi(),n=r.pathname.includes("month"),i=r.pathname.includes("day"),a=ye(e).format("YYYY-MM-DD");return E.jsxs(aEe,{children:[E.jsx(s3,{children:E.jsx(l3,{className:`${n?"active":""} month`,to:`/calendar/month/${a}`,onClick:()=>t("month"),children:"Month"})}),E.jsx(s3,{children:E.jsx(l3,{className:`${i?"active":""} day`,to:`/calendar/day/${a}`,onClick:()=>t("day"),children:"Day"})})]})};yU.propTypes={today:te.string.isRequired,onChangeType:te.func.isRequired};const oEe=L.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
