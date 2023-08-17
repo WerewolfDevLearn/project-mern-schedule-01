@@ -8,12 +8,8 @@ import routes from 'src/routes.js';
 import { NavUl, NavLinkStyled, IconDiv } from './UserNav.styled';
 
 export default function UserNav() {
-  const getCurrentCalendarPage = () => {
-    if (location.pathname.includes('/calendar/day')) {
-      return `/calendar/day/${getCurrentDate()}`;
-    }
-    return `${routes.navFromLogIn}/${getCurrentDate()}`;
-  };
+  const isMonthViewActive = location.pathname.includes('/calendar/month');
+  const isDayViewActive = location.pathname.includes('/calendar/day');
 
   const { t } = useTranslation();
 
@@ -28,8 +24,10 @@ export default function UserNav() {
         </NavLinkStyled>
       </li>
       <li key="CalendarPage">
-        {/* <NavLinkStyled to={`${routes.navFromLogIn}/${getCurrentDate()}`}> */}
-        <NavLinkStyled to={getCurrentCalendarPage()}>
+        <NavLinkStyled
+          to={`${routes.navFromLogIn}/${getCurrentDate()}`}
+          className={isMonthViewActive || isDayViewActive ? 'active' : ''}
+        >
           <IconDiv>
             <CalendarCheck />
           </IconDiv>
