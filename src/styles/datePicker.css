@@ -1,0 +1,95 @@
+/* datePicker */
+.datepicker-wrapper {
+  position: relative;
+}
+.button-wrapper {
+}
+/* input */
+.input-decor {
+  position: relative;
+}
+.input-decor::after {
+  content: '';
+  position: absolute;
+  right: 2px;
+  top: 2px;
+  width: 20px;
+  height: 20px;
+  display: block;
+  background-image: url('../assets/Calendar_icon_2.svg');
+  background-size: cover;
+}
+.input-field {
+  width: 100%;
+}
+/* Calendar itself */
+
+.calendar-wrapper {
+  position: absolute;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  padding: 5px;
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: white;
+  box-shadow: 31px 20px 24px -12px rgba(0, 0, 0, 0.28);
+}
+.calendar-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.weeks-day {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+.week-day {
+  font-size: 16px;
+  line-height: 1.2;
+  padding: 5px;
+}
+.month-dates {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  justify-items: center;
+  align-items: center;
+  gap: 5px;
+}
+.day-number {
+  width: 40px;
+  height: 40px;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+}
+.current-day,
+.other-day {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  font-weight: 300;
+  color: white;
+}
+.current-day:hover,
+.other-day:hover {
+  background-color: #000;
+  color: #fff;
+}
+.current-month {
+  background-color: rgb(128, 128, 128);
+}
+.other-month {
+  background-color: rgb(203, 203, 203);
+}
+.current-month.current-day {
+  background-color: rgb(0, 0, 0);
+}

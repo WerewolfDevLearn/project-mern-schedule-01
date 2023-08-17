@@ -16,7 +16,7 @@ export const DivWrapper = styled('div')`
     margin-bottom: 33px;
   }
 `;
-export const TitleWrapper = styled('span')`
+export const TitleWrapper = styled.button`
   padding: 6px 12px;
   color: #ffffff;
   background: #3e85f3;
