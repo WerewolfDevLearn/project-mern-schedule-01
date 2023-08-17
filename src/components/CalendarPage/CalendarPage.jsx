@@ -7,16 +7,11 @@ import Loader from '../shared/Loader/Loader';
 export default function CalendarPage() {
   return (
     <>
-      {/* //       <CalendarToolbar />
-//       <Suspense fallback={<Loader />}>
-//         <Outlet />
-//       </Suspense> */}
-
-      {/* <CalendarToolbar> */}
-      {/* <Suspense fallback={<Loader />}>
-        <Outlet />
-      </Suspense> */}
-      {/* </CalendarToolbar> */}
+      {/* <CalendarToolbar>
+        <Suspense fallback={<Loader />}>
+          <Outlet />
+        </Suspense>
+      </CalendarToolbar> */}
     </>
   );
 }
