@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
-import { useisLoading } from 'src/redux/selectors';
+import { useisLoading, useError } from 'src/redux/selectors';
 import logo from 'src/images/others/desktop/goose-quote1x.png';
 import logo2x from 'src/images/others/desktop/goose-quote2x.png';
 import logo3x from 'src/images/others/desktop/goose-quote3x.png';
