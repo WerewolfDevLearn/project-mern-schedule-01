@@ -49,14 +49,11 @@ const userVerify = (state, { payload }) => {
   state.refreshToken = payload.refreshToken;
 };
 const userHandler = (state, { payload }) => {
-  state.email = payload.user.email;
   state.name = payload.user.name;
   state.phone = payload.user.phone;
   state.skype = payload.user.skype;
   state.birthday = payload.user.birthday;
   state.avatarUrl = payload.user.avatarUrl;
-  state.token = payload.token;
-  state.refreshToken = payload.refreshToken;
 };
 
 const userSlice = createSlice({
