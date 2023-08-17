@@ -7,7 +7,7 @@ export const AddFeedbackBtnStyles = styled.button`
   border-radius: 10px;
   margin-left: auto;
   margin-right: 18px;
-  background: ${({ theme }) => theme.colors.borderBtnAddTask};
+  background: #3e85f3;
   box-shadow: 4px 2px 16px 0px rgba(136, 165, 191, 0.48);
 
   transform: scale(1);

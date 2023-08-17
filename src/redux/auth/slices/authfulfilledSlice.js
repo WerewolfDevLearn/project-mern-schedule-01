@@ -6,7 +6,9 @@ import storage from 'redux-persist/lib/storage';
 import { register, userlogin, logOut, getCurrent, verify, updUser } from '../authOps';
 
 const initialState = {
+  userId: '',
   token: '',
+  refreshToken: '',
   email: '',
   name: '',
   avatarUrl: '',
@@ -16,15 +18,42 @@ const initialState = {
   birthday: ''
 };
 
-const userHandler = (state, { payload }) => {
+const userRegister = (state, { payload }) => {
+  state.name = payload.user.name;
+  state.email = payload.user.email;
+  state.phone = payload.user.phone;
+  state.birthday = payload.user.birthday;
+  state.avatarUrl = payload.user.avatarUrl;
+  state.userId = payload.user._id;
+};
+const userLogin = (state, { payload }) => {
   state.email = payload.user.email;
   state.name = payload.user.name;
   state.phone = payload.user.phone;
   state.skype = payload.user.skype;
   state.birthday = payload.user.birthday;
   state.avatarUrl = payload.user.avatarUrl;
-  state.verifiedEmail = payload.user.verifiedEmail;
   state.token = payload.token;
+  state.refreshToken = payload.refreshToken;
+};
+const userGetCurrent = (state, { payload }) => {
+  state.email = payload.user.email;
+  state.name = payload.user.name;
+  state.phone = payload.user.phone;
+  state.skype = payload.user.skype;
+  state.birthday = payload.user.birthday;
+  state.avatarUrl = payload.user.avatarUrl;
+};
+const userVerify = (state, { payload }) => {
+  state.token = payload.token;
+  state.refreshToken = payload.refreshToken;
+};
+const userHandler = (state, { payload }) => {
+  state.name = payload.user.name;
+  state.phone = payload.user.phone;
+  state.skype = payload.user.skype;
+  state.birthday = payload.user.birthday;
+  state.avatarUrl = payload.user.avatarUrl;
 };
 
 const userSlice = createSlice({
@@ -33,10 +62,10 @@ const userSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(register.fulfilled, userHandler)
-      .addCase(userlogin.fulfilled, userHandler)
-      .addCase(verify.fulfilled, userHandler)
-      .addCase(getCurrent.fulfilled, userHandler)
+      .addCase(register.fulfilled, userRegister)
+      .addCase(userlogin.fulfilled, userLogin)
+      .addCase(verify.fulfilled, userVerify)
+      .addCase(getCurrent.fulfilled, userGetCurrent)
       .addCase(updUser.fulfilled, userHandler)
       .addCase(logOut.fulfilled, () => initialState);
   }

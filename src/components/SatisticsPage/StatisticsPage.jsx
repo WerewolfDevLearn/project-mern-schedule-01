@@ -1,4 +1,4 @@
-// import StatisticsChart from '../SatisticsPage/StatisticsChart/StatisticsChart';
+import { useState } from 'react';
 
 // export default function SatisticsPage() {
 //   return (

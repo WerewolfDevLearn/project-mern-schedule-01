@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { userlogin, verify } from 'src/redux/auth/authOps';
-import { useisLoading } from 'src/redux/selectors';
+import { useisLoading, useError } from 'src/redux/selectors';
 import LoginForm from 'src/components/Forms/LoginForm/LoginForm';
 import VerifyForm from 'src/components/Forms/VerifyForm/VerifyForm';
 import AuthNavigate from 'src/components/shared/AuthNavigate/AuthNavigate';
@@ -18,12 +18,14 @@ export default function LoginPage() {
   const dispatch = useDispatch();
   const isLoading = useisLoading();
   const [openModal, setOpenModal] = useState(false);
+
+  const errorMessage = useError();
+
   const onClose = () => {
     setOpenModal(false);
   };
   const callBack = (data) => {
     dispatch(userlogin(data));
-    setOpenModal(true);
   };
   const onSubmitVerifyForm = (data) => {
     dispatch(verify(data));
@@ -41,9 +43,15 @@ export default function LoginPage() {
           <AuthNavigate formType="login" />
         </Wrap>
       </ContentWrap>
-      {openModal && (
-        <Modal onClose={onClose} color={modalBackdropcolors.black}>
-          {isLoading ? <Loader /> : <VerifyForm onSubmitForm={onSubmitVerifyForm} />}
+      {isLoading && (
+        <Modal color={modalBackdropcolors.black}>
+          <Loader />
+        </Modal>
+      )}
+
+      {errorMessage === 'Action Required: Verify Your Email' && openModal && (
+        <Modal onClose={onClose} color={modalBackdropcolors.black} clickable={false}>
+          <VerifyForm onSubmitForm={onSubmitVerifyForm} />
         </Modal>
       )}
     </Container>
