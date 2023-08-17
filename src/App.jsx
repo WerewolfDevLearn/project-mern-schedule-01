@@ -30,7 +30,7 @@ function App() {
       <Suspense fallback={<Loader />}>
         <Routes>
           <Route element={<PubliceRourtes />}>
-            <Route path={routes.mainPage} element={<MainPage />} />
+            <Route path={routes.mainPage} element={<MainPage isHomePage={true} />} />
             <Route path={routes.registerPage} element={<RegisterPage />} />
             <Route path={routes.loginPage} element={<LoginPage />} />
           </Route>

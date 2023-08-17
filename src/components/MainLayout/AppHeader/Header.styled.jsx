@@ -20,6 +20,7 @@ export const Header = styled.header`
     padding-top: 40px;
   }
 `;
+
 export const LoactionSign = styled.h2`
   @media screen and (width <= ${themes.breakpoints.m}) {
     display: none;
@@ -29,4 +30,9 @@ export const LoactionSign = styled.h2`
     display: block;
     margin-left: 289px;
   }
+`;
+
+export const WrapTogglers = styled.div`
+  display: flex;
+  align-items: center;
 `;
