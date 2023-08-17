@@ -6,7 +6,7 @@ import { ModalDiv, Overlay } from './Modal.styled';
 
 const modalRoot = document.querySelector('#modal');
 
-export default function Modal({ onClose, color, children }) {
+export default function Modal({ onClose, color, clickable, children }) {
   useEffect(() => {
     document.body.style.overflow = 'hidden';
 
@@ -25,8 +25,10 @@ export default function Modal({ onClose, color, children }) {
   }, [onClose]);
 
   const handleOverlayClick = (e) => {
-    if (e.target === e.currentTarget) {
-      onClose();
+    if (clickable) {
+      if (e.target === e.currentTarget) {
+        onClose();
+      }
     }
   };
 
@@ -39,9 +41,8 @@ export default function Modal({ onClose, color, children }) {
 }
 
 Modal.propTypes = {
-
   onClose: PropTypes.func,
   color: PropTypes.string.isRequired,
-
+  clickable: PropTypes.bool,
   children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired
 };

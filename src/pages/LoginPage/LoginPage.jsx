@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { useState, useMemo } from 'react';
+import { useState } from 'react';
 import { userlogin, verify } from 'src/redux/auth/authOps';
 import { useisLoading, useError } from 'src/redux/selectors';
 import LoginForm from 'src/components/Forms/LoginForm/LoginForm';
@@ -18,28 +18,18 @@ export default function LoginPage() {
   const dispatch = useDispatch();
   const isLoading = useisLoading();
   const [openModal, setOpenModal] = useState(false);
-  const [isVrefyError, setIsVrefyError] = useState(false);
+
   const errorMessage = useError();
-  console.log('errorMessage: ', errorMessage);
-  const verifyError = useMemo(() => {
-    if (errorMessage === 'Action Required: Verify Your Email') {
-    }
-  });
+
   const onClose = () => {
     setOpenModal(false);
   };
   const callBack = (data) => {
     dispatch(userlogin(data));
-    if (errorMessage === 'Action Required: Verify Your Email') {
-      setOpenModal(true);
-    }
   };
   const onSubmitVerifyForm = (data) => {
     dispatch(verify(data));
   };
-  if (errorMessage === 'Action Required: Verify Your Email') {
-    setIsVrefyError(true);
-  }
 
   return (
     <Container>
@@ -59,8 +49,8 @@ export default function LoginPage() {
         </Modal>
       )}
 
-      {isVrefyError && (
-        <Modal onClose={onClose} color={modalBackdropcolors.black}>
+      {errorMessage === 'Action Required: Verify Your Email' && openModal && (
+        <Modal onClose={onClose} color={modalBackdropcolors.black} clickable={false}>
           <VerifyForm onSubmitForm={onSubmitVerifyForm} />
         </Modal>
       )}
