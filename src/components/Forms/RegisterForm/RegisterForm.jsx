@@ -126,7 +126,7 @@ export default function RegisterForm({ callBack }) {
                       id="signup_password"
                       className={validateInput('password')}
                     />
-                    <button onClick={togglePassword}>
+                    <button type="button" onClick={togglePassword}>
                       <SvgEye
                         src={passwordShown ? eyeOff : eyeOn}
                         alt="Success Icon"
