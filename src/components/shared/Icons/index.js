@@ -23,3 +23,5 @@ export { default as UserCheck } from './UserCheck';
 export { default as ValidationError } from './ValidationError';
 export { default as ValidationSuccess } from './ValidationSuccess';
 export { default as XClose } from './XClose';
+export { default as ArrowLeft } from './ArrowLeft';
+export { default as ArrowRight } from './ArrowRight';
