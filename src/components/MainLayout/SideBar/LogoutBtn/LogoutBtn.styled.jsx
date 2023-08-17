@@ -22,7 +22,7 @@ export const LogOutBtn = styled.button`
   text-decoration: underline;
   text-shadow: 0px 47px 355px rgba(0, 0, 0, 0.07), 0px 9.4px 57.6875px rgba(0, 0, 0, 0.035);
   color: ${({ theme }) => theme.colors.white};
-  background-color: ${({ theme }) => theme.colors.activeUserNavIcon};
+  background-color: #3e85f3;
   transform: scale(1);
   transition-property: transform;
   transition-duration: 250ms;

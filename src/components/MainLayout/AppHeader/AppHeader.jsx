@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
@@ -23,13 +24,15 @@ export default function AppHeader({ callBack, isHomePage }) {
     }
   }
 
+  const { t } = useTranslation();
+
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const location = useLocation();
   const activePage = location.pathname.split('/')[1];
   const headerTitle = {
-    account: 'User Profile',
-    statistics: 'Statistics',
-    calendar: 'Calendar'
+    account: t('User Profile'),
+    statistics: t('Statistics'),
+    calendar: t('Calendar')
   };
 
   const openModal = () => {

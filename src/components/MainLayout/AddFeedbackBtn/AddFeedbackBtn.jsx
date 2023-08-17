@@ -1,9 +1,12 @@
+import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 
 import { AddFeedbackBtnStyles } from '../AddFeedbackBtn/AddFeedbackBtn.styled';
 
 export default function AddFeedbackBt({ openModal }) {
-  return <AddFeedbackBtnStyles onClick={openModal}>Feedback</AddFeedbackBtnStyles>;
+  const { t } = useTranslation();
+
+  return <AddFeedbackBtnStyles onClick={openModal}>{t('Feedback')}</AddFeedbackBtnStyles>;
 }
 AddFeedbackBt.propTypes = {
   openModal: PropTypes.func.isRequired

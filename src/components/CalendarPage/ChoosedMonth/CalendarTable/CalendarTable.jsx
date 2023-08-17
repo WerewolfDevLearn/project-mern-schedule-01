@@ -60,9 +60,10 @@ export default function CalendarTable() {
     if (!isTasksLoading) {
       const renderedCalendar = calendar.map((dayItem) => {
         const calendarWithTask = getDayTasks(dayItem, respons?.tasks);
+
         return (
           <CellWrapper
-            to={`/calendar/day/${format(dayItem, 'ddMMMMyyyy')}`}
+            to={`/calendar/day/${format(dayItem, 'yyyy-MM-dd')}`}
             key={dayItem.getTime()}
             iscurrentmonth={isCurrentMonth(dayItem).toString()}
             istoday={isToday(dayItem).toString()}

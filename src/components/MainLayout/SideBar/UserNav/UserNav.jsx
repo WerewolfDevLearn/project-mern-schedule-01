@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { BsBarChart } from 'react-icons/bs';
 import UserCheck from 'src/components/shared/Icons/UserCheck';
 import CalendarCheck from 'src/components/shared/Icons/CalendarCheck';
@@ -14,6 +15,8 @@ export default function UserNav() {
     return `${routes.navFromLogIn}/${getCurrentDate()}`;
   };
 
+  const { t } = useTranslation();
+
   return (
     <NavUl>
       <li key="AccountPage">
@@ -21,7 +24,7 @@ export default function UserNav() {
           <IconDiv>
             <UserCheck />
           </IconDiv>
-          My account
+          {t('My Account')}
         </NavLinkStyled>
       </li>
       <li key="CalendarPage">
@@ -30,7 +33,7 @@ export default function UserNav() {
           <IconDiv>
             <CalendarCheck />
           </IconDiv>
-          Calendar
+          {t('Calendar')}
         </NavLinkStyled>
       </li>
       <li key="SatisticsPage">
@@ -38,7 +41,7 @@ export default function UserNav() {
           <IconDiv>
             <BsBarChart />
           </IconDiv>
-          Statistics
+          {t('Statistics')}
         </NavLinkStyled>
       </li>
     </NavUl>
