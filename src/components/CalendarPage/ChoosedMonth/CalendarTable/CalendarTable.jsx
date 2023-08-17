@@ -78,7 +78,7 @@ export default function CalendarTable() {
               </ShowDayWrapper>
               <TaskListWrapper>
                 {calendarWithTask.slice(0, 2).map((task) => (
-                  <TaskItem key={task.id} priority={task.priority}>
+                  <TaskItem key={task._id} priority={task.priority}>
                     {task.title}
                   </TaskItem>
                 ))}
