@@ -9,6 +9,7 @@ export const Modal = styled.div`
   width: 550px;
   height: 550px;
   border-radius: 16px;
+  /* background-color: white; */
   background-color: #edf0f8;
   box-shadow: rgb(0, 0, 0) 0px 0px 80px;
 `;

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Formik, Form } from 'formik';
 import { PropTypes } from 'prop-types';
 import * as yup from 'yup';
@@ -8,19 +9,24 @@ import {
   Modal,
   XCloseWrap,
   ChangeEmailTitle,
-  //   InputsContainer,
+  InputsContainer,
+  Verify,
   FormLabelSpan,
   InputField,
   ErrorMessage,
   BtnWrap,
-  UpdateBtn,
-  CancelBtn
-} from './ChangePasswordForm.styled';
+  UpdateBtn
+  // CloseBtn
+} from './ChangeEmailForm.styled';
+import VerifyForm from '../VerifyForm/VerifyForm';
 
 const schema = yup.object().shape({});
 
-export default function ChangePasswordForm({ onClose }) {
+export default function ChangeEmailForm({ onClose }) {
   const initialValues = {};
+
+  const [isUpdating, setisUpdating] = useState(false);
+
   const handleSubmit = (values) => {
     console.log(values);
   };
@@ -52,25 +58,35 @@ export default function ChangePasswordForm({ onClose }) {
                 <XCloseWrap onClick={onClose}>
                   <XClose width="24" height="24" />
                 </XCloseWrap>
-                <ChangePasswordTitle>Change password</ChangePasswordTitle>
-                <FormikInput
-                  label="New password"
-                  type="email"
-                  name="email"
-                  placeholder="Enter new email"
-                />
+                <ChangeEmailTitle>Change email</ChangeEmailTitle>
+                <InputsContainer>
+                  <FormikInput
+                    label="New email"
+                    type="email"
+                    name="email"
+                    placeholder="Enter new email"
+                  />
+                </InputsContainer>
                 <UpdateBtn type="submit">Update email</UpdateBtn>
-                <FormikInput
-                  label="Verify code"
-                  type="number"
-                  name="verify"
-                  placeholder="Enter verify code"
-                />
-                <BtnWrap>
-                  <CancelBtn type="button" onClick={onClose}>
-                    Cancel
-                  </CancelBtn>
-                </BtnWrap>
+                {/* <VerifyForm /> */}
+                {isUpdating && (
+                  <Verify>
+                    <InputsContainer>
+                      <FormikInput
+                        label="Verify code"
+                        type="text"
+                        name="verify"
+                        placeholder="Enter verify code"
+                      />
+                    </InputsContainer>
+                    <BtnWrap>
+                      <UpdateBtn type="submit">Verify</UpdateBtn>
+                      {/* <CloseBtn type="button" onClick={onClose}>
+                    Close
+                  </CloseBtn> */}
+                    </BtnWrap>
+                  </Verify>
+                )}
               </Modal>
             </>
           );
@@ -79,3 +95,7 @@ export default function ChangePasswordForm({ onClose }) {
     </>
   );
 }
+
+ChangeEmailForm.propTypes = {
+  onClose: PropTypes.func.isRequired
+};

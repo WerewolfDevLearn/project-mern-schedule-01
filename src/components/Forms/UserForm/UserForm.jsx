@@ -1,17 +1,14 @@
 import { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
-// import { useDispatch } from 'react-redux';
 import { Formik, Form } from 'formik';
 import * as yup from 'yup';
 import i18n from 'i18next';
 import { useTranslation } from 'react-i18next';
-
 // import { toast } from 'react-hot-toast';
 import { useUser } from 'src/redux/selectors';
-
-import { Avatar, Plus } from 'src/components/shared/Icons';
+import { Plus } from 'src/components/shared/Icons';
 import Modal from 'src/components/shared/Modal/Modal';
-
+import ChangeEmailForm from '../ChangeEmailForm/ChangeEmailForm';
 import ChangePasswordForm from '../ChangePasswordForm/ChangePasswordForm';
 import DeleteProfileForm from '../DeleteProfileForm/DeleteProfileForm';
 
@@ -76,6 +73,7 @@ export default function UserForm({ callBack }) {
   // eslint-disable-next-line no-unused-vars
   const [imagePreview, setImagePreview] = useState(initialValues.avatarUrl);
   const [selectedDate, setSelectedDate] = useState(new Date(initialValues.birthday || new Date()));
+  const [showChangeEmailModal, setShowChangeEmailModal] = useState(false);
   const [showChangePasswordModal, setShowChangePasswordModal] = useState(false);
   const [showDeleteProfileModal, setShowDeleteProfileModal] = useState(false);
 
@@ -119,6 +117,14 @@ export default function UserForm({ callBack }) {
     // console.log(values);
     // console.log(formData);
     // resetForm();
+  };
+
+  const openChangeEmailModal = () => {
+    setShowChangeEmailModal(true);
+  };
+
+  const closeChangeEmailModal = () => {
+    setShowChangeEmailModal(false);
   };
 
   const openChangePasswordModal = () => {
@@ -244,6 +250,11 @@ export default function UserForm({ callBack }) {
                       name="skype"
                       placeholder={t('Add a skype number')}
                     />
+                    {showChangeEmailModal && (
+                      <Modal isOpen={showChangeEmailModal} onClose={closeChangeEmailModal}>
+                        {<ChangeEmailForm onClose={closeChangeEmailModal} />}
+                      </Modal>
+                    )}
                     {showChangePasswordModal && (
                       <Modal isOpen={showChangePasswordModal} onClose={closeChangePasswordModal}>
                         {<ChangePasswordForm onClose={closeChangePasswordModal} />}
@@ -266,7 +277,7 @@ export default function UserForm({ callBack }) {
                   </FormBtn>
                   <BtnWrapper>
                     <ChangeValueBtnWrap>
-                      <ChangeValueBtn type="button" onClick={openChangePasswordModal}>
+                      <ChangeValueBtn type="button" onClick={openChangeEmailModal}>
                         Change email
                       </ChangeValueBtn>
                       <ChangeValueBtn type="button" onClick={openChangePasswordModal}>
@@ -286,6 +297,7 @@ export default function UserForm({ callBack }) {
     </>
   );
 }
+
 UserForm.propTypes = {
   callBack: PropTypes.func.isRequired
 };

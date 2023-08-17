@@ -10,6 +10,7 @@ export const Modal = styled.div`
   width: 550px;
   height: 550px;
   border-radius: 16px;
+  /* background-color: white; */
   background-color: #edf0f8;
   box-shadow: rgb(0, 0, 0) 0px 0px 80px;
 `;
@@ -29,6 +30,8 @@ export const XCloseWrap = styled.button`
 
 export const ChangePasswordTitle = styled.h1`
   margin-bottom: 30px;
+  text-align: center;
+  color: #3e85f3;
 `;
 
 export const InputsContainer = styled.div`
