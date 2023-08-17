@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { register, userlogin, logOut, verify } from '../authOps';
+import { register, userlogin, logOut, verify, updUser } from '../authOps';
 
 const initialState = false;
 
@@ -14,16 +14,19 @@ const isLoadingSlice = createSlice({
       .addCase(userlogin.pending, () => true)
       .addCase(logOut.pending, () => true)
       .addCase(verify.pending, () => true)
+      .addCase(updUser.pending, () => true)
 
       .addCase(register.fulfilled, () => false)
       .addCase(userlogin.fulfilled, () => false)
       .addCase(logOut.fulfilled, () => false)
       .addCase(verify.fulfilled, () => false)
+      .addCase(updUser.fulfilled, () => false)
 
       .addCase(register.rejected, () => false)
       .addCase(userlogin.rejected, () => false)
       .addCase(logOut.rejected, () => false)
-      .addCase(verify.rejected, () => false);
+      .addCase(verify.rejected, () => false)
+      .addCase(updUser.rejected, () => false);
   }
 });
 

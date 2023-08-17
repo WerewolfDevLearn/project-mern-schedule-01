@@ -213,11 +213,25 @@ export const Img = styled.img`
   }
 `;
 
-export const SvgIcon = styled.img`
+export const SvgValidate = styled.img`
   position: absolute;
   right: 18px;
   bottom: 11px;
   width: 24px;
+
+  @media screen and (min-width: ${themes.breakpoints.m}) {
+    bottom: 18px;
+  }
+`;
+
+export const SvgEye = styled.img`
+  position: absolute;
+  right: 46px;
+  bottom: 11px;
+  width: 24px;
+  &.left {
+    right: 18px;
+  }
 
   @media screen and (min-width: ${themes.breakpoints.m}) {
     bottom: 18px;

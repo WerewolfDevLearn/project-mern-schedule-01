@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import routes from 'src/routes';
 import { CgLogIn } from 'react-icons/cg';
@@ -24,13 +25,13 @@ import {
   StyledTogglerWrapper
 } from './AuthSection.styled.jsx';
 
-export default function AuthSection() {
+export default function AuthSection({ isHomePage }) {
   const { t } = useTranslation();
 
   return (
     <StyledHero>
       <StyledTogglerWrapper>
-        <LangToggler />
+        <LangToggler isHomePage={!isHomePage} />
       </StyledTogglerWrapper>
       <StyledImg>
         <source
@@ -60,3 +61,7 @@ export default function AuthSection() {
     </StyledHero>
   );
 }
+
+AuthSection.propTypes = {
+  isHomePage: PropTypes.bool
+};
