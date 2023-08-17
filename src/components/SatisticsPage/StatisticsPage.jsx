@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useLocation } from 'react-router-dom';
 
 import PeriodPaginator from '../shared/PeriodPaginator/PeriodPaginator';
 

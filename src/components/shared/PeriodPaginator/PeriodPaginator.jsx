@@ -1,4 +1,4 @@
-import PropTypes, { object } from 'prop-types';
+import PropTypes from 'prop-types';
 import { format, parse } from 'date-fns';
 import { useParams } from 'react-router';
 
