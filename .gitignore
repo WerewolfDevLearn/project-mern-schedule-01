@@ -13,7 +13,7 @@ dist-ssr
 temp
 *.local
 tmp
-
+.env
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
