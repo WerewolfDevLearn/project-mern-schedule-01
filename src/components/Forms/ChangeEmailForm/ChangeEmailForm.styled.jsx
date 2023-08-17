@@ -22,6 +22,9 @@ export const XCloseWrap = styled.button`
   top: 3%;
   right: 3%;
 
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0, 0.11, 0.35, 2);
+
   &:hover {
     color: #cf0202;
   }

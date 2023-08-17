@@ -14,13 +14,16 @@ export const Modal = styled.div`
   box-shadow: rgb(0, 0, 0) 0px 0px 80px;
 `;
 
-export const XCloseWrap = styled.button`
+export const XCloseWrap = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   position: absolute;
   top: 3%;
   right: 3%;
+
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0, 0.11, 0.35, 2);
 
   &:hover {
     color: #cf0202;
@@ -56,9 +59,13 @@ export const CancelBtn = styled.button`
   background-color: #3e85f3;
   margin-bottom: 10px;
 
+  transform: scale(1);
+  transition-property: transform;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0, 0.11, 0.35, 2);
+
   &:hover,
   &:focus {
-    border: none;
     color: white;
     background-color: #2b78ef;
     transform: scale(1.1);
@@ -68,7 +75,6 @@ export const CancelBtn = styled.button`
 export const DeleteBtn = styled.button`
   width: 152px;
   height: 48px;
-  border: none;
   border-radius: 16px;
   color: white;
   background-color: #cf0202;
@@ -82,9 +88,11 @@ export const DeleteBtn = styled.button`
   &:hover,
   &:focus {
     background-color: #bb0202;
+    transform: scale(1.1);
   }
 
   &:disabled {
+    transform: none;
     background-color: gray;
     cursor: not-allowed;
   }
