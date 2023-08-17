@@ -25,6 +25,7 @@ const PeriodPaginator = ({ prevHandler, nextHandler, type }) => {
 
     return [formattedDate, false];
   };
+  // must be
   const [formattedDate, currentDate] = getFormatedDate(params);
 
   return (
