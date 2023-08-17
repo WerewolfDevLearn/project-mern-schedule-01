@@ -5,6 +5,8 @@ import PropTypes from 'prop-types';
 import icon from 'src/images/svg/login.svg';
 import iconError from 'src/images/svg/validation-error.svg';
 import iconSuccess from 'src/images/svg/validation-success.svg';
+import eyeOn from 'src/images/svg/eye-show.svg';
+import eyeOff from 'src/images/svg/eye-off.svg';
 
 import { validationRegisterRules } from '../validationRules';
 
@@ -20,13 +22,19 @@ import {
   TextCorrect,
   Button,
   Img,
-  SvgIcon
+  SvgValidate,
+  SvgEye
 } from './RegisterForm.styled';
 
 export default function RegisterForm({ callBack }) {
+  const [passwordShown, setPasswordShown] = useState(false);
+  const [validateAfterSubmit, setValidateAfterSubmit] = useState(false);
+
   const { t } = useTranslation();
 
-  const [validateAfterSubmit, setValidateAfterSubmit] = useState(false);
+  const togglePassword = () => {
+    setPasswordShown(!passwordShown);
+  };
 
   return (
     <Container>
@@ -71,10 +79,10 @@ export default function RegisterForm({ callBack }) {
                       className={validateInput('name')}
                     />
                     {validateInput('name') === 'input-correct' && (
-                      <SvgIcon src={iconSuccess} alt="Success Icon" />
+                      <SvgValidate src={iconSuccess} alt="Success Icon" />
                     )}
                     {validateInput('name') === 'input-error' && (
-                      <SvgIcon src={iconError} alt="Error Icon" />
+                      <SvgValidate src={iconError} alt="Error Icon" />
                     )}
                   </InputContainer>
                   {validateInput('name') === 'input-correct' && (
@@ -94,10 +102,10 @@ export default function RegisterForm({ callBack }) {
                       className={validateInput('email')}
                     />
                     {validateInput('email') === 'input-correct' && (
-                      <SvgIcon src={iconSuccess} alt="Success Icon" />
+                      <SvgValidate src={iconSuccess} alt="Success Icon" />
                     )}
                     {validateInput('email') === 'input-error' && (
-                      <SvgIcon src={iconError} alt="Error Icon" />
+                      <SvgValidate src={iconError} alt="Error Icon" />
                     )}
                   </InputContainer>
 
@@ -112,17 +120,24 @@ export default function RegisterForm({ callBack }) {
                   <InputContainer>
                     {' '}
                     <Input
-                      type="password"
+                      type={passwordShown ? 'text' : 'password'}
                       name="password"
                       placeholder={t('Enter password')}
                       id="signup_password"
                       className={validateInput('password')}
                     />
+                    <button onClick={togglePassword}>
+                      <SvgEye
+                        src={passwordShown ? eyeOff : eyeOn}
+                        alt="Success Icon"
+                        className={validateInput('password') !== '' ? 'right' : 'left'}
+                      />
+                    </button>
                     {validateInput('password') === 'input-correct' && (
-                      <SvgIcon src={iconSuccess} alt="Success Icon" />
+                      <SvgValidate src={iconSuccess} alt="Success Icon" />
                     )}
                     {validateInput('password') === 'input-error' && (
-                      <SvgIcon src={iconError} alt="Error Icon" />
+                      <SvgValidate src={iconError} alt="Error Icon" />
                     )}
                   </InputContainer>
 
