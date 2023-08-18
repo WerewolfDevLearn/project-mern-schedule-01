@@ -244,6 +244,12 @@ export const ErrorMessage = styled(FormikErrorMessage)`
   }
 `;
 
+export const ModalWrap = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 export const FormBtn = styled.button`
   width: 195px;
   height: 46px;

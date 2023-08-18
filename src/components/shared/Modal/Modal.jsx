@@ -42,7 +42,7 @@ export default function Modal({ onClose, color, clickable, children }) {
 
 Modal.propTypes = {
   onClose: PropTypes.func,
-  color: PropTypes.string.isRequired,
+  color: PropTypes.string,
   clickable: PropTypes.bool,
   children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired
 };

@@ -10,8 +10,8 @@ import { useTranslation } from 'react-i18next';
 import { useUser } from 'src/redux/selectors';
 import { Plus } from 'src/components/shared/Icons';
 import Modal from 'src/components/shared/Modal/Modal';
+import ChangeEmailModal from '../../ChangeEmailModal/ChangeEmailModal';
 
-import ChangeEmailForm from '../ChangeEmailForm/ChangeEmailForm';
 import ChangePasswordForm from '../ChangePasswordForm/ChangePasswordForm';
 import DeleteProfileForm from '../DeleteProfileForm/DeleteProfileForm';
 
@@ -70,22 +70,21 @@ export default function UserForm({ callBack }) {
     phone: user.phone || '',
     birthday: user.birthday || new Date(),
     skype: user.skype || ''
-    // email: user.email
   };
   console.log(initialValues.birthday);
   const [selectedAvatar, setSelectedAvatar] = useState(null);
   const [imagePreview, setImagePreview] = useState(initialValues.avatarUrl);
   const [selectedDate, setSelectedDate] = useState(initialValues.birthday);
-  const [showChangeEmailModal, setShowChangeEmailModal] = useState(false);
+
   const [showChangePasswordModal, setShowChangePasswordModal] = useState(false);
   const [showDeleteProfileModal, setShowDeleteProfileModal] = useState(false);
 
   const handleAddImageClick = () => fileInputRef.current.click();
 
-  // const handleDateChange = (date) => {
-  //   console.log(data);
-  //   setSelectedDate(date);
-  // };
+  const handleDateChange = (date) => {
+    console.log(data);
+    setSelectedDate(date);
+  };
 
   const onSubmit = (data) => {
     const formData = new FormData();
@@ -115,14 +114,6 @@ export default function UserForm({ callBack }) {
     // }
 
     callBack(formData);
-  };
-
-  const openChangeEmailModal = () => {
-    setShowChangeEmailModal(true);
-  };
-
-  const closeChangeEmailModal = () => {
-    setShowChangeEmailModal(false);
   };
 
   const openChangePasswordModal = () => {
@@ -223,13 +214,13 @@ export default function UserForm({ callBack }) {
                       name="name"
                       placeholder={t('Enter your name')}
                     />
-                    {/* <FormikInput
+                    <FormikInput
                       label={t('Birthday')}
                       type="date"
                       name="birthday"
                       placeholder="Pick a date of your birthday"
-                    /> */}
-                    <label htmlFor="birthday">
+                    />
+                    {/* <label htmlFor="birthday">
                       <FormLabelSpan>{t('Birthday')}</FormLabelSpan>
                       <DateInput
                         id="birthday"
@@ -239,7 +230,7 @@ export default function UserForm({ callBack }) {
                         onSelect={handleDateChange}
                       />
                       <ErrorMessage name="birthday" component="div" />
-                    </label>
+                    </label> */}
                     {/* <FormikInput
                       label={t('UserEmail')}
                       type="email"
@@ -258,11 +249,6 @@ export default function UserForm({ callBack }) {
                       name="skype"
                       placeholder={t('Add a skype number')}
                     />
-                    {showChangeEmailModal && (
-                      <Modal isOpen={showChangeEmailModal} onClose={closeChangeEmailModal}>
-                        {<ChangeEmailForm onClose={closeChangeEmailModal} />}
-                      </Modal>
-                    )}
                     {showChangePasswordModal && (
                       <Modal isOpen={showChangePasswordModal} onClose={closeChangePasswordModal}>
                         {<ChangePasswordForm onClose={closeChangePasswordModal} />}
@@ -282,9 +268,7 @@ export default function UserForm({ callBack }) {
                   </FormBtn>
                   <BtnWrapper>
                     <ChangeValueBtnWrap>
-                      <ChangeValueBtn type="button" onClick={openChangeEmailModal}>
-                        Change email
-                      </ChangeValueBtn>
+                      <ChangeEmailModal />
                       <ChangeValueBtn type="button" onClick={openChangePasswordModal}>
                         Change password
                       </ChangeValueBtn>
