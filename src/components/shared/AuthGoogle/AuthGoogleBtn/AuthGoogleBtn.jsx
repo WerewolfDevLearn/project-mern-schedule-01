@@ -1,8 +1,10 @@
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 
+import SvgGoogle from 'src/components/shared/Icons/Google';
+
 import { LinkBtn } from './AuthGoogleBtn.styled';
-import SvgGoogle from '../../Icons/Google';
+
 const baseURL = 'https://project-mern-schedule-03.onrender.com/api';
 
 const AuthGoogleBtn = ({ title }) => {
