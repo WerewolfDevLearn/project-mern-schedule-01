@@ -5,7 +5,9 @@ import { DivloaderContainer } from '../../Styled-Components/Styled-Components.st
 export default function Loader() {
   return (
     <DivloaderContainer>
-      <Puff
+      <img src="/src/images/others/gooseLoader.gif" />
+
+      {/* <Puff
         height="80"
         width="80"
         radius={1}
@@ -14,7 +16,7 @@ export default function Loader() {
         wrapperStyle={{}}
         wrapperClass=""
         visible={true}
-      />
+      /> */}
       {/* <Puff color="#404040" width="100" visible={true} /> */}
     </DivloaderContainer>
   );

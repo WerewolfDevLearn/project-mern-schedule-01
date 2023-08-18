@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { format, parse } from 'date-fns';
 import { useParams } from 'react-router';
-
+import { DatePicker } from '../DatePicker/DatePicker';
 import {
   DivWrapper,
   TitleWrapper,
@@ -25,13 +25,14 @@ const PeriodPaginator = ({ prevHandler, nextHandler, type }) => {
 
     return [formattedDate, false];
   };
-  // must be
+
   const [formattedDate, currentDate] = getFormatedDate(params);
 
   return (
     <DivWrapper>
+      <DatePicker />
       {currentDate ? (
-        <TitleWrapper>
+        <TitleWrapper onClick={(e) => console.log(e)}>
           {type === 'month' ? formattedDate.slice(3, formattedDate.length) : formattedDate}
         </TitleWrapper>
       ) : (
