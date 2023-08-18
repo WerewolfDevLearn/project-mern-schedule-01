@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
-import { useisLoading } from 'src/redux/selectors';
+import { useisLoading, useError } from 'src/redux/selectors';
 import logo from 'src/images/others/desktop/goose-quote1x.png';
 import logo2x from 'src/images/others/desktop/goose-quote2x.png';
 import logo3x from 'src/images/others/desktop/goose-quote3x.png';
@@ -18,6 +18,7 @@ import { Container, ContentWrap, Wrap, StyledImg } from './RegisterPage.styled';
 export default function RegisterPage() {
   const dispatch = useDispatch();
   const isLoading = useisLoading();
+  const registerError = useError();
 
   const [openModal, setOpenModal] = useState(false);
   const onClose = () => {
@@ -44,10 +45,10 @@ export default function RegisterPage() {
           <AuthNavigate formType="register" />
         </Wrap>
       </ContentWrap>
-
       {openModal && (
         <Modal onClose={onClose} color={modalBackdropcolors.black}>
           {isLoading ? <Loader /> : <VerifyForm onSubmitForm={onSubmitVerifyForm} />}
+          {registerError && onClose()}
         </Modal>
       )}
     </Container>

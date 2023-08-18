@@ -1,3 +1,4 @@
+import { AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
@@ -14,6 +15,7 @@ import UserInfo from '../UserInfo/UserInfo';
 
 import UserMenuBTN from './UserMenuBTN/UserMenuBTN';
 import { Header, LoactionSign, WrapTogglers } from './Header.styled';
+import { AnimatePresence } from 'framer-motion';
 
 export default function AppHeader({ callBack, isHomePage }) {
   let action = 'add';
@@ -55,11 +57,13 @@ export default function AppHeader({ callBack, isHomePage }) {
       </WrapTogglers>
 
       <UserInfo />
-      {modalIsOpen && (
-        <Modal onClose={closeModal} color={modalBackdropcolors.grey}>
-          <FeedbackForm onClose={closeModal} action={action} reviewToEdit={reviews[0]} />
-        </Modal>
-      )}
+      <AnimatePresence>
+        {modalIsOpen && (
+          <Modal onClose={closeModal} color={modalBackdropcolors.grey}>
+            <FeedbackForm onClose={closeModal} action={action} reviewToEdit={reviews[0]} />
+          </Modal>
+        )}
+      </AnimatePresence>
     </Header>
   );
 }
