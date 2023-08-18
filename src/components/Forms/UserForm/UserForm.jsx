@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { Formik, Form } from 'formik';
+import Avatar from '@mui/material/Avatar';
 import { format } from 'date-fns';
 import * as yup from 'yup';
 import i18n from 'i18next';
@@ -49,13 +50,13 @@ const schema = yup.object().shape({
     ),
   name: yup
     .string('Enter your name')
-    .min(4)
+    .min(4, 'The name is short - must contain at least 4 characters')
     .max(16, 'Name is too long - should be 16 chars maximum.')
     .required('Name is required'),
   phone: yup.string().matches(PATTERN_FOR_PHONE, 'Invalid phone number'),
   birthday: yup.date('yyyy - mm - dd'),
-  skype: yup.string().max(16, 'Too long - should be 16 chars maximum.'),
-  email: yup.string('Enter your email').email(i18n.t('Error email')).required('Email is required')
+  skype: yup.string().max(16, 'Too long - should be 16 chars maximum.')
+  // email: yup.string('Enter your email').email(i18n.t('Error email')).required('Email is required')
 });
 
 export default function UserForm({ callBack }) {
@@ -67,9 +68,9 @@ export default function UserForm({ callBack }) {
     avatarUrl: user.avatarUrl || '',
     name: user.name,
     phone: user.phone || '',
-    birthday: user.birthday,
-    skype: user.skype || '',
-    email: user.email
+    birthday: user.birthday || new Date(),
+    skype: user.skype || ''
+    // email: user.email
   };
   console.log(initialValues.birthday);
   const [selectedAvatar, setSelectedAvatar] = useState(null);
@@ -81,9 +82,10 @@ export default function UserForm({ callBack }) {
 
   const handleAddImageClick = () => fileInputRef.current.click();
 
-  const handleDateChange = (date) => {
-    setSelectedDate(date);
-  };
+  // const handleDateChange = (date) => {
+  //   console.log(data);
+  //   setSelectedDate(date);
+  // };
 
   const onSubmit = (data) => {
     const formData = new FormData();
@@ -108,9 +110,9 @@ export default function UserForm({ callBack }) {
       formData.append('skype', data.skype.trim());
     }
 
-    if (data.email) {
-      formData.append('email', data.email.trim());
-    }
+    // if (data.email) {
+    //   formData.append('email', data.email.trim());
+    // }
 
     callBack(formData);
   };
@@ -162,7 +164,7 @@ export default function UserForm({ callBack }) {
         initialValues={initialValues}
         validationSchema={schema}
         onSubmit={onSubmit}
-        // enableReinitialize
+        enableReinitialize
       >
         {(formik) => {
           return (
@@ -190,21 +192,26 @@ export default function UserForm({ callBack }) {
                           }
                         }}
                       />
-                      {!selectedAvatar && (
-                        <div>
-                          <AvatarImg src={imagePreview} alt={initialValues.name} />
-                        </div>
+                      {user.avatarUrl ? (
+                        <Avatar
+                          alt="username"
+                          src={user.avatarUrl}
+                          sx={{ width: 124, height: 124, border: '2px solid #3E85F3' }}
+                        />
+                      ) : (
+                        <Avatar
+                          alt="username"
+                          src=""
+                          sx={{
+                            fontSize: '72px',
+                            width: 124,
+                            height: 124,
+                            border: '2px solid #3E85F3'
+                          }}
+                        >
+                          {user.name.split('')[0]}
+                        </Avatar>
                       )}
-                      {selectedAvatar && (
-                        <div>
-                          <AvatarImg src={selectedAvatar} alt={user.name} />
-                        </div>
-                      )}
-                      {/* {imagePreview && (
-                        <AvatarImgContainer>
-                          <AvatarImg src={imagePreview} alt={initialValues.name} />
-                        </AvatarImgContainer>
-                      )} */}
                     </label>
                   </AvatarContainer>
                   <UserNameTitle>{user.name}</UserNameTitle>
@@ -216,14 +223,13 @@ export default function UserForm({ callBack }) {
                       name="name"
                       placeholder={t('Enter your name')}
                     />
-                    <FormikInput
+                    {/* <FormikInput
                       label={t('Birthday')}
                       type="date"
                       name="birthday"
                       placeholder="Pick a date of your birthday"
-                      views={['year', 'month', 'day']}
-                    />
-                    {/* <label htmlFor="birthday">
+                    /> */}
+                    <label htmlFor="birthday">
                       <FormLabelSpan>{t('Birthday')}</FormLabelSpan>
                       <DateInput
                         id="birthday"
@@ -233,7 +239,7 @@ export default function UserForm({ callBack }) {
                         onSelect={handleDateChange}
                       />
                       <ErrorMessage name="birthday" component="div" />
-                    </label> */}
+                    </label>
                     {/* <FormikInput
                       label={t('UserEmail')}
                       type="email"

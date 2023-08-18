@@ -50,6 +50,7 @@ export const AvatarAddIcon = styled.div`
   color: white;
   background-color: #3e85f3;
   border-radius: 50%;
+  z-index: 1;
 
   &:hover {
     cursor: pointer;
