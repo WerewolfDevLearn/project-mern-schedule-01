@@ -18,37 +18,16 @@ const initialState = {
   birthday: ''
 };
 
-const userRegister = (state, { payload }) => {
-  state.name = payload.user.name;
-  state.email = payload.user.email;
-  state.phone = payload.user.phone;
-  state.birthday = payload.user.birthday;
-  state.avatarUrl = payload.user.avatarUrl;
-  state.userId = payload.user._id;
-};
-const userLogin = (state, { payload }) => {
-  state.email = payload.user.email;
-  state.name = payload.user.name;
-  state.phone = payload.user.phone;
-  state.skype = payload.user.skype;
-  state.birthday = payload.user.birthday;
-  state.avatarUrl = payload.user.avatarUrl;
+// const userRegister = (state, { payload }) => {
+//   state.name = payload.user.name;
+// };
+
+const userLoginVerify = (state, { payload }) => {
   state.token = payload.token;
   state.refreshToken = payload.refreshToken;
 };
 const userGetCurrent = (state, { payload }) => {
   state.email = payload.user.email;
-  state.name = payload.user.name;
-  state.phone = payload.user.phone;
-  state.skype = payload.user.skype;
-  state.birthday = payload.user.birthday;
-  state.avatarUrl = payload.user.avatarUrl;
-};
-const userVerify = (state, { payload }) => {
-  state.token = payload.token;
-  state.refreshToken = payload.refreshToken;
-};
-const userHandler = (state, { payload }) => {
   state.name = payload.user.name;
   state.phone = payload.user.phone;
   state.skype = payload.user.skype;
@@ -62,11 +41,11 @@ const userSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(register.fulfilled, userRegister)
-      .addCase(userlogin.fulfilled, userLogin)
-      .addCase(verify.fulfilled, userVerify)
+      // .addCase(register.fulfilled, userRegister)
+      .addCase(userlogin.fulfilled, userLoginVerify)
+      .addCase(verify.fulfilled, userLoginVerify)
       .addCase(getCurrent.fulfilled, userGetCurrent)
-      .addCase(updUser.fulfilled, userHandler)
+      .addCase(updUser.fulfilled, userGetCurrent)
       .addCase(logOut.fulfilled, () => initialState);
   }
 });
