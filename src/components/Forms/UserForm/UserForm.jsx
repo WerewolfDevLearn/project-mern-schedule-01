@@ -9,11 +9,9 @@ import { useTranslation } from 'react-i18next';
 // import { toast } from 'react-hot-toast';
 import { useUser } from 'src/redux/selectors';
 import { Plus } from 'src/components/shared/Icons';
-import Modal from 'src/components/shared/Modal/Modal';
 import ChangeEmailModal from '../../ChangeEmailModal/ChangeEmailModal';
 import ChangePasswordModal from '../../ChangePasswordModal/ChangePasswordModal';
-
-import DeleteProfileForm from '../DeleteProfileForm/DeleteProfileForm';
+import DeleteProfileModal from 'src/components/DeleteProfileModal/DeleteProfileModal';
 
 import {
   FormContainer,
@@ -32,9 +30,7 @@ import {
   ErrorMessage,
   FormBtn,
   BtnWrapper,
-  ChangeValueBtnWrap,
-  ChangeValueBtn,
-  DeleteProfileBtn
+  ChangeValueBtnWrap
 } from './UserForm.styled';
 
 const SUPPORTED_FORMATS = ['image/webp', 'image/jpg', 'image/jpeg', 'image/gif', 'image/png'];
@@ -76,8 +72,6 @@ export default function UserForm({ callBack }) {
   const [imagePreview, setImagePreview] = useState(initialValues.avatarUrl);
   const [selectedDate, setSelectedDate] = useState(initialValues.birthday);
 
-  const [showDeleteProfileModal, setShowDeleteProfileModal] = useState(false);
-
   const handleAddImageClick = () => fileInputRef.current.click();
 
   const handleDateChange = (date) => {
@@ -113,14 +107,6 @@ export default function UserForm({ callBack }) {
     // }
 
     callBack(formData);
-  };
-
-  const openDeleteProfileModal = () => {
-    setShowDeleteProfileModal(true);
-  };
-
-  const closeDeleteProfileModal = () => {
-    setShowDeleteProfileModal(false);
   };
 
   const FormikInput = ({ label, type, name, placeholder }) => {
@@ -240,12 +226,6 @@ export default function UserForm({ callBack }) {
                       name="skype"
                       placeholder={t('Add a skype number')}
                     />
-
-                    {showDeleteProfileModal && (
-                      <Modal isOpen={showDeleteProfileModal} onClose={closeDeleteProfileModal}>
-                        {<DeleteProfileForm onClose={closeDeleteProfileModal} />}
-                      </Modal>
-                    )}
                   </FormInputContainer>
                   <FormBtn
                     type="submit"
@@ -258,9 +238,7 @@ export default function UserForm({ callBack }) {
                       <ChangeEmailModal />
                       <ChangePasswordModal />
                     </ChangeValueBtnWrap>
-                    <DeleteProfileBtn type="button" onClick={openDeleteProfileModal}>
-                      Delete profile
-                    </DeleteProfileBtn>
+                    <DeleteProfileModal />
                   </BtnWrapper>
                 </FormWrap>
               </Form>
