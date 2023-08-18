@@ -1,14 +1,13 @@
 import { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { Formik, Form } from 'formik';
-import Avatar from '@mui/material/Avatar';
 import { format } from 'date-fns';
 import * as yup from 'yup';
 import i18n from 'i18next';
 import { useTranslation } from 'react-i18next';
 // import { toast } from 'react-hot-toast';
 import { useUser } from 'src/redux/selectors';
-import { Plus } from 'src/components/shared/Icons';
+import AccountAvatar from '../AccountAvatar/AccountAvatar';
 import ChangeEmailModal from '../../ChangeEmailModal/ChangeEmailModal';
 import ChangePasswordModal from '../../ChangePasswordModal/ChangePasswordModal';
 import DeleteProfileModal from 'src/components/DeleteProfileModal/DeleteProfileModal';
@@ -16,11 +15,6 @@ import DeleteProfileModal from 'src/components/DeleteProfileModal/DeleteProfileM
 import {
   FormContainer,
   FormWrap,
-  AvatarAddIcon,
-  AvatarContainer,
-  AvatarInputField,
-  AvatarImgContainer,
-  AvatarImg,
   UserNameTitle,
   RoleTitle,
   FormInputContainer,
@@ -33,17 +27,9 @@ import {
   ChangeValueBtnWrap
 } from './UserForm.styled';
 
-const SUPPORTED_FORMATS = ['image/webp', 'image/jpg', 'image/jpeg', 'image/gif', 'image/png'];
 const PATTERN_FOR_PHONE = /^\+380\d{9}$/;
 
 const schema = yup.object().shape({
-  avatar: yup
-    .mixed()
-    .test(
-      'fileType',
-      'Only PNG, JPEG, JPG or GIF formats are supported',
-      (value) => !value || (value && SUPPORTED_FORMATS.includes(value?.type))
-    ),
   name: yup
     .string('Enter your name')
     .min(4, 'The name is short - must contain at least 4 characters')
@@ -58,7 +44,6 @@ const schema = yup.object().shape({
 export default function UserForm({ callBack }) {
   const { t } = useTranslation();
   const user = useUser();
-  const fileInputRef = useRef(null);
 
   const initialValues = {
     avatarUrl: user.avatarUrl || '',
@@ -68,11 +53,9 @@ export default function UserForm({ callBack }) {
     skype: user.skype || ''
   };
   console.log(initialValues.birthday);
-  const [selectedAvatar, setSelectedAvatar] = useState(null);
-  const [imagePreview, setImagePreview] = useState(initialValues.avatarUrl);
+  const [imagePreview, setImagePreview] = useState(null);
+  const [selectedAvatar, setSelectedAvatar] = useState(user.avatarUrl);
   const [selectedDate, setSelectedDate] = useState(initialValues.birthday);
-
-  const handleAddImageClick = () => fileInputRef.current.click();
 
   const handleDateChange = (date) => {
     console.log(data);
@@ -81,23 +64,18 @@ export default function UserForm({ callBack }) {
 
   const onSubmit = (data) => {
     const formData = new FormData();
-
     if (data.avatar) {
       formData.append('avatar', data.avatar);
     }
-
     if (data.name) {
       formData.append('name', data.name.trim());
     }
-
     if (data.phone) {
       formData.append('phone', data.phone);
     }
-
     if (data.birthday) {
       formData.append('birthday', data.birthday);
     }
-
     if (data.skype) {
       formData.append('skype', data.skype.trim());
     }
@@ -126,6 +104,8 @@ export default function UserForm({ callBack }) {
     placeholder: PropTypes.string.isRequired
   };
 
+  console.log(selectedAvatar);
+  console.log(imagePreview);
   return (
     <>
       <Formik
@@ -139,49 +119,12 @@ export default function UserForm({ callBack }) {
             <FormContainer>
               <Form encType="multipart/form-data">
                 <FormWrap>
-                  <AvatarContainer>
-                    <AvatarAddIcon>
-                      <Plus width="18px" height="18px" onClick={handleAddImageClick} />
-                    </AvatarAddIcon>
-                    <label>
-                      <AvatarInputField
-                        type="file"
-                        name="avatar"
-                        ref={fileInputRef}
-                        onBlur={() => formik.setTouched({ avatar: true })}
-                        onChange={(e) => {
-                          const avatar = e.target.files[0];
-                          // console.log('AVATAR', avatar);
-
-                          if (avatar && SUPPORTED_FORMATS.includes(avatar.type)) {
-                            formik.setFieldValue('avatar', avatar);
-                            setSelectedAvatar(URL.createObjectURL(avatar));
-                            setImagePreview('');
-                          }
-                        }}
-                      />
-                      {user.avatarUrl ? (
-                        <Avatar
-                          alt="username"
-                          src={user.avatarUrl}
-                          sx={{ width: 124, height: 124, border: '2px solid #3E85F3' }}
-                        />
-                      ) : (
-                        <Avatar
-                          alt="username"
-                          src=""
-                          sx={{
-                            fontSize: '72px',
-                            width: 124,
-                            height: 124,
-                            border: '2px solid #3E85F3'
-                          }}
-                        >
-                          {user.name.split('')[0]}
-                        </Avatar>
-                      )}
-                    </label>
-                  </AvatarContainer>
+                  <AccountAvatar
+                    selectedAvatar={selectedAvatar}
+                    formik={formik}
+                    setSelectedAvatar={setSelectedAvatar}
+                    setImagePreview={setImagePreview}
+                  />
                   <UserNameTitle>{user.name}</UserNameTitle>
                   <RoleTitle>{t('User')}</RoleTitle>
                   <FormInputContainer>
