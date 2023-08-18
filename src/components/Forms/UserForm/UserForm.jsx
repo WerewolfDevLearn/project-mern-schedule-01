@@ -11,8 +11,8 @@ import { useUser } from 'src/redux/selectors';
 import { Plus } from 'src/components/shared/Icons';
 import Modal from 'src/components/shared/Modal/Modal';
 import ChangeEmailModal from '../../ChangeEmailModal/ChangeEmailModal';
+import ChangePasswordModal from '../../ChangePasswordModal/ChangePasswordModal';
 
-import ChangePasswordForm from '../ChangePasswordForm/ChangePasswordForm';
 import DeleteProfileForm from '../DeleteProfileForm/DeleteProfileForm';
 
 import {
@@ -76,7 +76,6 @@ export default function UserForm({ callBack }) {
   const [imagePreview, setImagePreview] = useState(initialValues.avatarUrl);
   const [selectedDate, setSelectedDate] = useState(initialValues.birthday);
 
-  const [showChangePasswordModal, setShowChangePasswordModal] = useState(false);
   const [showDeleteProfileModal, setShowDeleteProfileModal] = useState(false);
 
   const handleAddImageClick = () => fileInputRef.current.click();
@@ -114,14 +113,6 @@ export default function UserForm({ callBack }) {
     // }
 
     callBack(formData);
-  };
-
-  const openChangePasswordModal = () => {
-    setShowChangePasswordModal(true);
-  };
-
-  const closeChangePasswordModal = () => {
-    setShowChangePasswordModal(false);
   };
 
   const openDeleteProfileModal = () => {
@@ -249,11 +240,7 @@ export default function UserForm({ callBack }) {
                       name="skype"
                       placeholder={t('Add a skype number')}
                     />
-                    {showChangePasswordModal && (
-                      <Modal isOpen={showChangePasswordModal} onClose={closeChangePasswordModal}>
-                        {<ChangePasswordForm onClose={closeChangePasswordModal} />}
-                      </Modal>
-                    )}
+
                     {showDeleteProfileModal && (
                       <Modal isOpen={showDeleteProfileModal} onClose={closeDeleteProfileModal}>
                         {<DeleteProfileForm onClose={closeDeleteProfileModal} />}
@@ -269,9 +256,7 @@ export default function UserForm({ callBack }) {
                   <BtnWrapper>
                     <ChangeValueBtnWrap>
                       <ChangeEmailModal />
-                      <ChangeValueBtn type="button" onClick={openChangePasswordModal}>
-                        Change password
-                      </ChangeValueBtn>
+                      <ChangePasswordModal />
                     </ChangeValueBtnWrap>
                     <DeleteProfileBtn type="button" onClick={openDeleteProfileModal}>
                       Delete profile
