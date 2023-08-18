@@ -21,8 +21,10 @@
   "QuicklyRegister": "Quickly register and familiarize yourself with the application!",
   "QuicklyCome": "Quickly come in and write down your tasks for the day!",
 
-  "Log In": "Log In",
-  "Sign Up": "Sign Up",
+  "Log In": "Log in",
+  "Log In With Google": "Log in with Google",
+  "Sign Up": "Sign up",
+  "Sign Up With Google": "Sign up with Google",
   "Name": "Name",
   "Enter your name": "Enter your name",
   "Email": "Email",
