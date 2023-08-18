@@ -7,7 +7,7 @@ export const Overlay = styled(motion.div)`
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: ${({ background }) => background};
+  background-color: ${({ $background }) => $background};
   backdrop-filter: blur(3px);
   z-index: 100;
 

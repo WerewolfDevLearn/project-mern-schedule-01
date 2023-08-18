@@ -1,6 +1,9 @@
+import { AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import Modal from 'src/components/shared/Modal/Modal';
+
+import { modalBackdropcolors } from 'src/styles/variables/themes';
 
 import ColumnHeadBar from '../ColumnHeadBar/ColumnHeadBar';
 import ColumnTasksList from '../ColumnTasksList/ColumnTasksList';
@@ -37,7 +40,9 @@ export default function TasksColumn({ tasks, title }) {
       </TasksColumnStyles>
       <AnimatePresence>
         {modalOptions.isOpen && (
-          <Modal onClose={closeModal}>
+
+          <Modal onClose={closeModal} color={modalBackdropcolors.grey}>
+
             <TaskForm
               onClose={closeModal}
               action={modalOptions.action}
