@@ -1,3 +1,4 @@
+import { AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 import { useState } from 'react';

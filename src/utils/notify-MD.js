@@ -15,6 +15,7 @@ const regExp = {
 };
 
 export const ErrorLogger = (_api) => (next) => (action) => {
+  console.log(action);
   if (isRejected(action) && action.type.match(regExpContacts)) {
     toast.error(action.payload);
   }
@@ -80,19 +81,19 @@ export const ErrorLogger = (_api) => (next) => (action) => {
     }
   }
 
-  // if (isRejected(action) && action.meta.arg) {
-  //   const { message } = action.payload.data;
-  //   console.log('message: ', message);
-  //   if (action.meta.arg.endpointName === 'createTasks') {
-  //     toast.error(message);
-  //   }
-  //   if (action.meta.arg.endpointName === 'deleteTasks') {
-  //     toast.error(message);
-  //   }
-  //   if (action.meta.arg.endpointName === 'updateTasks') {
-  //     toast.error(message);
-  //   }
-  // }
+  if (isRejected(action) && action.meta.arg && action.type.includes('tasks')) {
+    const { message } = action.payload.data;
+    console.log('message: ', message);
+    if (action.meta.arg.endpointName === 'createTasks') {
+      toast.error(message);
+    }
+    if (action.meta.arg.endpointName === 'deleteTasks') {
+      toast.error(message);
+    }
+    if (action.meta.arg.endpointName === 'updateTasks') {
+      toast.error(message);
+    }
+  }
 
   return next(action);
 };
