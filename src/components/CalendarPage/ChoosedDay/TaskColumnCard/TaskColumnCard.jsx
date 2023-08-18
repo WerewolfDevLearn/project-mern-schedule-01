@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
-import { differenceInDays, format, formatDistanceToNow } from 'date-fns';
+import { differenceInSeconds } from 'date-fns';
 
 import { useUser } from 'src/redux/selectors';
 
@@ -24,21 +24,19 @@ export default function TaskColumnCard({ task, tasksCount, openModal }) {
 
   const { avatarUrl } = useUser();
 
-  const getTaskTexture = (date) => {
-    if (new Date() > date && task.category !== 'done') {
-      console.log('больше');
-      return true;
+  const getDifference = (date) => {
+    const difference = differenceInSeconds(new Date(), new Date(date));
+    if (task.category !== 'done') {
+      return difference;
     }
-    console.log('меньше');
-    return false;
+    return -1;
   };
 
   return (
     <>
       <TaskColumnCardStyles
         taskscount={tasksCount}
-        daysago={differenceInDays(new Date(), new Date(task.date))}
-        shouldTexture={getTaskTexture(new Date(`${task.date} ${task.end}`))}
+        difference={getDifference(new Date(`${task.date} ${task.end}`))}
       >
         <TaskTitle>{title}</TaskTitle>
         <TaskCardWrap>

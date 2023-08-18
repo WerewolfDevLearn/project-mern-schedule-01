@@ -9,14 +9,12 @@ export const TaskColumnCardStyles = styled.li`
   background: ${({ theme }) => theme.colors.background};
   border: 1px solid ${({ theme }) => theme.colors.tasksListBorder};
 
-  /* background-image: url(${(props) =>
-    props.daysago >= 3
-      ? `${props.theme.backgroundImages.reallyOldPaper}`
-      : props.daysago >= 2
-      ? `${props.theme.backgroundImages.oldPaper}`
-      : 'none'}); */
   background-image: url(${(props) =>
-    props.shouldTexture && `${props.theme.backgroundImages.oldPaper}`});
+    props.difference >= 259200
+      ? `${props.theme.backgroundImages.reallyOldPaper}`
+      : props.difference >= 0
+      ? `${props.theme.backgroundImages.oldPaper}`
+      : 'none'});
   background-size: 110%;
   background-position: center;
 
