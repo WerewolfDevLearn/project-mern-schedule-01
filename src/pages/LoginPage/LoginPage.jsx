@@ -17,7 +17,7 @@ import { Container, ContentWrap, Wrap, StyledImg } from './LoginPage.styled';
 export default function LoginPage() {
   const dispatch = useDispatch();
   const isLoading = useisLoading();
-  const [openModal, setOpenModal] = useState(false);
+  const [, setOpenModal] = useState(false);
 
   const errorMessage = useError();
 
@@ -49,7 +49,7 @@ export default function LoginPage() {
         </Modal>
       )}
 
-      {errorMessage === 'Action Required: Verify Your Email' && openModal && (
+      {errorMessage === 'Action Required: Verify Your Email' && (
         <Modal onClose={onClose} color={modalBackdropcolors.black} clickable={false}>
           <VerifyForm onSubmitForm={onSubmitVerifyForm} />
         </Modal>

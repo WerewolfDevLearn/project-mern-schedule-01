@@ -3,8 +3,9 @@ import { useThemeColors } from 'src/components/MainLayout/ThemeToggler/ThemeCont
 import { ThemeProvider } from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
-
+import { modalBackdropcolors } from 'src/styles/variables/themes';
 import Loader from 'src/components/shared/Loader/Loader';
+import Modal from 'src/components/shared/Modal/Modal';
 
 import { useToken, useisLoading, useisRefreshing } from 'src/redux/selectors';
 
@@ -21,7 +22,7 @@ import {
 
 const Layout = () => {
   const [open, setOpen] = useState(false);
-  const [openModal, setOpenModal] = useState(false);
+  const [, setOpenModal] = useState(false);
   const isRefreshing = useisRefreshing();
   const token = useToken;
   const dispatch = useDispatch();
@@ -36,18 +37,23 @@ const Layout = () => {
     }
   }, [dispatch, token]);
   const isLoading = useisLoading();
-  return isRefreshing ? (
-    <Loader />
-  ) : (
-    <ThemeProvider theme={theme}>
-      <MainLayOutContainer>
-        <SideBar open={open} callBackCls={callBackCls} />
-        <MainLayOutSubContainer>
-          <AppHeader callBack={callBack} onGiveFeedBack={toggleModal} />
-          <ChildrenContainer>{isLoading ? <Loader /> : <Outlet />}</ChildrenContainer>
-        </MainLayOutSubContainer>
-      </MainLayOutContainer>
-    </ThemeProvider>
+  return (
+    <>
+      <ThemeProvider theme={theme}>
+        <MainLayOutContainer>
+          <SideBar open={open} callBackCls={callBackCls} />
+          <MainLayOutSubContainer>
+            <AppHeader callBack={callBack} onGiveFeedBack={toggleModal} />
+            <ChildrenContainer>{isLoading ? <Loader /> : <Outlet />}</ChildrenContainer>
+          </MainLayOutSubContainer>
+        </MainLayOutContainer>
+      </ThemeProvider>
+      {isRefreshing && (
+        <Modal color={modalBackdropcolors.black}>
+          <Loader />
+        </Modal>
+      )}
+    </>
   );
 };
 

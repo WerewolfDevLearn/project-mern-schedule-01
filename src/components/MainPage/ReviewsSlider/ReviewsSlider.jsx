@@ -9,6 +9,7 @@ import { FaUser } from 'react-icons/fa';
 import { CgArrowLongLeft, CgArrowLongRight } from 'react-icons/cg';
 
 import { useGetReviewsQuery } from 'src/redux/reviews/reviewsApi';
+import Loader from 'src/components/shared/Loader/Loader';
 
 import { RatingStar } from 'src/components/shared/Icons';
 
@@ -28,11 +29,13 @@ import {
 } from './ReviewsSlider.styled';
 
 export default function ReviewsSlider() {
-  const { data: { reviews } = [] } = useGetReviewsQuery();
+  const { data: { reviews } = [], isLoading } = useGetReviewsQuery();
 
   const { t } = useTranslation();
 
-  return (
+  return isLoading ? (
+    <Loader />
+  ) : (
     <Wrapper>
       <ReviewsTitle>{t('REVIEWS')}</ReviewsTitle>
       <Swiper
@@ -110,7 +113,6 @@ export default function ReviewsSlider() {
               </SwiperSlide>
             );
           })}
-
       </Swiper>
       <SliderWrapper>
         <SwiperButton id="my-prev-button">

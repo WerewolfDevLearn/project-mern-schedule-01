@@ -29,9 +29,7 @@ export const Container = styled.div`
 export const Title = styled.h1`
   color: ${themes.colors.accent};
   text-shadow: ${themes.shadows.authHeading};
-  font-family: Inter;
   font-size: ${themes.fontSizes.l};
-  font-style: normal;
   font-weight: ${themes.fontWeight.sb};
   line-height: 24px;
 
@@ -70,9 +68,7 @@ export const Subtitle = styled.label`
   width: 100%;
 
   color: ${themes.colors.textAndIconTodo};
-  font-family: Inter;
   font-size: ${themes.fontSizes.xs};
-  font-style: normal;
   font-weight: ${themes.fontWeight.sb};
   line-height: normal;
 
@@ -106,9 +102,7 @@ export const Input = styled(Field)`
   background: ${themes.colors.backgroundUserForm};
 
   color: ${themes.colors.textAndIconTodo};
-  font-family: Inter;
   font-size: ${themes.fontSizes.s};
-  font-style: normal;
   font-weight: ${themes.fontWeight.r};
   line-height: 18px;
 
@@ -133,9 +127,7 @@ export const Input = styled(Field)`
 
 export const ErrorText = styled(ErrorMessage)`
   color: #da1414;
-  font-family: Inter;
   font-size: ${themes.fontSizes.xs};
-  font-style: normal;
   font-weight: ${themes.fontWeight.r};
   line-height: 14px;
 
@@ -150,9 +142,7 @@ export const ErrorText = styled(ErrorMessage)`
 
 export const TextCorrect = styled.p`
   color: ${themes.colors.saccess};
-  font-family: Inter;
   font-size: ${themes.fontSizes.xs};
-  font-style: normal;
   font-weight: ${themes.fontWeight.r};
   line-height: 14px;
 
@@ -184,9 +174,7 @@ export const Button = styled.button`
   transition-timing-function: ${themes.animations.cubicBezier};
 
   color: ${themes.colors.white};
-  font-family: Inter;
   font-size: ${themes.fontSizes.s};
-  font-style: normal;
   font-weight: ${themes.fontWeight.sb};
   line-height: 18px;
   letter-spacing: -0.28px;
@@ -213,11 +201,25 @@ export const Img = styled.img`
   }
 `;
 
-export const SvgIcon = styled.img`
+export const SvgValidate = styled.img`
   position: absolute;
   right: 18px;
   bottom: 11px;
   width: 24px;
+
+  @media screen and (min-width: ${themes.breakpoints.m}) {
+    bottom: 18px;
+  }
+`;
+
+export const SvgEye = styled.img`
+  position: absolute;
+  right: 46px;
+  bottom: 11px;
+  width: 24px;
+  &.left {
+    right: 18px;
+  }
 
   @media screen and (min-width: ${themes.breakpoints.m}) {
     bottom: 18px;
