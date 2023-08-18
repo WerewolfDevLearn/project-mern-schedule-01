@@ -7,7 +7,11 @@ const regExp = {
   userRegFF: 'user/Register/fulfilled',
   userLoginFF: 'user/Login/fulfilled',
   userLogOutFF: 'user/LogOut/fulfilled',
-  userUpdateFF: 'user/Update/fulfilled'
+  userUpdateFF: 'user/Update/fulfilled',
+  userRegRG: 'user/Register/rejected',
+  userLoginRG: 'user/Login/rejected',
+  userLogOutRG: 'user/LogOut/rejected',
+  userUpdateRG: 'user/Update/rejected'
 };
 
 export const ErrorLogger = (_api) => (next) => (action) => {
@@ -26,6 +30,15 @@ export const ErrorLogger = (_api) => (next) => (action) => {
   }
   if (action.type === regExp.userUpdateFF) {
     toast.success('User updated!');
+  }
+
+  if (isRejected(action) && action.type === regExp.userLoginRG) {
+    toast.error(`${action.payload}. Please register`);
+  }
+  if (isRejected(action) && action.type === regExp.userRegRG) {
+    toast.error(
+      `${action.payload}. User with such name and email is exist. Please chagne you register information`
+    );
   }
 
   if (isFulfilled(action) && action.meta.arg) {

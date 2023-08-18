@@ -11,7 +11,7 @@ export default function MainPage() {
       <AuthSection />
       <MainWrapper>
         <MPDescription />
-        <ReviewsSlider />
+        {/* <ReviewsSlider /> */}
       </MainWrapper>
     </>
   );

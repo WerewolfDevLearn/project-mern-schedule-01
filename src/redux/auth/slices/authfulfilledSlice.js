@@ -3,7 +3,7 @@ import { persistReducer } from 'redux-persist';
 
 import storage from 'redux-persist/lib/storage';
 
-import { register, userlogin, logOut, getCurrent, verify, updUser } from '../authOps';
+import { userlogin, logOut, getCurrent, verify, updUser } from '../authOps';
 
 const initialState = {
   userId: '',
