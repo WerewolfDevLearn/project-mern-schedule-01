@@ -35,6 +35,24 @@ export default function TaskColumnCard({ task, tasksCount, openModal }) {
   return (
     <>
       <TaskColumnCardStyles
+        initial={{
+          height: 0,
+          padding: 0,
+          marginTop: 0
+        }}
+        animate={{
+          height: '108px',
+          padding: '14px',
+          marginTop: '14px'
+        }}
+        exit={{
+          height: 0,
+          padding: 0,
+          marginTop: 0
+        }}
+        transition={{
+          duration: 0.1
+        }}
         taskscount={tasksCount}
         difference={getDifference(new Date(`${task.date} ${task.end}`))}
       >

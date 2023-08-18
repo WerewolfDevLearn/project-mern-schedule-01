@@ -9,6 +9,7 @@ import AddTaskBtn from '../AddTaskBtn/AddTaskBtn';
 import { TaskForm } from '../../../Forms/TaskForm/TaskForm';
 
 import { TasksColumnStyles } from './TasksColumn.styled';
+import { AnimatePresence } from 'framer-motion';
 
 export default function TasksColumn({ tasks, title }) {
   const [modalOptions, setModalOptions] = useState({ isOpen: false, action: '', taskToEdit: null });
@@ -34,16 +35,18 @@ export default function TasksColumn({ tasks, title }) {
         <ColumnTasksList tasks={tasks} openModal={openModal} />
         <AddTaskBtn tasksCount={tasks.length} openModal={openModal} />
       </TasksColumnStyles>
-      {modalOptions.isOpen && (
-        <Modal onClose={closeModal}>
-          <TaskForm
-            onClose={closeModal}
-            action={modalOptions.action}
-            column={title}
-            taskToEdit={modalOptions.taskToEdit}
-          />
-        </Modal>
-      )}
+      <AnimatePresence>
+        {modalOptions.isOpen && (
+          <Modal onClose={closeModal}>
+            <TaskForm
+              onClose={closeModal}
+              action={modalOptions.action}
+              column={title}
+              taskToEdit={modalOptions.taskToEdit}
+            />
+          </Modal>
+        )}
+      </AnimatePresence>
     </>
   );
 }
