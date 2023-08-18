@@ -1,22 +1,23 @@
-import { weekDaysShort } from '../weeks';
+import { weekDaysLetter } from '../weeks';
 import { months } from '../mounthes';
 
 export default function CalendarHeader({ year, month, Prev, Next }) {
   return (
     <>
       <div className="calendar-header">
-        <p>
-          {months[month - 1]}/{year}
-        </p>
-        <button onClick={Prev} type="button">
-          Prev
+        <button class="arrow" onClick={Prev} type="button">
+          ←
         </button>
-        <button onClick={Next} type="button">
-          Next
+        <p>
+          {months[month - 1]} {year}
+        </p>
+
+        <button class="arrow" onClick={Next} type="button">
+          →
         </button>
       </div>
       <ul className="weeks-day">
-        {weekDaysShort.map((weekDay) => (
+        {weekDaysLetter.map((weekDay) => (
           <li key={weekDay} className="week-day">
             {weekDay}
           </li>
