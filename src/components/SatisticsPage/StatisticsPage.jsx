@@ -22,7 +22,8 @@ const StatisticsPage = () => {
   // const year = getYear(parse(currentDate, 'yyyy-MM-dd', new Date()));
   // const month = getMonth(parse(currentDate, 'yyyy-MM-dd', new Date())) + 1;
   // const date = { year, month };
-  const { data: respons, isLoading } = useGetTasksQuery({ year, month, day });
+  const { data: respons, isLoading } = useGetTasksQuery({ year, month, day: 23 });
+  console.log(respons);
   const onPrev = () => {
     setMonth((month) => month - 1);
     if (month <= 1) {

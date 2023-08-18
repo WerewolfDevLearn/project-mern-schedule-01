@@ -221,7 +221,9 @@ const StatisticsChart = ({ tasksByDay, tasksByMonth }) => {
   };
 
   const chartDataByDay = calculatePercentages(tasksByDay);
+  console.log(tasksByDay);
   const chartDataByMonth = calculatePercentages(tasksByMonth);
+  console.log(tasksByMonth);
 
   const data = [
     {
