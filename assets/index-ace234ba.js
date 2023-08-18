@@ -3056,7 +3056,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   &.disabled {
     background: ${D.colors.black};
   }
-`,VC=({title:e})=>{const{t}=Dt();return O.jsxs(Eze,{href:"'https://project-mern-schedule-03.onrender.com/api/users/google",children:[O.jsx(Qhe,{width:"24px",height:"24px"}),t(e)]})};VC.propTypes={title:te.string};const Oze=is().shape({name:Cr().min(4,tt.t("Too Short")).max(20,tt.t("Too Long")).matches(/^[a-zA-Z0-9_]*$/,tt.t("Only letters")).required(tt.t("Name Required")),email:Cr().required(tt.t("Email Required")).email(tt.t("Invalid Email")),password:Cr().required(tt.t("Password Required")).min(6,tt.t("Password Characters"))}),Tze=is().shape({email:Cr().required(tt.t("Email Required")).email(tt.t("Invalid Email")),password:Cr().required(tt.t("Password Required")).min(6,tt.t("Password Characters"))}),kze=L.div`
+`,VC=({title:e})=>{const{t}=Dt();return O.jsxs(Eze,{href:"https://project-mern-schedule-03.onrender.com/api/users/google",children:[O.jsx(Qhe,{width:"24px",height:"24px"}),t(e)]})};VC.propTypes={title:te.string};const Oze=is().shape({name:Cr().min(4,tt.t("Too Short")).max(20,tt.t("Too Long")).matches(/^[a-zA-Z0-9_]*$/,tt.t("Only letters")).required(tt.t("Name Required")),email:Cr().required(tt.t("Email Required")).email(tt.t("Invalid Email")),password:Cr().required(tt.t("Password Required")).min(6,tt.t("Password Characters"))}),Tze=is().shape({email:Cr().required(tt.t("Email Required")).email(tt.t("Invalid Email")),password:Cr().required(tt.t("Password Required")).min(6,tt.t("Password Characters"))}),kze=L.div`
   display: flex;
   width: 100%;
 
