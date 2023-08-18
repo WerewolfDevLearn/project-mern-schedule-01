@@ -7,8 +7,26 @@ import { AddTaskBtnStyles } from './AddTaskBtn.styled';
 
 export default function AddTaskBtn({ tasksCount, openModal }) {
   const { t } = useTranslation();
+
+  const screenWidth = window.innerWidth;
+
   return (
-    <AddTaskBtnStyles count={tasksCount} onClick={() => openModal()}>
+    <AddTaskBtnStyles
+      initial={{
+        marginTop: 0
+      }}
+      animate={{
+        marginTop: screenWidth >= 768 && tasksCount ? '32px' : 0
+      }}
+      exit={{
+        marginTop: 0
+      }}
+      transition={{
+        duration: 5
+      }}
+      count={tasksCount}
+      onClick={() => openModal()}
+    >
       <Plus width="24" height="24" />
       {t('Add task')}
     </AddTaskBtnStyles>

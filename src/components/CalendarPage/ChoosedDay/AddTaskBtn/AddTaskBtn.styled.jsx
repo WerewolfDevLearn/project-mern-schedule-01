@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
-export const AddTaskBtnStyles = styled.button`
+export const AddTaskBtnStyles = styled(motion.button)`
   ${(props) => (props.count > 2 ? 'position: absolute;' : 'position: static;')};
   bottom: 10px;
 
@@ -26,7 +27,7 @@ export const AddTaskBtnStyles = styled.button`
   @media screen and (width >= 768px) {
     max-width: 304px;
     position: static;
-    margin-top: 32px;
+    /* margin-top: ${(props) => props.count && '32px'}; */
   }
 `;
 
