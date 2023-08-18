@@ -2,6 +2,9 @@ import { Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import { useError } from 'src/redux/selectors';
+import { ThemeProvider } from 'styled-components';
+
+import { useThemeColors } from 'src/components/MainLayout/ThemeToggler/ThemeContextProvider';
 
 import PrivateRoutes from './components/shared/Routes/PrivateRoutes';
 import PubliceRourtes from './components/shared/Routes/PubliceRoutes';
@@ -23,9 +26,11 @@ import routes from './routes';
 
 function App() {
   const error = useError();
+  const theme = useThemeColors().theme;
   if (error) {
     toast.error(error.message);
   }
+
   return (
     <>
       <Suspense fallback={<Loader />}>
@@ -50,7 +55,9 @@ function App() {
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </Suspense>
-      <ToastContainer />
+      <ThemeProvider theme={theme}>
+        <ToastContainer hideProgressBar theme={theme.toastify.theme} />
+      </ThemeProvider>
     </>
   );
 }

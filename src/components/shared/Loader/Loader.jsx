@@ -1,6 +1,6 @@
 import { Puff } from 'react-loader-spinner';
 
-import gooseLoader from 'src/images/others/gooseLoader.gif';
+import gooseLoader from '/src/images/others/gooseLoader.gif';
 
 import { DivloaderContainer } from '../../Styled-Components/Styled-Components.styled';
 
