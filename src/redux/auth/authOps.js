@@ -11,6 +11,14 @@ import {
   updateUser
 } from 'src/services/authAxApi';
 
+export const authGoogle = createAsyncThunk('user/Google', function (token, { rejectWithValue }) {
+  try {
+    return token;
+  } catch (error) {
+    return rejectWithValue(error.message);
+  }
+});
+
 export const register = createAsyncThunk(
   'user/Register',
   async function (user, { rejectWithValue }) {

@@ -1,11 +1,9 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-const baseURL = import.meta.env.VITE_BASE_DEV
-  ? import.meta.env.VITE_BASE_DEV
-  : 'https://project-mern-schedule-03.onrender.com/api';
+
 export const tasksApi = createApi({
   reducerPath: 'tasks',
   baseQuery: fetchBaseQuery({
-    baseUrl: baseURL,
+    baseUrl: 'https://project-mern-schedule-03.onrender.com/api',
     prepareHeaders: (headers, { getState }) => {
       const token = getState().user.token;
       if (token) {
@@ -17,7 +15,7 @@ export const tasksApi = createApi({
   endpoints: (builder) => ({
     getTasks: builder.query({
       query: (data) => ({
-        url: `/tasks?year=${data.year}&month=${data.month}`,
+        url: `/tasks?year=${data.year}&month=${data.month}&day=${data.day}`,
         method: 'GET'
       }),
       providesTags: ['tasks']
