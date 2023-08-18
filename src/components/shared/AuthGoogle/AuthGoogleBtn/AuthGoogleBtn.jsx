@@ -8,7 +8,7 @@ const AuthGoogleBtn = ({ title }) => {
   const { t } = useTranslation();
 
   return (
-    <LinkBtn href={`${import.meta.env.VITE_API_URL}/users/google`}>
+    <LinkBtn href={`${import.meta.env.VITE_BASE_DEV}/users/google`}>
       <SvgGoogle width="24px" height="24px" />
       {t(title)}
     </LinkBtn>
