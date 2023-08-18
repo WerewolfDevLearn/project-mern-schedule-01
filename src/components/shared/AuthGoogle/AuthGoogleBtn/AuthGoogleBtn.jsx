@@ -11,7 +11,7 @@ const AuthGoogleBtn = ({ title }) => {
   const { t } = useTranslation();
 
   return (
-    <LinkBtn href={`'https://project-mern-schedule-03.onrender.com/api/users/google`}>
+    <LinkBtn href={'https://project-mern-schedule-03.onrender.com/api/users/google'}>
       <SvgGoogle width="24px" height="24px" />
       {t(title)}
     </LinkBtn>
