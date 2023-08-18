@@ -1,8 +1,9 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import { format, parse, addMonths, subMonths } from 'date-fns';
 import { useParams, useNavigate } from 'react-router-dom';
+
 import { DatePicker } from '../DatePicker/DatePicker';
+
 import {
   DivWrapper,
   TitleWrapper,
@@ -67,13 +68,7 @@ const PeriodPaginator = ({ prevHandler, nextHandler, type }) => {
   return (
     <DivWrapper>
       <DatePicker onSelectDay={navigate} />
-      <TitleWrapper
-        onClick={(e) => {
-          console.log(e);
-        }}
-      >
-        {type === 'month' ? formattedDate : formattedDate}
-      </TitleWrapper>
+      <TitleWrapper>{type === 'month' ? formattedDate : formattedDate}</TitleWrapper>
       <ButtonsWrapper>
         <ButtonWrapper1
           onClick={() => {
