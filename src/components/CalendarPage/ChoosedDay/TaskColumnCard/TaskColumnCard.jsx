@@ -51,7 +51,7 @@ export default function TaskColumnCard({ task, tasksCount, openModal }) {
           marginTop: 0
         }}
         transition={{
-          duration: 5
+          duration: 0.1
         }}
         taskscount={tasksCount}
         difference={getDifference(new Date(`${task.date} ${task.end}`))}
