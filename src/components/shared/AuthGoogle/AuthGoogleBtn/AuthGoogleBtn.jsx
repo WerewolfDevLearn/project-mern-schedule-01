@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 
+import SvgGoogle from 'src/components/shared/Icons/Google';
+
 import { LinkBtn } from './AuthGoogleBtn.styled';
-import SvgGoogle from '../../Icons/Google';
 
 const AuthGoogleBtn = ({ title }) => {
   const { t } = useTranslation();
