@@ -33,8 +33,34 @@ export default function Modal({ onClose, color, clickable, children }) {
   };
 
   return createPortal(
-    <Overlay onClick={handleOverlayClick} $background={color}>
-      <ModalDiv>{children}</ModalDiv>
+    <Overlay
+      onClick={handleOverlayClick}
+      $background={color}
+      initial={{
+        backdropFilter: 'blur(0px)'
+      }}
+      animate={{ backdropFilter: 'blur(3px)' }}
+      exit={{
+        backdropFilter: 'blur(0px)'
+      }}
+      transition={{
+        duration: 0.11
+      }}
+    >
+      <ModalDiv
+        initial={{
+          scale: 0
+        }}
+        animate={{ scale: 1 }}
+        exit={{
+          scale: 0
+        }}
+        transition={{
+          duration: 0.11
+        }}
+      >
+        {children}
+      </ModalDiv>
     </Overlay>,
     modalRoot
   );

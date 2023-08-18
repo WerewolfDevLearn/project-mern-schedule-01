@@ -6,7 +6,5 @@ export const ColumnTasksListStyles = styled.ul`
 
   display: flex;
   flex-direction: column;
-  gap: 14px;
-
-  
+  /* gap: 14px; */
 `;
