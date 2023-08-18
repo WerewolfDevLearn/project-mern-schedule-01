@@ -93,3 +93,10 @@ export default function AccountAvatar({
     </AvatarContainer>
   );
 }
+
+AccountAvatar.propTypes = {
+  selectedAvatar: PropTypes.string.isRequired,
+  formik: PropTypes.object.isRequired,
+  setSelectedAvatar: PropTypes.func.isRequired,
+  setImagePreview: PropTypes.func.isRequired
+};
