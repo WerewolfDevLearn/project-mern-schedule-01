@@ -12,6 +12,7 @@ import AddTaskBtn from '../AddTaskBtn/AddTaskBtn';
 import { TaskForm } from '../../../Forms/TaskForm/TaskForm';
 
 import { TasksColumnStyles } from './TasksColumn.styled';
+import { AnimatePresence } from 'framer-motion';
 
 export default function TasksColumn({ tasks, title }) {
   const [modalOptions, setModalOptions] = useState({ isOpen: false, action: '', taskToEdit: null });
@@ -39,7 +40,9 @@ export default function TasksColumn({ tasks, title }) {
       </TasksColumnStyles>
       <AnimatePresence>
         {modalOptions.isOpen && (
+
           <Modal onClose={closeModal} color={modalBackdropcolors.grey}>
+
             <TaskForm
               onClose={closeModal}
               action={modalOptions.action}
