@@ -3,12 +3,15 @@ import { useTranslation } from 'react-i18next';
 
 import { LinkBtn } from './AuthGoogleBtn.styled';
 import SvgGoogle from '../../Icons/Google';
+const baseURL = import.meta.env.VITE_BASE_DEV
+  ? import.meta.env.VITE_BASE_DEV
+  : 'https://project-mern-schedule-03.onrender.com/api';
 
 const AuthGoogleBtn = ({ title }) => {
   const { t } = useTranslation();
 
   return (
-    <LinkBtn href={`${import.meta.env.VITE_BASE_DEV}/users/google`}>
+    <LinkBtn href={`${baseURL}/users/google`}>
       <SvgGoogle width="24px" height="24px" />
       {t(title)}
     </LinkBtn>
