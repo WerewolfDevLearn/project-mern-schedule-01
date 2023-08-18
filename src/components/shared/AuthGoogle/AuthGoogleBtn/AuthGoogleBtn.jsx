@@ -5,11 +5,13 @@ import SvgGoogle from 'src/components/shared/Icons/Google';
 
 import { LinkBtn } from './AuthGoogleBtn.styled';
 
+const baseURL = 'https://project-mern-schedule-03.onrender.com/api';
+
 const AuthGoogleBtn = ({ title }) => {
   const { t } = useTranslation();
 
   return (
-    <LinkBtn href={`${import.meta.env.VITE_BASE_DEV}/users/google`}>
+    <LinkBtn href={`${baseURL}/users/google`}>
       <SvgGoogle width="24px" height="24px" />
       {t(title)}
     </LinkBtn>
