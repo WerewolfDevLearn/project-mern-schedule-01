@@ -17,7 +17,7 @@ export const tasksApi = createApi({
   endpoints: (builder) => ({
     getTasks: builder.query({
       query: (data) => ({
-        url: `/tasks?year=${data.year}&month=${data.month}`,
+        url: `/tasks?year=${data.year}&month=${data.month}&day=${data.day}`,
         method: 'GET'
       }),
       providesTags: ['tasks']
