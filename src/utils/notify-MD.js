@@ -32,12 +32,24 @@ export const ErrorLogger = (_api) => (next) => (action) => {
     toast.success('User updated!');
   }
 
-  if (isRejected(action) && action.type === regExp.userLoginRG) {
+  if (
+    isRejected(action) &&
+    action.type === regExp.userLoginRG &&
+    action.payload === 'Action Required: Verify Your Email'
+  ) {
+    toast.error(`${action.payload}. Please check you email`);
+  }
+
+  if (
+    isRejected(action) &&
+    action.type === regExp.userLoginRG &&
+    action.payload !== 'Action Required: Verify Your Email'
+  ) {
     toast.error(`${action.payload}. Please register`);
   }
   if (isRejected(action) && action.type === regExp.userRegRG) {
     toast.error(
-      `${action.payload}. User with such name and email is exist. Please chagne you register information`
+      `${action.payload}. User with such name and email is exist. Please chagne you register information or Log in`
     );
   }
 
