@@ -14,14 +14,10 @@ export default function ChoosedDay() {
   const date = { year, month };
   const { data: tasks, isFetching, isLoading } = useGetTasksQuery(date);
 
-  if (isLoading) {
-    return <Loader />;
-  }
-
   return (
     <ChoosedDayStyles>
       <DayCalendarHead date={currentDate} />
-      <TasksColumnsList tasks={tasks.tasks} />
+      {!isLoading ? <TasksColumnsList tasks={tasks.tasks} /> : <Loader />}
     </ChoosedDayStyles>
   );
 }
