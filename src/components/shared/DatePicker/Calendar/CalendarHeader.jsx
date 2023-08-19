@@ -1,3 +1,5 @@
+import { PropTypes } from 'prop-types';
+
 import { weekDaysLetter } from '../weeks';
 import { months } from '../mounthes';
 
@@ -5,14 +7,14 @@ export default function CalendarHeader({ year, month, Prev, Next }) {
   return (
     <>
       <div className="calendar-header">
-        <button class="arrow" onClick={Prev} type="button">
+        <button className="arrow" onClick={Prev} type="button">
           ←
         </button>
         <p>
           {months[month - 1]} {year}
         </p>
 
-        <button class="arrow" onClick={Next} type="button">
+        <button className="arrow" onClick={Next} type="button">
           →
         </button>
       </div>
@@ -26,3 +28,10 @@ export default function CalendarHeader({ year, month, Prev, Next }) {
     </>
   );
 }
+
+CalendarHeader.propTypes = {
+  year: PropTypes.string,
+  month: PropTypes.string,
+  Prev: PropTypes.func,
+  Next: PropTypes.func
+};

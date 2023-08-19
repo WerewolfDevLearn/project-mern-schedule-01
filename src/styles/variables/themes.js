@@ -105,8 +105,8 @@ export const themes = Object.freeze({
     authButton: '4px 2px 16px rgba(136, 165, 191, 0.48)'
   },
   backgroundImages: {
-    oldPaper: oldPaper,
-    reallyOldPaper: reallyOldPaper
+    oldPaper,
+    reallyOldPaper
   },
   toastify: {
     theme: 'light'

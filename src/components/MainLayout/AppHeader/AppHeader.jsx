@@ -15,7 +15,6 @@ import UserInfo from '../UserInfo/UserInfo';
 
 import UserMenuBTN from './UserMenuBTN/UserMenuBTN';
 import { Header, LoactionSign, WrapTogglers } from './Header.styled';
-import { AnimatePresence } from 'framer-motion';
 
 export default function AppHeader({ callBack, isHomePage }) {
   let action = 'add';
