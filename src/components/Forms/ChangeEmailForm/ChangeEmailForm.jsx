@@ -18,8 +18,8 @@ import {
   InputField,
   ErrorMessage,
   BtnWrap,
-  UpdateBtn
-  // CloseBtn
+  UpdateBtn,
+  CancelBtn
 } from './ChangeEmailForm.styled';
 
 const schema = yup.object().shape({});
@@ -69,9 +69,21 @@ export default function ChangeEmailForm({ onClose }) {
                     placeholder="Enter new email"
                   />
                 </InputsContainer>
-                <UpdateBtn type="submit">Update email</UpdateBtn>
+                <BtnWrap>
+                  <UpdateBtn
+                    type="submit"
+                    disabled={
+                      !formik.isValid || !formik.touched || formik.isSubmitting || !formik.dirty
+                    }
+                  >
+                    Update email
+                  </UpdateBtn>
+                  <CancelBtn type="button" onClick={onClose}>
+                    Cancel
+                  </CancelBtn>
+                </BtnWrap>
                 {/* <VerifyForm /> */}
-                {isUpdating && (
+                {!isUpdating && (
                   <Verify>
                     <InputsContainer>
                       <FormikInput
@@ -82,10 +94,14 @@ export default function ChangeEmailForm({ onClose }) {
                       />
                     </InputsContainer>
                     <BtnWrap>
-                      <UpdateBtn type="submit">Verify</UpdateBtn>
-                      {/* <CloseBtn type="button" onClick={onClose}>
-                        Close
-                      </CloseBtn> */}
+                      <UpdateBtn
+                        type="submit"
+                        disabled={
+                          !formik.isValid || !formik.touched || formik.isSubmitting || !formik.dirty
+                        }
+                      >
+                        Verify
+                      </UpdateBtn>
                     </BtnWrap>
                   </Verify>
                 )}
