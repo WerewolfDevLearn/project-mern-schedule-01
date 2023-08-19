@@ -7,6 +7,7 @@ import iconError from 'src/images/svg/validation-error.svg';
 import iconSuccess from 'src/images/svg/validation-success.svg';
 import eyeOn from 'src/images/svg/eye-show.svg';
 import eyeOff from 'src/images/svg/eye-off.svg';
+import AuthGoogleBtn from 'src/components/shared/AuthGoogle/AuthGoogleBtn/AuthGoogleBtn';
 
 import { validationLoginRules } from '../validationRules';
 
@@ -129,6 +130,7 @@ export default function LoginForm({ onSubmitForm }) {
           );
         }}
       </Formik>
+      <AuthGoogleBtn title={'Log In With Google'} />
     </Container>
   );
 }

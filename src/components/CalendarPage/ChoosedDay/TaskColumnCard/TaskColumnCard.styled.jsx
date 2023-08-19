@@ -1,13 +1,29 @@
 import { colorText } from 'src/styles/variables/Variables';
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
-export const TaskColumnCardStyles = styled.li`
+export const TaskColumnCardStyles = styled(motion.li)`
   padding: 14px;
   border-radius: 8px;
+
+  overflow: hidden;
 
   color: ${({ theme }) => theme.colors.textAndIconTodo};
   background: ${({ theme }) => theme.colors.background};
   border: 1px solid ${({ theme }) => theme.colors.tasksListBorder};
+
+  background-image: url(${(props) =>
+    props.difference >= 259200
+      ? `${props.theme.backgroundImages.reallyOldPaper}`
+      : props.difference >= 0
+      ? `${props.theme.backgroundImages.oldPaper}`
+      : 'none'});
+  background-size: 110%;
+  background-position: center;
+
+  &:first-child {
+    margin-top: 0 !important;
+  }
 
   &:last-child {
     margin-bottom: ${(props) => (props.taskscount > 2 ? '55px' : '14px')};

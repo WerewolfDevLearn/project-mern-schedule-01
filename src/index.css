@@ -1,5 +1,5 @@
 @import '../node_modules/modern-normalize/modern-normalize.css';
-
+@import './styles/datePicker.css';
 @font-face {
   font-family: 'Inter';
   src: url('styles/fonts/Inter-Regular.woff2') format('woff2'),

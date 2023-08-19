@@ -11,7 +11,7 @@ export default function CalendarPage() {
   const currYear = date.getFullYear();
   const currMonth = date.getMonth();
   const [month, setMonth] = useState(currMonth + 1);
-  const [year, setYear] = useState(currYear);
+  const [, setYear] = useState(currYear);
 
   const onPrev = () => {
     setMonth((month) => month - 1);

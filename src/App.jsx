@@ -2,6 +2,9 @@ import { Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import { useError } from 'src/redux/selectors';
+import { ThemeProvider } from 'styled-components';
+
+import { useThemeColors } from 'src/components/MainLayout/ThemeToggler/ThemeContextProvider';
 
 import PrivateRoutes from './components/shared/Routes/PrivateRoutes';
 import PubliceRourtes from './components/shared/Routes/PubliceRoutes';
@@ -15,6 +18,7 @@ import Loader from './components/shared/Loader/Loader';
 import MainPage from './pages/MainPage';
 import ErrorPage from './pages/ErrorPage/ErrorPage';
 import LoginPage from './pages/LoginPage/LoginPage';
+import AuthGoogle from './components/shared/AuthGoogle/AuthGoogle';
 
 import RegisterPage from './pages/RegisterPage/RegisterPage';
 
@@ -22,9 +26,11 @@ import routes from './routes';
 
 function App() {
   const error = useError();
+  const theme = useThemeColors().theme;
   if (error) {
     toast.error(error.message);
   }
+
   return (
     <>
       <Suspense fallback={<Loader />}>
@@ -33,6 +39,7 @@ function App() {
             <Route path={routes.mainPage} element={<MainPage isHomePage={true} />} />
             <Route path={routes.registerPage} element={<RegisterPage />} />
             <Route path={routes.loginPage} element={<LoginPage />} />
+            <Route path={routes.authGoogle} element={<AuthGoogle />} />
           </Route>
           <Route element={<PrivateRoutes />}>
             <Route path={routes.mainLayout} element={<MainLayout />}>
@@ -48,7 +55,9 @@ function App() {
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </Suspense>
-      <ToastContainer />
+      <ThemeProvider theme={theme}>
+        <ToastContainer hideProgressBar theme={theme.toastify.theme} />
+      </ThemeProvider>
     </>
   );
 }
