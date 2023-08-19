@@ -11,22 +11,16 @@ import eyeOff from 'src/images/svg/eye-off.svg';
 // import { validationRegisterRules } from '../validationRules';
 
 import {
-  //   Container,
-  //   Title,
-  //   FormElement,
-  //   InputWrap,
+  FormLabelSpan,
   InputContainer,
-  Subtitle,
-  Input,
+  InputField,
   ErrorText,
   TextCorrect,
-  //   Button,
-  //   Img,
   SvgValidate,
   SvgEye
-} from './RegisterForm.styled';
+} from './PasswordInput.styled';
 
-export default function PasswordInput() {
+export default function PasswordInput({ formik, label, type, name, placeholder }) {
   const [passwordShown, setPasswordShown] = useState(false);
   const [validateAfterSubmit, setValidateAfterSubmit] = useState(false);
 
@@ -36,47 +30,53 @@ export default function PasswordInput() {
     setPasswordShown(!passwordShown);
   };
 
-  const validateInput = (input) => {
-    if ((validateAfterSubmit || submitCount > 0) && errors[input]) {
-      setValidateAfterSubmit(true);
-      return 'input-error';
-    } else if (submitCount > 0 && !errors[input]) {
-      return 'input-correct';
-    }
-    return '';
-  };
+  const pass = passwordShown ? 'text' : 'password';
 
-  return (
-    <Subtitle htmlFor="password" className={validateInput('password')}>
-      {t('Password')}
-      <InputContainer>
-        {' '}
-        <Input
-          type={passwordShown ? 'text' : 'password'}
-          name="password"
-          placeholder={t('Enter password')}
-          id="signup_password"
-          className={validateInput('password')}
-        />
-        <button type="button" onClick={togglePassword}>
-          <SvgEye
-            src={passwordShown ? eyeOff : eyeOn}
-            alt="Success Icon"
-            className={validateInput('password') !== '' ? 'right' : 'left'}
+  {
+    const { errors, handleSubmit, submitCount } = formik;
+
+    const validateInput = (input) => {
+      if ((validateAfterSubmit || submitCount > 0) && errors[input]) {
+        setValidateAfterSubmit(true);
+        return 'input-error';
+      } else if (submitCount > 0 && !errors[input]) {
+        return 'input-correct';
+      }
+      return '';
+    };
+
+    return (
+      <div htmlFor="password" className={validateInput('password')}>
+        <FormLabelSpan>{label}</FormLabelSpan>
+        <InputContainer>
+          {' '}
+          <InputField
+            type={type}
+            name={name}
+            placeholder={placeholder}
+            // id="signup_password"
+            className={validateInput({ type })}
           />
-        </button>
-        {validateInput('password') === 'input-correct' && (
-          <SvgValidate src={iconSuccess} alt="Success Icon" />
-        )}
-        {validateInput('password') === 'input-error' && (
-          <SvgValidate src={iconError} alt="Error Icon" />
-        )}
-      </InputContainer>
+          <button type="button" onClick={togglePassword}>
+            <SvgEye
+              src={passwordShown ? eyeOff : eyeOn}
+              alt="Success Icon"
+              className={validateInput('password') !== '' ? 'right' : 'left'}
+            />
+          </button>
+          {validateInput('password') === 'input-correct' && (
+            <SvgValidate src={iconSuccess} alt="Success Icon" />
+          )}
+          {validateInput('password') === 'input-error' && (
+            <SvgValidate src={iconError} alt="Error Icon" />
+          )}
+        </InputContainer>
 
-      {validateInput('password') === 'input-correct' && (
-        <TextCorrect>{t('Correct password')}</TextCorrect>
-      )}
-      <ErrorText name="password" component="p" />
-    </Subtitle>
-  );
+        {validateInput('password') === 'input-correct' && (
+          <TextCorrect>{t('Correct password')}</TextCorrect>
+        )}
+        <ErrorText name="password" component="p" />
+      </div>
+    );
+  }
 }

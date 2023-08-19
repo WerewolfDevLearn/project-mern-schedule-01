@@ -4,6 +4,8 @@ import * as yup from 'yup';
 import i18n from 'i18next';
 import { useTranslation } from 'react-i18next';
 
+import PasswordInput from '../PasswordInput/PasswordInput';
+
 import { XClose } from '../../shared/Icons';
 
 import {
@@ -56,7 +58,8 @@ export default function ChangePasswordForm({ onClose }) {
                 </XCloseWrap>
                 <ChangePasswordTitle>Change password</ChangePasswordTitle>
                 <InputsContainer>
-                  <FormikInput
+                  <PasswordInput
+                    formik={formik}
                     label="Old password"
                     type="password"
                     name="old password"
