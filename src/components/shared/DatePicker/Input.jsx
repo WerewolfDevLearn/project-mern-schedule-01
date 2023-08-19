@@ -1,4 +1,4 @@
-import { PropTypes } from 'prop-types';
+import PropTypes from 'prop-types';
 
 export default function InputDate({ inputValue, labelTex, onClickHandler }) {
   return (
@@ -17,6 +17,6 @@ export default function InputDate({ inputValue, labelTex, onClickHandler }) {
 
 InputDate.propTypes = {
   inputValue: PropTypes.string.isRequired,
-  labelTex: PropTypes.string.isRequire,
+  labelTex: PropTypes.string,
   onClickHandler: PropTypes.func.isRequired
 };

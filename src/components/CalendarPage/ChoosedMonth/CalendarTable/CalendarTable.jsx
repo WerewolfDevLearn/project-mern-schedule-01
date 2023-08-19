@@ -39,9 +39,19 @@ export default function CalendarTable() {
     const startDay = startOfWeek(firstDayOfMonth, { weekStartsOn: 1 });
     const lastDayOfMonth = endOfMonth(new Date());
     let day = startDay;
+
+    while (day < firstDayOfMonth) {
+      calendar.push(null);
+      day = addDays(day, 1);
+    }
+
     while (day <= lastDayOfMonth) {
       calendar.push(day);
       day = addDays(day, 1);
+    }
+
+    while (calendar.length < 42) {
+      calendar.push(null);
     }
   };
   generateCalendar();
@@ -59,6 +69,9 @@ export default function CalendarTable() {
   const RC = () => {
     if (!isTasksLoading) {
       const renderedCalendar = calendar.map((dayItem, idx) => {
+        if (!dayItem) {
+          return <CellWrapper key={idx} />;
+        }
         const calendarWithTask = getDayTasks(dayItem, respons?.tasks);
 
         return (
@@ -68,7 +81,7 @@ export default function CalendarTable() {
             iscurrentmonth={isCurrentMonth(dayItem).toString()}
             istoday={isToday(dayItem).toString()}
           >
-            <RowInCell $justifyContent="flex-end">
+            <RowInCell>
               <ShowDayWrapper>
                 {isToday(dayItem) ? (
                   <CurrentDay>{format(dayItem, 'd')}</CurrentDay>
@@ -77,13 +90,16 @@ export default function CalendarTable() {
                 )}
               </ShowDayWrapper>
               <TaskListWrapper>
-                {calendarWithTask.slice(0, 2).map((task) => (
-                  <TaskItem key={task._id} priority={task.priority}>
-                    {task.title}
-                  </TaskItem>
-                ))}
+                {calendarWithTask &&
+                  calendarWithTask.slice(0, 2).map((task) => (
+                    <TaskItem key={task._id} priority={task.priority}>
+                      {task.title}
+                    </TaskItem>
+                  ))}
               </TaskListWrapper>
-              {calendarWithTask.length > 2 && <TasksMoreLabel>...</TasksMoreLabel>}
+              {calendarWithTask && calendarWithTask.length > 2 && (
+                <TasksMoreLabel>...</TasksMoreLabel>
+              )}
             </RowInCell>
           </CellWrapper>
         );

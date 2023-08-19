@@ -58,7 +58,7 @@ export default function AppHeader({ callBack, isHomePage }) {
       <UserInfo />
       <AnimatePresence>
         {modalIsOpen && (
-          <Modal onClose={closeModal} color={modalBackdropcolors.grey}>
+          <Modal onClose={closeModal} color={modalBackdropcolors.grey} clickable>
             <FeedbackForm onClose={closeModal} action={action} reviewToEdit={reviews[0]} />
           </Modal>
         )}

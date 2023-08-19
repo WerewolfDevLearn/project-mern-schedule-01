@@ -15,7 +15,6 @@ const regExp = {
 };
 
 export const ErrorLogger = (_api) => (next) => (action) => {
-  console.log(action);
   if (isRejected(action) && action.type.match(regExpContacts)) {
     toast.error(action.payload);
   }
