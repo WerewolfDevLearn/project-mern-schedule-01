@@ -12,8 +12,6 @@ export const DivWrapper = styled('div')`
   @media screen and (min-width: 768px) {
     justify-content: space-around;
     align-items: center;
-    margin-top: 33px;
-    margin-bottom: 33px;
   }
 `;
 export const TitleWrapper = styled.button`
@@ -21,6 +19,7 @@ export const TitleWrapper = styled.button`
   color: #ffffff;
   background: #3e85f3;
   border-radius: 8px;
+  border: 1px solid rgba(220, 227, 229, 0.8);
   font-weight: 700;
   font-size: 14px;
   line-height: 18px;
@@ -50,12 +49,14 @@ export const ButtonWrapper1 = styled('button')`
   color: ${({ color }) => (color === 'blue' ? themes.colors.accent : themes.colors.white)};
 
   font-size: 20px;
-
+  color: rgba(220, 227, 229, 0.8);
   border: 1px solid rgba(220, 227, 229, 0.8);
   border-radius: 8px;
   border-bottom-right-radius: 0;
   border-top-right-radius: 0;
   cursor: pointer;
+  &:hover {
+    color: #565759;
 `;
 export const ButtonWrapper2 = styled('button')`
   height: 34px;

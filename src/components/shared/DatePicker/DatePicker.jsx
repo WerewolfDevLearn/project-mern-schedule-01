@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import { PropTypes } from 'prop-types';
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 
