@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { format } from 'date-fns';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -32,3 +33,9 @@ export default function CalendarDataPicker({ type, CustomInput, onSelectDay }) {
     </>
   );
 }
+
+CalendarDataPicker.propTypes = {
+  type: PropTypes.string.isRequired,
+  CustomInput: PropTypes.elementType.isRequired,
+  onSelectDay: PropTypes.func.isRequired
+};

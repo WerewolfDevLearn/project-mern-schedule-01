@@ -12,8 +12,6 @@ export const DivWrapper = styled('div')`
   @media screen and (min-width: 768px) {
     justify-content: space-around;
     align-items: center;
-    margin-top: 33px;
-    margin-bottom: 33px;
   }
 `;
 export const TitleWrapper = styled.button`

@@ -17,17 +17,19 @@ const PeriodPaginator = ({ prevHandler, nextHandler, type, date }) => {
     const formattedDate = format(new Date(date), type === 'day' ? 'dd MMMM yyyy' : 'MMMM yyyy');
     return formattedDate;
   };
+  // eslint-disable-next-line react/display-name
   const CustomInput = forwardRef(({ value, onClick }, ref) => {
-    console.log('VALUE', value);
+    // console.log('VALUE', value);
     return (
       <TitleWrapper onClick={onClick} ref={ref}>
         {getFormattedDate()}
       </TitleWrapper>
     );
   });
+
   // <TitleWrapper>{getFormattedDate()}</TitleWrapper>
   const currentDate = parse(date, 'yyyy-MM-dd', new Date());
-  console.log('CURRENT', currentDate);
+  // console.log('CURRENT', currentDate);
   return (
     <DivWrapper>
       <CalendarDataPicker type={type} CustomInput={CustomInput} onSelectDay={currentDate} />
@@ -57,7 +59,9 @@ PeriodPaginator.propTypes = {
   prevHandler: PropTypes.func.isRequired,
   nextHandler: PropTypes.func.isRequired,
   type: PropTypes.string,
-  date: PropTypes.string
+  date: PropTypes.string,
+  value: PropTypes.any,
+  onClick: PropTypes.func.isRequired
 };
 
 export default PeriodPaginator;
