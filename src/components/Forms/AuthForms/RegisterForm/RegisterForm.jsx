@@ -9,7 +9,7 @@ import eyeOn from 'src/images/svg/eye-show.svg';
 import eyeOff from 'src/images/svg/eye-off.svg';
 import AuthGoogleBtn from 'src/components/shared/AuthGoogle/AuthGoogleBtn/AuthGoogleBtn';
 
-import { validationRegisterRules } from '../validationRules';
+import { validationRegisterRules } from '../../validationRules';
 
 import {
   Container,
@@ -26,6 +26,7 @@ import {
   SvgValidate,
   SvgEye
 } from './RegisterForm.styled';
+import AuthInput from '../AuthInput/AuthInput';
 
 export default function RegisterForm({ callBack }) {
   const [passwordShown, setPasswordShown] = useState(false);
@@ -56,20 +57,21 @@ export default function RegisterForm({ callBack }) {
         {(formik) => {
           const { errors, handleSubmit, submitCount } = formik;
 
-          const validateInput = (input) => {
-            if ((validateAfterSubmit || submitCount > 0) && errors[input]) {
-              setValidateAfterSubmit(true);
-              return 'input-error';
-            } else if (submitCount > 0 && !errors[input]) {
-              return 'input-correct';
-            }
-            return '';
-          };
+          // const validateInput = (input) => {
+          //   if ((validateAfterSubmit || submitCount > 0) && errors[input]) {
+          //     setValidateAfterSubmit(true);
+          //     return 'input-error';
+          //   } else if (submitCount > 0 && !errors[input]) {
+          //     return 'input-correct';
+          //   }
+          //   return '';
+          // };
 
           return (
             <FormElement autoComplete="off">
               <InputWrap>
-                <Subtitle htmlFor="name" className={validateInput('name')}>
+                {/* ================ */}
+                {/* <Subtitle htmlFor="name" className={validateInput('name')}>
                   {t('Name')}
                   <InputContainer>
                     <Input
@@ -90,9 +92,44 @@ export default function RegisterForm({ callBack }) {
                     <TextCorrect>{t('Correct name')}</TextCorrect>
                   )}
                   <ErrorText name="name" component="p" />
-                </Subtitle>
+                </Subtitle> */}
 
-                <Subtitle htmlFor="email" className={validateInput('email')}>
+                {/* ================ */}
+                <AuthInput
+                  name="name"
+                  title="Name"
+                  type="text"
+                  placeholder="Enter your name"
+                  id="signup_name"
+                  validateAfterSubmit={validateAfterSubmit}
+                  submitCount={submitCount}
+                  errors={errors}
+                  setValidateAfterSubmit={setValidateAfterSubmit}
+                />
+                <AuthInput
+                  name="email"
+                  title="Email"
+                  type="email"
+                  placeholder="Enter email"
+                  id="signup_email"
+                  validateAfterSubmit={validateAfterSubmit}
+                  submitCount={submitCount}
+                  errors={errors}
+                  setValidateAfterSubmit={setValidateAfterSubmit}
+                />
+                <AuthInput
+                  name="password"
+                  title="Password"
+                  type="password"
+                  placeholder="Enter password"
+                  id="signup_password"
+                  validateAfterSubmit={validateAfterSubmit}
+                  submitCount={submitCount}
+                  errors={errors}
+                  setValidateAfterSubmit={setValidateAfterSubmit}
+                />
+                {/* ================ */}
+                {/* <Subtitle htmlFor="email" className={validateInput('email')}>
                   {t('Email')}
                   <InputContainer>
                     <Input
@@ -146,7 +183,7 @@ export default function RegisterForm({ callBack }) {
                     <TextCorrect>{t('Correct password')}</TextCorrect>
                   )}
                   <ErrorText name="password" component="p" />
-                </Subtitle>
+                </Subtitle> */}
               </InputWrap>
 
               <Button type="submit" onClick={handleSubmit}>

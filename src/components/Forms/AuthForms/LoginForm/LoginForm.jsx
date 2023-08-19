@@ -9,7 +9,7 @@ import eyeOn from 'src/images/svg/eye-show.svg';
 import eyeOff from 'src/images/svg/eye-off.svg';
 import AuthGoogleBtn from 'src/components/shared/AuthGoogle/AuthGoogleBtn/AuthGoogleBtn';
 
-import { validationLoginRules } from '../validationRules';
+import { validationLoginRules } from '../../validationRules';
 
 import {
   Container,
