@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
+import { AnimatePresence } from 'framer-motion';
 
 import TaskColumnCard from '../TaskColumnCard/TaskColumnCard';
 import CustomScrollbar from '../CustomVerticalScrollbar/CustomVerticalScrollbar';
 
 import { ColumnTasksListStyles } from './ColumnTasksList.styled';
-import { AnimatePresence } from 'framer-motion';
 
 export default function ColumnTasksList({ tasks, openModal }) {
   return (

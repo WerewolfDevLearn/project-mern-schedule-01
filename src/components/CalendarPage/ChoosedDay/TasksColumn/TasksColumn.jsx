@@ -39,9 +39,7 @@ export default function TasksColumn({ tasks, title }) {
       </TasksColumnStyles>
       <AnimatePresence>
         {modalOptions.isOpen && (
-
           <Modal onClose={closeModal} color={modalBackdropcolors.grey} clickable>
-
             <TaskForm
               onClose={closeModal}
               action={modalOptions.action}

@@ -1,3 +1,5 @@
+import { PropTypes } from 'prop-types';
+
 export default function InputDate({ inputValue, labelTex, onClickHandler }) {
   return (
     <div className="input-wrapper">
@@ -12,3 +14,9 @@ export default function InputDate({ inputValue, labelTex, onClickHandler }) {
     </div>
   );
 }
+
+InputDate.propTypes = {
+  inputValue: PropTypes.string.isRequired,
+  labelTex: PropTypes.string.isRequire,
+  onClickHandler: PropTypes.func.isRequired
+};
