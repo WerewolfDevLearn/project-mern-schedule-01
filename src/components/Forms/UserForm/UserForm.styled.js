@@ -29,7 +29,7 @@ export const UserNameTitle = styled.h2`
   margin: 0;
   margin-bottom: 4px;
 
-  @media screen and (${themes.breakpoints.m} <= width < ${themes.breakpoints.l}) {
+  @media screen and (${themes.breakpoints.l} < width) {
     margin-bottom: 8px;
   }
 `;
