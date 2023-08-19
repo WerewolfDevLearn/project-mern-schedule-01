@@ -1,8 +1,6 @@
-// import styled from 'styled-components';
+import styled from 'styled-components';
 
 // export const StatisticsChartStyles = styled.div``;
-
-import styled from 'styled-components';
 
 export const Container = styled.div`
   width: 100%;
@@ -15,7 +13,6 @@ export const Container = styled.div`
 `;
 
 export const ChartContainer = styled.div`
-background-color: #fff;
   width: 860px;
   height: 440px;
   border-radius: 20px;
@@ -30,14 +27,17 @@ background-color: #fff;
 `;
 
 export const StatisticsChartStyles = styled.div`
-  background-color: #fff;
+  margin-top: 78px;
+  fill: ${({ theme }) => theme.colors.textCancelBtn};
 `;
 
 export const LegendStyles = styled.ul`
-  margin-bottom: 45px;
+  /* margin-bottom: 45px; */
 
   display: flex;
   gap: 14px;
+
+  color: ${({ theme }) => theme.colors.textCancelBtn};
 `;
 
 export const LegendItem = styled.li`

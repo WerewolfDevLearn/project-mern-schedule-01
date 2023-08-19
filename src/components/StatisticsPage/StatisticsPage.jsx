@@ -7,6 +7,8 @@ import PeriodPaginator from '../shared/PeriodPaginator/PeriodPaginator';
 
 import StatisticsChart from './StatisticsChart/StatisticsChart';
 
+import { StatisticsPageStyles } from './StatisticsPage.styled';
+
 const StatisticsPage = () => {
   const [currentDate, setCurrentDate] = useState(format(new Date(), 'yyyy-MM-dd'));
 
@@ -15,8 +17,6 @@ const StatisticsPage = () => {
     month: getMonth(new Date(currentDate)) + 1,
     day: getDate(new Date(currentDate))
   });
-
-  console.log(tasks);
 
   const onPrev = () => {
     const newDate = subDays(new Date(currentDate), 1);
@@ -29,10 +29,10 @@ const StatisticsPage = () => {
   };
 
   return (
-    <>
+    <StatisticsPageStyles>
       <PeriodPaginator prevHandler={onPrev} nextHandler={onNext} type="day" date={currentDate} />
       {isLoading ? <Loader /> : <StatisticsChart tasks={tasks} />}
-    </>
+    </StatisticsPageStyles>
   );
 };
 

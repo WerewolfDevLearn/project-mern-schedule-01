@@ -12,6 +12,8 @@ import {
   LabelList
 } from 'recharts';
 
+import { useThemeColors } from 'src/components/MainLayout/ThemeToggler/ThemeContextProvider';
+
 import {
   StatisticsChartStyles,
   ChartContainer,
@@ -19,9 +21,9 @@ import {
   LegendItem,
   Ellipse
 } from './StatisticsChart.styled';
-import { themes } from 'src/styles/variables/themes';
 
 const StatisticsChart = ({ tasks }) => {
+  const theme = useThemeColors().theme;
   const calculateTaskStatusCount = (tasks) => {
     const taskStatusCountDay = {
       todo: 0,
@@ -103,15 +105,26 @@ const StatisticsChart = ({ tasks }) => {
   return (
     <StatisticsChartStyles>
       <ChartContainer>
-        <ResponsiveContainer width="100%" height="100%">
+        <ResponsiveContainer>
           <BarChart
             data={data}
-            margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
-            barGap={10}
+            margin={{ top: 81, right: 14, left: 0, bottom: 40 }}
+            barGap={8}
             barCategoryGap="20%"
           >
-            <CartesianGrid vertical={false} stroke={themes.colors.ligthBlue} />
-            <XAxis dataKey="name" axisLine={false} tickLine={false} tickMargin={20} />
+            <CartesianGrid vertical={false} stroke={theme.colors.statisticsBgLines} />
+            <XAxis
+              dataKey="name"
+              axisLine={false}
+              tickLine={false}
+              tickMargin={20}
+              allowDataOverflow={false}
+              style={{
+                fontSize: '12px',
+                fontWeight: 400,
+                fill: `${theme.colors.textCancelBtn}`
+              }}
+            />
             <YAxis
               tickCount={6}
               domain={[0, 100]}
@@ -119,16 +132,32 @@ const StatisticsChart = ({ tasks }) => {
               axisLine={false}
               tickLine={false}
               tickMargin={14}
+              style={{
+                fontSize: '14px',
+                fontWeight: 400,
+                fill: `${theme.colors.textCancelBtn}`
+              }}
             >
-              <Label value="Tasks" angle={0} position="top" offset={20} />
+              <Label
+                value="Tasks"
+                angle={0}
+                position="top"
+                offset={30}
+                style={{
+                  fontSize: '14px',
+                  fontWeight: 600,
+                  fill: `${theme.colors.textCancelBtn}`
+                }}
+              />
             </YAxis>
             <Tooltip />
             <Legend
               align="left"
               verticalAlign="top"
-              layout="horizontal"
-              iconType="circle"
-              margin={{ bottom: '10px' }}
+              wrapperStyle={{
+                top: '-60px',
+                left: 0
+              }}
               content={renderLegend}
             />
             <Bar
@@ -142,6 +171,11 @@ const StatisticsChart = ({ tasks }) => {
                 dataKey="byDay"
                 position="top"
                 formatter={(value) => `${Math.round(value)}%`}
+                style={{
+                  fontSize: '12px',
+                  fontWeight: 500,
+                  fill: `${theme.colors.textCancelBtn}`
+                }}
               />
             </Bar>
             <Bar
@@ -155,6 +189,11 @@ const StatisticsChart = ({ tasks }) => {
                 dataKey="byMonth"
                 position="top"
                 formatter={(value) => `${Math.round(value)}%`}
+                style={{
+                  fontSize: '12px',
+                  fontWeight: 500,
+                  fill: `${theme.colors.textCancelBtn}`
+                }}
               />
             </Bar>
           </BarChart>

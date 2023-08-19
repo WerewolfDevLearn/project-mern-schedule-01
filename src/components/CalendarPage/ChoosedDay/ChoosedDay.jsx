@@ -15,7 +15,7 @@ export default function ChoosedDay() {
   const year = getYear(parse(currentDate, 'yyyy-MM-dd', new Date()));
   const month = getMonth(parse(currentDate, 'yyyy-MM-dd', new Date())) + 1;
   const date = { year, month };
-  const { data: tasks, isLoading } = useGetTasksQuery(date);
+  const { data: tasks, isLoading, isFetching } = useGetTasksQuery(date);
 
   return (
     <ChoosedDayStyles>
@@ -23,7 +23,7 @@ export default function ChoosedDay() {
       {isLoading && !isRefreshing ? (
         <Loader />
       ) : (
-        !isLoading && <TasksColumnsList tasks={tasks.tasks} />
+        !isFetching && <TasksColumnsList tasks={tasks.tasks} />
       )}
     </ChoosedDayStyles>
   );
