@@ -13,6 +13,8 @@ import AccountAvatar from '../AccountAvatar/AccountAvatar';
 import ChangeEmailModal from '../../ChangeEmailModal/ChangeEmailModal';
 import ChangePasswordModal from '../../ChangePasswordModal/ChangePasswordModal';
 
+import { validationAvatarRules } from '../validationRules';
+
 import {
   FormContainer,
   FormWrap,
@@ -110,7 +112,7 @@ export default function UserForm({ callBack }) {
     <>
       <Formik
         initialValues={initialValues}
-        validationSchema={schema}
+        validationSchema={(schema, validationAvatarRules)}
         onSubmit={onSubmit}
         enableReinitialize
       >

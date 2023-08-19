@@ -15,6 +15,14 @@ export const validationLoginRules = Yup.object().shape({
   password: Yup.string().required(i18n.t('Password Required')).min(6, i18n.t('Password Characters'))
 });
 
+export const validationAvatarRules = Yup.object().shape({
+  avatar: Yup.mixed().test(
+    'fileType',
+    'Only PNG, JPEG, JPG or GIF formats are supported',
+    (value) => !value || (value && SUPPORTED_FORMATS.includes(value?.type))
+  )
+});
+
 export const validationChangePasswordRules = Yup.object().shape({
   password: Yup.string()
     .min(6, 'The password is short - min 6 characters')

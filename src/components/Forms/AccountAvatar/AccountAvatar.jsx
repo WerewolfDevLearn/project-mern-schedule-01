@@ -1,7 +1,6 @@
 import { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import Avatar from '@mui/material/Avatar';
-import * as yup from 'yup';
 import i18n from 'i18next';
 import { useTranslation } from 'react-i18next';
 import { useUser } from 'src/redux/selectors';
@@ -17,16 +16,6 @@ import {
 } from './AccountAvatar.styled';
 
 const SUPPORTED_FORMATS = ['image/webp', 'image/jpg', 'image/jpeg', 'image/gif', 'image/png'];
-
-const schema = yup.object().shape({
-  avatar: yup
-    .mixed()
-    .test(
-      'fileType',
-      'Only PNG, JPEG, JPG or GIF formats are supported',
-      (value) => !value || (value && SUPPORTED_FORMATS.includes(value?.type))
-    )
-});
 
 export default function AccountAvatar({
   selectedAvatar,
