@@ -14,3 +14,15 @@ export const validationLoginRules = Yup.object().shape({
   email: Yup.string().required(i18n.t('Email Required')).email(i18n.t('Invalid Email')),
   password: Yup.string().required(i18n.t('Password Required')).min(6, i18n.t('Password Characters'))
 });
+
+export const validationChangePasswordRules = Yup.object().shape({
+  password: Yup.string()
+    .min(6, 'The password is short - min 6 characters')
+    .required(i18n.t('Password Required')),
+  newPassword: Yup.string()
+    .min(6, 'The password is short - min 6 characters')
+    .required(i18n.t('Password Required')),
+  confirmPassword: Yup.string()
+    .min(6, 'The password is short - min 6 characters')
+    .required(i18n.t('Password Required'))
+});

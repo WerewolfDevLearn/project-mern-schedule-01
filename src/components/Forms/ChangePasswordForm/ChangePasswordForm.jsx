@@ -6,7 +6,7 @@ import i18n from 'i18next';
 import { useTranslation } from 'react-i18next';
 
 import PasswordInput from '../PasswordInput/PasswordInput';
-
+import { validationChangePasswordRules } from '../validationRules';
 import { XClose } from '../../shared/Icons';
 
 import {
@@ -21,21 +21,6 @@ import {
   UpdateBtn,
   CancelBtn
 } from './ChangePasswordForm.styled';
-
-const schema = yup.object().shape({
-  password: yup
-    .string()
-    .min(6, 'The password is short - min 6 characters')
-    .required(i18n.t('Password Required')),
-  newPassword: yup
-    .string()
-    .min(6, 'The password is short - min 6 characters')
-    .required(i18n.t('Password Required')),
-  confirmPassword: yup
-    .string()
-    .min(6, 'The password is short - min 6 characters')
-    .required(i18n.t('Password Required'))
-});
 
 export default function ChangePasswordForm({ onClose, callBack }) {
   const [validateAfterSubmit, setValidateAfterSubmit] = useState(false);
@@ -56,7 +41,7 @@ export default function ChangePasswordForm({ onClose, callBack }) {
     <>
       <Formik
         initialValues={initialValues}
-        validationSchema={schema}
+        validationSchema={validationChangePasswordRules}
         onSubmit={onSubmit}
         validateOnBlur={false}
         validateOnChange={validateAfterSubmit}
