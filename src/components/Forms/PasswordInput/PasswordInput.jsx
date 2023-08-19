@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-// import { Formik } from 'formik';
+import * as yup from 'yup';
+import i18n from 'i18next';
 import PropTypes from 'prop-types';
-// import icon from 'src/images/svg/login.svg';
 import iconError from 'src/images/svg/validation-error.svg';
 import iconSuccess from 'src/images/svg/validation-success.svg';
 import eyeOn from 'src/images/svg/eye-show.svg';
@@ -14,7 +14,7 @@ import {
   FormLabelSpan,
   InputContainer,
   InputField,
-  ErrorText,
+  ErrorMessage,
   TextCorrect,
   SvgValidate,
   SvgEye
@@ -29,8 +29,6 @@ export default function PasswordInput({ formik, label, name, placeholder }) {
   const togglePassword = () => {
     setPasswordShown(!passwordShown);
   };
-
-  const pass = passwordShown ? 'text' : 'password';
 
   {
     const { errors, handleSubmit, submitCount } = formik;
@@ -54,27 +52,27 @@ export default function PasswordInput({ formik, label, name, placeholder }) {
             type={passwordShown ? 'text' : 'password'}
             name={name}
             placeholder={placeholder}
-            className={validateInput('password')}
+            className={validateInput({ name })}
           />
           <button type="button" onClick={togglePassword}>
             <SvgEye
               src={passwordShown ? eyeOff : eyeOn}
               alt="Success Icon"
-              className={validateInput('password') !== '' ? 'right' : 'left'}
+              className={validateInput({ name }) !== '' ? 'right' : 'left'}
             />
           </button>
-          {validateInput('password') === 'input-correct' && (
+          {validateInput({ name }) === 'input-correct' && (
             <SvgValidate src={iconSuccess} alt="Success Icon" />
           )}
-          {validateInput('password') === 'input-error' && (
+          {validateInput({ name }) === 'input-error' && (
             <SvgValidate src={iconError} alt="Error Icon" />
           )}
         </InputContainer>
 
-        {validateInput('password') === 'input-correct' && (
+        {validateInput({ name }) === 'input-correct' && (
           <TextCorrect>{t('Correct password')}</TextCorrect>
         )}
-        <ErrorText name="password" component="p" />
+        <ErrorMessage name={name} component="p" />
       </div>
     );
   }

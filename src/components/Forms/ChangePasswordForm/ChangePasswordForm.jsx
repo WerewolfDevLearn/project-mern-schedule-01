@@ -21,7 +21,21 @@ import {
   CancelBtn
 } from './ChangePasswordForm.styled';
 
-const schema = yup.object().shape({});
+// const schema = yup.object().shape({});
+const schema = yup.object().shape({
+  password: yup
+    .string()
+    .min(6, 'The password is short - min 6 characters')
+    .required(i18n.t('Password Required')),
+  newPassword: yup
+    .string()
+    .min(6, 'The password is short - min 6 characters')
+    .required(i18n.t('Password Required')),
+  confirmPassword: yup
+    .string()
+    .min(6, 'The password is short - min 6 characters')
+    .required(i18n.t('Password Required'))
+});
 
 export default function ChangePasswordForm({ onClose }) {
   const initialValues = {};
@@ -44,19 +58,19 @@ export default function ChangePasswordForm({ onClose }) {
                   <PasswordInput
                     formik={formik}
                     label="Old password"
-                    name="old password"
+                    name="password"
                     placeholder="Password"
                   />
                   <PasswordInput
                     formik={formik}
                     label="New password"
-                    name="new password"
+                    name="newPassword"
                     placeholder="Password"
                   />
                   <PasswordInput
                     formik={formik}
                     label="Confirm new password"
-                    name="confirm new password"
+                    name="confirmPassword"
                     placeholder="Confirm"
                   />
                 </InputsContainer>

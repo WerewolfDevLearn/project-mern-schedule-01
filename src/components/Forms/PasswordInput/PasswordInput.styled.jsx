@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Form, Field, ErrorMessage } from 'formik';
+import { Form, Field, ErrorMessage as FormikErrorMessage } from 'formik';
 import { themes } from 'src/styles/variables/themes';
 
 export const FormLabelSpan = styled.span`
@@ -34,7 +34,7 @@ export const InputField = styled(Field)`
   }
 `;
 
-export const ErrorText = styled(ErrorMessage)`
+export const ErrorMessage = styled(FormikErrorMessage)`
   color: #da1414;
   font-size: ${themes.fontSizes.xs};
   font-weight: ${themes.fontWeight.r};
