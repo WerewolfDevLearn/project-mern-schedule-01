@@ -17,12 +17,12 @@ import {
   DeleteBtn
 } from './DeleteProfileForm.styled';
 
-export default function DeleteProfileForm({ onClose }) {
+export default function DeleteProfileForm({ onClose, callBack }) {
   const [isChecked, setIsChecked] = useState(false);
   console.log(isChecked);
 
-  const handleSubmit = (values) => {
-    console.log('values');
+  const handleSubmit = (data) => {
+    callBack(data);
   };
 
   return (

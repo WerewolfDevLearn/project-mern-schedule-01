@@ -1,7 +1,7 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import i18n from 'i18next';
 import { useTranslation } from 'react-i18next';
-import { useUser } from 'src/redux/selectors';
 import Modal from 'src/components/shared/Modal/Modal';
 
 import DeleteProfileForm from '../Forms/DeleteProfileForm/DeleteProfileForm';
@@ -9,8 +9,11 @@ import DeleteProfileForm from '../Forms/DeleteProfileForm/DeleteProfileForm';
 import { DeleteProfileBtn } from './DeleteProfileModal.styled';
 
 export default function DeleteProfileModal() {
+  const dispatch = useDispatch();
+  const callBack = (data) => {
+    // dispatch(updUser(data));
+  };
   const { t } = useTranslation();
-  //   const user = useUser();
 
   const [showDeleteProfileModal, setShowDeleteProfileModal] = useState(false);
 
@@ -26,7 +29,7 @@ export default function DeleteProfileModal() {
     <>
       {showDeleteProfileModal && (
         <Modal isOpen={showDeleteProfileModal} onClose={closeDeleteProfileModal}>
-          {<DeleteProfileForm onClose={closeDeleteProfileModal} />}
+          {<DeleteProfileForm onClose={closeDeleteProfileModal} callBack={callBack} />}
         </Modal>
       )}
       <DeleteProfileBtn type="button" onClick={openDeleteProfileModal}>
