@@ -8,7 +8,10 @@ import {
   addDays,
   startOfWeek,
   endOfMonth,
-  startOfMonth
+  startOfMonth,
+  subMonths,
+  addMonths,
+  getDay
 } from 'date-fns';
 
 import Loader from 'src/components/shared/Loader/Loader';
@@ -35,9 +38,10 @@ export default function CalendarTable() {
 
   const calendar = [];
   const generateCalendar = () => {
-    const firstDayOfMonth = startOfMonth(new Date());
+    const firstDayOfMonth = startOfMonth(new Date(currentDate));
     const startDay = startOfWeek(firstDayOfMonth, { weekStartsOn: 1 });
-    const lastDayOfMonth = endOfMonth(new Date());
+    const lastDayOfMonth = endOfMonth(new Date(currentDate));
+    const firstDayOfNextMonth = startOfMonth(new Date(addMonths(new Date(currentDate), 1)));
     let day = startDay;
 
     while (day < firstDayOfMonth) {
@@ -50,8 +54,11 @@ export default function CalendarTable() {
       day = addDays(day, 1);
     }
 
-    while (calendar.length < 42) {
+    let start = getDay(firstDayOfNextMonth);
+
+    while (start < 8) {
       calendar.push(null);
+      start += 1;
     }
   };
   generateCalendar();
