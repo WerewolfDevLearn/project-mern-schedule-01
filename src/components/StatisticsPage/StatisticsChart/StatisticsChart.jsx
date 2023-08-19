@@ -21,13 +21,13 @@ const StatisticsChart = ({ tasks }) => {
       inprogress: 0,
       done: 0
     };
-    
+
     const taskStatusCountMonth = {
       todo: 0,
       inprogress: 0,
       done: 0
     };
-    
+
     tasks.tasksByDay.forEach((task) => {
       console.log('tasks: ', tasks);
       if (task.category === 'to-do') {
@@ -55,7 +55,7 @@ const StatisticsChart = ({ tasks }) => {
   };
 
   const [taskStatusCountDay, taskStatusCountMonth] = calculateTaskStatusCount(tasks);
-  
+
   const calculatePercentages = (tasks) => {
     const allTasks = tasks.todo + tasks.inprogress + tasks.done;
     const todoPercentage = (tasks.todo / allTasks) * 100 || 0;
