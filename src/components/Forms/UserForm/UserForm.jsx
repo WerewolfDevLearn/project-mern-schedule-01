@@ -172,7 +172,9 @@ export default function UserForm({ callBack }) {
                   </FormInputContainer>
                   <FormBtn
                     type="submit"
-                    // disabled={!formik.isValid || formik.isSubmitting}
+                    disabled={
+                      !formik.isValid || !formik.touched || formik.isSubmitting || !formik.dirty
+                    }
                   >
                     {t('Save changes')}
                   </FormBtn>

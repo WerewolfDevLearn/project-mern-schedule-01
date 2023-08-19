@@ -93,7 +93,7 @@ export const DeleteBtn = styled.button`
 
   &:disabled {
     transform: none;
-    background-color: gray;
+    background-color: #8fc2fc;
     cursor: not-allowed;
   }
 `;

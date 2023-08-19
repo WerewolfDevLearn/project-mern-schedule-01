@@ -204,6 +204,12 @@ export const FormBtn = styled.button`
     transform: scale(1.1);
   }
 
+  &:disabled {
+    transform: none;
+    background-color: #8fc2fc;
+    cursor: not-allowed;
+  }
+
   @media screen and (${themes.breakpoints.m} <= width) {
     width: 262px;
     height: 48px;
