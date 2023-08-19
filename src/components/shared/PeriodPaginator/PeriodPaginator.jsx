@@ -2,8 +2,6 @@ import PropTypes from 'prop-types';
 import { format, parse, addMonths, subMonths } from 'date-fns';
 import { useParams, useNavigate } from 'react-router-dom';
 
-import { DatePicker } from '../DatePicker/DatePicker';
-
 import {
   DivWrapper,
   TitleWrapper,
@@ -11,6 +9,8 @@ import {
   ButtonWrapper1,
   ButtonWrapper2
 } from './PeriodPaginator.styled';
+import { forwardRef } from 'react';
+import CalendarDataPicker from '../CalendarDataPiker/CalendarDataPicker';
 
 const PeriodPaginator = ({ prevHandler, nextHandler, type }) => {
   const params = useParams();
@@ -64,11 +64,21 @@ const PeriodPaginator = ({ prevHandler, nextHandler, type }) => {
     }
     navigate(newPath, { replace: true });
   };
-
+  const CustomInput = forwardRef(({ value, onClick }, ref) => {
+    console.log('VALUE', value);
+    return (
+      <TitleWrapper onClick={onClick} ref={ref}>
+        {type === 'month' ? value : value}
+      </TitleWrapper>
+    );
+  });
+  const currentDate = parse(params.currentDate, 'yyyy-MM-dd', new Date());
+  console.log('CURRENT', currentDate);
   return (
     <DivWrapper>
-      <DatePicker onSelectDay={navigate} />
-      <TitleWrapper>{type === 'month' ? formattedDate : formattedDate}</TitleWrapper>
+      <CalendarDataPicker type={type} CustomInput={CustomInput} onSelectDay={currentDate} />
+      {/* <DatePicker onSelectDay={navigate} /> */}
+      {/* <TitleWrapper>{type === 'month' ? formattedDate : formattedDate}</TitleWrapper> */}
       <ButtonsWrapper>
         <ButtonWrapper1
           onClick={() => {
