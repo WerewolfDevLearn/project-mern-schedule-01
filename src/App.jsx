@@ -56,7 +56,7 @@ function App() {
         </Routes>
       </Suspense>
       <ThemeProvider theme={theme}>
-        <ToastContainer hideProgressBar theme={theme.toastify.theme} />
+        <ToastContainer hideProgressBar closeOnClick theme={theme.toastify.theme} />
       </ThemeProvider>
     </>
   );
