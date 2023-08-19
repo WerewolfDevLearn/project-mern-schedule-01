@@ -1,36 +1,38 @@
-import { Suspense, useState } from 'react';
-import { Outlet, useLocation } from 'react-router-dom';
+import { addDays, addMonths, format, subDays, subMonths } from 'date-fns';
+import { Suspense } from 'react';
+import { Outlet, useLocation, useNavigate, useParams } from 'react-router-dom';
 
 import { CalendarToolbar } from '../shared/CalendarToolbar/CalendarToolbar';
 import Loader from '../shared/Loader/Loader';
 
 export default function CalendarPage() {
+  const { currentDate } = useParams();
+  const navigate = useNavigate();
   const { pathname } = useLocation();
-  const today = pathname.split('/')[3];
-  const date = new Date();
-  const currYear = date.getFullYear();
-  const currMonth = date.getMonth();
-  const [month, setMonth] = useState(currMonth + 1);
-  const [, setYear] = useState(currYear);
 
   const onPrev = () => {
-    setMonth((month) => month - 1);
-    if (month <= 1) {
-      setYear((year) => year - 1);
-      setMonth(12);
+    if (pathname.includes('day')) {
+      const newDate = subDays(new Date(currentDate), 1);
+      navigate(`/calendar/day/${format(newDate, 'yyyy-MM-dd')}`);
+      return;
     }
+    const newDate = subMonths(new Date(currentDate), 1);
+    navigate(`/calendar/month/${format(newDate, 'yyyy-MM-dd')}`);
   };
+
   const onNext = () => {
-    setMonth((month) => month + 1);
-    if (month >= 12) {
-      setYear((year) => year + 1);
-      setMonth(1);
+    if (pathname.includes('day')) {
+      const newDate = addDays(new Date(currentDate), 1);
+      navigate(`/calendar/day/${format(newDate, 'yyyy-MM-dd')}`);
+      return;
     }
+    const newDate = addMonths(new Date(currentDate), 1);
+    navigate(`/calendar/month/${format(newDate, 'yyyy-MM-dd')}`);
   };
 
   return (
     <>
-      <CalendarToolbar prevHandler={onPrev} nextHandler={onNext} today={today} />
+      <CalendarToolbar prevHandler={onPrev} nextHandler={onNext} today={currentDate} />
       <Suspense fallback={<Loader />}>
         <Outlet />
       </Suspense>

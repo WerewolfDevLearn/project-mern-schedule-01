@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 import { addDays, eachDayOfInterval, format, startOfWeek } from 'date-fns';
-import { useNavigate } from 'react-router-dom';
 
 import {
   DayCalendarHeadStyles,
@@ -13,9 +13,14 @@ import {
 } from './DayCalendarHead.styled';
 
 export default function DayCalendarHead({ date }) {
+  const { currentDate } = useParams();
   const { t } = useTranslation();
   const [selectedDay, setSelectedDay] = useState(date);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    setSelectedDay(currentDate);
+  }, [currentDate]);
 
   const screenWidth = window.innerWidth;
 
