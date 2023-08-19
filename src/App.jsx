@@ -13,7 +13,7 @@ import AccountPage from './components/AccountPage/AccountPage';
 import CalendarPage from './components/CalendarPage/CalendarPage';
 import ChoosedMonth from './components/CalendarPage/ChoosedMonth/ChoosedMonth';
 import ChoosedDay from './components/CalendarPage/ChoosedDay/ChoosedDay';
-import SatisticsPage from './components/SatisticsPage/StatisticsPage';
+import StatisticsPage from './components/StatisticsPage/StatisticsPage';
 import Loader from './components/shared/Loader/Loader';
 import MainPage from './pages/MainPage';
 import ErrorPage from './pages/ErrorPage/ErrorPage';
@@ -48,7 +48,7 @@ function App() {
                 <Route path={routes.calendarMonth} element={<ChoosedMonth />} />
                 <Route path={routes.calendarDay} element={<ChoosedDay />} />
               </Route>
-              <Route path={routes.statisticsPage} element={<SatisticsPage />} />
+              <Route path={routes.statisticsPage} element={<StatisticsPage />} />
             </Route>
           </Route>
 
