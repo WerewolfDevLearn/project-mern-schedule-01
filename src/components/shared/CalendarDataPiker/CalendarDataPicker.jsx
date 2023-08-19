@@ -1,17 +1,10 @@
-import { forwardRef, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker-cssmodules.css';
-import { DataBtn, CalendarGlobalStyles } from './CalendarDataPicker.styled';
-import { parse, format } from 'date-fns';
+import { CalendarGlobalStyles } from './CalendarDataPicker.styled';
+import { format } from 'date-fns';
 
 import { useNavigate, useParams } from 'react-router-dom';
-// const [startDate, setStartDate] = useState(new Date());
-//   const navigate = useNavigate();
-// onChange={(date) => {
-//           setStartDate(date);
-//           const formattedDate = format(date, 'yyyy-MM-dd');
-//           navigate(`/calendar/${formattedDate}`);
-//         }
 
 export default function CalendarDataPicker({ type, CustomInput, onSelectDay }) {
   const [startDate, setStartDate] = useState(onSelectDay);
