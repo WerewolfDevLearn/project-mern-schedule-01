@@ -21,8 +21,8 @@ export const AvatarDeleteIcon = styled.div`
   position: absolute;
   width: 14px;
   height: 14px;
-  top: 73%;
-  left: 78%;
+  top: 74%;
+  left: 79%;
   color: white;
   background-color: #fad91b;
   border-radius: 50%;
