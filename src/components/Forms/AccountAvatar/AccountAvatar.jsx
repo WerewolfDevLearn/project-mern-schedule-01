@@ -1,10 +1,12 @@
-import { useState, useRef } from 'react';
+import { useRef } from 'react';
 import PropTypes from 'prop-types';
 import Avatar from '@mui/material/Avatar';
 import i18n from 'i18next';
 import { useTranslation } from 'react-i18next';
 import { useUser } from 'src/redux/selectors';
 import { Plus, Trash } from 'src/components/shared/Icons';
+
+import { SUPPORTED_FORMATS } from '../validationRules';
 
 import {
   AvatarDeleteIcon,
@@ -14,8 +16,6 @@ import {
   AvatarImgContainer,
   AvatarImg
 } from './AccountAvatar.styled';
-
-const SUPPORTED_FORMATS = ['image/webp', 'image/jpg', 'image/jpeg', 'image/gif', 'image/png'];
 
 export default function AccountAvatar({
   selectedAvatar,

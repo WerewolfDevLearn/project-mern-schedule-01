@@ -15,6 +15,14 @@ export const validationLoginRules = Yup.object().shape({
   password: Yup.string().required(i18n.t('Password Required')).min(6, i18n.t('Password Characters'))
 });
 
+export const SUPPORTED_FORMATS = [
+  'image/webp',
+  'image/jpg',
+  'image/jpeg',
+  'image/gif',
+  'image/png'
+];
+
 export const validationAvatarRules = Yup.object().shape({
   avatar: Yup.mixed().test(
     'fileType',
