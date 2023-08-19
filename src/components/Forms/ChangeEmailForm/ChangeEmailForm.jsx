@@ -8,6 +8,8 @@ import i18n from 'i18next';
 import { XClose } from '../../shared/Icons';
 import VerifyForm from '../VerifyForm/VerifyForm';
 
+import { validationChangeEmailRules } from '../validationRules';
+
 import {
   Modal,
   XCloseWrap,
@@ -21,10 +23,6 @@ import {
   UpdateBtn,
   CancelBtn
 } from './ChangeEmailForm.styled';
-
-const schema = yup.object().shape({
-  email: yup.string('Enter your email').email(i18n.t('Error email')).required('Email is required')
-});
 
 export default function ChangeEmailForm({ onClose }) {
   const initialValues = {};
@@ -54,7 +52,11 @@ export default function ChangeEmailForm({ onClose }) {
 
   return (
     <>
-      <Formik initialValues={initialValues} validationSchema={schema} onSubmit={handleSubmit}>
+      <Formik
+        initialValues={initialValues}
+        validationSchema={validationChangeEmailRules}
+        onSubmit={handleSubmit}
+      >
         {(formik) => {
           return (
             <>

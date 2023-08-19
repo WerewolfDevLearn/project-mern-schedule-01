@@ -31,6 +31,10 @@ export const validationAvatarRules = Yup.object().shape({
   )
 });
 
+export const validationChangeEmailRules = Yup.object().shape({
+  email: Yup.string('Enter your email').email(i18n.t('Error email')).required('Email is required')
+});
+
 export const validationChangePasswordRules = Yup.object().shape({
   password: Yup.string()
     .min(6, 'The password is short - min 6 characters')
