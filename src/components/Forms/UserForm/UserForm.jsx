@@ -2,7 +2,6 @@ import { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { Formik, Form } from 'formik';
 import { format } from 'date-fns';
-import * as yup from 'yup';
 import i18n from 'i18next';
 import { useTranslation } from 'react-i18next';
 // import { toast } from 'react-hot-toast';
@@ -14,6 +13,7 @@ import ChangeEmailModal from '../../ChangeEmailModal/ChangeEmailModal';
 import ChangePasswordModal from '../../ChangePasswordModal/ChangePasswordModal';
 
 import { validationAvatarRules } from '../validationRules';
+import { validationUserFormRules } from '../validationRules';
 
 import {
   FormContainer,
@@ -29,19 +29,6 @@ import {
   BtnWrapper,
   ChangeValueBtnWrap
 } from './UserForm.styled';
-
-const PATTERN_FOR_PHONE = /^\+380\d{9}$/;
-
-const schema = yup.object().shape({
-  name: yup
-    .string('Enter your name')
-    .min(4, 'The name is short - must contain at least 4 characters')
-    .max(16, 'Name is too long - should be 16 chars maximum.')
-    .required('Name is required'),
-  phone: yup.string().matches(PATTERN_FOR_PHONE, 'Invalid phone number'),
-  birthday: yup.date('YYYY-MM-DD'),
-  skype: yup.string().max(16, 'Too long - should be 16 chars maximum.')
-});
 
 export default function UserForm({ callBack }) {
   const { t } = useTranslation();
@@ -112,7 +99,7 @@ export default function UserForm({ callBack }) {
     <>
       <Formik
         initialValues={initialValues}
-        validationSchema={(schema, validationAvatarRules)}
+        validationSchema={(validationUserFormRules, validationAvatarRules)}
         onSubmit={onSubmit}
         enableReinitialize
       >

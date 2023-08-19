@@ -23,6 +23,8 @@ export const SUPPORTED_FORMATS = [
   'image/png'
 ];
 
+const PATTERN_FOR_PHONE = /^\+380\d{9}$/;
+
 export const validationAvatarRules = Yup.object().shape({
   avatar: Yup.mixed().test(
     'fileType',
@@ -45,4 +47,14 @@ export const validationChangePasswordRules = Yup.object().shape({
   confirmPassword: Yup.string()
     .min(6, 'The password is short - min 6 characters')
     .required(i18n.t('Password Required'))
+});
+
+export const validationUserFormRules = Yup.object().shape({
+  name: Yup.string('Enter your name')
+    .min(4, 'The name is short - must contain at least 4 characters')
+    .max(16, 'Name is too long - should be 16 chars maximum.')
+    .required('Name is required'),
+  phone: Yup.string().matches(PATTERN_FOR_PHONE, 'Invalid phone number'),
+  birthday: Yup.date('YYYY-MM-DD'),
+  skype: Yup.string().max(16, 'Too long - should be 16 chars maximum.')
 });
