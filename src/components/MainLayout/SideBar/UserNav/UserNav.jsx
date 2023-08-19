@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { BsBarChart } from 'react-icons/bs';
 import UserCheck from 'src/components/shared/Icons/UserCheck';
@@ -8,10 +10,13 @@ import routes from 'src/routes.js';
 import { NavUl, NavLinkStyled, IconDiv } from './UserNav.styled';
 
 export default function UserNav() {
-  const isMonthViewActive = location.pathname.includes('/calendar/month');
-  const isDayViewActive = location.pathname.includes('/calendar/day');
-
+  const location = useLocation();
+  const [isCalendar, setIsCalendar] = useState();
   const { t } = useTranslation();
+
+  useEffect(() => {
+    setIsCalendar(location.pathname.includes('/calendar'));
+  }, [location]);
 
   return (
     <NavUl>
@@ -26,7 +31,7 @@ export default function UserNav() {
       <li key="CalendarPage">
         <NavLinkStyled
           to={`${routes.navFromLogIn}/${getCurrentDate()}`}
-          className={isMonthViewActive || isDayViewActive ? 'active' : ''}
+          className={isCalendar && 'active'}
         >
           <IconDiv>
             <CalendarCheck />

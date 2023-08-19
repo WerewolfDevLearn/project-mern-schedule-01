@@ -4,6 +4,8 @@ import { XClose, Pencil, Trash, RatingStar } from 'src/components/shared/Icons';
 import { Field, ErrorMessage as FormikErrorMessage } from 'formik';
 
 export const FeedbackFormStyles = styled.div`
+  position: relative;
+  
   width: calc(100vw - 32px);
   max-width: 468px;
   padding: 32px;

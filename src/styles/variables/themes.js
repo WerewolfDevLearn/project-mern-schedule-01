@@ -107,6 +107,9 @@ export const themes = Object.freeze({
   backgroundImages: {
     oldPaper,
     reallyOldPaper
+  },
+  toastify: {
+    theme: 'light'
   }
 });
 
@@ -218,5 +221,8 @@ export const dark = Object.freeze({
   backgroundImages: {
     oldPaper: oldBlackPaper,
     reallyOldPaper: reallyOldBlackPaper
+  },
+  toastify: {
+    theme: 'dark'
   }
 });
