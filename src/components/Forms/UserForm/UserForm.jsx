@@ -7,10 +7,11 @@ import i18n from 'i18next';
 import { useTranslation } from 'react-i18next';
 // import { toast } from 'react-hot-toast';
 import { useUser } from 'src/redux/selectors';
+import DeleteProfileModal from 'src/components/DeleteProfileModal/DeleteProfileModal';
+
 import AccountAvatar from '../AccountAvatar/AccountAvatar';
 import ChangeEmailModal from '../../ChangeEmailModal/ChangeEmailModal';
 import ChangePasswordModal from '../../ChangePasswordModal/ChangePasswordModal';
-import DeleteProfileModal from 'src/components/DeleteProfileModal/DeleteProfileModal';
 
 import {
   FormContainer,
@@ -57,10 +58,10 @@ export default function UserForm({ callBack }) {
   const [selectedAvatar, setSelectedAvatar] = useState(user.avatarUrl);
   const [selectedDate, setSelectedDate] = useState(initialValues.birthday);
 
-  const handleDateChange = (date) => {
-    console.log(data);
-    setSelectedDate(date);
-  };
+  // const handleDateChange = (date) => {
+  //   console.log(data);
+  //   setSelectedDate(date);
+  // };
 
   const onSubmit = (data) => {
     const formData = new FormData();

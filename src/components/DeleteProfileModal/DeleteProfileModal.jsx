@@ -3,6 +3,7 @@ import i18n from 'i18next';
 import { useTranslation } from 'react-i18next';
 import { useUser } from 'src/redux/selectors';
 import Modal from 'src/components/shared/Modal/Modal';
+
 import DeleteProfileForm from '../Forms/DeleteProfileForm/DeleteProfileForm';
 
 import { DeleteProfileBtn } from './DeleteProfileModal.styled';
