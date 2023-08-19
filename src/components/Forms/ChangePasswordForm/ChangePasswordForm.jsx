@@ -29,23 +29,6 @@ export default function ChangePasswordForm({ onClose }) {
     console.log(values);
   };
 
-  const FormikInput = ({ label, type, name, placeholder }) => {
-    return (
-      <label htmlFor={name}>
-        <FormLabelSpan>{label}</FormLabelSpan>
-        <InputField id={name} type={type} name={name} placeholder={placeholder} />
-        <ErrorMessage name={name} component="div" />
-      </label>
-    );
-  };
-
-  FormikInput.propTypes = {
-    label: PropTypes.string.isRequired,
-    type: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    placeholder: PropTypes.string.isRequired
-  };
-
   return (
     <>
       <Formik initialValues={initialValues} validationSchema={schema} onSubmit={handleSubmit}>
