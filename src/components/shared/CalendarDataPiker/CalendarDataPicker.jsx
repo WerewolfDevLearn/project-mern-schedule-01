@@ -1,10 +1,10 @@
+import { format } from 'date-fns';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
+
 import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 import { CalendarGlobalStyles } from './CalendarDataPicker.styled';
-import { format } from 'date-fns';
-
-import { useNavigate, useParams } from 'react-router-dom';
 
 export default function CalendarDataPicker({ type, CustomInput, onSelectDay }) {
   const [startDate, setStartDate] = useState(onSelectDay);
@@ -13,7 +13,7 @@ export default function CalendarDataPicker({ type, CustomInput, onSelectDay }) {
   useEffect(() => {
     setStartDate(onSelectDay);
   }, [onSelectDay]);
-  console.log('STARTDATE', startDate);
+  // console.log('STARTDATE', startDate);
   return (
     <>
       <DatePicker
