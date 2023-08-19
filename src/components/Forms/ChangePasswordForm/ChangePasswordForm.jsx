@@ -72,14 +72,8 @@ export default function ChangePasswordForm({ onClose }) {
                     name="new password"
                     placeholder="Password"
                   />
-                  <FormikInput
+                  <PasswordInput
                     formik={formik}
-                    label="New password"
-                    type="password"
-                    name="new password"
-                    placeholder="Password"
-                  />
-                  <FormikInput
                     label="Confirm new password"
                     type="password"
                     name="confirm new password"
