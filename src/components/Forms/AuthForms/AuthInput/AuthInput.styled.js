@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Form, Field, ErrorMessage } from 'formik';
+import { Field, ErrorMessage } from 'formik';
 import { themes } from 'src/styles/variables/themes';
 
 export const Subtitle = styled.label`
