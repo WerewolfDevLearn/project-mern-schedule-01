@@ -88,6 +88,12 @@ export const UpdateBtn = styled.button`
     background-color: #2b78ef;
     transform: scale(1.1);
   }
+
+  &:disabled {
+    transform: none;
+    background-color: #8fc2fc;
+    cursor: not-allowed;
+  }
 `;
 
 export const CancelBtn = styled.button`

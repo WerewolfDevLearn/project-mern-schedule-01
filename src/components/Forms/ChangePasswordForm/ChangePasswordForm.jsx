@@ -74,7 +74,14 @@ export default function ChangePasswordForm({ onClose }) {
                   />
                 </InputsContainer>
                 <BtnWrap>
-                  <UpdateBtn type="submit">Update password</UpdateBtn>
+                  <UpdateBtn
+                    type="submit"
+                    disabled={
+                      !formik.isValid || !formik.touched || formik.isSubmitting || !formik.dirty
+                    }
+                  >
+                    Update password
+                  </UpdateBtn>
                   <CancelBtn type="button" onClick={onClose}>
                     Cancel
                   </CancelBtn>
