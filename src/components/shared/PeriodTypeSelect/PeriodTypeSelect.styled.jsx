@@ -19,9 +19,11 @@ export const Item = styled.li`
 export const StyledNavLink = styled(NavLink)`
   color: #3e85f3;
   background-color: #e3f3ff;
+  border: 1px solid rgba(220, 227, 229, 0.8);
+
   &.active {
-    background-color: #cae8ff;
-    color: #3e85f3;
+    background-color: ${({ colorbtn }) => (colorbtn === 'white' ? '#cae8ff' : 'transparent')};
+    color: ${({ colorbtn }) => (colorbtn === 'white' ? '#3e85f3' : '#3e85f3')};
   }
 
   &.month {

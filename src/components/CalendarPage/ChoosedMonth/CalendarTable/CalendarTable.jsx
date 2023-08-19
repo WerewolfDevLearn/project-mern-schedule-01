@@ -8,7 +8,10 @@ import {
   addDays,
   startOfWeek,
   endOfMonth,
-  startOfMonth
+  startOfMonth,
+  subMonths,
+  addMonths,
+  getDay
 } from 'date-fns';
 
 import Loader from 'src/components/shared/Loader/Loader';
@@ -35,13 +38,27 @@ export default function CalendarTable() {
 
   const calendar = [];
   const generateCalendar = () => {
-    const firstDayOfMonth = startOfMonth(new Date());
+    const firstDayOfMonth = startOfMonth(new Date(currentDate));
     const startDay = startOfWeek(firstDayOfMonth, { weekStartsOn: 1 });
-    const lastDayOfMonth = endOfMonth(new Date());
+    const lastDayOfMonth = endOfMonth(new Date(currentDate));
+    const firstDayOfNextMonth = startOfMonth(new Date(addMonths(new Date(currentDate), 1)));
     let day = startDay;
+
+    while (day < firstDayOfMonth) {
+      calendar.push(null);
+      day = addDays(day, 1);
+    }
+
     while (day <= lastDayOfMonth) {
       calendar.push(day);
       day = addDays(day, 1);
+    }
+
+    let start = getDay(firstDayOfNextMonth);
+
+    while (start < 8) {
+      calendar.push(null);
+      start += 1;
     }
   };
   generateCalendar();
@@ -59,6 +76,9 @@ export default function CalendarTable() {
   const RC = () => {
     if (!isTasksLoading) {
       const renderedCalendar = calendar.map((dayItem, idx) => {
+        if (!dayItem) {
+          return <CellWrapper key={idx} />;
+        }
         const calendarWithTask = getDayTasks(dayItem, respons?.tasks);
 
         return (
@@ -68,7 +88,7 @@ export default function CalendarTable() {
             iscurrentmonth={isCurrentMonth(dayItem).toString()}
             istoday={isToday(dayItem).toString()}
           >
-            <RowInCell $justifyContent="flex-end">
+            <RowInCell>
               <ShowDayWrapper>
                 {isToday(dayItem) ? (
                   <CurrentDay>{format(dayItem, 'd')}</CurrentDay>
@@ -77,13 +97,16 @@ export default function CalendarTable() {
                 )}
               </ShowDayWrapper>
               <TaskListWrapper>
-                {calendarWithTask.slice(0, 2).map((task) => (
-                  <TaskItem key={task._id} priority={task.priority}>
-                    {task.title}
-                  </TaskItem>
-                ))}
+                {calendarWithTask &&
+                  calendarWithTask.slice(0, 2).map((task) => (
+                    <TaskItem key={task._id} priority={task.priority}>
+                      {task.title}
+                    </TaskItem>
+                  ))}
               </TaskListWrapper>
-              {calendarWithTask.length > 2 && <TasksMoreLabel>...</TasksMoreLabel>}
+              {calendarWithTask && calendarWithTask.length > 2 && (
+                <TasksMoreLabel>...</TasksMoreLabel>
+              )}
             </RowInCell>
           </CellWrapper>
         );

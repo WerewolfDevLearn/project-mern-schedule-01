@@ -1,6 +1,9 @@
+import { AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import Modal from 'src/components/shared/Modal/Modal';
+
+import { modalBackdropcolors } from 'src/styles/variables/themes';
 
 import ColumnHeadBar from '../ColumnHeadBar/ColumnHeadBar';
 import ColumnTasksList from '../ColumnTasksList/ColumnTasksList';
@@ -34,16 +37,18 @@ export default function TasksColumn({ tasks, title }) {
         <ColumnTasksList tasks={tasks} openModal={openModal} />
         <AddTaskBtn tasksCount={tasks.length} openModal={openModal} />
       </TasksColumnStyles>
-      {modalOptions.isOpen && (
-        <Modal onClose={closeModal}>
-          <TaskForm
-            onClose={closeModal}
-            action={modalOptions.action}
-            column={title}
-            taskToEdit={modalOptions.taskToEdit}
-          />
-        </Modal>
-      )}
+      <AnimatePresence>
+        {modalOptions.isOpen && (
+          <Modal onClose={closeModal} color={modalBackdropcolors.grey} clickable>
+            <TaskForm
+              onClose={closeModal}
+              action={modalOptions.action}
+              column={title}
+              taskToEdit={modalOptions.taskToEdit}
+            />
+          </Modal>
+        )}
+      </AnimatePresence>
     </>
   );
 }
