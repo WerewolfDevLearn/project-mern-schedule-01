@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Formik, Form } from 'formik';
 import PropTypes from 'prop-types';
-import * as yup from 'yup';
 import i18n from 'i18next';
 import { useTranslation } from 'react-i18next';
 

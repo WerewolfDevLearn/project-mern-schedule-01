@@ -19,7 +19,6 @@ import {
 
 export default function DeleteProfileForm({ onClose, callBack }) {
   const [isChecked, setIsChecked] = useState(false);
-  console.log(isChecked);
 
   const handleSubmit = (data) => {
     callBack(data);
@@ -57,5 +56,6 @@ export default function DeleteProfileForm({ onClose, callBack }) {
 }
 
 DeleteProfileForm.propTypes = {
-  onClose: PropTypes.func.isRequired
+  onClose: PropTypes.func.isRequired,
+  callBack: PropTypes.func.isRequired
 };
