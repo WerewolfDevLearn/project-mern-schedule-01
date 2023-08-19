@@ -28,9 +28,9 @@ export const CalendarGlobalStyles = createGlobalStyle`
     left: 50%;
     top: 50%;
     transform: translate(-1%, 0%);
-   display: flex;
-   flex-direction: column;
-   align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 327px;
     height: 354px;
     padding: 9px 18px;
@@ -86,7 +86,7 @@ export const CalendarGlobalStyles = createGlobalStyle`
   }
   .react-datepicker__navigation {
     margin-top: 24px;
-     color: ${({ theme }) => theme.colors.white};
+    color: ${({ theme }) => theme.colors.white};
   }
   .react-datepicker__navigation--previous {
     left: 7px;
