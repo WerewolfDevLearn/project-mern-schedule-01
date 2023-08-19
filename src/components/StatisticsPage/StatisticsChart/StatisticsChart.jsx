@@ -12,7 +12,14 @@ import {
   LabelList
 } from 'recharts';
 
-import { StatisticsChartStyles, ChartContainer } from './StatisticsChart.styled';
+import {
+  StatisticsChartStyles,
+  ChartContainer,
+  LegendStyles,
+  LegendItem,
+  Ellipse
+} from './StatisticsChart.styled';
+import { themes } from 'src/styles/variables/themes';
 
 const StatisticsChart = ({ tasks }) => {
   const calculateTaskStatusCount = (tasks) => {
@@ -29,7 +36,6 @@ const StatisticsChart = ({ tasks }) => {
     };
 
     tasks.tasksByDay.forEach((task) => {
-      console.log('tasks: ', tasks);
       if (task.category === 'to-do') {
         taskStatusCountDay.todo += 1;
       } else if (task.category === 'in-progress') {
@@ -40,7 +46,6 @@ const StatisticsChart = ({ tasks }) => {
     });
 
     tasks.tasks.forEach((task) => {
-      console.log('tasks: ', tasks);
       if (task.category === 'to-do') {
         taskStatusCountMonth.todo += 1;
       } else if (task.category === 'in-progress') {
@@ -49,8 +54,6 @@ const StatisticsChart = ({ tasks }) => {
         taskStatusCountMonth.done += 1;
       }
     });
-    console.log('taskStatusCountMonth: ', taskStatusCountMonth);
-    console.log('taskStatusCountDay: ', taskStatusCountDay);
     return [taskStatusCountDay, taskStatusCountMonth];
   };
 
@@ -84,6 +87,19 @@ const StatisticsChart = ({ tasks }) => {
     { name: 'Done', byDay: chartDataByDay.donePercentage, byMonth: chartDataByMonth.donePercentage }
   ];
 
+  const renderLegend = ({ payload }) => {
+    return (
+      <LegendStyles>
+        {payload.map((entry, index) => (
+          <LegendItem key={`item-${index}`}>
+            <Ellipse type={entry.value} />
+            {entry.value}
+          </LegendItem>
+        ))}
+      </LegendStyles>
+    );
+  };
+
   return (
     <StatisticsChartStyles>
       <ChartContainer>
@@ -94,19 +110,33 @@ const StatisticsChart = ({ tasks }) => {
             barGap={10}
             barCategoryGap="20%"
           >
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="name" />
-            <YAxis tickCount={6} domain={[0, 100]} interval={0}>
-              <Label value="Tasks" angle={0} position="top" offset={10} />
+            <CartesianGrid vertical={false} stroke={themes.colors.ligthBlue} />
+            <XAxis dataKey="name" axisLine={false} tickLine={false} tickMargin={20} />
+            <YAxis
+              tickCount={6}
+              domain={[0, 100]}
+              interval={0}
+              axisLine={false}
+              tickLine={false}
+              tickMargin={14}
+            >
+              <Label value="Tasks" angle={0} position="top" offset={20} />
             </YAxis>
             <Tooltip />
-            <Legend align="right" verticalAlign="top" layout="vertical" />
+            <Legend
+              align="left"
+              verticalAlign="top"
+              layout="horizontal"
+              iconType="circle"
+              margin={{ bottom: '10px' }}
+              content={renderLegend}
+            />
             <Bar
               dataKey="byDay"
               fill="url(#colorByDay)"
               name="By Day"
               radius={[0, 0, 7.5, 7.5]}
-              barSize={27}
+              barSize={22}
             >
               <LabelList
                 dataKey="byDay"
@@ -119,7 +149,7 @@ const StatisticsChart = ({ tasks }) => {
               fill="url(#colorByMonth)"
               name="By Month"
               radius={[0, 0, 7.5, 7.5]}
-              barSize={27}
+              barSize={22}
             >
               <LabelList
                 dataKey="byMonth"
