@@ -37,9 +37,8 @@ const schema = yup.object().shape({
     .max(16, 'Name is too long - should be 16 chars maximum.')
     .required('Name is required'),
   phone: yup.string().matches(PATTERN_FOR_PHONE, 'Invalid phone number'),
-  birthday: yup.date('yyyy - mm - dd'),
+  birthday: yup.date('YYYY-MM-DD'),
   skype: yup.string().max(16, 'Too long - should be 16 chars maximum.')
-  // email: yup.string('Enter your email').email(i18n.t('Error email')).required('Email is required')
 });
 
 export default function UserForm({ callBack }) {

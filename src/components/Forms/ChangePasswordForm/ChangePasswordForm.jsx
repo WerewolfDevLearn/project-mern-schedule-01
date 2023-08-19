@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Formik, Form } from 'formik';
-import PropTypes, { resetWarningCache } from 'prop-types';
+import PropTypes from 'prop-types';
 import * as yup from 'yup';
 import i18n from 'i18next';
 import { useTranslation } from 'react-i18next';
@@ -22,7 +22,6 @@ import {
   CancelBtn
 } from './ChangePasswordForm.styled';
 
-// const schema = yup.object().shape({});
 const schema = yup.object().shape({
   password: yup
     .string()
@@ -105,7 +104,12 @@ export default function ChangePasswordForm({ onClose, callBack }) {
                 <BtnWrap>
                   <UpdateBtn
                     type="submit"
-                    onClick={handleSubmit}
+                    onClick={() => {
+                      formik.handleSubmit();
+                      if (formik.isValid && !formik.dirty) {
+                        onClose;
+                      }
+                    }}
                     disabled={
                       !formik.isValid || !formik.touched || formik.isSubmitting || !formik.dirty
                     }

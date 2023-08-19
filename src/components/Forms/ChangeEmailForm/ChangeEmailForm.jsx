@@ -22,7 +22,9 @@ import {
   CancelBtn
 } from './ChangeEmailForm.styled';
 
-const schema = yup.object().shape({});
+const schema = yup.object().shape({
+  email: yup.string('Enter your email').email(i18n.t('Error email')).required('Email is required')
+});
 
 export default function ChangeEmailForm({ onClose }) {
   const initialValues = {};
