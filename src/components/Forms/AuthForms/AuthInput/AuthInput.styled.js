@@ -53,6 +53,15 @@ export const Input = styled(Field)`
     border: 1px solid ${themes.colors.textAndIconTodo};
   }
 
+  &::placeholder {
+    color: ${themes.colors.placegolderAuth};
+  }
+
+  &#login_password::placeholder {
+    font-size: ${themes.fontSizes.xs};
+    letter-spacing: 4px;
+  }
+
   &.input-error {
     border: 1px solid ${themes.colors.failed};
   }

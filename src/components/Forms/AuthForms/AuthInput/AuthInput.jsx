@@ -53,7 +53,7 @@ export default function AuthInput({
         {status === 'input-correct' && <SvgValidate src={iconSuccess} alt="Success Icon" />}
         {status === 'input-error' && <SvgValidate src={iconError} alt="Error Icon" />}
       </InputContainer>
-      {status === 'input-correct' && <TextCorrect>{t('Correct name')}</TextCorrect>}
+      {status === 'input-correct' && <TextCorrect>{t(`Correct ${name}`)}</TextCorrect>}
       <ErrorText name={name} component="p" />
     </Subtitle>
   );

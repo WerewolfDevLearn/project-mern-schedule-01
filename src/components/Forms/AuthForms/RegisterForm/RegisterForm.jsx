@@ -3,24 +3,24 @@ import { useTranslation } from 'react-i18next';
 import { Formik } from 'formik';
 import PropTypes from 'prop-types';
 import icon from 'src/images/svg/login.svg';
-import eyeOn from 'src/images/svg/eye-show.svg';
-import eyeOff from 'src/images/svg/eye-off.svg';
+// import eyeOn from 'src/images/svg/eye-show.svg';
+// import eyeOff from 'src/images/svg/eye-off.svg';
 import AuthGoogleBtn from 'src/components/shared/AuthGoogle/AuthGoogleBtn/AuthGoogleBtn';
 
-import { validationRegisterRules } from '../../validationRules';
+import { validationRegisterRules } from '../validationRules';
 import AuthInput from '../AuthInput/AuthInput';
 
 import { Container, Title, FormElement, InputWrap, Button, Img } from './RegisterForm.styled';
 
 export default function RegisterForm({ callBack }) {
-  const [passwordShown, setPasswordShown] = useState(false);
+  // const [passwordShown, setPasswordShown] = useState(false);
   const [validateAfterSubmit, setValidateAfterSubmit] = useState(false);
 
   const { t } = useTranslation();
 
-  const togglePassword = () => {
-    setPasswordShown(!passwordShown);
-  };
+  // const togglePassword = () => {
+  //   setPasswordShown(!passwordShown);
+  // };
 
   return (
     <Container>

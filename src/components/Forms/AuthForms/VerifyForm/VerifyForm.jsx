@@ -15,13 +15,14 @@ import {
 } from './VerifyForm.styled';
 
 export default function VerifyForm({ onSubmitForm }) {
+  // const { t } = useTranslation();
   const onSubmit = (data) => {
     onSubmitForm(data);
   };
 
   return (
     <Container>
-      <Title>Verify</Title>
+      <Title>Verification</Title>
       <Formik initialValues={{ verificationCode: '' }} onSubmit={onSubmit}>
         {() => (
           <FormElement autoComplete="off">

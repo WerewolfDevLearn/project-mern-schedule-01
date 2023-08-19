@@ -3,39 +3,17 @@ import { useTranslation } from 'react-i18next';
 import { Formik } from 'formik';
 import PropTypes from 'prop-types';
 import icon from 'src/images/svg/login.svg';
-import iconError from 'src/images/svg/validation-error.svg';
-import iconSuccess from 'src/images/svg/validation-success.svg';
-import eyeOn from 'src/images/svg/eye-show.svg';
-import eyeOff from 'src/images/svg/eye-off.svg';
 import AuthGoogleBtn from 'src/components/shared/AuthGoogle/AuthGoogleBtn/AuthGoogleBtn';
 
-import { validationLoginRules } from '../../validationRules';
+import { validationLoginRules } from '../validationRules';
+import AuthInput from '../AuthInput/AuthInput';
 
-import {
-  Container,
-  Title,
-  FormElement,
-  InputWrap,
-  InputContainer,
-  Subtitle,
-  Input,
-  ErrorText,
-  TextCorrect,
-  Button,
-  Img,
-  SvgValidate,
-  SvgEye
-} from './LoginForm.styled';
+import { Container, Title, FormElement, InputWrap, Button, Img } from './LoginForm.styled';
 
 export default function LoginForm({ onSubmitForm }) {
-  const [passwordShown, setPasswordShown] = useState(false);
   const [validateAfterSubmit, setValidateAfterSubmit] = useState(false);
 
   const { t } = useTranslation();
-
-  const togglePassword = () => {
-    setPasswordShown(!passwordShown);
-  };
 
   return (
     <Container>
@@ -54,72 +32,36 @@ export default function LoginForm({ onSubmitForm }) {
         }}
       >
         {(formik) => {
-          const { errors, handleSubmit, submitCount } = formik;
-
-          const validateInput = (input) => {
-            if ((validateAfterSubmit || submitCount > 0) && errors[input]) {
-              setValidateAfterSubmit(true);
-              return 'input-error';
-            } else if (submitCount > 0 && !errors[input]) {
-              return 'input-correct';
-            }
-            return '';
-          };
+          const { errors, handleSubmit, submitCount, values } = formik;
 
           return (
             <FormElement autoComplete="off">
               <InputWrap>
-                <Subtitle htmlFor="email" className={validateInput('email')}>
-                  {t('Email')}
-                  <InputContainer>
-                    <Input
-                      type="email"
-                      name="email"
-                      placeholder={t('nadiia@gmail.com')}
-                      id="login_email"
-                      className={validateInput('email')}
-                    />
-                    {validateInput('email') === 'input-correct' && (
-                      <SvgValidate src={iconSuccess} alt="Success Icon" />
-                    )}
-                    {validateInput('email') === 'input-error' && (
-                      <SvgValidate src={iconError} alt="Error Icon" />
-                    )}
-                  </InputContainer>
+                <AuthInput
+                  name="email"
+                  title="Email"
+                  type="email"
+                  placeholder="nadiia@gmail.com"
+                  id="login_email"
+                  validateAfterSubmit={validateAfterSubmit}
+                  submitCount={submitCount}
+                  errors={errors}
+                  setValidateAfterSubmit={setValidateAfterSubmit}
+                  values={values.email}
+                />
 
-                  {validateInput('email') === 'input-correct' && (
-                    <TextCorrect>{t('Correct email')}</TextCorrect>
-                  )}
-                  <ErrorText name="email" component="p" />
-                </Subtitle>
-
-                <Subtitle htmlFor="password" className={validateInput('password')}>
-                  {t('Password')}
-                  <InputContainer>
-                    <Input
-                      type={passwordShown ? 'text' : 'password'}
-                      name="password"
-                      placeholder="●●●●●●●"
-                      id="login_password"
-                      className={validateInput('password')}
-                    />
-                    <button type="button" onClick={togglePassword}>
-                      <SvgEye
-                        src={passwordShown ? eyeOff : eyeOn}
-                        alt="Success Icon"
-                        className={validateInput('password') !== '' ? 'right' : 'left'}
-                      />
-                    </button>
-                    {validateInput('password') === 'input-correct' && (
-                      <SvgValidate src={iconSuccess} alt="Success Icon" />
-                    )}
-                    {validateInput('password') === 'input-error' && (
-                      <SvgValidate src={iconError} alt="Error Icon" />
-                    )}
-                  </InputContainer>
-
-                  <ErrorText name="password" component="p" />
-                </Subtitle>
+                <AuthInput
+                  name="password"
+                  title="Password"
+                  type="password"
+                  placeholder="●●●●●●●"
+                  id="login_password"
+                  validateAfterSubmit={validateAfterSubmit}
+                  submitCount={submitCount}
+                  errors={errors}
+                  setValidateAfterSubmit={setValidateAfterSubmit}
+                  values={values.password}
+                />
               </InputWrap>
 
               <Button type="submit" onClick={handleSubmit}>
