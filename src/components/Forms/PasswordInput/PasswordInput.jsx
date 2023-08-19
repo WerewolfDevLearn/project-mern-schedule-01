@@ -20,7 +20,7 @@ import {
   SvgEye
 } from './PasswordInput.styled';
 
-export default function PasswordInput({ formik, label, type, name, placeholder }) {
+export default function PasswordInput({ formik, label, name, placeholder }) {
   const [passwordShown, setPasswordShown] = useState(false);
   const [validateAfterSubmit, setValidateAfterSubmit] = useState(false);
 
@@ -51,11 +51,10 @@ export default function PasswordInput({ formik, label, type, name, placeholder }
         <InputContainer>
           {' '}
           <InputField
-            type={type}
+            type={passwordShown ? 'text' : 'password'}
             name={name}
             placeholder={placeholder}
-            // id="signup_password"
-            className={validateInput({ type })}
+            className={validateInput('password')}
           />
           <button type="button" onClick={togglePassword}>
             <SvgEye

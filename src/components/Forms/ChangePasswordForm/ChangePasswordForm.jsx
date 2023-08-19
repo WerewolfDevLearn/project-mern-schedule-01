@@ -61,21 +61,18 @@ export default function ChangePasswordForm({ onClose }) {
                   <PasswordInput
                     formik={formik}
                     label="Old password"
-                    type="password"
                     name="old password"
                     placeholder="Password"
                   />
                   <PasswordInput
                     formik={formik}
                     label="New password"
-                    type="password"
                     name="new password"
                     placeholder="Password"
                   />
                   <PasswordInput
                     formik={formik}
                     label="Confirm new password"
-                    type="password"
                     name="confirm new password"
                     placeholder="Confirm"
                   />
