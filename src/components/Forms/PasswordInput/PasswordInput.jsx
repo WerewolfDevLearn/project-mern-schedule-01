@@ -20,9 +20,15 @@ import {
   SvgEye
 } from './PasswordInput.styled';
 
-export default function PasswordInput({ formik, label, name, placeholder }) {
+export default function PasswordInput({
+  formik,
+  label,
+  name,
+  placeholder,
+  validateAfterSubmit,
+  setValidateAfterSubmit
+}) {
   const [passwordShown, setPasswordShown] = useState(false);
-  const [validateAfterSubmit, setValidateAfterSubmit] = useState(false);
 
   const { t } = useTranslation();
 
@@ -31,7 +37,7 @@ export default function PasswordInput({ formik, label, name, placeholder }) {
   };
 
   {
-    const { errors, handleSubmit, submitCount } = formik;
+    const { errors, submitCount } = formik;
 
     const validateInput = (input) => {
       if ((validateAfterSubmit || submitCount > 0) && errors[input]) {

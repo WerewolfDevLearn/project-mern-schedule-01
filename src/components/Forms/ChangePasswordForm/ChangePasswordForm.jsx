@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Formik, Form } from 'formik';
 import PropTypes from 'prop-types';
 import * as yup from 'yup';
@@ -37,16 +38,34 @@ const schema = yup.object().shape({
     .required(i18n.t('Password Required'))
 });
 
-export default function ChangePasswordForm({ onClose }) {
-  const initialValues = {};
-  const handleSubmit = (values) => {
+export default function ChangePasswordForm({ onClose, callBack }) {
+  const [validateAfterSubmit, setValidateAfterSubmit] = useState(false);
+
+  const initialValues = {
+    password: '',
+    newPassword: '',
+    confirmPassword: ''
+  };
+  const onSubmit = (values) => {
     console.log(values);
+    setValidateAfterSubmit(true);
+    callBack(data);
+    setValidateAfterSubmit(false);
   };
 
   return (
     <>
-      <Formik initialValues={initialValues} validationSchema={schema} onSubmit={handleSubmit}>
+      <Formik
+        initialValues={initialValues}
+        validationSchema={schema}
+        onSubmit={onSubmit}
+        validateOnBlur={false}
+        validateOnChange={validateAfterSubmit}
+        validateOnMount={false}
+      >
         {(formik) => {
+          const { handleSubmit } = formik;
+
           return (
             <>
               <Modal>
@@ -57,18 +76,24 @@ export default function ChangePasswordForm({ onClose }) {
                 <InputsContainer>
                   <PasswordInput
                     formik={formik}
+                    validateAfterSubmit={validateAfterSubmit}
+                    setValidateAfterSubmit={setValidateAfterSubmit}
                     label="Old password"
                     name="password"
                     placeholder="Password"
                   />
                   <PasswordInput
                     formik={formik}
+                    validateAfterSubmit={validateAfterSubmit}
+                    setValidateAfterSubmit={setValidateAfterSubmit}
                     label="New password"
                     name="newPassword"
                     placeholder="Password"
                   />
                   <PasswordInput
                     formik={formik}
+                    validateAfterSubmit={validateAfterSubmit}
+                    setValidateAfterSubmit={setValidateAfterSubmit}
                     label="Confirm new password"
                     name="confirmPassword"
                     placeholder="Confirm"
@@ -77,6 +102,7 @@ export default function ChangePasswordForm({ onClose }) {
                 <BtnWrap>
                   <UpdateBtn
                     type="submit"
+                    onClick={handleSubmit}
                     disabled={
                       !formik.isValid || !formik.touched || formik.isSubmitting || !formik.dirty
                     }
