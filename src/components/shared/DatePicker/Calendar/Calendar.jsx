@@ -24,7 +24,7 @@ export default function Calendar() {
   };
   return (
     <>
-      <div className='calendar-wrapper'>
+      <div className="calendar-wrapper">
         <CalendarHeader year={year} month={month} Prev={onPrev} Next={onNext} />
         <CalendarBody year={year} month={month} />
       </div>

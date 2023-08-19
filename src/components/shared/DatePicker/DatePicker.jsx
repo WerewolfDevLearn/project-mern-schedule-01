@@ -1,14 +1,18 @@
+import { PropTypes } from 'prop-types';
 import { useState } from 'react';
+import { useParams } from 'react-router-dom';
+
+import Modal from '../Modal/Modal';
+
 import Calendar from './Calendar/Calendar';
 import InputDate from './Input';
-import Modal from '../Modal/Modal';
-import { useParams } from 'react-router-dom';
+
 import { DatepickerContext } from './DaypickerContext';
 
 export function DatePicker({ labelTex }) {
   const { currentDate } = useParams();
   const arrdate = currentDate.split('-');
-  console.log(arrdate);
+
   const [show, setShow] = useState(false);
   const [selectedDate, setSelectedDate] = useState(currentDate);
   const closeModal = () => {
@@ -37,3 +41,7 @@ export function DatePicker({ labelTex }) {
     </>
   );
 }
+
+DatePicker.propTypes = {
+  labelTex: PropTypes.string
+};

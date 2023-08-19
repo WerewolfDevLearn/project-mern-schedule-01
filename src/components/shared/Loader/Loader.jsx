@@ -1,4 +1,4 @@
-import { Puff } from 'react-loader-spinner';
+// import { Puff } from 'react-loader-spinner';
 
 import { DivloaderContainer } from '../../Styled-Components/Styled-Components.styled';
 

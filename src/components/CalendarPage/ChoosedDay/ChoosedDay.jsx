@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import { getYear, getMonth, parse } from 'date-fns';
 import { useParams } from 'react-router-dom';
 import { useGetTasksQuery } from 'src/redux/tasks/tasksApi';
@@ -12,7 +11,7 @@ export default function ChoosedDay() {
   const year = getYear(parse(currentDate, 'yyyy-MM-dd', new Date()));
   const month = getMonth(parse(currentDate, 'yyyy-MM-dd', new Date())) + 1;
   const date = { year, month };
-  const { data: tasks, isFetching, isLoading } = useGetTasksQuery(date);
+  const { data: tasks, isLoading } = useGetTasksQuery(date);
 
   if (isLoading) {
     return <div>Loading...</div>;
