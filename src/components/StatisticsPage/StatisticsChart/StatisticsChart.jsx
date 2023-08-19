@@ -29,7 +29,7 @@ const StatisticsChart = ({ tasks }) => {
     };
 
     tasks.tasksByDay.forEach((task) => {
-      console.log('tasks: ', tasks);
+      // console.log('tasks: ', tasks);
       if (task.category === 'to-do') {
         taskStatusCountDay.todo += 1;
       } else if (task.category === 'in-progress') {
@@ -40,7 +40,7 @@ const StatisticsChart = ({ tasks }) => {
     });
 
     tasks.tasks.forEach((task) => {
-      console.log('tasks: ', tasks);
+      // console.log('tasks: ', tasks);
       if (task.category === 'to-do') {
         taskStatusCountMonth.todo += 1;
       } else if (task.category === 'in-progress') {
@@ -49,8 +49,8 @@ const StatisticsChart = ({ tasks }) => {
         taskStatusCountMonth.done += 1;
       }
     });
-    console.log('taskStatusCountMonth: ', taskStatusCountMonth);
-    console.log('taskStatusCountDay: ', taskStatusCountDay);
+    // console.log('taskStatusCountMonth: ', taskStatusCountMonth);
+    // console.log('taskStatusCountDay: ', taskStatusCountDay);
     return [taskStatusCountDay, taskStatusCountMonth];
   };
 

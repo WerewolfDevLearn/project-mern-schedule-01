@@ -30,7 +30,7 @@ export default function ChangeEmailForm({ onClose }) {
   const [isUpdating, setisUpdating] = useState(false);
 
   const handleSubmit = (values) => {
-    console.log(values);
+    // console.log(values);
   };
 
   const FormikInput = ({ label, type, name, placeholder }) => {

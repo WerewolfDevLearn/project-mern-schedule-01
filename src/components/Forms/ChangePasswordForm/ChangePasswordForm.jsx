@@ -24,7 +24,7 @@ const schema = yup.object().shape({});
 export default function ChangePasswordForm({ onClose }) {
   const initialValues = {};
   const handleSubmit = (values) => {
-    console.log(values);
+    // console.log(values);
   };
 
   const FormikInput = ({ label, type, name, placeholder }) => {

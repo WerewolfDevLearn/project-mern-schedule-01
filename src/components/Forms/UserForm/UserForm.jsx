@@ -71,7 +71,7 @@ export default function UserForm({ callBack }) {
     skype: user.skype || '',
     email: user.email
   };
-  console.log(initialValues.birthday);
+  // console.log(initialValues.birthday);
   const [selectedAvatar, setSelectedAvatar] = useState(null);
   const [imagePreview, setImagePreview] = useState(initialValues.avatarUrl);
   const [selectedDate, setSelectedDate] = useState(initialValues.birthday);

@@ -19,10 +19,10 @@ import {
 
 export default function DeleteProfileForm({ onClose }) {
   const [isChecked, setIsChecked] = useState(false);
-  console.log(isChecked);
+  // console.log(isChecked);
 
   const handleSubmit = (values) => {
-    console.log('values');
+    // console.log('values');
   };
 
   return (
