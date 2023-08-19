@@ -38,10 +38,8 @@ export default function PasswordInput({
 
   {
     const { errors, submitCount } = formik;
-    console.log({ errors });
 
     const validateInput = (input) => {
-      console.log(errors[{ input }]);
       if ((validateAfterSubmit || submitCount > 0) && errors[input]) {
         setValidateAfterSubmit(true);
         return 'input-error';
@@ -83,5 +81,7 @@ export default function PasswordInput({
         <ErrorMessage name={name} component="p" />
       </div>
     );
+  }
+  {
   }
 }
