@@ -1,4 +1,4 @@
-import { Puff } from 'react-loader-spinner';
+// import { Puff } from 'react-loader-spinner';
 
 import gooseLoader from '/src/images/others/gooseLoader.gif';
 

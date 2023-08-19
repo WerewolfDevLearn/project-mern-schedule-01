@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unknown-property */
 const SvgArrowLeft = (props) => (
   <svg xmlns="http://www.w3.org/2000/svg" width="6" height="12" fill="none" {...props}>
     <path

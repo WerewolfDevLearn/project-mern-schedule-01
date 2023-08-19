@@ -2,9 +2,12 @@ import { useState } from 'react';
 import { Formik, Form } from 'formik';
 import { PropTypes } from 'prop-types';
 import * as yup from 'yup';
-import i18n from 'i18next';
 import { useTranslation } from 'react-i18next';
+import i18n from 'i18next';
+
 import { XClose } from '../../shared/Icons';
+import VerifyForm from '../VerifyForm/VerifyForm';
+
 import {
   Modal,
   XCloseWrap,
@@ -18,7 +21,6 @@ import {
   UpdateBtn
   // CloseBtn
 } from './ChangeEmailForm.styled';
-import VerifyForm from '../VerifyForm/VerifyForm';
 
 const schema = yup.object().shape({});
 
@@ -42,10 +44,10 @@ export default function ChangeEmailForm({ onClose }) {
   };
 
   FormikInput.propTypes = {
-    // label: PropTypes.string.isRequired,
-    // type: PropTypes.string.isRequired,
-    // name: PropTypes.string.isRequired,
-    // placeholder: PropTypes.string.isRequired
+    label: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    placeholder: PropTypes.string.isRequired
   };
 
   return (
