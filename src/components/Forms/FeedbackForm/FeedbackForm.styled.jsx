@@ -5,7 +5,7 @@ import { Field, ErrorMessage as FormikErrorMessage } from 'formik';
 
 export const FeedbackFormStyles = styled.div`
   position: relative;
-  
+
   width: calc(100vw - 32px);
   max-width: 468px;
   padding: 32px;
@@ -13,7 +13,7 @@ export const FeedbackFormStyles = styled.div`
 
   background: ${({ theme }) => theme.colors.backgroundModalTodo};
 
-  border: 1px solid rgba(220, 227, 229, 0.8);
+  border: 1px solid ${({ theme }) => theme.colors.sidebarBorder};
   box-shadow: 0px 4px 57px 0px rgba(17, 17, 17, 0.05);
 `;
 
