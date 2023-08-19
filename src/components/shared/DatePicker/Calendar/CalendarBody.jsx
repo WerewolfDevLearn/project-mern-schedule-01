@@ -1,4 +1,4 @@
-import { PropTypes } from 'prop-types';
+import PropTypes from 'prop-types';
 
 import Day from './Day';
 import { arrFill } from './arrFill';

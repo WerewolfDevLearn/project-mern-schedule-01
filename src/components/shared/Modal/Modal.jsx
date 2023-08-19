@@ -37,10 +37,12 @@ export default function Modal({ onClose, color, clickable, children }) {
       onClick={handleOverlayClick}
       $background={color}
       initial={{
+        opacity: 0,
         backdropFilter: 'blur(0px)'
       }}
-      animate={{ backdropFilter: 'blur(3px)' }}
+      animate={{ opacity: 1, backdropFilter: 'blur(3px)' }}
       exit={{
+        opacity: 0,
         backdropFilter: 'blur(0px)'
       }}
       transition={{
