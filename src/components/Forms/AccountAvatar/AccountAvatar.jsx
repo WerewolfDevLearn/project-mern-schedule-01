@@ -5,9 +5,10 @@ import * as yup from 'yup';
 import i18n from 'i18next';
 import { useTranslation } from 'react-i18next';
 import { useUser } from 'src/redux/selectors';
-import { Plus } from 'src/components/shared/Icons';
+import { Plus, Trash } from 'src/components/shared/Icons';
 
 import {
+  AvatarDeleteIcon,
   AvatarAddIcon,
   AvatarContainer,
   AvatarInputField,
@@ -38,9 +39,13 @@ export default function AccountAvatar({
   const fileInputRef = useRef(null);
 
   const handleAddImageClick = () => fileInputRef.current.click();
+  const handleDeleteImageClick = () => fileInputRef.current.click();
 
   return (
     <AvatarContainer>
+      <AvatarDeleteIcon>
+        <Trash width="18px" height="18px" onClick={handleDeleteImageClick} />
+      </AvatarDeleteIcon>
       <AvatarAddIcon>
         <Plus width="18px" height="18px" onClick={handleAddImageClick} />
       </AvatarAddIcon>
@@ -69,7 +74,7 @@ export default function AccountAvatar({
           </div>
         ) : (
           (user.avatarUrl && (
-            <Avatar
+            <AvatarImg
               alt="username"
               src={user.avatarUrl}
               sx={{ width: 124, height: 124, border: '2px solid #3E85F3' }}
