@@ -15,7 +15,7 @@ export const MobileDaysList = styled.ul`
   margin-bottom: 14px;
 
   background-color: ${({ theme }) => theme.colors.backgroundUserForm};
-  border: 1px solid ${themes.colors.borderModaAddToDo};
+  border: 1px solid ${({ theme }) => theme.colors.borderTableAndInput};
   border-radius: 8px;
 
   @media screen and (min-width: ${themes.breakpoints.m}) {
@@ -39,7 +39,7 @@ export const DesktopDayList = styled.ul`
     height: 46px;
 
     background-color: ${({ theme }) => theme.colors.backgroundUserForm};
-    border: 1px solid ${themes.colors.borderModaAddToDo};
+    border: 1px solid ${({ theme }) => theme.colors.borderTableAndInput};
     border-radius: 8px;
 
     @media screen and (min-width: ${themes.breakpoints.l}) {

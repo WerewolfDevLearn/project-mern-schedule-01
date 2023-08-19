@@ -81,7 +81,7 @@ export default function CalendarTable() {
             iscurrentmonth={isCurrentMonth(dayItem).toString()}
             istoday={isToday(dayItem).toString()}
           >
-            <RowInCell $justifyContent="flex-end">
+            <RowInCell>
               <ShowDayWrapper>
                 {isToday(dayItem) ? (
                   <CurrentDay>{format(dayItem, 'd')}</CurrentDay>

@@ -35,19 +35,11 @@ export const GridWrapper = styled.ul`
 `;
 
 export const CellWrapper = styled(NavLink)`
-  /* color: ${(props) =>
-    props.istoday === 'true'
-      ? props.theme.backgroundModalTodo
-      : props.iscurrentmonth === 'true'
-      ? props.theme.textCancelBtnIntodo
-      : props.theme.backgroundModalTodo}; */
-
   position: relative;
   width: 48px;
   height: 93px;
   text-align: right;
-  border-bottom: 1px solid ${themes.colors.sidebarBorder};
-  border-right: 1px solid ${themes.colors.sidebarBorder};
+  border: 1px solid ${({ theme }) => theme.colors.borderTableAndInput};
   background-color: ${({ theme }) => theme.colors.backgroundUserForm};
   padding-top: 31px;
   padding-bottom: 1px;
@@ -70,10 +62,6 @@ export const CellWrapper = styled(NavLink)`
 export const RowInCell = styled.div`
   display: flex;
   flex-direction: column;
-  /* ${(props) =>
-    props.$justifyContent
-      ? `justify-content: ${props.$justifyContent};`
-      : 'justify-content: flex-start;'} */
 `;
 
 export const DayWrapper = styled.div`
