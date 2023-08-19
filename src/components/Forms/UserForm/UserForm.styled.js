@@ -29,7 +29,7 @@ export const UserNameTitle = styled.h2`
   margin: 0;
   margin-bottom: 4px;
 
-  @media screen and (${themes.breakpoints.l} < width) {
+  @media screen and (${themes.breakpoints.l} <= width) {
     margin-bottom: 8px;
   }
 `;
@@ -67,7 +67,6 @@ export const FormInputContainer = styled.div`
     flex-direction: row;
     flex-wrap: wrap;
     gap: 16px 50px;
-    /* padding: 44px 0 88px 0; */
     width: 758px;
     position: relative;
   }
@@ -79,7 +78,6 @@ export const FormLabelSpan = styled.span`
   font-size: 12px;
   line-height: 1.17;
   letter-spacing: -0.02em;
-  /* margin-top: 16px; */
   color: #111111;
 
   @media screen and (${themes.breakpoints.m} <= width < ${themes.breakpoints.l}) {
