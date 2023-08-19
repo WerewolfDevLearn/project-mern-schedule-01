@@ -80,6 +80,7 @@ export default function ChangePasswordForm({ onClose, callBack }) {
                     setValidateAfterSubmit={setValidateAfterSubmit}
                     label="Old password"
                     name="password"
+                    id="password"
                     placeholder="Password"
                   />
                   <PasswordInput
@@ -88,6 +89,7 @@ export default function ChangePasswordForm({ onClose, callBack }) {
                     setValidateAfterSubmit={setValidateAfterSubmit}
                     label="New password"
                     name="newPassword"
+                    id="newPassword"
                     placeholder="Password"
                   />
                   <PasswordInput
@@ -96,6 +98,7 @@ export default function ChangePasswordForm({ onClose, callBack }) {
                     setValidateAfterSubmit={setValidateAfterSubmit}
                     label="Confirm new password"
                     name="confirmPassword"
+                    id="confirmPassword"
                     placeholder="Confirm"
                   />
                 </InputsContainer>

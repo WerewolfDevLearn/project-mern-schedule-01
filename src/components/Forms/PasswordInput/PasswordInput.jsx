@@ -38,8 +38,10 @@ export default function PasswordInput({
 
   {
     const { errors, submitCount } = formik;
+    console.log({ errors });
 
     const validateInput = (input) => {
+      console.log(errors[{ input }]);
       if ((validateAfterSubmit || submitCount > 0) && errors[input]) {
         setValidateAfterSubmit(true);
         return 'input-error';
@@ -50,7 +52,7 @@ export default function PasswordInput({
     };
 
     return (
-      <div htmlFor="password" className={validateInput('password')}>
+      <div htmlFor={name} className={validateInput(name)}>
         <FormLabelSpan>{label}</FormLabelSpan>
         <InputContainer>
           {' '}
@@ -58,7 +60,7 @@ export default function PasswordInput({
             type={passwordShown ? 'text' : 'password'}
             name={name}
             placeholder={placeholder}
-            className={validateInput({ name })}
+            className={validateInput(name)}
           />
           <button type="button" onClick={togglePassword}>
             <SvgEye
@@ -67,15 +69,15 @@ export default function PasswordInput({
               className={validateInput({ name }) !== '' ? 'right' : 'left'}
             />
           </button>
-          {validateInput({ name }) === 'input-correct' && (
+          {validateInput(name) === 'input-correct' && (
             <SvgValidate src={iconSuccess} alt="Success Icon" />
           )}
-          {validateInput({ name }) === 'input-error' && (
+          {validateInput(name) === 'input-error' && (
             <SvgValidate src={iconError} alt="Error Icon" />
           )}
         </InputContainer>
 
-        {validateInput({ name }) === 'input-correct' && (
+        {validateInput(name) === 'input-correct' && (
           <TextCorrect>{t('Correct password')}</TextCorrect>
         )}
         <ErrorMessage name={name} component="p" />
