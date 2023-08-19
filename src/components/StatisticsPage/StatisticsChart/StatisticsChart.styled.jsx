@@ -21,7 +21,7 @@ export const ChartContainer = styled.div`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.l}) {
     width: 100%;
-    height: auto;
+    /* height: auto; */
   }
 `;
 

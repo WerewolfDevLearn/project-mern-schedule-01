@@ -1,77 +1,37 @@
 import { useState } from 'react';
-
-import { useParams, useNavigate } from 'react-router-dom';
-import {
-  getYear,
-  getMonth,
-  getDate,
-  format,
-  setDay,
-  lastDayOfMonth,
-  startOfMonth,
-  addMonths
-} from 'date-fns';
+import { addDays, format, getDate, getMonth, getYear, subDays } from 'date-fns';
 import { useGetTasksQuery } from 'src/redux/tasks/tasksApi';
 
-import { useDayHendler } from '../CalendarPage/dateHandler';
-
+import Loader from '../shared/Loader/Loader';
 import PeriodPaginator from '../shared/PeriodPaginator/PeriodPaginator';
 
 import StatisticsChart from './StatisticsChart/StatisticsChart';
 
 const StatisticsPage = () => {
-  const [onPrevDay, onNextDay, dayD, monthD, yearD] = useDayHendler(new Date());
-  const navigate = useNavigate();
+  const [currentDate, setCurrentDate] = useState(format(new Date(), 'yyyy-MM-dd'));
 
-  const { data: respons, isLoading } = useGetTasksQuery({ yearD, monthD, dayD });
+  const { data: tasks, isLoading } = useGetTasksQuery({
+    year: getYear(new Date(currentDate)),
+    month: getMonth(new Date(currentDate)) + 1,
+    day: getDate(new Date(currentDate))
+  });
 
-  const calculateTaskStatusCount = (response) => {
-    const taskStatusCountDay = {
-      todo: 0,
-      inprogress: 0,
-      done: 0
-    };
+  console.log(tasks);
 
-    const taskStatusCountMonth = {
-      todo: 0,
-      inprogress: 0,
-      done: 0
-    };
-
-    // response.tasksByDay.forEach((task) => {
-    //   if (task.category === 'todo') {
-    //     taskStatusCountDay.todo++;
-    //   } else if (task.category === 'inprogress') {
-    //     taskStatusCountDay.inprogress++;
-    //   } else if (task.category === 'done') {
-    //     taskStatusCountDay.done++;
-    //   }
-    // });
-
-    // response.tasks.forEach((task) => {
-    //   if (task.category === 'todo') {
-    //     taskStatusCountMonth.todo++;
-    //   } else if (task.category === 'inprogress') {
-    //     taskStatusCountMonth.inprogress++;
-    //   } else if (task.category === 'done') {
-    //     taskStatusCountMonth.done++;
-    //   }
-    // });
-    return [taskStatusCountDay, taskStatusCountMonth];
+  const onPrev = () => {
+    const newDate = subDays(new Date(currentDate), 1);
+    setCurrentDate(format(new Date(newDate), 'yyyy-MM-dd'));
   };
 
-  const [taskStatusCountDay, taskStatusCountMonth] = calculateTaskStatusCount(respons);
+  const onNext = () => {
+    const newDate = addDays(new Date(currentDate), 1);
+    setCurrentDate(format(new Date(newDate), 'yyyy-MM-dd'));
+  };
 
   return (
     <>
-      <PeriodPaginator
-        prevHandler={onPrevDay}
-        nextHandler={onNextDay}
-        type="day"
-      />
-      {/* {!isLoading && (
-        <StatisticsChart tasksByDay={taskStatusCountDay} tasksByMonth={taskStatusCountMonth} />
-      )} */}
+      <PeriodPaginator prevHandler={onPrev} nextHandler={onNext} type="day" date={currentDate} />
+      {isLoading ? <Loader /> : <StatisticsChart tasks={tasks} />}
     </>
   );
 };
