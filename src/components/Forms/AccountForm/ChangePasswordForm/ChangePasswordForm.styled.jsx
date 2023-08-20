@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { Field, ErrorMessage as FormikErrorMessage } from 'formik';
+import { Field, Form, ErrorMessage as FormikErrorMessage } from 'formik';
 
-export const Modal = styled.div`
+export const Modal = styled(Form)`
   display: flex;
   flex-direction: column;
   justify-content: center;

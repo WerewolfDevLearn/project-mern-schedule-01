@@ -21,7 +21,7 @@ import {
   CancelBtn
 } from './ChangePasswordForm.styled';
 
-export default function ChangePasswordForm({ onClose, callBack }) {
+export default function ChangePasswordForm({ onClose }) {
   const [validateAfterSubmit, setValidateAfterSubmit] = useState(false);
 
   const initialValues = {
@@ -32,7 +32,7 @@ export default function ChangePasswordForm({ onClose, callBack }) {
   const onSubmit = (values) => {
     console.log(values);
     setValidateAfterSubmit(true);
-    callBack(data);
+    // callBack(data);
     setValidateAfterSubmit(false);
   };
 
@@ -71,7 +71,7 @@ export default function ChangePasswordForm({ onClose, callBack }) {
                     validateAfterSubmit={validateAfterSubmit}
                     setValidateAfterSubmit={setValidateAfterSubmit}
                     label="New password"
-                    name="newPassword"
+                    name="password"
                     id="newPassword"
                     placeholder="Password"
                   />
@@ -88,12 +88,7 @@ export default function ChangePasswordForm({ onClose, callBack }) {
                 <BtnWrap>
                   <UpdateBtn
                     type="submit"
-                    onClick={() => {
-                      onSubmit();
-                      if (formik.isValid && !formik.dirty) {
-                        onClose;
-                      }
-                    }}
+                    onClick={() => handleSubmit()}
                     disabled={
                       !formik.isValid || !formik.touched || formik.isSubmitting || !formik.dirty
                     }
