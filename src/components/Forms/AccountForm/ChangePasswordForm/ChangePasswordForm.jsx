@@ -14,9 +14,6 @@ import {
   ChangePasswordTitle,
   InputsContainer,
   InputWrap,
-  FormLabelSpan,
-  InputField,
-  ErrorMessage,
   BtnWrap,
   UpdateBtn,
   CancelBtn
