@@ -1,17 +1,36 @@
 import styled from 'styled-components';
+import { themes } from 'src/styles/variables/themes';
 
 export const Modal = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  width: 550px;
-  height: 550px;
-  border-radius: 16px;
+  width: 100vw;
+  height: 100vh;
+  padding: 10px;
+  position: relative;
   /* background-color: white; */
   background-color: #edf0f8;
   box-shadow: rgb(0, 0, 0) 0px 0px 80px;
+
+  @media screen and (${themes.breakpoints.s} <= width < ${themes.breakpoints.m}) {
+  }
+
+  @media screen and (${themes.breakpoints.m} <= width) {
+    width: 550px;
+    height: 550px;
+    border-radius: 16px;
+  }
+
+  /* @media screen and (${themes.breakpoints.s} <= width < ${themes.breakpoints.m}) {
+  }
+
+  @media screen and (${themes.breakpoints.m} <= width < ${themes.breakpoints.l}) {
+  }
+
+  @media screen and (${themes.breakpoints.l} <= width) {
+  } */
 `;
 
 export const XCloseWrap = styled.div`
@@ -19,8 +38,9 @@ export const XCloseWrap = styled.div`
   justify-content: center;
   align-items: center;
   position: absolute;
-  top: 3%;
-  right: 3%;
+  top: 15px;
+  right: 15px;
+  padding: 10px;
 
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0, 0.11, 0.35, 2);
@@ -48,7 +68,11 @@ export const InputWrap = styled.label`
 
 export const BtnWrap = styled.div`
   display: flex;
-  gap: 50px;
+  gap: 20px;
+
+  @media screen and (${themes.breakpoints.m} <= width) {
+    gap: 50px;
+  }
 `;
 
 export const CancelBtn = styled.button`
