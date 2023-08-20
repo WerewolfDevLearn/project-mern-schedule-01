@@ -17,12 +17,16 @@ export const Container = styled.div`
 export const ChartContainer = styled.div`
   width: 860px;
   height: 440px;
-  margin: 0 auto; /* Додаємо автоматичний відступ по боках для вирівнювання по центру */
+  margin: 0 auto;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.l}) {
     width: 100%;
     /* height: auto; */
   }
+`;
+
+export const Text = styled.span`
+  color: ${({ theme }) => theme.colors.textAndIconTodo};
 `;
 
 export const StatisticsChartStyles = styled.div``;
