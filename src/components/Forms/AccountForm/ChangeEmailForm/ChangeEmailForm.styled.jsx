@@ -7,6 +7,7 @@ export const Modal = styled(Form)`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
   width: 100vw;
   height: 100vh;
   padding: 10px;
@@ -28,8 +29,9 @@ export const XCloseWrap = styled.button`
   justify-content: center;
   align-items: center;
   position: absolute;
-  top: 3%;
-  right: 3%;
+  top: 15px;
+  right: 15px;
+  padding: 10px;
 
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0, 0.11, 0.35, 2);

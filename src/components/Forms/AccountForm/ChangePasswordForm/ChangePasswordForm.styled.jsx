@@ -7,6 +7,7 @@ export const Modal = styled(Form)`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
   width: 100vw;
   height: 100vh;
   padding: 10px;
