@@ -28,8 +28,6 @@ const initialState = {
 };
 
 const userTokenExpired = (state, { payload }) => {
-  console.log('payload: ', payload);
-
   if (payload === 'Request failed with status code 500') {
     state.token = initialState;
     state.refreshToken = initialState;
