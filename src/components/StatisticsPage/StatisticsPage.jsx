@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { addDays, format, getDate, getMonth, getYear, subDays } from 'date-fns';
 import { useGetTasksQuery } from 'src/redux/tasks/tasksApi';
+import { useTranslation } from 'react-i18next';
 
 import Loader from '../shared/Loader/Loader';
 import PeriodPaginator from '../shared/PeriodPaginator/PeriodPaginator';
@@ -17,6 +18,7 @@ import {
 } from './StatisticsPage.styled';
 
 const StatisticsPage = () => {
+  const { t } = useTranslation();
   const [currentDate, setCurrentDate] = useState(format(new Date(), 'yyyy-MM-dd'));
 
   const { data: tasks, isLoading } = useGetTasksQuery({
@@ -42,11 +44,11 @@ const StatisticsPage = () => {
         <Legend>
           <LegendItem>
             <Ellipse type="day" />
-            <LegendText>By Day</LegendText>
+            <LegendText>{t('By Day')}</LegendText>
           </LegendItem>
           <LegendItem>
             <Ellipse type="month" />
-            <LegendText>By Month</LegendText>
+            <LegendText>{t('By Month')}</LegendText>
           </LegendItem>
         </Legend>
       </StatisticsHeadWrapper>

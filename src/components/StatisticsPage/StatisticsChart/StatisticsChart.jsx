@@ -11,16 +11,14 @@ import {
   Label,
   LabelList
 } from 'recharts';
+import { useTranslation } from 'react-i18next';
 
 import { useThemeColors } from 'src/components/MainLayout/ThemeToggler/ThemeContextProvider';
 
-import {
-  StatisticsChartStyles,
-  ChartContainer,
-  TasksLabel
-} from './StatisticsChart.styled';
+import { StatisticsChartStyles, ChartContainer, TasksLabel } from './StatisticsChart.styled';
 
 const StatisticsChart = ({ tasks }) => {
+  const { t } = useTranslation();
   const theme = useThemeColors().theme;
   const calculateTaskStatusCount = (tasks) => {
     const taskStatusCountDay = {
@@ -72,22 +70,26 @@ const StatisticsChart = ({ tasks }) => {
   const chartDataByMonth = calculatePercentages(taskStatusCountMonth);
   const data = [
     {
-      name: 'To Do',
+      name: t('To Do'),
       byDay: chartDataByDay.todoPercentage,
       byMonth: chartDataByMonth.todoPercentage
     },
     {
-      name: 'In Progress',
+      name: t('In Progress'),
       byDay: chartDataByDay.inprogressPercentage,
       byMonth: chartDataByMonth.inprogressPercentage
     },
-    { name: 'Done', byDay: chartDataByDay.donePercentage, byMonth: chartDataByMonth.donePercentage }
+    {
+      name: t('Done'),
+      byDay: chartDataByDay.donePercentage,
+      byMonth: chartDataByMonth.donePercentage
+    }
   ];
 
   return (
     <StatisticsChartStyles>
       <ChartContainer>
-        <TasksLabel>Tasks</TasksLabel>
+        <TasksLabel>{t('Tasks')}</TasksLabel>
         <ResponsiveContainer>
           <BarChart
             data={data}
@@ -120,29 +122,8 @@ const StatisticsChart = ({ tasks }) => {
                 fontWeight: 400,
                 fill: `${theme.colors.textCancelBtn}`
               }}
-            >
-              {/* <Label
-                value="Tasks"
-                angle={0}
-                position="top"
-                offset={30}
-                style={{
-                  fontSize: '14px',
-                  fontWeight: 600,
-                  fill: `${theme.colors.textCancelBtn}`
-                }}
-              /> */}
-            </YAxis>
+            ></YAxis>
             <Tooltip />
-            {/* <Legend
-              align="left"
-              verticalAlign="top"
-              wrapperStyle={{
-                top: '-60px',
-                left: 0
-              }}
-              content={renderLegend}
-            /> */}
             <Bar
               dataKey="byDay"
               fill="url(#colorByDay)"
