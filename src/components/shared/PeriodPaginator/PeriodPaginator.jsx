@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import { format, parse } from 'date-fns';
 import { forwardRef } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import CalendarDataPicker from '../CalendarDataPiker/CalendarDataPicker';
 
@@ -13,28 +14,38 @@ import {
 } from './PeriodPaginator.styled';
 
 const PeriodPaginator = ({ prevHandler, nextHandler, type, date }) => {
+  const { t } = useTranslation();
+
   const getFormattedDate = () => {
     const formattedDate = format(new Date(date), type === 'day' ? 'dd MMMM yyyy' : 'MMMM yyyy');
+
     return formattedDate;
   };
+
   // eslint-disable-next-line react/display-name
-  const CustomInput = forwardRef(({ value, onClick }, ref) => {
-    // console.log('VALUE', value);
+  const CustomInput = forwardRef(({ onClick }, ref) => {
+    const formattedDate = getFormattedDate();
+
+    const monthYear = formattedDate.split(' ')[0];
+    const translatedMonth = t(`months.${monthYear.toLowerCase()}`);
+
+    const monthFullDate = formattedDate.split(' ')[1];
+    const translatedMonthFull = t(`months.${monthFullDate.toLowerCase()}`);
+
     return (
       <TitleWrapper onClick={onClick} ref={ref}>
-        {getFormattedDate()}
+        {type === 'day'
+          ? `${formattedDate.split(' ')[0]} ${translatedMonthFull} ${formattedDate.split(' ')[2]}`
+          : `${translatedMonth} ${formattedDate.split(' ')[1]}`}
       </TitleWrapper>
     );
   });
 
-  // <TitleWrapper>{getFormattedDate()}</TitleWrapper>
   const currentDate = parse(date, 'yyyy-MM-dd', new Date());
-  // console.log('CURRENT', currentDate);
+
   return (
     <DivWrapper>
       <CalendarDataPicker type={type} CustomInput={CustomInput} onSelectDay={currentDate} />
-      {/* <DatePicker onSelectDay={navigate} /> */}
-      {/* <TitleWrapper>{type === 'month' ? formattedDate : formattedDate}</TitleWrapper> */}
       <ButtonsWrapper>
         <ButtonWrapper1
           onClick={() => {
@@ -61,7 +72,9 @@ PeriodPaginator.propTypes = {
   type: PropTypes.string,
   date: PropTypes.string,
   value: PropTypes.any,
-  onClick: PropTypes.func.isRequired
+  // value: PropTypes.any,
+  // onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func
 };
 
 export default PeriodPaginator;

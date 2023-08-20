@@ -14,7 +14,7 @@ export function DatePicker({ labelTex }) {
   const arrdate = currentDate.split('-');
 
   const [show, setShow] = useState(false);
-  const [selectedDate, setSelectedDate] = useState(currentDate);
+  const [, setSelectedDate] = useState(currentDate);
   const closeModal = () => {
     setShow(false);
   };

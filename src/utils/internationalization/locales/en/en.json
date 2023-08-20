@@ -87,8 +87,6 @@
   "High": "High",
   "high": "High",
   "Add": "Add",
-  "Cancel": "Cancel",
-  "Edit": "Edit",
 
   "Mon": "Mon",
   "Tue": "Tue",
@@ -98,13 +96,15 @@
   "Sat": "Sat",
   "Sun": "Sun",
 
-  "MON": "MON",
-  "TUE": "TUE",
-  "WED": "WED",
-  "THU": "THU",
-  "FRI": "FRI",
-  "SAT": "SAT",
-  "SUN": "SUN",
+  "days": {
+    "MON": "MON",
+    "TUE": "TUE",
+    "WED": "WED",
+    "THU": "THU",
+    "FRI": "FRI",
+    "SAT": "SAT",
+    "SUN": "SUN"
+  },
 
   "mob_Mon": "M",
   "mob_Tue": "T",
@@ -113,6 +113,14 @@
   "mob_Fri": "F",
   "mob_Sat": "S",
   "mob_Sun": "S",
+
+  "mob_MON": "M",
+  "mob_TUE": "T",
+  "mob_WED": "W",
+  "mob_THU": "T",
+  "mob_FRI": "F",
+  "mob_SAT": "S",
+  "mob_SUN": "S",
 
   "By Day": "By Day",
   "By Month": "By Month",
@@ -127,5 +135,20 @@
   "Review": "Review",
   "Save": "Save",
   "Edit": "Edit",
-  "Cancel": "Cancel"
+  "Cancel": "Cancel",
+
+  "months": {
+    "january": "January",
+    "february": "February",
+    "march": "March",
+    "april": "April",
+    "may": "May",
+    "june": "June",
+    "july": "July",
+    "august": "August",
+    "september": "September",
+    "october": "October",
+    "november": "November",
+    "december": "December"
+  }
 }
