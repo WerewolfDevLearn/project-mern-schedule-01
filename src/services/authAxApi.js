@@ -39,7 +39,7 @@ export async function updateUser(userDate, tokenAuth) {
   const data = response.data;
   return data;
 }
-export async function deleteUser(userDate, tokenAuth) {
+export async function deleteUser(tokenAuth) {
   axios.defaults.headers.common.Authorization = `Bearer ${tokenAuth}`;
   const response = await axios.delete('/users/current');
   const data = response.data;

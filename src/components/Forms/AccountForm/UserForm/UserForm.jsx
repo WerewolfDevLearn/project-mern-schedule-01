@@ -4,7 +4,7 @@ import { Formik, Form } from 'formik';
 import { format } from 'date-fns';
 import i18n from 'i18next';
 import { useTranslation } from 'react-i18next';
-// import { toast } from 'react-hot-toast';
+
 import { useUser } from 'src/redux/selectors';
 import DeleteProfileModal from 'src/components/DeleteProfileModal/DeleteProfileModal';
 
@@ -12,8 +12,7 @@ import AccountAvatar from '../AccountAvatar/AccountAvatar';
 import ChangeEmailModal from '../../../ChangeEmailModal/ChangeEmailModal';
 import ChangePasswordModal from '../../../ChangePasswordModal/ChangePasswordModal';
 
-import { validationAvatarRules } from '../accountValidationRules';
-import { validationUserFormRules } from '../accountValidationRules';
+import { validationAvatarRules, validationUserFormRules } from '../accountValidationRules';
 
 import {
   FormContainer,
@@ -30,7 +29,12 @@ import {
   ChangeValueBtnWrap
 } from './UserForm.styled';
 
-export default function UserForm({ callBack }) {
+export default function UserForm({
+  callBack,
+  callbackDeleteUser,
+  callbackPassword,
+  callbackEmail
+}) {
   const { t } = useTranslation();
   const user = useUser();
 
@@ -41,34 +45,13 @@ export default function UserForm({ callBack }) {
     birthday: user.birthday || new Date(),
     skype: user.skype || ''
   };
-  console.log(initialValues.birthday);
+
   const [imagePreview, setImagePreview] = useState(null);
   const [selectedAvatar, setSelectedAvatar] = useState(user.avatarUrl);
   const [selectedDate, setSelectedDate] = useState(initialValues.birthday);
 
-  // const handleDateChange = (date) => {
-  //   console.log(data);
-  //   setSelectedDate(date);
-  // };
-
   const onSubmit = (data) => {
     const formData = new FormData();
-    // if (data.avatar) {
-    //   formData.append('avatar', data.avatar);
-    // }
-    // if (data.name) {
-    //   formData.append('name', data.name.trim());
-    // }
-    // if (data.phone) {
-    //   formData.append('phone', data.phone);
-    // }
-    // if (data.birthday) {
-    //   formData.append('birthday', data.birthday);
-    // }
-    // if (data.skype) {
-    //   formData.append('skype', data.skype.trim());
-    // }
-
     Object.entries(data).forEach(([key, value]) => {
       if (value) {
         if (value instanceof File) {
@@ -79,16 +62,10 @@ export default function UserForm({ callBack }) {
           formData.append(key, value);
         }
       } else if (key === 'birthday') {
-        const birthday = moment(values[key]).format('YYYY-MM-DD');
+        const birthday = format(new Date(value[key]), 'yyyy-MM-dd');
         formData.append('birthday', birthday);
-        return;
       }
     });
-    // Зауважте, що я закоментував частину коду, яка опрацьовує birthday, оскільки ви повинні вставити свої власні дії для обробки дати народження за допомогою бібліотеки, такої як moment або стандартних функцій JavaScript. Також, ви маєте врахувати формат, в якому ви хочете відправити дату на сервер.
-
-    // if (data.email) {
-    //   formData.append('email', data.email.trim());
-    // }
 
     callBack(formData);
   };
@@ -110,8 +87,6 @@ export default function UserForm({ callBack }) {
     placeholder: PropTypes.string.isRequired
   };
 
-  console.log(selectedAvatar);
-  console.log(imagePreview);
   return (
     <>
       <Formik
@@ -202,5 +177,8 @@ export default function UserForm({ callBack }) {
 }
 
 UserForm.propTypes = {
-  callBack: PropTypes.func.isRequired
+  callBack: PropTypes.func.isRequired,
+  callbackEmail: PropTypes.func.isRequired,
+  callbackPassword: PropTypes.func.isRequired,
+  callbackDeleteUser: PropTypes.func.isRequired
 };
