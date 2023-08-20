@@ -53,21 +53,33 @@ export default function UserForm({ callBack }) {
 
   const onSubmit = (data) => {
     const formData = new FormData();
-    if (data.avatar) {
-      formData.append('avatar', data.avatar);
-    }
-    if (data.name) {
-      formData.append('name', data.name.trim());
-    }
-    if (data.phone) {
-      formData.append('phone', data.phone);
-    }
-    if (data.birthday) {
-      formData.append('birthday', data.birthday);
-    }
-    if (data.skype) {
-      formData.append('skype', data.skype.trim());
-    }
+    // if (data.avatar) {
+    //   formData.append('avatar', data.avatar);
+    // }
+    // if (data.name) {
+    //   formData.append('name', data.name.trim());
+    // }
+    // if (data.phone) {
+    //   formData.append('phone', data.phone);
+    // }
+    // if (data.birthday) {
+    //   formData.append('birthday', data.birthday);
+    // }
+    // if (data.skype) {
+    //   formData.append('skype', data.skype.trim());
+    // }
+
+    Object.entries(data).forEach(([key, value]) => {
+      if (value) {
+        if (value instanceof File) {
+          formData.append(key, value);
+        } else if (typeof value === 'string') {
+          formData.append(key, value.trim());
+        } else {
+          formData.append(key, value);
+        }
+      }
+    });
 
     // if (data.email) {
     //   formData.append('email', data.email.trim());
