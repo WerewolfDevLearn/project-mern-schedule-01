@@ -87,8 +87,6 @@
   "High": "High",
   "high": "High",
   "Add": "Add",
-  "Cancel": "Cancel",
-  "Edit": "Edit",
 
   "Mon": "Mon",
   "Tue": "Tue",
@@ -127,5 +125,20 @@
   "Review": "Review",
   "Save": "Save",
   "Edit": "Edit",
-  "Cancel": "Cancel"
+  "Cancel": "Cancel",
+
+  "months": {
+    "january": "January",
+    "february": "February",
+    "march": "March",
+    "april": "April",
+    "may": "May",
+    "june": "June",
+    "july": "July",
+    "august": "August",
+    "september": "September",
+    "october": "October",
+    "november": "November",
+    "december": "December"
+  }
 }
