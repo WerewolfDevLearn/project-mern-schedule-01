@@ -6,9 +6,11 @@ import {
   userLogOut,
   getCurrentUser,
   verifyByCode,
-  // sendVEmail,
   token,
-  updateUser
+  updateUser,
+  deleteUser,
+  changeEmail,
+  changePassword
 } from 'src/services/authAxApi';
 
 export const authGoogle = createAsyncThunk('user/Google', function (token, { rejectWithValue }) {
@@ -76,14 +78,6 @@ export const verify = createAsyncThunk('user/VerifyEmail', async (code, { reject
     return rejectWithValue(error.message);
   }
 });
-// export const sendEmail = createAsyncThunk('user/SendEmail', async (email, { rejectWithValue }) => {
-//   try {
-//     // const credentials = await sendVEmail(email);
-//     return credentials;
-//   } catch (error) {
-//     return rejectWithValue(error.message);
-//   }
-// });
 
 export const updUser = createAsyncThunk(
   'user/Update',
@@ -93,6 +87,49 @@ export const updUser = createAsyncThunk(
       const stateToken = state.user.token;
       if (!stateToken) return rejectWithValue('Please register or login!');
       const credentials = await updateUser(userData, stateToken);
+      return credentials;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const delUser = createAsyncThunk(
+  'user/DeleteUser',
+  async (_, { rejectWithValue, getState }) => {
+    try {
+      const state = getState();
+      const stateToken = state.user.token;
+      if (!stateToken) return rejectWithValue('You have no rights');
+      const credentials = await deleteUser(stateToken);
+      return credentials;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+export const changePW = createAsyncThunk(
+  'user/ChangePassword',
+  async (_, { rejectWithValue, getState }) => {
+    try {
+      const state = getState();
+      const stateToken = state.user.token;
+      if (!stateToken) return rejectWithValue('You have no rights');
+      const credentials = await changePassword(stateToken);
+      return credentials;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+export const changeEM = createAsyncThunk(
+  'user/ChangeEmail',
+  async (_, { rejectWithValue, getState }) => {
+    try {
+      const state = getState();
+      const stateToken = state.user.token;
+      if (!stateToken) return rejectWithValue('You have no rights');
+      const credentials = await changeEmail(stateToken);
       return credentials;
     } catch (error) {
       return rejectWithValue(error.message);

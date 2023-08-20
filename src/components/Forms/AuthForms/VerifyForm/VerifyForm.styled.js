@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Form, Field, ErrorMessage } from 'formik';
+import { Form, Field } from 'formik';
 import { themes } from 'src/styles/variables/themes';
 
 export const Container = styled.div`
@@ -77,16 +77,6 @@ export const Subtitle = styled.label`
   font-weight: ${themes.fontWeight.sb};
   line-height: normal;
 
-  &.input-error {
-    color: ${themes.colors.failed};
-    font-weight: ${themes.fontWeight.r};
-  }
-
-  &.input-correct {
-    color: ${themes.colors.saccess};
-    font-weight: ${themes.fontWeight.r};
-  }
-
   @media screen and (min-width: ${themes.breakpoints.m}) {
     font-size: ${themes.fontSizes.s};
   }
@@ -112,53 +102,9 @@ export const Input = styled(Field)`
     border: 1px solid ${themes.colors.textAndIconTodo};
   }
 
-  &.input-error {
-    border: 1px solid ${themes.colors.failed};
-  }
-
-  &.input-correct {
-    border: 1px solid ${themes.colors.saccess};
-  }
-
   @media screen and (min-width: ${themes.breakpoints.m}) {
     padding: 18px;
     font-size: ${themes.fontSizes.l};
-  }
-`;
-
-export const ErrorText = styled(ErrorMessage)`
-  position: absolute;
-  color: #da1414;
-  font-family: Inter;
-  font-size: ${themes.fontSizes.xs};
-  font-style: normal;
-  font-weight: ${themes.fontWeight.r};
-  line-height: 14px;
-
-  left: 14px;
-  bottom: -18px;
-
-  @media screen and (min-width: ${themes.breakpoints.m}) {
-    font-size: ${themes.fontSizes.s};
-    left: 18px;
-  }
-`;
-
-export const TextCorrect = styled.p`
-  position: absolute;
-  color: ${themes.colors.saccess};
-  font-family: Inter;
-  font-size: ${themes.fontSizes.xs};
-  font-style: normal;
-  font-weight: ${themes.fontWeight.r};
-  line-height: 14px;
-
-  left: 14px;
-  bottom: -18px;
-
-  @media screen and (min-width: ${themes.breakpoints.m}) {
-    font-size: ${themes.fontSizes.s};
-    left: 18px;
   }
 `;
 
@@ -207,16 +153,5 @@ export const Img = styled.img`
 
   @media screen and (min-width: ${themes.breakpoints.m}) {
     width: 20px;
-  }
-`;
-
-export const SvgIcon = styled.img`
-  position: absolute;
-  right: 18px;
-  bottom: 11px;
-  width: 24px;
-
-  @media screen and (min-width: ${themes.breakpoints.m}) {
-    bottom: 18px;
   }
 `;

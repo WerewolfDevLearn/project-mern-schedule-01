@@ -39,7 +39,7 @@ export default function UserNav() {
           {t('Calendar')}
         </NavLinkStyled>
       </li>
-      <li key="SatisticsPage">
+      <li key="StatisticsPage">
         <NavLinkStyled to={routes.statisticsPage}>
           <IconDiv>
             <BsBarChart />

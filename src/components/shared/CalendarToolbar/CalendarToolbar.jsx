@@ -22,7 +22,12 @@ export const CalendarToolbar = ({ today, prevHandler, nextHandler }) => {
   }, [pathname]);
   return (
     <ToolbarWrapper>
-      <PeriodPaginator prevHandler={prevHandler} nextHandler={nextHandler} type={type} />
+      <PeriodPaginator
+        prevHandler={prevHandler}
+        nextHandler={nextHandler}
+        type={type}
+        date={today}
+      />
       <PeriodTypeSelect today={today} onChangeType={setType} />
     </ToolbarWrapper>
   );

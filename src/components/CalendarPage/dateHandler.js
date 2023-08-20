@@ -24,6 +24,7 @@ export function useMonthHendler(currentDate) {
   };
   return [onPrevMonth, onNextMonth, yearM, monthM];
 }
+
 export function useDayHendler(currentDate) {
   const date = new Date(currentDate);
   const currYear = date.getFullYear();
