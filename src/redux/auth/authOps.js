@@ -13,7 +13,7 @@ import {
   changePassword
 } from 'src/services/authAxApi';
 
-export const authGoogle = createAsyncThunk('user/Google', function (token, { rejectWithValue }) {
+export const authenticate = createAsyncThunk('user/Auth', function (token, { rejectWithValue }) {
   try {
     return token;
   } catch (error) {
@@ -41,7 +41,7 @@ export const userlogin = createAsyncThunk(
       token.set(response.token);
       return response;
     } catch (error) {
-      return rejectWithValue(error.response.data.message);
+      return rejectWithValue(error);
     }
   }
 );

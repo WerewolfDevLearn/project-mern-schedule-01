@@ -25,3 +25,4 @@ export { default as ValidationSuccess } from './ValidationSuccess';
 export { default as XClose } from './XClose';
 export { default as ArrowLeft } from './ArrowLeft';
 export { default as ArrowRight } from './ArrowRight';
+export { default as Check } from './Check';

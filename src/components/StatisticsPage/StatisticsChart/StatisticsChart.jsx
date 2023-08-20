@@ -13,11 +13,11 @@ import {
   LabelList
 } from 'recharts';
 
-import { StatisticsChartStyles, ChartContainer, Text } from './StatisticsChart.styled';
+import { useThemeColors } from 'src/components/MainLayout/ThemeToggler/ThemeContextProvider';
+
+import { StatisticsChartStyles, ChartContainer } from './StatisticsChart.styled';
 
 const StatisticsChart = ({ tasks }) => {
-  const { t } = useTranslation();
-
   const calculateTaskStatusCount = (tasks) => {
     const taskStatusCountDay = {
       todo: 0,
@@ -50,7 +50,6 @@ const StatisticsChart = ({ tasks }) => {
         taskStatusCountMonth.done += 1;
       }
     });
-
     return [taskStatusCountDay, taskStatusCountMonth];
   };
 
@@ -88,31 +87,36 @@ const StatisticsChart = ({ tasks }) => {
   return (
     <StatisticsChartStyles>
       <ChartContainer>
-        <ResponsiveContainer width="100%" height="100%">
+        <TasksLabel>{t('Tasks')}</TasksLabel>
+        <ResponsiveContainer>
           <BarChart
             data={data}
-            margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
-            barGap={10}
+            margin={{ top: 81, right: 14, left: 0, bottom: 40 }}
+            barGap={8}
             barCategoryGap="20%"
           >
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="name" />
             <YAxis tickCount={6} domain={[0, 100]} interval={0}>
-              <Label value={t('Tasks')} angle={0} position="top" offset={10} />
+              <Label value="Tasks" angle={0} position="top" offset={10} />
             </YAxis>
             <Tooltip />
-            <Legend align="right" verticalAlign="top" layout="vertical" />
             <Bar
               dataKey="byDay"
               fill="url(#colorByDay)"
               name={<Text>{t('By Day')}</Text>}
               radius={[0, 0, 7.5, 7.5]}
-              barSize={27}
+              barSize={22}
             >
               <LabelList
                 dataKey="byDay"
                 position="top"
                 formatter={(value) => `${Math.round(value)}%`}
+                style={{
+                  fontSize: '12px',
+                  fontWeight: 500,
+                  fill: `${theme.colors.textCancelBtn}`
+                }}
               />
             </Bar>
             <Bar
@@ -120,12 +124,17 @@ const StatisticsChart = ({ tasks }) => {
               fill="url(#colorByMonth)"
               name={<Text>{t('By Month')}</Text>}
               radius={[0, 0, 7.5, 7.5]}
-              barSize={27}
+              barSize={22}
             >
               <LabelList
                 dataKey="byMonth"
                 position="top"
                 formatter={(value) => `${Math.round(value)}%`}
+                style={{
+                  fontSize: '12px',
+                  fontWeight: 500,
+                  fill: `${theme.colors.textCancelBtn}`
+                }}
               />
             </Bar>
           </BarChart>

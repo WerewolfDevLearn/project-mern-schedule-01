@@ -1,8 +1,6 @@
 import { isFulfilled, isRejected } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
 
-const regExpContacts = '/contacts/gm';
-const regExpUser = '/user/gm';
 const regExp = {
   userRegFF: 'user/Register/fulfilled',
   userLoginFF: 'user/Login/fulfilled',
@@ -16,13 +14,6 @@ const regExp = {
 };
 
 export const ErrorLogger = (_api) => (next) => (action) => {
-  if (isRejected(action) && action.type.match(regExpContacts)) {
-    toast.error(action.payload);
-  }
-  if (isRejected(action) && action.type.match(regExpUser)) {
-    toast.error(action.payload);
-  }
-
   if (action.type === regExp.userRegFF) {
     toast.success('Verification letter was send to you email address');
   }
@@ -38,7 +29,7 @@ export const ErrorLogger = (_api) => (next) => (action) => {
     action.type === regExp.userLoginRG &&
     action.payload === 'Action Required: Verify Your Email'
   ) {
-    toast.error(`${action.payload}. Please check you email`);
+    toast.error(' Please check you email');
   }
   if (
     isRejected(action) &&
@@ -53,11 +44,12 @@ export const ErrorLogger = (_api) => (next) => (action) => {
     action.type === regExp.userLoginRG &&
     action.payload !== 'Action Required: Verify Your Email'
   ) {
-    toast.error(`${action.payload}. Please register`);
+    toast.error('Unauthorized');
   }
+
   if (isRejected(action) && action.type === regExp.userRegRG) {
     toast.error(
-      `${action.payload}. User with such name and email is exist. Please chagne you register information or Log in`
+      ' User with such name and email is exist. Please chagne you register information or Log in'
     );
   }
 

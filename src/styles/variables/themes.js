@@ -45,6 +45,7 @@ export const themes = Object.freeze({
     activeUserNavIcon: '#3E85F3',
     sidebarBorder: 'rgba(220, 227, 229, 0.5)',
     textDisablBtn: '#00000050',
+    statisticsBgLines: '#E3F3FF',
 
     black: '#343434',
     white: '#FFFFFF',
@@ -161,6 +162,7 @@ export const dark = Object.freeze({
     activeUserNavIcon: '#FFFFFF',
     sidebarBorder: 'transparent',
     textDisablBtn: '#FFFFFF20',
+    statisticsBgLines: 'rgba(227, 243, 255, 0.15)',
 
     black: '#343434',
     white: '#FFFFFF',

@@ -25,80 +25,11 @@ export const FormWrap = styled.div`
   align-items: center;
 `;
 
-export const AvatarContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  margin-bottom: 14px;
-  top: -31px;
-
-  @media screen and (${themes.breakpoints.m} <= width) {
-    top: 0;
-  }
-`;
-
-export const AvatarAddIcon = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  width: 14px;
-  height: 14px;
-  top: 85%;
-  left: 60%;
-  color: white;
-  background-color: #3e85f3;
-  border-radius: 50%;
-
-  &:hover {
-    cursor: pointer;
-    background-color: #2b78ef;
-  }
-
-  @media screen and (${themes.breakpoints.m} <= width) {
-    width: 24px;
-    height: 24px;
-  }
-`;
-
-export const AvatarInputField = styled.input`
-  display: none;
-`;
-
-export const AvatarImgContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 72px;
-  height: 72px;
-  border: 2px solid #3e85f3;
-  border-radius: 50%;
-
-  @media screen and (${themes.breakpoints.m} <= width) {
-    width: 124px;
-    height: 124px;
-  }
-`;
-
-export const AvatarImg = styled.img`
-  width: 72px;
-  height: 72px;
-  border: 2px solid #3e85f3;
-  border-radius: 50%;
-  object-fit: cover;
-
-  @media screen and (${themes.breakpoints.m} <= width) {
-    width: 124px;
-    height: 124px;
-  }
-`;
-
 export const UserNameTitle = styled.h2`
   margin: 0;
   margin-bottom: 4px;
 
-  @media screen and (${themes.breakpoints.m} <= width < ${themes.breakpoints.l}) {
+  @media screen and (${themes.breakpoints.l} <= width) {
     margin-bottom: 8px;
   }
 `;
@@ -136,7 +67,6 @@ export const FormInputContainer = styled.div`
     flex-direction: row;
     flex-wrap: wrap;
     gap: 16px 50px;
-    /* padding: 44px 0 88px 0; */
     width: 758px;
     position: relative;
   }
@@ -148,7 +78,6 @@ export const FormLabelSpan = styled.span`
   font-size: 12px;
   line-height: 1.17;
   letter-spacing: -0.02em;
-  /* margin-top: 16px; */
   color: #111111;
 
   @media screen and (${themes.breakpoints.m} <= width < ${themes.breakpoints.l}) {
@@ -243,6 +172,12 @@ export const ErrorMessage = styled(FormikErrorMessage)`
   }
 `;
 
+export const ModalWrap = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 export const FormBtn = styled.button`
   width: 195px;
   height: 46px;
@@ -267,6 +202,12 @@ export const FormBtn = styled.button`
     transform: scale(1.1);
   }
 
+  &:disabled {
+    transform: none;
+    background-color: #8fc2fc;
+    cursor: not-allowed;
+  }
+
   @media screen and (${themes.breakpoints.m} <= width) {
     width: 262px;
     height: 48px;
@@ -274,100 +215,5 @@ export const FormBtn = styled.button`
   }
 
   @media screen and (${themes.breakpoints.l} <= width) {
-  }
-`;
-
-export const BtnWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-
-  @media screen and (${themes.breakpoints.m} <= width < ${themes.breakpoints.l}) {
-    /* gap: 10px; */
-  }
-
-  @media screen and (${themes.breakpoints.l} <= width) {
-    flex-direction: row;
-    bottom: 8%;
-    right: -8%;
-    gap: 20px;
-  }
-`;
-
-export const ChangeValueBtnWrap = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-
-  @media screen and (${themes.breakpoints.m} <= width < ${themes.breakpoints.l}) {
-    flex-direction: row;
-  }
-
-  @media screen and (${themes.breakpoints.l} <= width) {
-    flex-direction: row;
-    gap: 20px;
-  }
-`;
-
-export const ChangeValueBtn = styled.button`
-  width: 172px;
-  height: 48px;
-  font-family: Inter;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 1.29;
-  letter-spacing: -0.02em;
-  border-radius: 16px;
-  color: white; //  color: ${({ theme }) => theme.colors.white};
-  background-color: #3e85f3; //  background-color: ${({ theme }) => theme.colors.activeUserNavIcon};
-  text-shadow: 0px 47px 355px rgba(0, 0, 0, 0.07), 0px 9.4px 57.6875px rgba(0, 0, 0, 0.035);
-
-  transform: scale(1);
-  transition-property: transform;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0, 0.11, 0.35, 2);
-
-  &:hover,
-  &:focus {
-    background-color: #2b78ef;
-    transform: scale(1.1);
-  }
-
-  /* @media screen and (${themes.breakpoints.m} <= width < ${themes.breakpoints.l}) {
-    margin-bottom: 20px;
-  } */
-
-  @media screen and (${themes.breakpoints.l} <= width) {
-    width: 195px;
-  }
-`;
-
-export const DeleteProfileBtn = styled.button`
-  width: 172px;
-  height: 48px;
-  font-family: Inter;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 1.29;
-  letter-spacing: -0.02em;
-  border-radius: 16px;
-  color: white; //  color: ${({ theme }) => theme.colors.white};
-  background-color: #fad91b;
-  text-shadow: 0px 47px 355px rgba(0, 0, 0, 0.07), 0px 9.4px 57.6875px rgba(0, 0, 0, 0.035);
-
-  transform: scale(1);
-  transition-property: transform;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0, 0.11, 0.35, 2);
-
-  &:hover,
-  &:focus {
-    background-color: #bb0202;
-    transform: scale(1.1);
-  }
-
-  @media screen and (${themes.breakpoints.l} <= width) {
-    width: 195px;
   }
 `;
