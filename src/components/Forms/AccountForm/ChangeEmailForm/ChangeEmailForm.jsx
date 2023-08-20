@@ -1,12 +1,14 @@
 import { useState } from 'react';
-import { Formik, Form } from 'formik';
+import { Formik } from 'formik';
 import PropTypes from 'prop-types';
 import * as yup from 'yup';
 import { useTranslation } from 'react-i18next';
 import i18n from 'i18next';
 
-import { XClose } from '../../shared/Icons';
-import VerifyForm from '../AuthForms/VerifyForm/VerifyForm';
+import { XClose } from '../../../shared/Icons';
+import VerifyForm from '../../AuthForms/VerifyForm/VerifyForm';
+
+import { validationChangeEmailRules } from '../accountValidationRules';
 
 import {
   Modal,
@@ -18,11 +20,9 @@ import {
   InputField,
   ErrorMessage,
   BtnWrap,
-  UpdateBtn
-  // CloseBtn
+  UpdateBtn,
+  CancelBtn
 } from './ChangeEmailForm.styled';
-
-const schema = yup.object().shape({});
 
 export default function ChangeEmailForm({ onClose }) {
   const initialValues = {};
@@ -52,7 +52,11 @@ export default function ChangeEmailForm({ onClose }) {
 
   return (
     <>
-      <Formik initialValues={initialValues} validationSchema={schema} onSubmit={handleSubmit}>
+      <Formik
+        initialValues={initialValues}
+        validationSchema={validationChangeEmailRules}
+        onSubmit={handleSubmit}
+      >
         {(formik) => {
           return (
             <>
@@ -69,9 +73,21 @@ export default function ChangeEmailForm({ onClose }) {
                     placeholder="Enter new email"
                   />
                 </InputsContainer>
-                <UpdateBtn type="submit">Update email</UpdateBtn>
+                <BtnWrap>
+                  <UpdateBtn
+                    type="submit"
+                    disabled={
+                      !formik.isValid || !formik.touched || formik.isSubmitting || !formik.dirty
+                    }
+                  >
+                    Update email
+                  </UpdateBtn>
+                  <CancelBtn type="button" onClick={onClose}>
+                    Cancel
+                  </CancelBtn>
+                </BtnWrap>
                 {/* <VerifyForm /> */}
-                {isUpdating && (
+                {!isUpdating && (
                   <Verify>
                     <InputsContainer>
                       <FormikInput
@@ -82,10 +98,14 @@ export default function ChangeEmailForm({ onClose }) {
                       />
                     </InputsContainer>
                     <BtnWrap>
-                      <UpdateBtn type="submit">Verify</UpdateBtn>
-                      {/* <CloseBtn type="button" onClick={onClose}>
-                        Close
-                      </CloseBtn> */}
+                      <UpdateBtn
+                        type="submit"
+                        disabled={
+                          !formik.isValid || !formik.touched || formik.isSubmitting || !formik.dirty
+                        }
+                      >
+                        Verify
+                      </UpdateBtn>
                     </BtnWrap>
                   </Verify>
                 )}

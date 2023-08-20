@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { updUser } from 'src/redux/auth/authOps';
 
-import UserForm from '../Forms/UserForm/UserForm';
+import UserForm from '../Forms/AccountForm/UserForm/UserForm';
 
 import { AccountPageWrap } from './AccountPage.styled';
 
