@@ -6,7 +6,48 @@ Ultimate Task Manager and Calendar Companion!</br></br>
 comprehensive overview of your schedule, presenting all your tasks, events, and meetings in a
 visually appealing and intuitive format. Say goodbye to scattered to-do lists and hello to
 streamlined productivity with
-[**GooseTrack**](https://werewolfdevlearn.github.io/project-mern-schedule-01/)!</br></br>📅 **Stay
+[**GooseTrack**](https://werewolfdevlearn.github.io/project-mern-schedule-01/)!</br></br>
+
+Technologies:
+1. React
+2. Redux Toolkit
+3. Axios
+4. date-fns
+5. formik
+6. i18next
+7. prop-types
+8. styled-components
+9. swiper
+10. yup
+11. vite
+12. Adaptive / Responsive
+13. flag-icons
+14. moment
+15. recharts
+
+</br></br>
+
+<h3 align="center"> ℹ️  Team  🚀 <h3>
+<span align="center">
+
+<a align="center" href="https://github.com/WerewolfDevLearn">![GitHub](https://img.shields.io/badge/-Mikhail-05122A?style=flat&logo=github)</a>
+<a align="center" href="https://github.com/dmitryberesten">![GitHub](https://img.shields.io/badge/-Dmytrii-05122A?style=flat&logo=github)</a>
+<a align="center" href="https://github.com/Inna-Mykytiuk">![GitHub](https://img.shields.io/badge/-Inna-05122A?style=flat&logo=github)</a>
+<a align="center" href="https://github.com/TarasKachmar2022">![GitHub](https://img.shields.io/badge/-Taras-05122A?style=flat&logo=github)</a>
+<a align="center" href="https://github.com/Iryna-Vyshniak">![GitHub](https://img.shields.io/badge/-Iryna-05122A?style=flat&logo=github)</a>
+<a align="center" href="https://github.com/IvanMutsko">![GitHub](https://img.shields.io/badge/-Ivan-05122A?style=flat&logo=github)</a>
+<a align="center" href="https://github.com/YuliyaBondG">![GitHub](https://img.shields.io/badge/-Julia-05122A?style=flat&logo=github)</a>
+<a align="center" href="https://github.com/Belka-S">![GitHub](https://img.shields.io/badge/-Serhii-05122A?style=flat&logo=github)</a>
+<a align="center" href="https://github.com/VladyslavaDvorovenko">![GitHub](https://img.shields.io/badge/-Vladyslava-05122A?style=flat&logo=github)</a>
+<a align="center" href="https://github.com/DimaShabatyn">![GitHub](https://img.shields.io/badge/-Dima-05122A?style=flat&logo=github)</a>
+<a align="center" href="https://github.com/SerhiiMaslov1979">![GitHub](https://img.shields.io/badge/-Serhii-05122A?style=flat&logo=github)</a>
+<a align="center" href="https://github.com/Malberee">![GitHub](https://img.shields.io/badge/-Pavlo-05122A?style=flat&logo=github)</a>
+
+</span>
+
+</br></br>
+
+📅 **Stay
 Organized:** [**GooseTrack**](https://werewolfdevlearn.github.io/project-mern-schedule-01/) is your
 all-in-one solution for staying on top of tasks, events, and deadlines. Seamlessly create, manage,
 and prioritize tasks with a user-friendly interface that ensures nothing falls through the

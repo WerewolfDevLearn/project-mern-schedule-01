@@ -6,9 +6,9 @@ export const DivWrapper = styled('div')`
   position: relative;
   align-items: center;
   justify-content: space-between;
-  @media screen and (max-width: 768px) {
+  /* @media screen and (max-width: 768px) {
     width: 100%;
-  }
+  } */
   @media screen and (min-width: 768px) {
     justify-content: space-around;
     align-items: center;
@@ -30,8 +30,8 @@ export const TitleWrapper = styled.button`
     font-size: 16px;
     justify-content: space-around;
     align-items: center;
-    margin-top: 33px;
-    margin-bottom: 33px;
+    /* margin-top: 33px;
+    margin-bottom: 33px; */
   }
 `;
 

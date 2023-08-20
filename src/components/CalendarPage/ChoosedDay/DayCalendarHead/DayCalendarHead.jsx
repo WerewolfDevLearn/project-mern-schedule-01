@@ -9,10 +9,12 @@ import {
   DayCalendarHeadItem,
   WeekDay,
   DateDayWrap,
-  DateDay
+  DateDay,
+  TasksCount,
+  CheckStyles
 } from './DayCalendarHead.styled';
 
-export default function DayCalendarHead({ date }) {
+export default function DayCalendarHead({ date, tasks }) {
   const { currentDate } = useParams();
   const { t } = useTranslation();
   const [selectedDay, setSelectedDay] = useState(date);
@@ -49,6 +51,26 @@ export default function DayCalendarHead({ date }) {
     navigate(path, { replace: true });
   };
 
+  const getCountTasksForDay = (date) => {
+    const formattedDate = formatDate(date);
+    const tasksFiltered = tasks.filter((task) => task.date === formattedDate);
+    const tasksFilteredNotDone = tasksFiltered.filter((task) => task.category !== 'done');
+    const tasksFilteredDone = tasksFiltered.filter((task) => task.category === 'done');
+
+    return (
+      <>
+        {tasksFilteredNotDone.length > 0 ? (
+          <TasksCount>{tasksFilteredNotDone.length}</TasksCount>
+        ) : (
+          tasksFilteredNotDone.length < 1 &&
+          tasksFilteredDone.length >= 1 && (
+            <CheckStyles color="#2ac76b" width="15px" height="15px" />
+          )
+        )}
+      </>
+    );
+  };
+
   return (
     <DayCalendarHeadStyles>
       {weekDays.map((day) => (
@@ -56,6 +78,7 @@ export default function DayCalendarHead({ date }) {
           <a onClick={() => onSelectDay(day)}>
             <WeekDay>{getWeekDay(day)}</WeekDay>
             <DateDayWrap selected={formatDate(day) === selectedDay}>
+              {getCountTasksForDay(day)}
               <DateDay>{format(day, 'd')}</DateDay>
             </DateDayWrap>
           </a>
@@ -66,5 +89,6 @@ export default function DayCalendarHead({ date }) {
 }
 
 DayCalendarHead.propTypes = {
-  date: PropTypes.string
+  date: PropTypes.string,
+  tasks: PropTypes.array
 };

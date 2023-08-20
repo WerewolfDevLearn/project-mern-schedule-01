@@ -83,6 +83,7 @@ axios.interceptors.response.use(
 
         return axios(error.config);
       } catch (error) {
+        error.message = 'Unauthorized';
         return Promise.reject(error);
       }
     }

@@ -5,18 +5,21 @@ import UserNav from './UserNav/UserNav';
 import SideBarLogo from './SideBarLogo/SideBarLogo';
 import LogoutBtn from './LogoutBtn/LogoutBtn';
 import UserMenuBTNClose from './UserMenuBTNClose/UserMenuBTNClose';
-import { SideBarContainer, SideBarHeading } from './SideBar.styled';
+import { SidebarBackdrop, SideBarContainer, SideBarHeading } from './SideBar.styled';
 
 export default function SideBar({ open, callBackCls }) {
   const { t } = useTranslation();
   return (
-    <SideBarContainer open={open}>
-      <UserMenuBTNClose callBackCls={callBackCls} />
-      <SideBarLogo />
-      <SideBarHeading> {t('User Panel')}</SideBarHeading>
-      <UserNav />
-      <LogoutBtn />
-    </SideBarContainer>
+    <>
+      <SidebarBackdrop open={open} onClick={callBackCls} />
+      <SideBarContainer open={open}>
+        <UserMenuBTNClose callBackCls={callBackCls} />
+        <SideBarLogo />
+        <SideBarHeading> {t('User Panel')}</SideBarHeading>
+        <UserNav callBackCls={callBackCls} />
+        <LogoutBtn />
+      </SideBarContainer>
+    </>
   );
 }
 
