@@ -13,12 +13,13 @@ export const Container = styled.div`
 `;
 
 export const ChartContainer = styled.div`
+  position: relative;
   width: 860px;
   height: 440px;
   border-radius: 20px;
   margin: 0 auto; /* Додаємо автоматичний відступ по боках для вирівнювання по центру */
 
-  border: 0.8px solid ${({ theme }) => theme.colors.ligthBlue};
+  border: 0.8px solid ${({ theme }) => theme.colors.statisticsBgLines};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.l}) {
     width: 100%;
@@ -27,29 +28,20 @@ export const ChartContainer = styled.div`
 `;
 
 export const StatisticsChartStyles = styled.div`
-  margin-top: 78px;
-  fill: ${({ theme }) => theme.colors.textCancelBtn};
+  margin-top: 40px;
 `;
 
-export const LegendStyles = styled.ul`
-  /* margin-bottom: 45px; */
+export const TasksLabel = styled.p`
+  position: absolute;
+  top: 40px;
+  left: 14px;
 
-  display: flex;
-  gap: 14px;
-
+  font-size: 14px;
+  font-weight: 600;
   color: ${({ theme }) => theme.colors.textCancelBtn};
-`;
 
-export const LegendItem = styled.li`
-  display: flex;
-  align-items: center;
-  gap: 8px;
-`;
-
-export const Ellipse = styled.div`
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-
-  background: ${(props) => (props.type === 'By Day' ? '#FFD2DD' : '#3E85F3')};
+  @media screen and (width >= 768px) {
+    top: 32;
+    left: 32;
+  }
 `;

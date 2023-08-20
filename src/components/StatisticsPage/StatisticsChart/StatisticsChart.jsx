@@ -17,9 +17,7 @@ import { useThemeColors } from 'src/components/MainLayout/ThemeToggler/ThemeCont
 import {
   StatisticsChartStyles,
   ChartContainer,
-  LegendStyles,
-  LegendItem,
-  Ellipse
+  TasksLabel
 } from './StatisticsChart.styled';
 
 const StatisticsChart = ({ tasks }) => {
@@ -86,22 +84,10 @@ const StatisticsChart = ({ tasks }) => {
     { name: 'Done', byDay: chartDataByDay.donePercentage, byMonth: chartDataByMonth.donePercentage }
   ];
 
-  const renderLegend = ({ payload }) => {
-    return (
-      <LegendStyles>
-        {payload.map((entry, index) => (
-          <LegendItem key={`item-${index}`}>
-            <Ellipse type={entry.value} />
-            {entry.value}
-          </LegendItem>
-        ))}
-      </LegendStyles>
-    );
-  };
-
   return (
     <StatisticsChartStyles>
       <ChartContainer>
+        <TasksLabel>Tasks</TasksLabel>
         <ResponsiveContainer>
           <BarChart
             data={data}
@@ -135,7 +121,7 @@ const StatisticsChart = ({ tasks }) => {
                 fill: `${theme.colors.textCancelBtn}`
               }}
             >
-              <Label
+              {/* <Label
                 value="Tasks"
                 angle={0}
                 position="top"
@@ -145,10 +131,10 @@ const StatisticsChart = ({ tasks }) => {
                   fontWeight: 600,
                   fill: `${theme.colors.textCancelBtn}`
                 }}
-              />
+              /> */}
             </YAxis>
             <Tooltip />
-            <Legend
+            {/* <Legend
               align="left"
               verticalAlign="top"
               wrapperStyle={{
@@ -156,7 +142,7 @@ const StatisticsChart = ({ tasks }) => {
                 left: 0
               }}
               content={renderLegend}
-            />
+            /> */}
             <Bar
               dataKey="byDay"
               fill="url(#colorByDay)"

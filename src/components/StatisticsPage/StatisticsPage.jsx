@@ -7,7 +7,14 @@ import PeriodPaginator from '../shared/PeriodPaginator/PeriodPaginator';
 
 import StatisticsChart from './StatisticsChart/StatisticsChart';
 
-import { StatisticsPageStyles } from './StatisticsPage.styled';
+import {
+  StatisticsPageStyles,
+  StatisticsHeadWrapper,
+  Legend,
+  LegendItem,
+  Ellipse,
+  LegendText
+} from './StatisticsPage.styled';
 
 const StatisticsPage = () => {
   const [currentDate, setCurrentDate] = useState(format(new Date(), 'yyyy-MM-dd'));
@@ -30,7 +37,19 @@ const StatisticsPage = () => {
 
   return (
     <StatisticsPageStyles>
-      <PeriodPaginator prevHandler={onPrev} nextHandler={onNext} type="day" date={currentDate} />
+      <StatisticsHeadWrapper>
+        <PeriodPaginator prevHandler={onPrev} nextHandler={onNext} type="day" date={currentDate} />
+        <Legend>
+          <LegendItem>
+            <Ellipse type="day" />
+            <LegendText>By Day</LegendText>
+          </LegendItem>
+          <LegendItem>
+            <Ellipse type="month" />
+            <LegendText>By Month</LegendText>
+          </LegendItem>
+        </Legend>
+      </StatisticsHeadWrapper>
       {isLoading ? <Loader /> : <StatisticsChart tasks={tasks} />}
     </StatisticsPageStyles>
   );
