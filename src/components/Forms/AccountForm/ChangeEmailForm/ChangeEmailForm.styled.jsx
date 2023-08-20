@@ -1,17 +1,26 @@
 import styled from 'styled-components';
 import { Field, Form, ErrorMessage as FormikErrorMessage } from 'formik';
+import { themes } from 'src/styles/variables/themes';
 
 export const Modal = styled(Form)`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  width: 550px;
-  height: 550px;
-  border-radius: 16px;
-  background-color: #edf0f8;
+  width: 100vw;
+  height: 100vh;
+  padding: 10px;
+  background-color: white;
   box-shadow: rgb(0, 0, 0) 0px 0px 80px;
+
+  @media screen and (${themes.breakpoints.s} <= width < ${themes.breakpoints.m}) {
+  }
+
+  @media screen and (${themes.breakpoints.m} <= width) {
+    width: 550px;
+    height: 550px;
+    border-radius: 16px;
+  }
 `;
 
 export const XCloseWrap = styled.button`
