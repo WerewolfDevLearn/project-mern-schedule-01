@@ -27,6 +27,17 @@ const initialState = {
   birthday: ''
 };
 
+const userTokenExpired = (state, { payload }) => {
+  console.log('payload: ', payload);
+
+  if (payload === 'Request failed with status code 500') {
+    state.token = initialState;
+    state.refreshToken = initialState;
+  }
+  state.token = initialState;
+  state.refreshToken = initialState;
+};
+
 const userLoginVerify = (state, { payload }) => {
   state.token = payload.token;
   state.refreshToken = payload.refreshToken;
@@ -56,7 +67,8 @@ const userSlice = createSlice({
       .addCase(updUser.fulfilled, userGetCurrent)
       .addCase(logOut.fulfilled, () => initialState)
       .addCase(delUser.fulfilled, () => initialState)
-      .addCase(changeEM.fulfilled, () => userChangeEmail);
+      .addCase(changeEM.fulfilled, () => userChangeEmail)
+      .addCase(getCurrent.rejected, () => userTokenExpired);
   }
 });
 
