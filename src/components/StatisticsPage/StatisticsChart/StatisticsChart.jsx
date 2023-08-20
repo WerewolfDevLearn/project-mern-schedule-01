@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 import {
   ResponsiveContainer,
   BarChart,
@@ -12,9 +13,11 @@ import {
   LabelList
 } from 'recharts';
 
-import { StatisticsChartStyles, ChartContainer } from './StatisticsChart.styled';
+import { StatisticsChartStyles, ChartContainer, Text } from './StatisticsChart.styled';
 
 const StatisticsChart = ({ tasks }) => {
+  const { t } = useTranslation();
+
   const calculateTaskStatusCount = (tasks) => {
     const taskStatusCountDay = {
       todo: 0,
@@ -66,16 +69,20 @@ const StatisticsChart = ({ tasks }) => {
   const chartDataByMonth = calculatePercentages(taskStatusCountMonth);
   const data = [
     {
-      name: 'To Do',
+      name: t('To Do'),
       byDay: chartDataByDay.todoPercentage,
       byMonth: chartDataByMonth.todoPercentage
     },
     {
-      name: 'In Progress',
+      name: t('In Progress'),
       byDay: chartDataByDay.inprogressPercentage,
       byMonth: chartDataByMonth.inprogressPercentage
     },
-    { name: 'Done', byDay: chartDataByDay.donePercentage, byMonth: chartDataByMonth.donePercentage }
+    {
+      name: t('Done'),
+      byDay: chartDataByDay.donePercentage,
+      byMonth: chartDataByMonth.donePercentage
+    }
   ];
 
   return (
@@ -91,14 +98,14 @@ const StatisticsChart = ({ tasks }) => {
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="name" />
             <YAxis tickCount={6} domain={[0, 100]} interval={0}>
-              <Label value="Tasks" angle={0} position="top" offset={10} />
+              <Label value={t('Tasks')} angle={0} position="top" offset={10} />
             </YAxis>
             <Tooltip />
             <Legend align="right" verticalAlign="top" layout="vertical" />
             <Bar
               dataKey="byDay"
               fill="url(#colorByDay)"
-              name="By Day"
+              name={<Text>{t('By Day')}</Text>}
               radius={[0, 0, 7.5, 7.5]}
               barSize={27}
             >
@@ -111,7 +118,7 @@ const StatisticsChart = ({ tasks }) => {
             <Bar
               dataKey="byMonth"
               fill="url(#colorByMonth)"
-              name="By Month"
+              name={<Text>{t('By Month')}</Text>}
               radius={[0, 0, 7.5, 7.5]}
               barSize={27}
             >
