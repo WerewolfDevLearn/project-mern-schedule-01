@@ -90,26 +90,31 @@ export const UpdateBtn = styled.button`
     background-color: #2b78ef;
     transform: scale(1.1);
   }
+
+  &:disabled {
+    transform: none;
+    background-color: #8fc2fc;
+    cursor: not-allowed;
+  }
 `;
 
-// export const CloseBtn = styled.button`
-//   width: 100px;
-//   height: 48px;
-//   border-radius: 16px;
-//   color: white;
-//   background-color: #3e85f3;
-//   /* border: 3px solid #3e85f3; */
-//   margin-left: 100px;
-//   margin-bottom: 10px;
+export const CancelBtn = styled.button`
+  width: 100px;
+  height: 48px;
+  border-radius: 16px;
+  color: white;
+  background-color: #3e85f3;
+  /* border: 3px solid #3e85f3; */
+  margin-left: 100px;
+  margin-bottom: 10px;
 
-// transform: scale(1);
-//   transition-property: transform;
-//   transition-duration: 250ms;
-//   transition-timing-function: cubic-bezier(0, 0.11, 0.35, 2);
+  transform: scale(1);
+  transition-property: transform;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0, 0.11, 0.35, 2);
 
-//   &:hover {
-//     border: none;
-//     color: white;
-//     background-color: #2b78ef;
-//   }
-// `;
+  &:hover {
+    transform: scale(1.1);
+    background-color: #2b78ef;
+  }
+`;

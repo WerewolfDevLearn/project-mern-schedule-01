@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import i18n from 'i18next';
 import { useTranslation } from 'react-i18next';
 
-import { XClose, ValidationError } from '../../shared/Icons';
+import { XClose, ValidationError } from '../../../shared/Icons';
 
 import {
   Modal,
@@ -17,12 +17,11 @@ import {
   DeleteBtn
 } from './DeleteProfileForm.styled';
 
-export default function DeleteProfileForm({ onClose }) {
+export default function DeleteProfileForm({ onClose, callBack }) {
   const [isChecked, setIsChecked] = useState(false);
-  console.log(isChecked);
 
-  const handleSubmit = (values) => {
-    console.log('values');
+  const handleSubmit = (data) => {
+    callBack(data);
   };
 
   return (
@@ -57,5 +56,6 @@ export default function DeleteProfileForm({ onClose }) {
 }
 
 DeleteProfileForm.propTypes = {
-  onClose: PropTypes.func.isRequired
+  onClose: PropTypes.func.isRequired,
+  callBack: PropTypes.func.isRequired
 };
