@@ -4,7 +4,6 @@ export const UserInfoStyles = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 84px;
 `;
 export const UserName = styled.p`
   color: ${({ theme }) => theme.colors.textCancelBtn};
