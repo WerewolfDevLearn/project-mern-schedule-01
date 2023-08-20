@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 import {
-  authGoogle,
+  authenticate,
   register,
   userlogin,
   logOut,
@@ -21,7 +21,7 @@ const errorSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(authGoogle.pending, () => '')
+      .addCase(authenticate.pending, () => '')
       .addCase(register.pending, () => '')
       .addCase(userlogin.pending, () => '')
       .addCase(logOut.pending, () => '')
@@ -31,7 +31,7 @@ const errorSlice = createSlice({
       .addCase(changeEM.pending, () => '')
       .addCase(changePW.pending, () => '')
 
-      .addCase(authGoogle.rejected, (_, { payload }) => payload)
+      .addCase(authenticate.rejected, (_, { payload }) => payload)
       .addCase(register.rejected, (_, { payload }) => payload)
       .addCase(userlogin.rejected, (_, { payload }) => payload)
       .addCase(logOut.rejected, (_, { payload }) => payload)

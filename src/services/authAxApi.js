@@ -1,4 +1,7 @@
 import axios from 'axios';
+import { store } from 'src/redux/store';
+
+import { authenticate } from '../redux/auth/authOps';
 
 axios.defaults.baseURL = 'https://project-mern-schedule-03.onrender.com/api';
 // axios.defaults.baseURL = 'http://localhost:3001/api';
@@ -63,3 +66,25 @@ export const token = {
     axios.defaults.headers.common.Authorization = '';
   }
 };
+
+// access-refresh token logic
+axios.interceptors.response.use(
+  (response) => response,
+  async (error) => {
+    if (error.response.status === 401) {
+      try {
+        const { data } = await axios.post('/users/refresh', {
+          refreshToken: store.getState().user.refreshToken
+        });
+
+        token.set(data.token);
+        await store.dispatch(authenticate({ token: data.token, refreshToken: data.refreshToken }));
+        error.config.headers.Authorization = `Bearer ${data.token}`;
+
+        return axios(error.config);
+      } catch (error) {
+        return Promise.reject(error);
+      }
+    }
+  }
+);
