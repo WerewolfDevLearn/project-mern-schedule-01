@@ -27,6 +27,26 @@ Technologies:
 
 </br></br>
 
+<h3 align="center"> ℹ️  Team  🚀 <h3>
+<span align="center">
+
+<a align="center" href="https://github.com/WerewolfDevLearn">![GitHub](https://img.shields.io/badge/-Mikhail-05122A?style=flat&logo=github)</a>
+<a align="center" href="https://github.com/dmitryberesten">![GitHub](https://img.shields.io/badge/-Dmytrii-05122A?style=flat&logo=github)</a>
+<a align="center" href="https://github.com/Inna-Mykytiuk">![GitHub](https://img.shields.io/badge/-Inna-05122A?style=flat&logo=github)</a>
+<a align="center" href="https://github.com/TarasKachmar2022">![GitHub](https://img.shields.io/badge/-Taras-05122A?style=flat&logo=github)</a>
+<a align="center" href="https://github.com/Iryna-Vyshniak">![GitHub](https://img.shields.io/badge/-Iryna-05122A?style=flat&logo=github)</a>
+<a align="center" href="https://github.com/IvanMutsko">![GitHub](https://img.shields.io/badge/-Ivan-05122A?style=flat&logo=github)</a>
+<a align="center" href="https://github.com/YuliyaBondG">![GitHub](https://img.shields.io/badge/-Julia-05122A?style=flat&logo=github)</a>
+<a align="center" href="https://github.com/Belka-S">![GitHub](https://img.shields.io/badge/-Serhii-05122A?style=flat&logo=github)</a>
+<a align="center" href="https://github.com/VladyslavaDvorovenko">![GitHub](https://img.shields.io/badge/-Vladyslava-05122A?style=flat&logo=github)</a>
+<a align="center" href="https://github.com/DimaShabatyn">![GitHub](https://img.shields.io/badge/-Dima-05122A?style=flat&logo=github)</a>
+<a align="center" href="https://github.com/SerhiiMaslov1979">![GitHub](https://img.shields.io/badge/-Serhii-05122A?style=flat&logo=github)</a>
+<a align="center" href="https://github.com/Malberee">![GitHub](https://img.shields.io/badge/-Pavlo-05122A?style=flat&logo=github)</a>
+
+</span>
+
+</br></br>
+
 📅 **Stay
 Organized:** [**GooseTrack**](https://werewolfdevlearn.github.io/project-mern-schedule-01/) is your
 all-in-one solution for staying on top of tasks, events, and deadlines. Seamlessly create, manage,
