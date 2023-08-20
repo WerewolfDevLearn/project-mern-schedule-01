@@ -57,7 +57,7 @@ export default function ChangePasswordForm({ onClose, callBack }) {
                 </XCloseWrap>
                 <ChangePasswordTitle>Change password</ChangePasswordTitle>
                 <InputsContainer>
-                  <PasswordInput
+                  {/* <PasswordInput
                     formik={formik}
                     validateAfterSubmit={validateAfterSubmit}
                     setValidateAfterSubmit={setValidateAfterSubmit}
@@ -65,7 +65,7 @@ export default function ChangePasswordForm({ onClose, callBack }) {
                     name="password"
                     id="password"
                     placeholder="Password"
-                  />
+                  /> */}
                   <PasswordInput
                     formik={formik}
                     validateAfterSubmit={validateAfterSubmit}
@@ -89,7 +89,7 @@ export default function ChangePasswordForm({ onClose, callBack }) {
                   <UpdateBtn
                     type="submit"
                     onClick={() => {
-                      formik.handleSubmit();
+                      onSubmit();
                       if (formik.isValid && !formik.dirty) {
                         onClose;
                       }
