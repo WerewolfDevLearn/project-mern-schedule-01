@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import { format } from 'date-fns';
 import { useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 import { Item, List, StyledNavLink } from '../PeriodTypeSelect/PeriodTypeSelect.styled';
 
@@ -11,6 +12,8 @@ export const PeriodTypeSelect = ({ today, onChangeType }) => {
 
   const formattedToday = format(new Date(today), 'yyyy-MM-dd');
 
+  const { t } = useTranslation();
+
   return (
     <List>
       <Item>
@@ -19,7 +22,7 @@ export const PeriodTypeSelect = ({ today, onChangeType }) => {
           to={`/calendar/month/${formattedToday}`}
           onClick={() => onChangeType('month')}
         >
-          Month
+          {t('Month')}
         </StyledNavLink>
       </Item>
       <Item>
@@ -28,7 +31,7 @@ export const PeriodTypeSelect = ({ today, onChangeType }) => {
           to={`/calendar/day/${formattedToday}`}
           onClick={() => onChangeType('day')}
         >
-          Day
+          {t('Day')}
         </StyledNavLink>
       </Item>
     </List>
