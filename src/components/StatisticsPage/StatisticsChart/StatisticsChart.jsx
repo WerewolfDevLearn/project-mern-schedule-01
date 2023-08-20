@@ -18,6 +18,8 @@ import { useThemeColors } from 'src/components/MainLayout/ThemeToggler/ThemeCont
 import { StatisticsChartStyles, ChartContainer } from './StatisticsChart.styled';
 
 const StatisticsChart = ({ tasks }) => {
+  const { t } = useTranslation();
+
   const calculateTaskStatusCount = (tasks) => {
     const taskStatusCountDay = {
       todo: 0,
