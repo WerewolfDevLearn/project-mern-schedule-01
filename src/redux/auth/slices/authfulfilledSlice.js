@@ -11,7 +11,6 @@ import {
   verify,
   updUser,
   changeEM,
-  changePW,
   delUser
 } from '../authOps';
 
@@ -50,7 +49,6 @@ const userSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      // .addCase(register.fulfilled, userRegister)
       .addCase(authGoogle.fulfilled, userLoginVerify)
       .addCase(userlogin.fulfilled, userLoginVerify)
       .addCase(verify.fulfilled, userLoginVerify)
@@ -65,7 +63,7 @@ const userSlice = createSlice({
 const persistUserConfig = {
   key: 'credentials',
   storage,
-  whitelist: ['token', 'email']
+  whitelist: ['token', 'refreshToken']
 };
 
 const userReducer = userSlice.reducer;

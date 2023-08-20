@@ -38,9 +38,9 @@ const errorSlice = createSlice({
       .addCase(getCurrent.rejected, (_, { payload }) => payload)
       .addCase(verify.rejected, (_, { payload }) => payload)
       .addCase(updUser.rejected, (_, { payload }) => payload)
-      .addCase(delUser.pending, (_, { payload }) => payload)
-      .addCase(changeEM.pending, (_, { payload }) => payload)
-      .addCase(changePW.pending, (_, { payload }) => payload);
+      .addCase(delUser.rejected, (_, { payload }) => payload)
+      .addCase(changeEM.rejected, (_, { payload }) => payload)
+      .addCase(changePW.rejected, (_, { payload }) => payload);
   }
 });
 

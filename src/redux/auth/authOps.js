@@ -57,7 +57,7 @@ export const logOut = createAsyncThunk('user/LogOut', async (_, { rejectWithValu
 });
 
 export const getCurrent = createAsyncThunk(
-  'user/DeleteUser',
+  'user/GetCurrent',
   async (_, { rejectWithValue, getState }) => {
     try {
       const state = getState();
