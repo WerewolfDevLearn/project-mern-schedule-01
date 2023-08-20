@@ -26,7 +26,7 @@ export const LoactionSign = styled.h2`
 
   @media screen and (${themes.breakpoints.m} < width) {
     display: block;
-    margin-left: 302px;
+    /* margin-left: 302px; */
   }
 `;
 

@@ -42,35 +42,47 @@ export const ButtonsWrapper = styled('div')`
   margin-left: 8px;
 `;
 export const ButtonWrapper1 = styled('button')`
-  height: 34px;
-  width: 35px;
-  background-color: ${({ colorbtn }) =>
-    colorbtn === 'white' ? themes.colors.white : 'transparent'};
-  color: ${({ color }) => (color === 'blue' ? themes.colors.accent : themes.colors.white)};
+  /* height: 34px;
+  width: 35px; */
+  padding: 8px 10px;
 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: ${({ theme }) => theme.colors.backgroundUserForm};
   font-size: 20px;
   color: rgba(220, 227, 229, 0.8);
-  border: 1px solid rgba(220, 227, 229, 0.8);
+  border: 1px solid ${({ theme }) => theme.colors.PeriodPaginatorBorder};
   border-radius: 8px;
   border-bottom-right-radius: 0;
   border-top-right-radius: 0;
   cursor: pointer;
+  transition: color 100ms linear;
   &:hover {
     color: #565759;
+  }
 `;
+
 export const ButtonWrapper2 = styled('button')`
-  height: 34px;
-  width: 35px;
-  background-color: ${({ colorbtn }) =>
-    colorbtn === 'white' ? themes.colors.white : 'transparent'};
-  color: ${({ color }) => (color === 'blue' ? themes.colors.accent : themes.colors.white)};
+  /* height: 34px;
+  width: 35px; */
+
+  padding: 8px 10px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: ${({ theme }) => theme.colors.backgroundUserForm};
   font-size: 20px;
   color: rgba(220, 227, 229, 0.8);
-  border: 1px solid rgba(220, 227, 229, 0.8);
+  border: 1px solid ${({ theme }) => theme.colors.PeriodPaginatorBorder};
   border-radius: 8px;
   border-bottom-left-radius: 0;
   border-top-left-radius: 0;
   cursor: pointer;
+  transition: color 100ms linear;
   &:hover {
     color: #565759;
   }

@@ -18,7 +18,8 @@ export const PeriodTypeSelect = ({ today, onChangeType }) => {
     <List>
       <Item>
         <StyledNavLink
-          className={`${isMonthRoute ? 'active' : ''} month`}
+          // className={`${isMonthRoute ? 'active' : ''} month`}
+          className="month"
           to={`/calendar/month/${formattedToday}`}
           onClick={() => onChangeType('month')}
         >
@@ -27,7 +28,8 @@ export const PeriodTypeSelect = ({ today, onChangeType }) => {
       </Item>
       <Item>
         <StyledNavLink
-          className={`${isDayRoute ? 'active' : ''} day`}
+          // className={`${isDayRoute ? 'active' : ''} day`}
+          className="day"
           to={`/calendar/day/${formattedToday}`}
           onClick={() => onChangeType('day')}
         >

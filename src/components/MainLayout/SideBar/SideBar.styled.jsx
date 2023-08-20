@@ -38,13 +38,16 @@ export const SideBarContainer = styled.aside`
     padding: 32px;
   }
   @media screen and (${themes.breakpoints.m} < width) {
-    position: absolute;
+    position: relative;
     z-index: 2;
-    left: 0px;
+    left: -20px;
     width: 290px;
     padding: 24px;
     transform: none;
     transition: none;
+  }
+  @media screen and (${themes.breakpoints.l} <= width) {
+    left: -32px;
   }
 `;
 export const SideBarHeading = styled.h3`
