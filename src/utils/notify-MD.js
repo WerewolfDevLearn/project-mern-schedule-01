@@ -1,5 +1,6 @@
 import { isFulfilled, isRejected } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
+import i18n from 'i18next';
 
 const regExp = {
   userRegFF: 'user/Register/fulfilled',
@@ -15,10 +16,10 @@ const regExp = {
 
 export const ErrorLogger = (_api) => (next) => (action) => {
   if (action.type === regExp.userRegFF) {
-    toast.success('Verification letter was send to you email address');
+    toast.success(i18n.t('Verification letter was send to you email address'));
   }
   if (action.type === regExp.userLoginFF) {
-    toast.success('Welcome!');
+    toast.success(i18n.t('Welcome'));
   }
   if (action.type === regExp.userUpdateFF) {
     toast.success('User updated!');
