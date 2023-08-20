@@ -16,8 +16,6 @@ const StatisticsPage = () => {
     day: getDate(new Date(currentDate))
   });
 
-  console.log(tasks);
-
   const onPrev = () => {
     const newDate = subDays(new Date(currentDate), 1);
     setCurrentDate(format(new Date(newDate), 'yyyy-MM-dd'));
