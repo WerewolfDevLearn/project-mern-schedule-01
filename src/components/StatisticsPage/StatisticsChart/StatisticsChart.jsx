@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-import { useTranslation } from 'react-i18next';
 import {
   ResponsiveContainer,
   BarChart,
@@ -8,18 +7,17 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend,
-  Label,
   LabelList
 } from 'recharts';
+import { useTranslation } from 'react-i18next';
 
 import { useThemeColors } from 'src/components/MainLayout/ThemeToggler/ThemeContextProvider';
 
-import { StatisticsChartStyles, ChartContainer } from './StatisticsChart.styled';
+import { StatisticsChartStyles, ChartContainer, TasksLabel } from './StatisticsChart.styled';
 
 const StatisticsChart = ({ tasks }) => {
   const { t } = useTranslation();
-
+  const theme = useThemeColors().theme;
   const calculateTaskStatusCount = (tasks) => {
     const taskStatusCountDay = {
       todo: 0,
@@ -97,16 +95,37 @@ const StatisticsChart = ({ tasks }) => {
             barGap={8}
             barCategoryGap="20%"
           >
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="name" />
-            <YAxis tickCount={6} domain={[0, 100]} interval={0}>
-              <Label value="Tasks" angle={0} position="top" offset={10} />
-            </YAxis>
+            <CartesianGrid vertical={false} stroke={theme.colors.statisticsBgLines} />
+            <XAxis
+              dataKey="name"
+              axisLine={false}
+              tickLine={false}
+              tickMargin={20}
+              allowDataOverflow={false}
+              style={{
+                fontSize: '12px',
+                fontWeight: 400,
+                fill: `${theme.colors.textCancelBtn}`
+              }}
+            />
+            <YAxis
+              tickCount={6}
+              domain={[0, 100]}
+              interval={0}
+              axisLine={false}
+              tickLine={false}
+              tickMargin={14}
+              style={{
+                fontSize: '14px',
+                fontWeight: 400,
+                fill: `${theme.colors.textCancelBtn}`
+              }}
+            ></YAxis>
             <Tooltip />
             <Bar
               dataKey="byDay"
               fill="url(#colorByDay)"
-              name={<Text>{t('By Day')}</Text>}
+              name="By Day"
               radius={[0, 0, 7.5, 7.5]}
               barSize={22}
             >
@@ -124,7 +143,7 @@ const StatisticsChart = ({ tasks }) => {
             <Bar
               dataKey="byMonth"
               fill="url(#colorByMonth)"
-              name={<Text>{t('By Month')}</Text>}
+              name="By Month"
               radius={[0, 0, 7.5, 7.5]}
               barSize={22}
             >
