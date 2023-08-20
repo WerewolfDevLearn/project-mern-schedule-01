@@ -30,6 +30,7 @@ export const BtnWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 20px;
 
   @media screen and (${themes.breakpoints.m} <= width < ${themes.breakpoints.l}) {
