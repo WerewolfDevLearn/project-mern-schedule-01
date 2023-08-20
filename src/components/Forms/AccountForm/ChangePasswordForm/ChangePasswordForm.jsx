@@ -13,6 +13,7 @@ import {
   XCloseWrap,
   ChangePasswordTitle,
   InputsContainer,
+  InputWrap,
   FormLabelSpan,
   InputField,
   ErrorMessage,
@@ -66,24 +67,28 @@ export default function ChangePasswordForm({ onClose, callbackPassword }) {
                     id="password"
                     placeholder="Password"
                   /> */}
-                  <PasswordInput
-                    formik={formik}
-                    validateAfterSubmit={validateAfterSubmit}
-                    setValidateAfterSubmit={setValidateAfterSubmit}
-                    label="New password"
-                    name="password"
-                    id="newPassword"
-                    placeholder="Password"
-                  />
-                  <PasswordInput
-                    formik={formik}
-                    validateAfterSubmit={validateAfterSubmit}
-                    setValidateAfterSubmit={setValidateAfterSubmit}
-                    label="Confirm new password"
-                    name="confirmPassword"
-                    id="confirmPassword"
-                    placeholder="Confirm"
-                  />
+                  <InputWrap>
+                    <PasswordInput
+                      formik={formik}
+                      validateAfterSubmit={validateAfterSubmit}
+                      setValidateAfterSubmit={setValidateAfterSubmit}
+                      label="New password"
+                      name="password"
+                      id="newPassword"
+                      placeholder="Password"
+                    />
+                  </InputWrap>
+                  <InputWrap>
+                    <PasswordInput
+                      formik={formik}
+                      validateAfterSubmit={validateAfterSubmit}
+                      setValidateAfterSubmit={setValidateAfterSubmit}
+                      label="Confirm new password"
+                      name="confirmPassword"
+                      id="confirmPassword"
+                      placeholder="Confirm"
+                    />
+                  </InputWrap>
                 </InputsContainer>
                 <BtnWrap>
                   <UpdateBtn

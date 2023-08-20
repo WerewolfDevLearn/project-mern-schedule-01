@@ -1,18 +1,26 @@
 import styled from 'styled-components';
 import { Field, Form, ErrorMessage as FormikErrorMessage } from 'formik';
+import { themes } from 'src/styles/variables/themes';
 
 export const Modal = styled(Form)`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  width: 550px;
-  height: 550px;
-  border-radius: 16px;
-  /* background-color: white; */
-  background-color: #edf0f8;
+  width: 100vw;
+  height: 100vh;
+  padding: 10px;
+  background-color: white;
   box-shadow: rgb(0, 0, 0) 0px 0px 80px;
+
+  @media screen and (${themes.breakpoints.s} <= width < ${themes.breakpoints.m}) {
+  }
+
+  @media screen and (${themes.breakpoints.m} <= width) {
+    width: 550px;
+    height: 450px;
+    border-radius: 16px;
+  }
 `;
 
 export const XCloseWrap = styled.button`
@@ -20,8 +28,9 @@ export const XCloseWrap = styled.button`
   justify-content: center;
   align-items: center;
   position: absolute;
-  top: 3%;
-  right: 3%;
+  top: 15px;
+  right: 15px;
+  padding: 10px;
 
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0, 0.11, 0.35, 2);
@@ -32,19 +41,42 @@ export const XCloseWrap = styled.button`
 `;
 
 export const ChangePasswordTitle = styled.h1`
-  margin-bottom: 30px;
+  margin-bottom: 80px;
   text-align: center;
   color: #3e85f3;
+
+  @media screen and (${themes.breakpoints.s} <= width < ${themes.breakpoints.m}) {
+  }
+
+  @media screen and (${themes.breakpoints.m} <= width) {
+    margin-bottom: 30px;
+  }
 `;
 
 export const InputsContainer = styled.div`
-  margin-bottom: 40px;
+  margin-bottom: 90px;
+
+  @media screen and (${themes.breakpoints.m} <= width) {
+    margin-bottom: 40px;
+  }
+`;
+
+export const InputWrap = styled.div`
+  margin-bottom: 30px;
+
+  @media screen and (${themes.breakpoints.m} <= width) {
+    margin-bottom: 0px;
+  }
 `;
 
 export const FormLabelSpan = styled.span`
   display: flex;
   margin-bottom: 8px;
-  margin-top: 16px;
+  margin-top: 50px;
+
+  @media screen and (${themes.breakpoints.m} <= width) {
+    margin-top: 16px;
+  }
 `;
 
 export const InputField = styled(Field)`

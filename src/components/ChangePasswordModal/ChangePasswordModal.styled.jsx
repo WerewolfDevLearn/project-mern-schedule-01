@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { themes } from 'src/styles/variables/themes';
 
-export const ChangeValueBtn = styled.button`
+export const UpdatePasswordBtn = styled.button`
   width: 172px;
   height: 48px;
   font-family: Inter;
