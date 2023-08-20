@@ -7,21 +7,12 @@ import { useTranslation } from 'react-i18next';
 
 import { useUser } from 'src/redux/selectors';
 
+import UniversalInput from '../../UniversalInput/UniversalInput';
 import AccountAvatar from '../AccountAvatar/AccountAvatar';
 
 import { validationAvatarRules, validationUserFormRules } from '../accountValidationRules';
 
-import {
-  FormWrap,
-  UserNameTitle,
-  RoleTitle,
-  FormInputContainer,
-  FormLabelSpan,
-  InputField,
-  DateInput,
-  ErrorMessage,
-  FormBtn
-} from './UserForm.styled';
+import { FormWrap, UserNameTitle, RoleTitle, FormInputContainer, FormBtn } from './UserForm.styled';
 
 export default function UserForm({ callBack }) {
   const { t } = useTranslation();
@@ -80,13 +71,13 @@ export default function UserForm({ callBack }) {
                 <UserNameTitle>{user.name}</UserNameTitle>
                 <RoleTitle>{t('User')}</RoleTitle>
                 <FormInputContainer>
-                  <FormikInput
+                  <UniversalInput
                     label={t('UserName')}
                     type="text"
                     name="name"
                     placeholder={t('Enter your name')}
                   />
-                  <FormikInput
+                  <UniversalInput
                     label={t('Birthday')}
                     type="date"
                     name="birthday"
@@ -109,13 +100,13 @@ export default function UserForm({ callBack }) {
                       name="email"
                       placeholder={t('Enter email')}
                     /> */}
-                  <FormikInput
+                  <UniversalInput
                     label={t('Phone')}
                     type="tel"
                     name="phone"
                     placeholder="+380971234567"
                   />
-                  <FormikInput
+                  <UniversalInput
                     label={t('Skype')}
                     type="text"
                     name="skype"

@@ -52,32 +52,6 @@ export const InputsContainer = styled.div`
   margin-bottom: 30px;
 `;
 
-export const FormLabelSpan = styled.span`
-  display: flex;
-  margin-bottom: 8px;
-  margin-top: 16px;
-`;
-
-export const InputField = styled(Field)`
-  width: 354px;
-  height: 46px;
-  border: 1px solid rgba(17, 17, 17, 15%);
-  border-radius: 8px;
-  padding: 0 18px;
-  margin-bottom: 8px;
-
-  &:hover,
-  &:focus {
-    border: 1px solid black;
-  }
-`;
-
-export const ErrorMessage = styled(FormikErrorMessage)`
-  font-size: 12px;
-  padding-left: 18px;
-  color: red;
-`;
-
 export const BtnWrap = styled.div`
   display: flex;
 `;

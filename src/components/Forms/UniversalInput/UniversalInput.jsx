@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import i18n from 'i18next';
 
-import { FormLabelSpan, InputField, ErrorMessage } from './PasswordInput.styled';
+import { FormLabelSpan, InputField, ErrorMessage } from './UniversalInput.styled';
 
 export default function UniversalInput({ label, type, name, placeholder }) {
   return (
