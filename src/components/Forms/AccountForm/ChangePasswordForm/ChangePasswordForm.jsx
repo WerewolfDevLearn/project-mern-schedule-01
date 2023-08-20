@@ -21,7 +21,7 @@ import {
   CancelBtn
 } from './ChangePasswordForm.styled';
 
-export default function ChangePasswordForm({ onClose }) {
+export default function ChangePasswordForm({ onClose, callbackPassword }) {
   const [validateAfterSubmit, setValidateAfterSubmit] = useState(false);
 
   const initialValues = {
@@ -29,10 +29,9 @@ export default function ChangePasswordForm({ onClose }) {
     newPassword: '',
     confirmPassword: ''
   };
-  const onSubmit = (values) => {
-    console.log(values);
+  const onSubmit = (data) => {
     setValidateAfterSubmit(true);
-    // callBack(data);
+    callbackPassword(data);
     setValidateAfterSubmit(false);
   };
 
@@ -109,5 +108,6 @@ export default function ChangePasswordForm({ onClose }) {
 }
 
 ChangePasswordForm.propTypes = {
-  onClose: PropTypes.func.isRequired
+  onClose: PropTypes.func.isRequired,
+  callbackPassword: PropTypes.func.isRequired
 };

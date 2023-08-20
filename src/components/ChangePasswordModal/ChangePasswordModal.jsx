@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 import i18n from 'i18next';
 import { useTranslation } from 'react-i18next';
 import Modal from 'src/components/shared/Modal/Modal';
@@ -7,7 +8,7 @@ import ChangePasswordForm from '../Forms/AccountForm/ChangePasswordForm/ChangePa
 
 import { ChangeValueBtn } from './ChangePasswordModal.styled';
 
-export default function ChangeEmailModal() {
+export default function ChangePasswordModal({ callbackPassword }) {
   const { t } = useTranslation();
 
   const [showChangePasswordModal, setShowChangePasswordModal] = useState(false);
@@ -24,7 +25,12 @@ export default function ChangeEmailModal() {
     <>
       {showChangePasswordModal && (
         <Modal isOpen={showChangePasswordModal} onClose={closeChangePasswordModal}>
-          {<ChangePasswordForm onClose={closeChangePasswordModal} />}
+          {
+            <ChangePasswordForm
+              onClose={closeChangePasswordModal}
+              callbackPassword={callbackPassword}
+            />
+          }
         </Modal>
       )}
       <ChangeValueBtn type="button" onClick={openChangePasswordModal}>
@@ -33,3 +39,7 @@ export default function ChangeEmailModal() {
     </>
   );
 }
+
+ChangePasswordModal.propTypes = {
+  callbackPassword: PropTypes.func.isRequired
+};

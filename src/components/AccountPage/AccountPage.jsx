@@ -3,7 +3,11 @@ import { updUser, changeEM, changePW, delUser } from 'src/redux/auth/authOps';
 
 import UserForm from '../Forms/AccountForm/UserForm/UserForm';
 
-import { AccountPageWrap } from './AccountPage.styled';
+import DeleteProfileModal from '../DeleteProfileModal/DeleteProfileModal';
+import ChangeEmailModal from '../ChangeEmailModal/ChangeEmailModal';
+import ChangePasswordModal from '../ChangePasswordModal/ChangePasswordModal';
+
+import { AccountPageWrap, BtnWrapper, ChangeValueBtnWrap } from './AccountPage.styled';
 
 export default function AccountPage() {
   const dispatch = useDispatch();
@@ -28,6 +32,13 @@ export default function AccountPage() {
         callbackPassword={callbackPassword}
         callbackDeleteUser={callbackDeleteUser}
       />
+      <BtnWrapper>
+        <ChangeValueBtnWrap>
+          <ChangeEmailModal callbackEmail={callbackEmail} />
+          <ChangePasswordModal callbackPassword={callbackPassword} />
+        </ChangeValueBtnWrap>
+        <DeleteProfileModal callbackDeleteUser={callbackDeleteUser} />
+      </BtnWrapper>
     </AccountPageWrap>
   );
 }
