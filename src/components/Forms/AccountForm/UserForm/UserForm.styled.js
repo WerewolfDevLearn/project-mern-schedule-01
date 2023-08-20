@@ -27,7 +27,7 @@ export const RoleTitle = styled.p`
   margin-bottom: 24px;
   color: #343434;
 
-  @media screen and (${themes.breakpoints.m} <= width < ${themes.breakpoints.l}) {
+  @media screen and (${themes.breakpoints.m} <= width) {
     font-size: 14px;
     font-weight: 600;
     line-height: 1.29;
