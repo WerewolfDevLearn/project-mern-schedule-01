@@ -11,6 +11,7 @@ import { CalendarGlobalStyles } from './CalendarDataPicker.styled';
 
 export default function CalendarDataPicker({ type, CustomInput, onSelectDay, setCurrentDate }) {
   const params = useParams();
+  const isParams = Boolean(Object.keys(params).length);
 
   const [startDate, setStartDate] = useState(onSelectDay);
   const navigate = useNavigate();
@@ -32,7 +33,7 @@ export default function CalendarDataPicker({ type, CustomInput, onSelectDay, set
           if (setCurrentDate) {
             setCurrentDate(formattedDate);
           }
-          navigate(!params ? `/calendar/${type}/${formattedDate}` : '/statistics');
+          navigate(isParams ? `/calendar/${type}/${formattedDate}` : '/statistics');
         }}
         customInput={<CustomInput />}
         // dateFormat="MMMM yyyy"
