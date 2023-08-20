@@ -1,4 +1,4 @@
-// import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import { Formik } from 'formik';
 import PropTypes from 'prop-types';
 import icon from 'src/images/svg/login.svg';
@@ -15,22 +15,24 @@ import {
 } from './VerifyForm.styled';
 
 export default function VerifyForm({ onSubmitForm }) {
+  const { t } = useTranslation();
   const onSubmit = (data) => {
     onSubmitForm(data);
   };
 
   return (
     <Container>
-      <Title>Verify</Title>
+      <Title>{t('Verification')}</Title>
       <Formik initialValues={{ verificationCode: '' }} onSubmit={onSubmit}>
         {() => (
           <FormElement autoComplete="off">
             <InputWrap>
-              <Subtitle htmlFor="verificationCode">Code</Subtitle>
+              <Subtitle htmlFor="verificationCode">{t('Verification code')}</Subtitle>
               <Input type="text" name="verificationCode" placeholder="Enter your code" />
             </InputWrap>
             <Button type="submit">
-              Confirm <Img src={icon} alt="LogIn SVG" />
+              {t('Confirm')}
+              <Img src={icon} alt="LogIn SVG" />
             </Button>
           </FormElement>
         )}
