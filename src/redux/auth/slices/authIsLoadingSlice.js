@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 import {
-  authGoogle,
+  authenticate,
   register,
   userlogin,
   logOut,
@@ -20,7 +20,7 @@ const isLoadingSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(authGoogle.pending, () => true)
+      .addCase(authenticate.pending, () => true)
       .addCase(register.pending, () => true)
       .addCase(userlogin.pending, () => true)
       .addCase(logOut.pending, () => true)
@@ -30,7 +30,7 @@ const isLoadingSlice = createSlice({
       .addCase(changeEM.pending, () => true)
       .addCase(changePW.pending, () => true)
 
-      .addCase(authGoogle.fulfilled, () => false)
+      .addCase(authenticate.fulfilled, () => false)
       .addCase(register.fulfilled, () => false)
       .addCase(userlogin.fulfilled, () => false)
       .addCase(logOut.fulfilled, () => false)
@@ -40,7 +40,7 @@ const isLoadingSlice = createSlice({
       .addCase(changeEM.fulfilled, () => false)
       .addCase(changePW.fulfilled, () => false)
 
-      .addCase(authGoogle.rejected, () => false)
+      .addCase(authenticate.rejected, () => false)
       .addCase(register.rejected, () => false)
       .addCase(userlogin.rejected, () => false)
       .addCase(logOut.rejected, () => false)
