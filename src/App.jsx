@@ -21,6 +21,7 @@ import LoginPage from './pages/LoginPage/LoginPage';
 import AuthGoogle from './components/shared/AuthGoogle/AuthGoogle';
 
 import RegisterPage from './pages/RegisterPage/RegisterPage';
+import { DivWrapperAPP } from './App.styled';
 
 import routes from './routes';
 
@@ -32,33 +33,33 @@ function App() {
   }
 
   return (
-    <>
-      <Suspense fallback={<Loader />}>
-        <Routes>
-          <Route element={<PubliceRourtes />}>
-            <Route path={routes.mainPage} element={<MainPage isHomePage={true} />} />
-            <Route path={routes.registerPage} element={<RegisterPage />} />
-            <Route path={routes.loginPage} element={<LoginPage />} />
-            <Route path={routes.authGoogle} element={<AuthGoogle />} />
-          </Route>
-          <Route element={<PrivateRoutes />}>
-            <Route path={routes.mainLayout} element={<MainLayout />}>
-              <Route path={routes.accountPage} element={<AccountPage />} />
-              <Route path={routes.calendarPage} element={<CalendarPage />}>
-                <Route path={routes.calendarMonth} element={<ChoosedMonth />} />
-                <Route path={routes.calendarDay} element={<ChoosedDay />} />
-              </Route>
-              <Route path={routes.statisticsPage} element={<StatisticsPage />} />
+    <ThemeProvider theme={theme}>
+      <DivWrapperAPP>
+        <Suspense fallback={<Loader />}>
+          <Routes>
+            <Route element={<PubliceRourtes />}>
+              <Route path={routes.mainPage} element={<MainPage isHomePage={true} />} />
+              <Route path={routes.registerPage} element={<RegisterPage />} />
+              <Route path={routes.loginPage} element={<LoginPage />} />
+              <Route path={routes.authGoogle} element={<AuthGoogle />} />
             </Route>
-          </Route>
+            <Route element={<PrivateRoutes />}>
+              <Route path={routes.mainLayout} element={<MainLayout />}>
+                <Route path={routes.accountPage} element={<AccountPage />} />
+                <Route path={routes.calendarPage} element={<CalendarPage />}>
+                  <Route path={routes.calendarMonth} element={<ChoosedMonth />} />
+                  <Route path={routes.calendarDay} element={<ChoosedDay />} />
+                </Route>
+                <Route path={routes.statisticsPage} element={<StatisticsPage />} />
+              </Route>
+            </Route>
 
-          <Route path="*" element={<ErrorPage />} />
-        </Routes>
-      </Suspense>
-      <ThemeProvider theme={theme}>
+            <Route path="*" element={<ErrorPage />} />
+          </Routes>
+        </Suspense>
         <ToastContainer hideProgressBar closeOnClick theme={theme.toastify.theme} />
-      </ThemeProvider>
-    </>
+      </DivWrapperAPP>
+    </ThemeProvider>
   );
 }
 

@@ -71,10 +71,7 @@ const StatisticsChart = ({ tasks }) => {
   };
 
   const chartDataByDay = calculatePercentages(taskStatusCountDay);
-  // console.log(tasksByDay);
   const chartDataByMonth = calculatePercentages(taskStatusCountMonth);
-  // console.log(tasksByMonth);
-
   const data = [
     {
       name: 'To Do',

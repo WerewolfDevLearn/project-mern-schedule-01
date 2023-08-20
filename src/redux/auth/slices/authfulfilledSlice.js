@@ -3,7 +3,16 @@ import { persistReducer } from 'redux-persist';
 
 import storage from 'redux-persist/lib/storage';
 
-import { authGoogle, userlogin, logOut, getCurrent, verify, updUser } from '../authOps';
+import {
+  authGoogle,
+  userlogin,
+  logOut,
+  getCurrent,
+  verify,
+  updUser,
+  changeEM,
+  delUser
+} from '../authOps';
 
 const initialState = {
   userId: '',
@@ -18,9 +27,16 @@ const initialState = {
   birthday: ''
 };
 
-// const userRegister = (state, { payload }) => {
-//   state.name = payload.user.name;
-// };
+const userTokenExpired = (state, { payload }) => {
+  console.log('payload: ', payload);
+
+  if (payload === 'Request failed with status code 500') {
+    state.token = initialState;
+    state.refreshToken = initialState;
+  }
+  state.token = initialState;
+  state.refreshToken = initialState;
+};
 
 const userLoginVerify = (state, { payload }) => {
   state.token = payload.token;
@@ -34,6 +50,9 @@ const userGetCurrent = (state, { payload }) => {
   state.birthday = payload.user.birthday;
   state.avatarUrl = payload.user.avatarUrl;
 };
+const userChangeEmail = (state, { payload }) => {
+  state.email = payload.user.email;
+};
 
 const userSlice = createSlice({
   name: 'user',
@@ -41,20 +60,22 @@ const userSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      // .addCase(register.fulfilled, userRegister)
       .addCase(authGoogle.fulfilled, userLoginVerify)
       .addCase(userlogin.fulfilled, userLoginVerify)
       .addCase(verify.fulfilled, userLoginVerify)
       .addCase(getCurrent.fulfilled, userGetCurrent)
       .addCase(updUser.fulfilled, userGetCurrent)
-      .addCase(logOut.fulfilled, () => initialState);
+      .addCase(logOut.fulfilled, () => initialState)
+      .addCase(delUser.fulfilled, () => initialState)
+      .addCase(changeEM.fulfilled, () => userChangeEmail)
+      .addCase(getCurrent.rejected, () => userTokenExpired);
   }
 });
 
 const persistUserConfig = {
   key: 'credentials',
   storage,
-  whitelist: ['token', 'email']
+  whitelist: ['token', 'refreshToken']
 };
 
 const userReducer = userSlice.reducer;

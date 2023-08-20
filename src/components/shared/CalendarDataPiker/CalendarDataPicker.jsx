@@ -1,5 +1,7 @@
 import PropTypes from 'prop-types';
 import { format } from 'date-fns';
+import { uk, enUS } from 'date-fns/locale';
+import { useTranslation } from 'react-i18next';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
@@ -11,10 +13,13 @@ export default function CalendarDataPicker({ type, CustomInput, onSelectDay }) {
   const [startDate, setStartDate] = useState(onSelectDay);
   const navigate = useNavigate();
 
+  const { i18n } = useTranslation();
+  const locale = i18n.language === 'uk' ? uk : enUS;
+
   useEffect(() => {
     setStartDate(onSelectDay);
   }, [onSelectDay]);
-  // console.log('STARTDATE', startDate);
+
   return (
     <>
       <DatePicker
@@ -28,6 +33,7 @@ export default function CalendarDataPicker({ type, CustomInput, onSelectDay }) {
         dateFormat="MMMM yyyy"
         calendarStartDay={1}
         formatWeekDay={(day) => day.substr(0, 1)}
+        locale={locale}
       />
       <CalendarGlobalStyles />
     </>
@@ -37,5 +43,5 @@ export default function CalendarDataPicker({ type, CustomInput, onSelectDay }) {
 CalendarDataPicker.propTypes = {
   type: PropTypes.string.isRequired,
   CustomInput: PropTypes.elementType.isRequired,
-  onSelectDay: PropTypes.func.isRequired
+  onSelectDay: PropTypes.object.isRequired
 };

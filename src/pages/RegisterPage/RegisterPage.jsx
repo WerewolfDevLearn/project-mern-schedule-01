@@ -6,8 +6,8 @@ import logo2x from 'src/images/others/desktop/goose-quote2x.png';
 import logo3x from 'src/images/others/desktop/goose-quote3x.png';
 
 import { register, verify } from 'src/redux/auth/authOps';
-import RegisterForm from 'src/components/Forms/RegisterForm/RegisterForm';
-import VerifyForm from 'src/components/Forms/VerifyForm/VerifyForm';
+import RegisterForm from 'src/components/Forms/AuthForms/RegisterForm/RegisterForm';
+import VerifyForm from 'src/components/Forms/AuthForms/VerifyForm/VerifyForm';
 import AuthNavigate from 'src/components/shared/AuthNavigate/AuthNavigate';
 import Modal from 'src/components/shared/Modal/Modal';
 import Loader from 'src/components/shared/Loader/Loader';
