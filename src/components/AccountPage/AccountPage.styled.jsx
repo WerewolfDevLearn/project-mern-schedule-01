@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { themes } from 'src/styles/variables/themes';
 
 export const AccountPageWrap = styled.div`
-  padding-bottom: 40px;
+  /* padding-bottom: 40px;
 
   @media screen and (${themes.breakpoints.m} <= width < ${themes.breakpoints.l}) {
     padding-bottom: 38px;
@@ -10,6 +10,19 @@ export const AccountPageWrap = styled.div`
 
   @media screen and (${themes.breakpoints.l} <= width) {
     padding-bottom: 32px;
+  } */
+
+  padding: 0 18px 40px 18px;
+  background-color: white;
+  border-radius: 16px;
+  position: relative;
+
+  @media screen and (${themes.breakpoints.m} <= width < ${themes.breakpoints.l}) {
+    padding: 40px 175px 40px 175px;
+  }
+
+  @media screen and (${themes.breakpoints.l} <= width) {
+    padding: 60px 165px 60px 164px;
   }
 `;
 
