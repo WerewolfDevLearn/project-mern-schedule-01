@@ -5,7 +5,7 @@ import SvgGoogle from 'src/components/shared/Icons/Google';
 
 import { LinkBtn } from './AuthGoogleBtn.styled';
 
-const baseURL = 'https://project-mern-schedule-03.onrender.com/api';
+const baseURL = 'https://project-mern-schedule-03.onrender.com/api'; // const baseURL = 'http://localhost:3001/api';
 
 const AuthGoogleBtn = ({ title }) => {
   const { t } = useTranslation();

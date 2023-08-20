@@ -3,7 +3,7 @@ import { persistReducer } from 'redux-persist';
 
 import storage from 'redux-persist/lib/storage';
 
-import { authGoogle, userlogin, logOut, getCurrent, verify, updUser } from '../authOps';
+import { authGoogle, userlogin, refresh, logOut, getCurrent, verify, updUser } from '../authOps';
 
 const initialState = {
   userId: '',
@@ -44,6 +44,7 @@ const userSlice = createSlice({
       // .addCase(register.fulfilled, userRegister)
       .addCase(authGoogle.fulfilled, userLoginVerify)
       .addCase(userlogin.fulfilled, userLoginVerify)
+      .addCase(refresh.fulfilled, userLoginVerify)
       .addCase(verify.fulfilled, userLoginVerify)
       .addCase(getCurrent.fulfilled, userGetCurrent)
       .addCase(updUser.fulfilled, userGetCurrent)
@@ -54,7 +55,7 @@ const userSlice = createSlice({
 const persistUserConfig = {
   key: 'credentials',
   storage,
-  whitelist: ['token', 'email']
+  whitelist: ['token', 'refreshToken', 'email']
 };
 
 const userReducer = userSlice.reducer;

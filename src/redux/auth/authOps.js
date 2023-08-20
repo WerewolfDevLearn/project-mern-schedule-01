@@ -44,6 +44,14 @@ export const userlogin = createAsyncThunk(
   }
 );
 
+export const refresh = createAsyncThunk('user/RefreshToken', async (token, { rejectWithValue }) => {
+  try {
+    return token;
+  } catch (error) {
+    return rejectWithValue(error.message);
+  }
+});
+
 export const logOut = createAsyncThunk('user/LogOut', async (_, { rejectWithValue }) => {
   try {
     const response = await userLogOut();
