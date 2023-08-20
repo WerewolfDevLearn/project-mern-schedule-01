@@ -61,7 +61,7 @@ PeriodPaginator.propTypes = {
   type: PropTypes.string,
   date: PropTypes.string,
   value: PropTypes.any,
-  onClick: PropTypes.func.isRequired
+  onClick: PropTypes.func
 };
 
 export default PeriodPaginator;

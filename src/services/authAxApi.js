@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://project-mern-schedule-03.onrender.com/api';
+// axios.defaults.baseURL = 'https://project-mern-schedule-03.onrender.com/api';
+axios.defaults.baseURL = 'http://localhost:3001/api';
 export async function userRegister(userData) {
   const response = await axios.post('/users/register', userData);
   return response.data;
@@ -32,6 +33,24 @@ export async function updateUser(userDate, tokenAuth) {
   axios.defaults.headers.common.Authorization = `Bearer ${tokenAuth}`;
   axios.defaults.headers.post['Content-Type'] = 'multipart/form-data';
   const response = await axios.patch('/users/profile', userDate);
+  const data = response.data;
+  return data;
+}
+export async function deleteUser(userDate, tokenAuth) {
+  axios.defaults.headers.common.Authorization = `Bearer ${tokenAuth}`;
+  const response = await axios.delete('/users/current');
+  const data = response.data;
+  return data;
+}
+export async function changeEmail(userDate, tokenAuth) {
+  axios.defaults.headers.common.Authorization = `Bearer ${tokenAuth}`;
+  const response = await axios.patch('/users/email', userDate);
+  const data = response.data;
+  return data;
+}
+export async function changePassword(userDate, tokenAuth) {
+  axios.defaults.headers.common.Authorization = `Bearer ${tokenAuth}`;
+  const response = await axios.patch('/users/password', userDate);
   const data = response.data;
   return data;
 }

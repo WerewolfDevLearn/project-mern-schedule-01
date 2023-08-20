@@ -3,7 +3,17 @@ import { persistReducer } from 'redux-persist';
 
 import storage from 'redux-persist/lib/storage';
 
-import { authGoogle, userlogin, logOut, getCurrent, verify, updUser } from '../authOps';
+import {
+  authGoogle,
+  userlogin,
+  logOut,
+  getCurrent,
+  verify,
+  updUser,
+  changeEM,
+  changePW,
+  delUser
+} from '../authOps';
 
 const initialState = {
   userId: '',
@@ -18,10 +28,6 @@ const initialState = {
   birthday: ''
 };
 
-// const userRegister = (state, { payload }) => {
-//   state.name = payload.user.name;
-// };
-
 const userLoginVerify = (state, { payload }) => {
   state.token = payload.token;
   state.refreshToken = payload.refreshToken;
@@ -33,6 +39,9 @@ const userGetCurrent = (state, { payload }) => {
   state.skype = payload.user.skype;
   state.birthday = payload.user.birthday;
   state.avatarUrl = payload.user.avatarUrl;
+};
+const userChangeEmail = (state, { payload }) => {
+  state.email = payload.user.email;
 };
 
 const userSlice = createSlice({
@@ -47,7 +56,9 @@ const userSlice = createSlice({
       .addCase(verify.fulfilled, userLoginVerify)
       .addCase(getCurrent.fulfilled, userGetCurrent)
       .addCase(updUser.fulfilled, userGetCurrent)
-      .addCase(logOut.fulfilled, () => initialState);
+      .addCase(logOut.fulfilled, () => initialState)
+      .addCase(delUser.fulfilled, () => initialState)
+      .addCase(changeEM.fulfilled, () => userChangeEmail);
   }
 });
 
