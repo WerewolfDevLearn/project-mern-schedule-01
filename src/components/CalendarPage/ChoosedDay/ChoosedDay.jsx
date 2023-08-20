@@ -22,12 +22,14 @@ export default function ChoosedDay() {
       {isLoading && !isRefreshing ? (
         <Loader />
       ) : (
+
         !isLoading && (
           <>
             <DayCalendarHead date={currentDate} tasks={tasks.tasks} />
             <TasksColumnsList tasks={tasks.tasks} />
           </>
         )
+
       )}
     </ChoosedDayStyles>
   );
