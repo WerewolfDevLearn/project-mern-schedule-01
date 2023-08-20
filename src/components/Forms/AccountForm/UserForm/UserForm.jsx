@@ -12,7 +12,6 @@ import AccountAvatar from '../AccountAvatar/AccountAvatar';
 import { validationAvatarRules, validationUserFormRules } from '../accountValidationRules';
 
 import {
-  FormContainer,
   FormWrap,
   UserNameTitle,
   RoleTitle,
