@@ -3,13 +3,15 @@ import { format } from 'date-fns';
 import { uk, enUS } from 'date-fns/locale';
 import { useTranslation } from 'react-i18next';
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
 
 import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 import { CalendarGlobalStyles } from './CalendarDataPicker.styled';
 
-export default function CalendarDataPicker({ type, CustomInput, onSelectDay }) {
+export default function CalendarDataPicker({ type, CustomInput, onSelectDay, setCurrentDate }) {
+  const params = useParams();
+
   const [startDate, setStartDate] = useState(onSelectDay);
   const navigate = useNavigate();
 
@@ -27,10 +29,14 @@ export default function CalendarDataPicker({ type, CustomInput, onSelectDay }) {
         onChange={(date) => {
           setStartDate(date);
           const formattedDate = format(date, 'yyyy-MM-dd');
-          navigate(`/calendar/${type}/${formattedDate}`);
+          if (setCurrentDate) {
+            setCurrentDate(formattedDate);
+          }
+          navigate(!params ? `/calendar/${type}/${formattedDate}` : '/statistics');
         }}
         customInput={<CustomInput />}
-        dateFormat="MMMM yyyy"
+        // dateFormat="MMMM yyyy"
+        dateFormat={type === 'day' ? 'dd MMMM yyyy' : 'MMMM yyyy'}
         calendarStartDay={1}
         formatWeekDay={(day) => day.substr(0, 1)}
         locale={locale}
@@ -43,5 +49,6 @@ export default function CalendarDataPicker({ type, CustomInput, onSelectDay }) {
 CalendarDataPicker.propTypes = {
   type: PropTypes.string.isRequired,
   CustomInput: PropTypes.elementType.isRequired,
-  onSelectDay: PropTypes.object.isRequired
+  onSelectDay: PropTypes.object.isRequired,
+  setCurrentDate: PropTypes.func
 };
