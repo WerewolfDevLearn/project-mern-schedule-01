@@ -15,6 +15,7 @@ export const Header = styled.header`
     padding-top: 24px;
   }
   @media screen and (${themes.breakpoints.m} < width) {
+    margin-bottom: 32px;
     padding-top: 40px;
   }
 `;
