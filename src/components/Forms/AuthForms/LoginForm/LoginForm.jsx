@@ -18,7 +18,6 @@ export default function LoginForm({ onSubmitForm }) {
   return (
     <Container>
       <Title>{t('Log In')}</Title>
-
       <Formik
         validationSchema={validationLoginRules}
         initialValues={{ email: '', password: '' }}
@@ -49,7 +48,6 @@ export default function LoginForm({ onSubmitForm }) {
                   setValidateAfterSubmit={setValidateAfterSubmit}
                   values={values.email}
                 />
-
                 <AuthInput
                   name="password"
                   title="Password"
@@ -63,7 +61,6 @@ export default function LoginForm({ onSubmitForm }) {
                   values={values.password}
                 />
               </InputWrap>
-
               <Button type="submit" onClick={handleSubmit}>
                 {t('Log in')}
                 <Img src={icon} alt="LogIn SVG" />

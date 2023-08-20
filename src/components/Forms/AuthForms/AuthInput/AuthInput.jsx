@@ -4,6 +4,8 @@ import { useTranslation } from 'react-i18next';
 import iconError from 'src/images/svg/validation-error.svg';
 import iconSuccess from 'src/images/svg/validation-success.svg';
 
+import ShowPasswordBtn from '../ShowPasswordBtn/ShowPasswordBtn';
+
 import {
   InputContainer,
   Subtitle,
@@ -11,6 +13,7 @@ import {
   ErrorText,
   TextCorrect,
   SvgValidate
+  // SvgEye
 } from './AuthInput.styled';
 
 export default function AuthInput({
@@ -25,8 +28,19 @@ export default function AuthInput({
   values
 }) {
   const [status, setStatus] = useState('');
-
+  const [passwordShown, setPasswordShown] = useState(false);
   const { t } = useTranslation();
+
+  const togglePassword = () => {
+    setPasswordShown(!passwordShown);
+  };
+
+  const inputType = () => {
+    if (type === 'password') {
+      return passwordShown ? 'text' : 'password';
+    }
+    return type;
+  };
 
   const validStatus = (input) => {
     if (errors[input]) {
@@ -49,7 +63,28 @@ export default function AuthInput({
     <Subtitle htmlFor={name} className={status}>
       {t(title)}
       <InputContainer>
-        <Input type={type} name={name} placeholder={t(placeholder)} id={id} className={status} />
+        <Input
+          type={inputType()}
+          name={name}
+          placeholder={t(placeholder)}
+          id={id}
+          className={status}
+        />
+
+        {type === 'password' && (
+          <ShowPasswordBtn
+            togglePassword={togglePassword}
+            passwordShown={passwordShown}
+            status={status}
+          />
+          // <button type="button" onClick={togglePassword}>
+          //   <SvgEye
+          //     src={passwordShown ? eyeOff : eyeOn}
+          //     alt="Success Icon"
+          //     className={status !== '' ? 'right' : 'left'}
+          //   />
+          // </button>
+        )}
         {status === 'input-correct' && <SvgValidate src={iconSuccess} alt="Success Icon" />}
         {status === 'input-error' && <SvgValidate src={iconError} alt="Error Icon" />}
       </InputContainer>
