@@ -96,13 +96,15 @@
   "Sat": "Сб",
   "Sun": "Нд",
 
-  "MON": "ПН",
-  "TUE": "ВТ",
-  "WED": "СР",
-  "THU": "ЧТ",
-  "FRI": "ПТ",
-  "SAT": "СБ",
-  "SUN": "НД",
+  "days": {
+    "MON": "ПН",
+    "TUE": "ВТ",
+    "WED": "СР",
+    "THU": "ЧТ",
+    "FRI": "ПТ",
+    "SAT": "СБ",
+    "SUN": "НД"
+  },
 
   "mob_Mon": "П",
   "mob_Tue": "В",
@@ -111,6 +113,14 @@
   "mob_Fri": "П",
   "mob_Sat": "С",
   "mob_Sun": "Н",
+
+  "mob_MON": "П",
+  "mob_TUE": "В",
+  "mob_WED": "С",
+  "mob_THU": "Ч",
+  "mob_FRI": "П",
+  "mob_SAT": "С",
+  "mob_SUN": "Н",
 
   "By Day": "За день",
   "By Month": "За місяць",
