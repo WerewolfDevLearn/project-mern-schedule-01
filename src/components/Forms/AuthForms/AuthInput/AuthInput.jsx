@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import PropTypes from 'prop-types';
 
 import iconError from 'src/images/svg/validation-error.svg';
 import iconSuccess from 'src/images/svg/validation-success.svg';
@@ -13,7 +14,6 @@ import {
   ErrorText,
   TextCorrect,
   SvgValidate
-  // SvgEye
 } from './AuthInput.styled';
 
 export default function AuthInput({
@@ -77,13 +77,6 @@ export default function AuthInput({
             passwordShown={passwordShown}
             status={status}
           />
-          // <button type="button" onClick={togglePassword}>
-          //   <SvgEye
-          //     src={passwordShown ? eyeOff : eyeOn}
-          //     alt="Success Icon"
-          //     className={status !== '' ? 'right' : 'left'}
-          //   />
-          // </button>
         )}
         {status === 'input-correct' && <SvgValidate src={iconSuccess} alt="Success Icon" />}
         {status === 'input-error' && <SvgValidate src={iconError} alt="Error Icon" />}
@@ -93,3 +86,16 @@ export default function AuthInput({
     </Subtitle>
   );
 }
+
+AuthInput.propTypes = {
+  name: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  placeholder: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  validateAfterSubmit: PropTypes.bool.isRequired,
+  submitCount: PropTypes.number.isRequired,
+  errors: PropTypes.object.isRequired,
+  setValidateAfterSubmit: PropTypes.func.isRequired,
+  values: PropTypes.string.isRequired
+};
