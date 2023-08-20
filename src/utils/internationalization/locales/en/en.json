@@ -35,7 +35,7 @@
   "Password": "Password",
   "Enter password": "Enter password",
   "Error password": "This is an ERROR password",
-  "Correct password": "This is an CORRECT password",
+  "Correct password": "This is an CORRECT format password",
   "Enter comment": "Enter comment",
 
   "Too Short": "Too Short!",
@@ -187,5 +187,17 @@
   "CheckEmail": "Please check your email.",
   "PleaseLogin": "Please login",
   "PleaseRegister": "Please register",
-  "UserExists": "User with such name and email exists. Please change your registration information or log in."
+  "Unauthorized": "Unauthorized",
+  "UserExists": "User with such name and email exists. Please change your registration information or log in.",
+
+  "CreateTasksSuccess": "Task created successfully.",
+  "DeleteTasksSuccess": "Task deleted successfully.",
+  "UpdateTasksSuccess": "Task updated successfully.",
+  "CreateReviewsSuccess": "Review created successfully.",
+  "DeleteReviewsSuccess": "Review deleted successfully.",
+  "UpdateReviewsSuccess": "Review updated successfully.",
+  "TasksCreateError": "Failed to create a task",
+  "TasksDeleteteError": "Failed to delete a task",
+  "TasksUpdateError": "Failed to update a task",
+  "TasksUnauthorized": "Unauthorized task-related action."
 }
