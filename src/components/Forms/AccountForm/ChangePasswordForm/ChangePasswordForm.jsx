@@ -31,6 +31,7 @@ export default function ChangePasswordForm({ onClose, callbackPassword }) {
   };
   const onSubmit = (data) => {
     setValidateAfterSubmit(true);
+    console.log(data);
     callbackPassword(data);
     setValidateAfterSubmit(false);
   };
