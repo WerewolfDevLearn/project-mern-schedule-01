@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 import i18n from 'i18next';
 import { useTranslation } from 'react-i18next';
 import { useUser } from 'src/redux/selectors';
@@ -8,7 +9,7 @@ import ChangeEmailForm from '../Forms/AccountForm/ChangeEmailForm/ChangeEmailFor
 
 import { ChangeValueBtn } from './ChangeEmailModal.styled';
 
-export default function ChangeEmailModal() {
+export default function ChangeEmailModal({ callbackEmail }) {
   const { t } = useTranslation();
   //   const user = useUser();
 
@@ -26,7 +27,7 @@ export default function ChangeEmailModal() {
     <>
       {showChangeEmailModal && (
         <Modal isOpen={showChangeEmailModal} onClose={closeChangeEmailModal}>
-          {<ChangeEmailForm onClose={closeChangeEmailModal} />}
+          {<ChangeEmailForm onClose={closeChangeEmailModal} callbackEmail={callbackEmail} />}
         </Modal>
       )}
       <ChangeValueBtn type="button" onClick={openChangeEmailModal}>
@@ -35,3 +36,7 @@ export default function ChangeEmailModal() {
     </>
   );
 }
+
+ChangeEmailModal.propTypes = {
+  callbackEmail: PropTypes.func.isRequired
+};

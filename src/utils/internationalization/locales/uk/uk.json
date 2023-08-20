@@ -36,6 +36,7 @@
   "Enter password": "Введіть пароль",
   "Error password": "Невірний пароль",
   "Correct password": "Пароль вірний",
+  "Enter comment": "Залиште відгук",
 
   "Too Short": "Занадто коротко!",
   "Too Long": "Занадто довго!",
@@ -124,7 +125,7 @@
 
   "By Day": "За день",
   "By Month": "За місяць",
-  "To Do": "В Роботі",
+  "To Do": "У черзі",
   "In Progress": "В Процесі",
   "Done Statistics": "Завершено",
   "Tasks": "Завдання",

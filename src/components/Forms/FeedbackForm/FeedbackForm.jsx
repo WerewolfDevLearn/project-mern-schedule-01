@@ -111,7 +111,7 @@ export default function FeedbackForm({ onClose, action = 'add', reviewToEdit }) 
               name="comment"
               as="textarea"
               disabled={selectAction === 'view'}
-              placeholder="Enter comment"
+              placeholder={t('Enter comment')}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               value={formik.values.comment}

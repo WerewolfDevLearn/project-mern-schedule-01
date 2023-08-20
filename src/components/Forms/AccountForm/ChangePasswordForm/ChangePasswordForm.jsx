@@ -21,7 +21,7 @@ import {
   CancelBtn
 } from './ChangePasswordForm.styled';
 
-export default function ChangePasswordForm({ onClose, callBack }) {
+export default function ChangePasswordForm({ onClose, callbackPassword }) {
   const [validateAfterSubmit, setValidateAfterSubmit] = useState(false);
 
   const initialValues = {
@@ -29,10 +29,10 @@ export default function ChangePasswordForm({ onClose, callBack }) {
     newPassword: '',
     confirmPassword: ''
   };
-  const onSubmit = (values) => {
-    console.log(values);
+  const onSubmit = (data) => {
     setValidateAfterSubmit(true);
-    callBack(data);
+    console.log(data);
+    callbackPassword(data);
     setValidateAfterSubmit(false);
   };
 
@@ -57,7 +57,7 @@ export default function ChangePasswordForm({ onClose, callBack }) {
                 </XCloseWrap>
                 <ChangePasswordTitle>Change password</ChangePasswordTitle>
                 <InputsContainer>
-                  <PasswordInput
+                  {/* <PasswordInput
                     formik={formik}
                     validateAfterSubmit={validateAfterSubmit}
                     setValidateAfterSubmit={setValidateAfterSubmit}
@@ -65,13 +65,13 @@ export default function ChangePasswordForm({ onClose, callBack }) {
                     name="password"
                     id="password"
                     placeholder="Password"
-                  />
+                  /> */}
                   <PasswordInput
                     formik={formik}
                     validateAfterSubmit={validateAfterSubmit}
                     setValidateAfterSubmit={setValidateAfterSubmit}
                     label="New password"
-                    name="newPassword"
+                    name="password"
                     id="newPassword"
                     placeholder="Password"
                   />
@@ -88,12 +88,7 @@ export default function ChangePasswordForm({ onClose, callBack }) {
                 <BtnWrap>
                   <UpdateBtn
                     type="submit"
-                    onClick={() => {
-                      formik.handleSubmit();
-                      if (formik.isValid && !formik.dirty) {
-                        onClose;
-                      }
-                    }}
+                    onClick={() => handleSubmit()}
                     disabled={
                       !formik.isValid || !formik.touched || formik.isSubmitting || !formik.dirty
                     }
@@ -114,5 +109,6 @@ export default function ChangePasswordForm({ onClose, callBack }) {
 }
 
 ChangePasswordForm.propTypes = {
-  onClose: PropTypes.func.isRequired
+  onClose: PropTypes.func.isRequired,
+  callbackPassword: PropTypes.func.isRequired
 };

@@ -6,11 +6,8 @@ import i18n from 'i18next';
 import { useTranslation } from 'react-i18next';
 
 import { useUser } from 'src/redux/selectors';
-import DeleteProfileModal from 'src/components/DeleteProfileModal/DeleteProfileModal';
 
 import AccountAvatar from '../AccountAvatar/AccountAvatar';
-import ChangeEmailModal from '../../../ChangeEmailModal/ChangeEmailModal';
-import ChangePasswordModal from '../../../ChangePasswordModal/ChangePasswordModal';
 
 import { validationAvatarRules, validationUserFormRules } from '../accountValidationRules';
 
@@ -24,17 +21,10 @@ import {
   InputField,
   DateInput,
   ErrorMessage,
-  FormBtn,
-  BtnWrapper,
-  ChangeValueBtnWrap
+  FormBtn
 } from './UserForm.styled';
 
-export default function UserForm({
-  callBack,
-  callbackDeleteUser,
-  callbackPassword,
-  callbackEmail
-}) {
+export default function UserForm({ callBack }) {
   const { t } = useTranslation();
   const user = useUser();
 
@@ -159,13 +149,6 @@ export default function UserForm({
                   >
                     {t('Save changes')}
                   </FormBtn>
-                  <BtnWrapper>
-                    <ChangeValueBtnWrap>
-                      <ChangeEmailModal />
-                      <ChangePasswordModal />
-                    </ChangeValueBtnWrap>
-                    <DeleteProfileModal />
-                  </BtnWrapper>
                 </FormWrap>
               </Form>
             </FormContainer>
@@ -177,8 +160,5 @@ export default function UserForm({
 }
 
 UserForm.propTypes = {
-  callBack: PropTypes.func.isRequired,
-  callbackEmail: PropTypes.func.isRequired,
-  callbackPassword: PropTypes.func.isRequired,
-  callbackDeleteUser: PropTypes.func.isRequired
+  callBack: PropTypes.func.isRequired
 };

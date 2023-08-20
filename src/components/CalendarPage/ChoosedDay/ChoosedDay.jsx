@@ -15,15 +15,21 @@ export default function ChoosedDay() {
   const year = getYear(parse(currentDate, 'yyyy-MM-dd', new Date()));
   const month = getMonth(parse(currentDate, 'yyyy-MM-dd', new Date())) + 1;
   const date = { year, month };
-  const { data: tasks, isLoading } = useGetTasksQuery(date);
+  const { data: tasks, isLoading, isFetching } = useGetTasksQuery(date);
 
   return (
     <ChoosedDayStyles>
-      <DayCalendarHead date={currentDate} />
       {isLoading && !isRefreshing ? (
         <Loader />
       ) : (
-        !isLoading && <TasksColumnsList tasks={tasks.tasks} />
+
+        !isLoading && (
+          <>
+            <DayCalendarHead date={currentDate} tasks={tasks.tasks} />
+            <TasksColumnsList tasks={tasks.tasks} />
+          </>
+        )
+
       )}
     </ChoosedDayStyles>
   );

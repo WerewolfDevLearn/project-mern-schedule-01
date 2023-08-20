@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Formik } from 'formik';
 import PropTypes from 'prop-types';
-import * as yup from 'yup';
 import { useTranslation } from 'react-i18next';
 import i18n from 'i18next';
 
@@ -24,13 +23,14 @@ import {
   CancelBtn
 } from './ChangeEmailForm.styled';
 
-export default function ChangeEmailForm({ onClose }) {
+export default function ChangeEmailForm({ onClose, callbackEmail }) {
   const initialValues = {};
 
   const [isUpdating, setisUpdating] = useState(false);
 
   const handleSubmit = (values) => {
     console.log(values);
+    callbackEmail(values);
   };
 
   const FormikInput = ({ label, type, name, placeholder }) => {
@@ -119,5 +119,6 @@ export default function ChangeEmailForm({ onClose }) {
 }
 
 ChangeEmailForm.propTypes = {
-  onClose: PropTypes.func.isRequired
+  onClose: PropTypes.func.isRequired,
+  callbackEmail: PropTypes.func.isRequired
 };

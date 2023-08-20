@@ -9,7 +9,6 @@ import { Plus, Trash } from 'src/components/shared/Icons';
 import { SUPPORTED_FORMATS } from '../accountValidationRules';
 
 import {
-  AvatarDeleteIcon,
   AvatarAddIcon,
   AvatarContainer,
   AvatarInputField,
@@ -32,9 +31,6 @@ export default function AccountAvatar({
 
   return (
     <AvatarContainer>
-      <AvatarDeleteIcon>
-        <Trash width="18px" height="18px" onClick={handleDeleteImageClick} />
-      </AvatarDeleteIcon>
       <AvatarAddIcon>
         <Plus width="18px" height="18px" onClick={handleAddImageClick} />
       </AvatarAddIcon>
