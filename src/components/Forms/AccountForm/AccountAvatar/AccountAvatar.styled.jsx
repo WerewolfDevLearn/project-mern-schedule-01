@@ -14,31 +14,6 @@ export const AvatarContainer = styled.div`
   }
 `;
 
-export const AvatarDeleteIcon = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  width: 14px;
-  height: 14px;
-  top: 74%;
-  left: 79%;
-  color: white;
-  background-color: #fad91b;
-  border-radius: 50%;
-  z-index: 1;
-
-  &:hover {
-    cursor: pointer;
-    background-color: #bb0202;
-  }
-
-  @media screen and (${themes.breakpoints.m} <= width) {
-    width: 24px;
-    height: 24px;
-  }
-`;
-
 export const AvatarAddIcon = styled.div`
   display: flex;
   justify-content: center;
@@ -89,6 +64,10 @@ export const AvatarImg = styled.img`
   border: 2px solid #3e85f3;
   border-radius: 50%;
   object-fit: cover;
+
+  &:hover {
+    cursor: pointer;
+  }
 
   @media screen and (${themes.breakpoints.m} <= width) {
     width: 124px;
