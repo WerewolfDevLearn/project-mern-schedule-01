@@ -38,6 +38,7 @@ export default function AccountAvatar({
         <AvatarInputField
           type="file"
           name="avatar"
+          accept="image/*"
           ref={fileInputRef}
           onBlur={() => formik.setTouched({ avatar: true })}
           onChange={(e) => {

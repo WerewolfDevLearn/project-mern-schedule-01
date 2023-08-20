@@ -27,7 +27,7 @@ export default function ChangeEmailModal({ callbackEmail }) {
     <>
       {showChangeEmailModal && (
         <Modal isOpen={showChangeEmailModal} onClose={closeChangeEmailModal}>
-          {<ChangeEmailForm onClose={closeChangeEmailModal} callbackEmail={callbackEmail} />}
+          <ChangeEmailForm onClose={closeChangeEmailModal} callbackEmail={callbackEmail} />
         </Modal>
       )}
       <ChangeValueBtn type="button" onClick={openChangeEmailModal}>

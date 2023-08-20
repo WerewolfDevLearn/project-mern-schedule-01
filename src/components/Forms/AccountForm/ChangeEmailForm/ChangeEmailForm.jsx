@@ -23,13 +23,14 @@ import {
 } from './ChangeEmailForm.styled';
 
 export default function ChangeEmailForm({ onClose, callbackEmail }) {
-  const initialValues = {};
+  const initialValues = { email: '' };
 
   const [isUpdating, setisUpdating] = useState(false);
 
   const handleSubmit = (values) => {
     console.log(values);
     callbackEmail(values);
+    
   };
 
   const FormikInput = ({ label, type, name, placeholder }) => {
@@ -67,7 +68,7 @@ export default function ChangeEmailForm({ onClose, callbackEmail }) {
                 <InputsContainer>
                   <FormikInput
                     label="New email"
-                    type="email"
+                    // type="email"
                     name="email"
                     placeholder="Enter new email"
                   />

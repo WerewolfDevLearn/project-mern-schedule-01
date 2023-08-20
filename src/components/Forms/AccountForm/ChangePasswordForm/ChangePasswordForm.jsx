@@ -101,7 +101,7 @@ export default function ChangePasswordForm({ onClose, callbackPassword }) {
                     Update password
                   </UpdateBtn>
                   <CancelBtn type="button" onClick={onClose}>
-                    OK
+                    Cancel
                   </CancelBtn>
                 </BtnWrap>
               </Modal>

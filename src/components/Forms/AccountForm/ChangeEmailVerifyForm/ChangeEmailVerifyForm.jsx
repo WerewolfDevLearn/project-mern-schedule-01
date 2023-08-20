@@ -4,15 +4,10 @@ import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import i18n from 'i18next';
 
-import { XClose } from '../../../shared/Icons';
-import VerifyForm from '../../AuthForms/VerifyForm/VerifyForm';
-
 import { validationChangeEmailRules } from '../accountValidationRules';
 
 import {
   Modal,
-  XCloseWrap,
-  ChangeEmailTitle,
   InputsContainer,
   FormLabelSpan,
   InputField,
@@ -23,7 +18,7 @@ import {
 } from './ChangeEmailForm.styled';
 
 export default function ChangeEmailForm({ onClose, callbackEmail }) {
-  const initialValues = {};
+  const initialValues = { code: '' };
 
   const [isUpdating, setisUpdating] = useState(false);
 
@@ -66,7 +61,7 @@ export default function ChangeEmailForm({ onClose, callbackEmail }) {
                     <FormikInput
                       label="Verify code"
                       type="text"
-                      name="verify"
+                      name="code"
                       placeholder="Enter verify code"
                     />
                   </InputsContainer>
@@ -79,6 +74,9 @@ export default function ChangeEmailForm({ onClose, callbackEmail }) {
                     >
                       Verify
                     </UpdateBtn>
+                    <CancelBtn type="button" onClick={onClose}>
+                      Cancel
+                    </CancelBtn>
                   </BtnWrap>
                 </Verify>
                 {/* )} */}
