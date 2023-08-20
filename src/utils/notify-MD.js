@@ -11,7 +11,8 @@ const regExp = {
   userRegRG: 'user/Register/rejected',
   userLoginRG: 'user/Login/rejected',
   userLogOutRG: 'user/LogOut/rejected',
-  userUpdateRG: 'user/Update/rejected'
+  userUpdateRG: 'user/Update/rejected',
+  userGCRG: 'user/GetCurrent/rejected'
 };
 
 export const ErrorLogger = (_api) => (next) => (action) => {
@@ -38,6 +39,13 @@ export const ErrorLogger = (_api) => (next) => (action) => {
     action.payload === 'Action Required: Verify Your Email'
   ) {
     toast.error(`${action.payload}. Please check you email`);
+  }
+  if (
+    isRejected(action) &&
+    action.type === regExp.userGCRG &&
+    action.payload === 'Request failed with status code 500'
+  ) {
+    toast.error('Please login');
   }
 
   if (
@@ -82,7 +90,7 @@ export const ErrorLogger = (_api) => (next) => (action) => {
 
   if (isRejected(action) && action.meta.arg && action.type.includes('tasks')) {
     const { message } = action.payload.data;
-    console.log('message: ', message);
+
     if (action.meta.arg.endpointName === 'createTasks') {
       toast.error(message);
     }

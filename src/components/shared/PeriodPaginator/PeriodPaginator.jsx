@@ -71,6 +71,7 @@ PeriodPaginator.propTypes = {
   nextHandler: PropTypes.func.isRequired,
   type: PropTypes.string,
   date: PropTypes.string,
+  value: PropTypes.any,
   // value: PropTypes.any,
   // onClick: PropTypes.func.isRequired,
   onClick: PropTypes.func
