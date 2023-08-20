@@ -31,6 +31,7 @@ export const validationChangePasswordRules = Yup.object().shape({
   confirmPassword: Yup.string()
     .min(6, 'The password is short - min 6 characters')
     .required(i18n.t('Password Required'))
+    .oneOf([Yup.ref('password'), null], 'Passwords must match')
 });
 
 export const validationUserFormRules = Yup.object().shape({
