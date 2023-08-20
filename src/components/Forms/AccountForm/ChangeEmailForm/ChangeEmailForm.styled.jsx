@@ -19,7 +19,7 @@ export const Modal = styled(Form)`
 
   @media screen and (${themes.breakpoints.m} <= width) {
     width: 550px;
-    height: 550px;
+    height: 350px;
     border-radius: 16px;
   }
 `;
@@ -36,7 +36,8 @@ export const XCloseWrap = styled.button`
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0, 0.11, 0.35, 2);
 
-  &:hover {
+  &:hover,
+  &:focus {
     color: #cf0202;
   }
 `;
@@ -50,8 +51,6 @@ export const ChangeEmailTitle = styled.h1`
 export const InputsContainer = styled.div`
   margin-bottom: 30px;
 `;
-
-export const Verify = styled.div``;
 
 export const FormLabelSpan = styled.span`
   display: flex;
@@ -67,7 +66,8 @@ export const InputField = styled(Field)`
   padding: 0 18px;
   margin-bottom: 8px;
 
-  &:hover {
+  &:hover,
+  &:focus {
     border: 1px solid black;
   }
 `;
@@ -124,7 +124,8 @@ export const CancelBtn = styled.button`
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0, 0.11, 0.35, 2);
 
-  &:hover {
+  &:hover,
+  &:focus {
     transform: scale(1.1);
     background-color: #2b78ef;
   }

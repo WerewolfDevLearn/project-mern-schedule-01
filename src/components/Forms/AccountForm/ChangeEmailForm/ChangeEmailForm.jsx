@@ -14,7 +14,6 @@ import {
   XCloseWrap,
   ChangeEmailTitle,
   InputsContainer,
-  Verify,
   FormLabelSpan,
   InputField,
   ErrorMessage,
@@ -86,29 +85,6 @@ export default function ChangeEmailForm({ onClose, callbackEmail }) {
                     Cancel
                   </CancelBtn>
                 </BtnWrap>
-                {/* <VerifyForm /> */}
-                {!isUpdating && (
-                  <Verify>
-                    <InputsContainer>
-                      <FormikInput
-                        label="Verify code"
-                        type="text"
-                        name="verify"
-                        placeholder="Enter verify code"
-                      />
-                    </InputsContainer>
-                    <BtnWrap>
-                      <UpdateBtn
-                        type="submit"
-                        disabled={
-                          !formik.isValid || !formik.touched || formik.isSubmitting || !formik.dirty
-                        }
-                      >
-                        Verify
-                      </UpdateBtn>
-                    </BtnWrap>
-                  </Verify>
-                )}
               </Modal>
             </>
           );

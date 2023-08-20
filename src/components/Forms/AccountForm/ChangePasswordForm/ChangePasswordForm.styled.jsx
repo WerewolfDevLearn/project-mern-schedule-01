@@ -36,7 +36,8 @@ export const XCloseWrap = styled.button`
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0, 0.11, 0.35, 2);
 
-  &:hover {
+  &:hover,
+  &:focus {
     color: #cf0202;
   }
 `;
@@ -88,7 +89,8 @@ export const InputField = styled(Field)`
   padding: 0 18px;
   margin-bottom: 8px;
 
-  &:hover {
+  &:hover,
+  &:focus {
     border: 1px solid black;
   }
 `;
@@ -117,7 +119,8 @@ export const UpdateBtn = styled.button`
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0, 0.11, 0.35, 2);
 
-  &:hover {
+  &:hover,
+  &:focus {
     background-color: #2b78ef;
     transform: scale(1.1);
   }

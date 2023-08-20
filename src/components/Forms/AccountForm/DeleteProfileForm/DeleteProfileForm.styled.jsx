@@ -44,7 +44,8 @@ export const XCloseWrap = styled.div`
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0, 0.11, 0.35, 2);
 
-  &:hover {
+  &:hover,
+  &:focus {
     color: #cf0202;
   }
 `;
