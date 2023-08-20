@@ -2,11 +2,11 @@ import * as Yup from 'yup';
 import i18n from 'i18next';
 
 export const SUPPORTED_FORMATS = [
-  // 'image/webp',
-  // 'image/jpg',
-  // 'image/jpeg',
-  // 'image/gif',
-  // 'image/png'
+  'image/webp',
+  'image/jpg',
+  'image/jpeg',
+  'image/gif',
+  'image/png'
 ];
 
 const PATTERN_FOR_NAME = /^[a-zA-Z0-9_]*$/;
