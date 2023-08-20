@@ -2,11 +2,16 @@ import * as Yup from 'yup';
 import i18n from 'i18next';
 
 export const SUPPORTED_FORMATS = [
-  'image/webp',
-  'image/jpg',
-  'image/jpeg',
+  'image/apng',
+  'image/bmp',
   'image/gif',
-  'image/png'
+  'image/jpeg',
+  'image/pjpeg',
+  'image/png',
+  'image/svg+xml',
+  'image/tiff',
+  'image/webp',
+  'image/x-icon'
 ];
 
 const PATTERN_FOR_NAME = /^[a-zA-Z0-9_]*$/;
@@ -15,7 +20,7 @@ const PATTERN_FOR_PHONE = /^\+380\d{9}$/;
 export const validationAvatarRules = Yup.object().shape({
   avatar: Yup.mixed().test(
     'fileType',
-    'Only PNG, JPEG, JPG or GIF formats are supported',
+    'Only supported image formats are allowed',
     (value) => !value || (value && SUPPORTED_FORMATS.includes(value?.type))
   )
 });
