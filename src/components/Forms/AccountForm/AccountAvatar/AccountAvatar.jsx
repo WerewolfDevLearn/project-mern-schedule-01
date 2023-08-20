@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { useUser } from 'src/redux/selectors';
 import { Plus, Trash } from 'src/components/shared/Icons';
 
-import { SUPPORTED_FORMATS } from '../validationRules';
+import { SUPPORTED_FORMATS } from '../accountValidationRules';
 
 import {
   AvatarDeleteIcon,

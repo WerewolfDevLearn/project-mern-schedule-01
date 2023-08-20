@@ -4,7 +4,7 @@ import i18n from 'i18next';
 import { useTranslation } from 'react-i18next';
 import Modal from 'src/components/shared/Modal/Modal';
 
-import DeleteProfileForm from '../Forms/DeleteProfileForm/DeleteProfileForm';
+import DeleteProfileForm from '../Forms/AccountForm/DeleteProfileForm/DeleteProfileForm';
 
 import { DeleteProfileBtn } from './DeleteProfileModal.styled';
 

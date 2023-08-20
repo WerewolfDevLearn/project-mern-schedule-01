@@ -5,10 +5,10 @@ import * as yup from 'yup';
 import { useTranslation } from 'react-i18next';
 import i18n from 'i18next';
 
-import { XClose } from '../../shared/Icons';
-import VerifyForm from '../AuthForms/VerifyForm/VerifyForm';
+import { XClose } from '../../../shared/Icons';
+import VerifyForm from '../../AuthForms/VerifyForm/VerifyForm';
 
-import { validationChangeEmailRules } from '../validationRules';
+import { validationChangeEmailRules } from '../accountValidationRules';
 
 import {
   Modal,

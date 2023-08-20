@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import i18n from 'i18next';
 import { useTranslation } from 'react-i18next';
 
-import PasswordInput from '../PasswordInput/PasswordInput';
-import { validationChangePasswordRules } from '../validationRules';
-import { XClose } from '../../shared/Icons';
+import PasswordInput from '../../PasswordInput/PasswordInput';
+import { validationChangePasswordRules } from '../accountValidationRules';
+import { XClose } from '../../../shared/Icons';
 
 import {
   Modal,

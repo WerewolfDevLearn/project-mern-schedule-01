@@ -3,7 +3,7 @@ import i18n from 'i18next';
 import { useTranslation } from 'react-i18next';
 import Modal from 'src/components/shared/Modal/Modal';
 
-import ChangePasswordForm from '../Forms/ChangePasswordForm/ChangePasswordForm';
+import ChangePasswordForm from '../Forms/AccountForm/ChangePasswordForm/ChangePasswordForm';
 
 import { ChangeValueBtn } from './ChangePasswordModal.styled';
 

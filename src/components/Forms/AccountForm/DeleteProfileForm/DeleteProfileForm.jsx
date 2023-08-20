@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import i18n from 'i18next';
 import { useTranslation } from 'react-i18next';
 
-import { XClose, ValidationError } from '../../shared/Icons';
+import { XClose, ValidationError } from '../../../shared/Icons';
 
 import {
   Modal,
