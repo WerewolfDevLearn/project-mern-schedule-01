@@ -87,31 +87,30 @@ export default function UserForm({ callBack }) {
       >
         {(formik) => {
           return (
-            <FormContainer>
-              <Form encType="multipart/form-data">
-                <FormWrap>
-                  <AccountAvatar
-                    selectedAvatar={selectedAvatar}
-                    formik={formik}
-                    setSelectedAvatar={setSelectedAvatar}
-                    setImagePreview={setImagePreview}
+            <Form encType="multipart/form-data">
+              <FormWrap>
+                <AccountAvatar
+                  selectedAvatar={selectedAvatar}
+                  formik={formik}
+                  setSelectedAvatar={setSelectedAvatar}
+                  setImagePreview={setImagePreview}
+                />
+                <UserNameTitle>{user.name}</UserNameTitle>
+                <RoleTitle>{t('User')}</RoleTitle>
+                <FormInputContainer>
+                  <FormikInput
+                    label={t('UserName')}
+                    type="text"
+                    name="name"
+                    placeholder={t('Enter your name')}
                   />
-                  <UserNameTitle>{user.name}</UserNameTitle>
-                  <RoleTitle>{t('User')}</RoleTitle>
-                  <FormInputContainer>
-                    <FormikInput
-                      label={t('UserName')}
-                      type="text"
-                      name="name"
-                      placeholder={t('Enter your name')}
-                    />
-                    <FormikInput
-                      label={t('Birthday')}
-                      type="date"
-                      name="birthday"
-                      placeholder="Pick a date of your birthday"
-                    />
-                    {/* <label htmlFor="birthday">
+                  <FormikInput
+                    label={t('Birthday')}
+                    type="date"
+                    name="birthday"
+                    placeholder="Pick a date of your birthday"
+                  />
+                  {/* <label htmlFor="birthday">
                       <FormLabelSpan>{t('Birthday')}</FormLabelSpan>
                       <DateInput
                         id="birthday"
@@ -122,36 +121,35 @@ export default function UserForm({ callBack }) {
                       />
                       <ErrorMessage name="birthday" component="div" />
                     </label> */}
-                    {/* <FormikInput
+                  {/* <FormikInput
                       label={t('UserEmail')}
                       type="email"
                       name="email"
                       placeholder={t('Enter email')}
                     /> */}
-                    <FormikInput
-                      label={t('Phone')}
-                      type="tel"
-                      name="phone"
-                      placeholder="+380971234567"
-                    />
-                    <FormikInput
-                      label={t('Skype')}
-                      type="text"
-                      name="skype"
-                      placeholder={t('Add a skype number')}
-                    />
-                  </FormInputContainer>
-                  <FormBtn
-                    type="submit"
-                    disabled={
-                      !formik.isValid || !formik.touched || formik.isSubmitting || !formik.dirty
-                    }
-                  >
-                    {t('Save changes')}
-                  </FormBtn>
-                </FormWrap>
-              </Form>
-            </FormContainer>
+                  <FormikInput
+                    label={t('Phone')}
+                    type="tel"
+                    name="phone"
+                    placeholder="+380971234567"
+                  />
+                  <FormikInput
+                    label={t('Skype')}
+                    type="text"
+                    name="skype"
+                    placeholder={t('Add a skype number')}
+                  />
+                </FormInputContainer>
+                <FormBtn
+                  type="submit"
+                  disabled={
+                    !formik.isValid || !formik.touched || formik.isSubmitting || !formik.dirty
+                  }
+                >
+                  {t('Save changes')}
+                </FormBtn>
+              </FormWrap>
+            </Form>
           );
         }}
       </Formik>

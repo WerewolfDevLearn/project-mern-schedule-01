@@ -4,21 +4,6 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { themes } from 'src/styles/variables/themes';
 
-export const FormContainer = styled.div`
-  /* padding: 0 18px 40px 18px;
-  background-color: white;
-  border-radius: 16px;
-  position: relative;
-
-  @media screen and (${themes.breakpoints.m} <= width < ${themes.breakpoints.l}) {
-    padding: 40px 175px 40px 175px;
-  }
-
-  @media screen and (${themes.breakpoints.l} <= width) {
-    padding: 60px 165px 60px 164px;
-  } */
-`;
-
 export const FormWrap = styled.div`
   display: flex;
   flex-direction: column;
