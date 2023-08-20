@@ -21,13 +21,15 @@ export const TaskToolbarBtn = styled.button`
 `;
 
 export const PopoverWrapper = styled.div`
-  padding: 20px 24px;
+  /* padding: 20px 24px; */
   border-radius: 8px;
   z-index: 2;
 
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  /* gap: 18px; */
+
+  overflow: hidden;
 
   background: ${({ theme }) => theme.colors.backgroundModalTodo};
   border: 1px solid ${({ theme }) => theme.colors.tasksListBorder};
@@ -35,6 +37,12 @@ export const PopoverWrapper = styled.div`
 `;
 
 export const RelocateButton = styled.button`
+  padding: 20px 24px 7px 24px;
+
+  &:last-child {
+    padding: 7px 24px 20px 24px;
+  }
+
   width: 100%;
 
   display: flex;
@@ -47,4 +55,8 @@ export const RelocateButton = styled.button`
   line-height: 18px;
 
   color: ${({ theme }) => theme.colors.textAndIconTodo};
+
+  &:hover {
+    background-color: #7e7e7e10;
+  }
 `;
