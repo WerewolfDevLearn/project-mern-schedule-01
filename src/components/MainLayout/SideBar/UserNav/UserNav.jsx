@@ -9,7 +9,7 @@ import routes from 'src/routes.js';
 
 import { NavUl, NavLinkStyled, IconDiv } from './UserNav.styled';
 
-export default function UserNav() {
+export default function UserNav(callBackCls) {
   const location = useLocation();
   const [isCalendar, setIsCalendar] = useState();
   const { t } = useTranslation();
@@ -21,7 +21,7 @@ export default function UserNav() {
   return (
     <NavUl>
       <li key="AccountPage">
-        <NavLinkStyled to={routes.accountPage}>
+        <NavLinkStyled to={routes.accountPage} onClick={callBackCls}>
           <IconDiv>
             <UserCheck />
           </IconDiv>
@@ -32,6 +32,7 @@ export default function UserNav() {
         <NavLinkStyled
           to={`${routes.navFromLogIn}/${getCurrentDate()}`}
           className={isCalendar && 'active'}
+          onClick={callBackCls}
         >
           <IconDiv>
             <CalendarCheck />
@@ -40,7 +41,7 @@ export default function UserNav() {
         </NavLinkStyled>
       </li>
       <li key="StatisticsPage">
-        <NavLinkStyled to={routes.statisticsPage}>
+        <NavLinkStyled to={routes.statisticsPage} onClick={callBackCls}>
           <IconDiv>
             <BsBarChart />
           </IconDiv>

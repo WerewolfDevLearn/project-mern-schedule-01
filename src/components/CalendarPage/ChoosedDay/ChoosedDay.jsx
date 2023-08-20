@@ -23,7 +23,7 @@ export default function ChoosedDay() {
       {isLoading && !isRefreshing ? (
         <Loader />
       ) : (
-        !isLoading && <TasksColumnsList tasks={tasks.tasks} />
+        !isRefreshing && <TasksColumnsList tasks={tasks.tasks} />
       )}
     </ChoosedDayStyles>
   );

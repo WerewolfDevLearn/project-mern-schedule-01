@@ -1,5 +1,22 @@
 import styled from 'styled-components';
-import { themes } from 'src/styles/variables/themes';
+import { modalBackdropcolors, themes } from 'src/styles/variables/themes';
+
+export const SidebarBackdrop = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+
+  width: 100%;
+  height: 100%;
+
+  background: ${modalBackdropcolors.black};
+
+  opacity: ${({ open }) => (open ? 1 : 0)};
+  pointer-events: ${({ open }) => (open ? 'all' : 'none')};
+
+  transition: opacity 100ms linear;
+`;
 
 export const SideBarContainer = styled.aside`
   position: absolute;
