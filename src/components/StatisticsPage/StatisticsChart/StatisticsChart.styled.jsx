@@ -28,7 +28,7 @@ export const ChartContainer = styled.div`
 `;
 
 export const StatisticsChartStyles = styled.div`
-  margin-top: 40px;
+  /* margin-top: 40px; */
 `;
 
 export const TasksLabel = styled.p`
