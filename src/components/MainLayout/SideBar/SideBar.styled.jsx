@@ -1,5 +1,22 @@
 import styled from 'styled-components';
-import { themes } from 'src/styles/variables/themes';
+import { modalBackdropcolors, themes } from 'src/styles/variables/themes';
+
+export const SidebarBackdrop = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+
+  width: 100%;
+  height: 100%;
+
+  background: ${modalBackdropcolors.black};
+
+  opacity: ${({ open }) => (open ? 1 : 0)};
+  pointer-events: ${({ open }) => (open ? 'all' : 'none')};
+
+  transition: opacity 100ms linear;
+`;
 
 export const SideBarContainer = styled.aside`
   position: absolute;
@@ -12,7 +29,7 @@ export const SideBarContainer = styled.aside`
   height: 100vh;
   padding: 24px 20px;
   transform: ${({ open }) => (open ? 'translateX(100%)' : 'translateX(0)')};
-  transition: transform 0.3 ease-in-out;
+  transition: transform 100ms ease-in-out;
   @media screen and (${themes.breakpoints.s} < width <=${themes.breakpoints.m}) {
     position: absolute;
     z-index: 2;
