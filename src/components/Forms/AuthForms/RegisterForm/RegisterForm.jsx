@@ -8,7 +8,7 @@ import AuthGoogleBtn from 'src/components/shared/AuthGoogle/AuthGoogleBtn/AuthGo
 import { validationRegisterRules } from '../validationRules';
 import AuthInput from '../AuthInput/AuthInput';
 
-import { Container, Title, FormElement, InputWrap, Button, Img } from './RegisterForm.styled';
+import { Container, Title, FormElement, InputWrap, Button, Img } from '../GeneralAuth.styles';
 
 export default function RegisterForm({ callBack }) {
   const [validateAfterSubmit, setValidateAfterSubmit] = useState(false);

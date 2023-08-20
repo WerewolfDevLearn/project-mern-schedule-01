@@ -8,7 +8,7 @@ import AuthGoogleBtn from 'src/components/shared/AuthGoogle/AuthGoogleBtn/AuthGo
 import { validationLoginRules } from '../validationRules';
 import AuthInput from '../AuthInput/AuthInput';
 
-import { Container, Title, FormElement, InputWrap, Button, Img } from './LoginForm.styled';
+import { Container, Title, FormElement, InputWrap, Button, Img } from '../GeneralAuth.styles';
 
 export default function LoginForm({ onSubmitForm }) {
   const [validateAfterSubmit, setValidateAfterSubmit] = useState(false);
