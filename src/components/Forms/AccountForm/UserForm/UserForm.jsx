@@ -78,8 +78,13 @@ export default function UserForm({ callBack }) {
         } else {
           formData.append(key, value);
         }
+      } else if (key === 'birthday') {
+        const birthday = moment(values[key]).format('YYYY-MM-DD');
+        formData.append('birthday', birthday);
+        return;
       }
     });
+    // Зауважте, що я закоментував частину коду, яка опрацьовує birthday, оскільки ви повинні вставити свої власні дії для обробки дати народження за допомогою бібліотеки, такої як moment або стандартних функцій JavaScript. Також, ви маєте врахувати формат, в якому ви хочете відправити дату на сервер.
 
     // if (data.email) {
     //   formData.append('email', data.email.trim());
