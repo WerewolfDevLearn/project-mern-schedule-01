@@ -33,7 +33,7 @@ export default function DeleteProfileModal() {
         </Modal>
       )}
       <DeleteProfileBtn type="button" onClick={openDeleteProfileModal}>
-        Delete profile
+        {t('DeleteProfile')}
       </DeleteProfileBtn>
     </>
   );
