@@ -10,7 +10,7 @@ export const DivWrapper = styled('div')`
     width: 100%;
   }
   @media screen and (min-width: 768px) {
-    justify-content: space-around;
+    justify-content: left;
     align-items: center;
   }
 `;

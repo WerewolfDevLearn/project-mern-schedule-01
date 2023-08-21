@@ -57,7 +57,6 @@ export default function RegisterForm({ callBack }) {
           const { errors, handleSubmit, submitCount } = formik;
 
           const validateInput = (input) => {
-            console.log(errors);
             if ((validateAfterSubmit || submitCount > 0) && errors[input]) {
               setValidateAfterSubmit(true);
               return 'input-error';
