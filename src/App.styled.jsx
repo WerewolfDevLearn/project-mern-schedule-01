@@ -9,7 +9,7 @@ export const DivColorWrapperAPP = styled.div`
 export const DivWrapperAPP = styled.div`
   margin-right: auto;
   margin-left: auto;
-  @media screen and (width > ${themes.breakpoints.l}) {
+  @media screen and (${themes.breakpoints.l} < width) {
     width: ${themes.breakpoints.l};
   }
 `;

@@ -12,6 +12,7 @@ import {
   Title,
   Description,
   InputWrap,
+  InputSpan,
   BtnWrap,
   CancelBtn,
   DeleteBtn
@@ -42,7 +43,7 @@ export default function DeleteProfileForm({ onClose, callBack }) {
             name="agreement"
             onChange={() => setIsChecked(!isChecked)}
           />{' '}
-          I agree to delete profile data
+          <InputSpan>I agree to delete profile data</InputSpan>
         </InputWrap>
         <BtnWrap>
           <CancelBtn onClick={onClose}>Cancel</CancelBtn>
