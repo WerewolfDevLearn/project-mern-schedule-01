@@ -640,10 +640,11 @@ attempted value: ${o}
   }
   @media screen and (${I.breakpoints.m} < width) {
     margin-bottom: 32px;
-    padding-top: 40px;
     max-width: 1440px;
+    padding-top: 40px;
   }
   @media screen and (${I.breakpoints.l} < width) {
+    width: 1440px;
     padding-top: 40px;
   }
 `,iSe=N.h2`
@@ -659,21 +660,6 @@ attempted value: ${o}
   align-items: center;
   gap: 10px;
   margin-right: 15px;
-`;N.span`
-  color: #3e85f3;
-  font-family: Inter;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 18px;
-`;N.p`
-  margin-top: 8px;
-  color: ${({theme:e})=>e.colors.textAndIconTodo};
-  font-family: Inter;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 18px;
 `;function AU({callBack:e,isHomePage:t}){let r="add";const{data:n,isFetching:i,isLoading:a}=xJ();!a&&n&&n.length&&(r="view");const{t:o}=Be(),[s,l]=O.useState(!1),c=ui().pathname.split("/")[1],f={account:o("User Profile"),statistics:o("Statistics"),calendar:o("Calendar")},d=()=>{l(!0)},p=()=>{l(!1)};return T.jsxs(nSe,{children:[T.jsx(_U,{callBack:e}),T.jsx(iSe,{children:f[c]}),T.jsx($U,{openModal:d}),T.jsxs(aSe,{children:[T.jsx(iP,{isHomePage:t}),T.jsx(zwe,{})]}),T.jsx(Zwe,{}),T.jsx(E2,{children:s&&T.jsx(_i,{onClose:p,color:Dl.grey,clickable:!0,children:T.jsx(PU,{onClose:p,action:r,reviewToEdit:n[0]})})})]})}AU.propTypes={callBack:Y.func.isRequired,onGiveFeedBack:Y.func.isRequired,isHomePage:Y.bool};const oSe=N.div`
   width: 100%;
   @media screen and (${I.breakpoints.m} < width) {
