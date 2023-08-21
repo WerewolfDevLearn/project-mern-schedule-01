@@ -22,6 +22,7 @@ import {
 
 export default function ChangeEmailForm({ onClose, callbackEmail }) {
   const initialValues = { email: '' };
+  const { t } = useTranslation();
 
   // const [isUpdating, setisUpdating] = useState(false);
 
@@ -43,13 +44,13 @@ export default function ChangeEmailForm({ onClose, callbackEmail }) {
                 <XCloseWrap onClick={onClose}>
                   <XClose width="24" height="24" />
                 </XCloseWrap>
-                <ChangeEmailTitle>Change email</ChangeEmailTitle>
+                <ChangeEmailTitle>{t('ChangeEmail')}</ChangeEmailTitle>
                 <InputsContainer>
                   <UniversalInput
                     label="New email"
                     type="email"
                     name="email"
-                    placeholder="Enter new email"
+                    placeholder={t('EnterNewEmail')}
                   />
                 </InputsContainer>
                 <BtnWrap>
@@ -59,10 +60,10 @@ export default function ChangeEmailForm({ onClose, callbackEmail }) {
                       !formik.isValid || !formik.touched || formik.isSubmitting || !formik.dirty
                     }
                   >
-                    Update email
+                    {t('UpdateEmail')}
                   </UpdateBtn>
                   <CancelBtn type="button" onClick={onClose}>
-                    Cancel
+                    {t('Cancel')}
                   </CancelBtn>
                 </BtnWrap>
               </Modal>

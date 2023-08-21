@@ -20,6 +20,8 @@ import {
 } from './ChangePasswordForm.styled';
 
 export default function ChangePasswordForm({ onClose, callbackPassword }) {
+  const { t } = useTranslation();
+
   const [validateAfterSubmit, setValidateAfterSubmit] = useState(false);
 
   const initialValues = {
@@ -53,7 +55,7 @@ export default function ChangePasswordForm({ onClose, callbackPassword }) {
                 <XCloseWrap onClick={onClose}>
                   <XClose width="24" height="24" />
                 </XCloseWrap>
-                <ChangePasswordTitle>Change password</ChangePasswordTitle>
+                <ChangePasswordTitle>{t('ChangePassword')}</ChangePasswordTitle>
                 <InputsContainer>
                   {/* <PasswordInput
                     formik={formik}
@@ -69,10 +71,10 @@ export default function ChangePasswordForm({ onClose, callbackPassword }) {
                       formik={formik}
                       validateAfterSubmit={validateAfterSubmit}
                       setValidateAfterSubmit={setValidateAfterSubmit}
-                      label="New password"
+                      label={t('NewPassword')}
                       name="password"
                       id="newPassword"
-                      placeholder="Password"
+                      placeholder={t('Password')}
                     />
                   </InputWrap>
                   <InputWrap>
@@ -80,10 +82,10 @@ export default function ChangePasswordForm({ onClose, callbackPassword }) {
                       formik={formik}
                       validateAfterSubmit={validateAfterSubmit}
                       setValidateAfterSubmit={setValidateAfterSubmit}
-                      label="Confirm new password"
+                      label={t('ConfirmNewPassword')}
                       name="confirmPassword"
                       id="confirmPassword"
-                      placeholder="Confirm"
+                      placeholder={t('Confirm')}
                     />
                   </InputWrap>
                 </InputsContainer>
@@ -95,10 +97,10 @@ export default function ChangePasswordForm({ onClose, callbackPassword }) {
                       !formik.isValid || !formik.touched || formik.isSubmitting || !formik.dirty
                     }
                   >
-                    Update password
+                    {t('UpdatePassword')}
                   </UpdateBtn>
                   <CancelBtn type="button" onClick={onClose}>
-                    Cancel
+                    {t('Cancel')}
                   </CancelBtn>
                 </BtnWrap>
               </Modal>

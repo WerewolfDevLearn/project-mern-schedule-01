@@ -3,7 +3,6 @@ import { format, parse } from 'date-fns';
 import { forwardRef } from 'react';
 import { useTranslation } from 'react-i18next';
 
-// import CalendarDataPicker from '../CalendarDataPiker/CalendarDataPiker';
 import CalendarDataPicker from '../CalendarDataPiker/CalendarDataPicker';
 import { ChevronLeft, ChevronRight } from '../Icons';
 
@@ -31,15 +30,9 @@ const PeriodPaginator = ({ prevHandler, nextHandler, type, date, setCurrentDate 
     const monthYear = formattedDate.split(' ')[0];
     const translatedMonth = t(`months.${monthYear.toLowerCase()}`);
 
-    // const monthFullDate = formattedDate.split(' ')[1];
-    // const translatedMonthFull = t(`months.${monthFullDate.toLowerCase()}`);
-
     return (
       <TitleWrapper onClick={onClick} ref={ref}>
         {type === 'day' ? value : `${translatedMonth} ${formattedDate.split(' ')[1]}`}
-        {/* {type === 'day'
-          ? `${formattedDate.split(' ')[0]} ${translatedMonthFull} ${formattedDate.split(' ')[2]}`
-          : `${translatedMonth} ${formattedDate.split(' ')[1]}`} */}
       </TitleWrapper>
     );
   });
