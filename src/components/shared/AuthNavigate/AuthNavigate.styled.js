@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import { themes } from 'src/styles/variables/themes';
 
 export const NavigateLink = styled(NavLink)`
   color: #3e85f3;
@@ -11,10 +12,16 @@ export const NavigateLink = styled(NavLink)`
   font-weight: 600;
   line-height: 14px;
   text-decoration-line: underline;
+
+  transition-property: color;
+  transition-duration: ${themes.animations.duration};
+  transition-timing-function: ${themes.animations.cubicBezier};
+
   &:hover,
   &:focus {
     color: #2b78ef;
   }
+
   @media screen and (min-width: 768px) {
     font-size: 18px;
   }
