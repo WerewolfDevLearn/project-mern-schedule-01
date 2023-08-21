@@ -15,11 +15,11 @@ export const DivWrapper = styled('div')`
   }
 `;
 export const TitleWrapper = styled.button`
+  width: 195px;
   padding: 6px 12px;
   color: #ffffff;
   background: #3e85f3;
   border-radius: 8px;
-  /* border: 1px solid rgba(220, 227, 229, 0.8); */
   font-weight: 700;
   font-size: 14px;
   line-height: 18px;

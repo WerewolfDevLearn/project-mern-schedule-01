@@ -9,6 +9,6 @@ export const TasksColumnsListStyles = styled.ul`
   }
 
   @media screen and (width >= 1440px) {
-    gap: 27px;
+    justify-content: space-between;
   }
 `;

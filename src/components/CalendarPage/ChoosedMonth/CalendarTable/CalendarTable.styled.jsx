@@ -22,7 +22,7 @@ export const GridWrapper = styled.ul`
   flex-wrap: wrap;
   width: 100%;
   /* height: 564px; */
-  height: 470px;
+  /* height: 470px; */
   gap: 0px;
   align-content: flex-start;
 
