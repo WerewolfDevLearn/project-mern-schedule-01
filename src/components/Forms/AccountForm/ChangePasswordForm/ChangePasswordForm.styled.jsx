@@ -16,7 +16,7 @@ export const Modal = styled(Form)`
 
   @media screen and (${themes.breakpoints.m} <= width) {
     width: 550px;
-    height: 450px;
+    height: 500px;
     border-radius: 16px;
   }
 `;
