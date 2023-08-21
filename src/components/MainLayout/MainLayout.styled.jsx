@@ -10,6 +10,7 @@ export const MainLayOutContainer = styled.div`
 `;
 export const MainLayOutSubContainer = styled.div`
   width: 100%;
+  height: 100vh;
   padding-left: 20px;
   padding-right: 20px;
   display: flex;
