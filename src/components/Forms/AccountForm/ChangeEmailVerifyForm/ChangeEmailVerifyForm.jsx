@@ -1,7 +1,6 @@
 import { Formik } from 'formik';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
-import i18n from 'i18next';
 
 import UniversalInput from '../../UniversalInput/UniversalInput';
 
