@@ -11,7 +11,7 @@ export const Modal = styled(Form)`
   width: 100vw;
   height: 100vh;
   padding: 10px;
-  background-color: white;
+  background: ${({ theme }) => theme.colors.backgroundUserForm};
   box-shadow: rgb(0, 0, 0) 0px 0px 80px;
 
   @media screen and (${themes.breakpoints.s} <= width < ${themes.breakpoints.m}) {

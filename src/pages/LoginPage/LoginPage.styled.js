@@ -9,7 +9,7 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
 
-  background: ${themes.colors.backgroundAuth};
+  background: ${({ theme }) => theme.colors.backgroundUserForm};
 `;
 
 export const ContentWrap = styled.div`

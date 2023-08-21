@@ -13,6 +13,7 @@ export const FormWrap = styled.div`
 export const UserNameTitle = styled.h2`
   margin: 0;
   margin-bottom: 4px;
+  color: ${({ theme }) => theme.colors.textCancelBtn};
 
   @media screen and (${themes.breakpoints.l} <= width) {
     margin-bottom: 8px;
@@ -25,7 +26,7 @@ export const RoleTitle = styled.p`
   line-height: 1.17;
   letter-spacing: -0.02em;
   margin-bottom: 24px;
-  color: #343434;
+  color: ${({ theme }) => theme.colors.placeholder};
 
   @media screen and (${themes.breakpoints.m} <= width) {
     font-size: 14px;
