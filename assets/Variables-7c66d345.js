@@ -1,0 +1,1 @@
+const r={primaryBlue:"#3E85F3",white:"#ffffff",lightBlue:"#E3F3FF",blue:"#CAE8FF",grey:"#F7F6F9",blueBtn:"#E3F3FF",dark:"#171820",darkGrey:"#21222C",transparent:"transparent"},a={black:"#111111",white:"#ffffff",dark:"#171820",blue1:"#3E85F3",transparent:"transparent"};export{r as b,a as c};
