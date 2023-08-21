@@ -1,7 +1,5 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import * as yup from 'yup';
-import i18n from 'i18next';
 import PropTypes from 'prop-types';
 import iconError from 'src/images/svg/validation-error.svg';
 import iconSuccess from 'src/images/svg/validation-success.svg';

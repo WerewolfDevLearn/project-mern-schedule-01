@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Field, Form, ErrorMessage as FormikErrorMessage } from 'formik';
+import { Form } from 'formik';
 import { themes } from 'src/styles/variables/themes';
 
 export const Modal = styled(Form)`
@@ -13,9 +13,6 @@ export const Modal = styled(Form)`
   padding: 10px;
   background: ${({ theme }) => theme.colors.backgroundUserForm};
   box-shadow: rgb(0, 0, 0) 0px 0px 80px;
-
-  @media screen and (${themes.breakpoints.s} <= width < ${themes.breakpoints.m}) {
-  }
 
   @media screen and (${themes.breakpoints.m} <= width) {
     width: 550px;

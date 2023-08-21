@@ -1,6 +1,4 @@
 import styled from 'styled-components';
-import { Field, ErrorMessage as FormikErrorMessage } from 'formik';
-import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { themes } from 'src/styles/variables/themes';
 

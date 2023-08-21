@@ -1,7 +1,6 @@
 import { useState } from 'react';
-import { Formik, Form } from 'formik';
+import { Formik } from 'formik';
 import PropTypes from 'prop-types';
-import i18n from 'i18next';
 import { useTranslation } from 'react-i18next';
 
 import PasswordInput from '../../PasswordInput/PasswordInput';
@@ -31,7 +30,6 @@ export default function ChangePasswordForm({ onClose, callbackPassword }) {
   };
   const onSubmit = (data) => {
     setValidateAfterSubmit(true);
-    console.log(data);
     callbackPassword(data);
     setValidateAfterSubmit(false);
   };
@@ -57,15 +55,6 @@ export default function ChangePasswordForm({ onClose, callbackPassword }) {
                 </XCloseWrap>
                 <ChangePasswordTitle>{t('ChangePassword')}</ChangePasswordTitle>
                 <InputsContainer>
-                  {/* <PasswordInput
-                    formik={formik}
-                    validateAfterSubmit={validateAfterSubmit}
-                    setValidateAfterSubmit={setValidateAfterSubmit}
-                    label="Old password"
-                    name="password"
-                    id="password"
-                    placeholder="Password"
-                  /> */}
                   <InputWrap>
                     <PasswordInput
                       formik={formik}

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Formik, Form } from 'formik';
 import { format } from 'date-fns';
-import i18n from 'i18next';
+
 import { useTranslation } from 'react-i18next';
 
 import { useUser } from 'src/redux/selectors';
@@ -28,7 +28,6 @@ export default function UserForm({ callBack }) {
 
   const [imagePreview, setImagePreview] = useState(null);
   const [selectedAvatar, setSelectedAvatar] = useState(user.avatarUrl);
-  // const [selectedDate, setSelectedDate] = useState(initialValues.birthday);
 
   const onSubmit = (data) => {
     const formData = new FormData();

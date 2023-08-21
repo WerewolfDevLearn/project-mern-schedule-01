@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Form, Field, ErrorMessage as FormikErrorMessage } from 'formik';
+import { Field, ErrorMessage as FormikErrorMessage } from 'formik';
 import { themes } from 'src/styles/variables/themes';
 
 export const FormLabelSpan = styled.span`

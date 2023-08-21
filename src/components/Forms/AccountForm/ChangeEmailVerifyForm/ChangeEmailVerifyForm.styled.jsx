@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Field, Form, ErrorMessage as FormikErrorMessage } from 'formik';
+import { Form } from 'formik';
 import { themes } from 'src/styles/variables/themes';
 
 export const Modal = styled(Form)`
@@ -65,7 +65,6 @@ export const CancelBtn = styled.button`
   border-radius: 16px;
   color: white;
   background-color: #3e85f3;
-  /* border: 3px solid #3e85f3; */
   margin-left: 100px;
   margin-bottom: 10px;
 

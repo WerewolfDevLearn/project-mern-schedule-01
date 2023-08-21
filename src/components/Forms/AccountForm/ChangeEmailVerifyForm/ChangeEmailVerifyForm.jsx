@@ -1,11 +1,9 @@
-import { useState } from 'react';
 import { Formik } from 'formik';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import i18n from 'i18next';
 
 import UniversalInput from '../../UniversalInput/UniversalInput';
-import { validationChangeEmailRules } from '../accountValidationRules';
 
 import {
   Modal,
@@ -20,7 +18,6 @@ export default function ChangeEmailForm({ onClose, callbackEmail, closeChangeEma
   const { t } = useTranslation();
 
   const handleSubmit = (values) => {
-    console.log(values);
     callbackEmail(values);
     closeChangeEmailVerifyModal();
   };
@@ -32,8 +29,6 @@ export default function ChangeEmailForm({ onClose, callbackEmail, closeChangeEma
           return (
             <>
               <Modal>
-                {/* {!isUpdating && ( */}
-                {/* <Verify> */}
                 <InputsContainer>
                   <UniversalInput
                     label={t('VerifyCode')}
@@ -55,8 +50,6 @@ export default function ChangeEmailForm({ onClose, callbackEmail, closeChangeEma
                     {t('Cancel')}
                   </CancelBtn>
                 </BtnWrap>
-                {/* </Verify> */}
-                {/* )} */}
               </Modal>
             </>
           );
