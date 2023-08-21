@@ -5,7 +5,7 @@ import { themes } from 'src/styles/variables/themes';
 export const List = styled.ul`
   display: flex;
   margin-top: 18px;
-  margin-bottom: 24px;
+  /* margin-bottom: 24px; */
   
   @media screen and (min-width: 768px) {
     margin-top: 0;

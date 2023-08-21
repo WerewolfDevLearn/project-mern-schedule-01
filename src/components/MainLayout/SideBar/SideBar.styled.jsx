@@ -38,8 +38,8 @@ export const SideBarContainer = styled.aside`
     padding: 32px;
   }
   @media screen and (${themes.breakpoints.m} < width) {
-    position: absolute;
-    z-index: 2;
+    position: relative;
+    z-index: 0;
     left: 0px;
     width: 290px;
     padding: 24px;

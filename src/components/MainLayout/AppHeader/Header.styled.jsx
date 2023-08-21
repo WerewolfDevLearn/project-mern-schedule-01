@@ -11,8 +11,12 @@ export const Header = styled.header`
   align-items: center;
   margin-bottom: 95px;
   padding-top: 24px;
-  @media screen and (${themes.breakpoints.s} < width <=${themes.breakpoints.m}) {
+  padding-left: 20px;
+  padding-right: 20px;
+  @media screen and (${themes.breakpoints.s} < width) {
     padding-top: 24px;
+    padding-left: 32px;
+    padding-right: 32px;
   }
   @media screen and (${themes.breakpoints.m} < width) {
     margin-bottom: 32px;
@@ -27,7 +31,6 @@ export const LoactionSign = styled.h2`
 
   @media screen and (${themes.breakpoints.m} < width) {
     display: block;
-    margin-left: 302px;
   }
 `;
 
@@ -35,4 +38,5 @@ export const WrapTogglers = styled.div`
   display: flex;
   align-items: center;
   gap: 10px;
+  margin-right: 15px;
 `;

@@ -7,6 +7,7 @@ export const StatisticsPageStyles = styled.div`
   background: ${({ theme }) => theme.colors.backgroundUserForm};
 
   @media screen and (width >= 768px) {
+    width: 100%;
     padding: 132px 32px 224px 32px;
   }
   @media screen and (width >= 1440px) {
@@ -15,6 +16,7 @@ export const StatisticsPageStyles = styled.div`
 `;
 
 export const StatisticsHeadWrapper = styled.div`
+  margin-bottom: 40px;
   display: flex;
   flex-direction: column;
   gap: 20px;

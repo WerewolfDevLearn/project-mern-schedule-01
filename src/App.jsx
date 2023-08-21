@@ -1,4 +1,4 @@
-import { Suspense } from 'react';
+import { Suspense, Lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import { useError } from 'src/redux/selectors';
@@ -53,7 +53,6 @@ function App() {
                 <Route path={routes.statisticsPage} element={<StatisticsPage />} />
               </Route>
             </Route>
-
             <Route path="*" element={<ErrorPage />} />
           </Routes>
         </Suspense>
