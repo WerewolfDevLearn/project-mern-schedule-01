@@ -34,7 +34,7 @@ export default function ChangePasswordModal({ callbackPassword }) {
         </Modal>
       )}
       <UpdatePasswordBtn type="button" onClick={openChangePasswordModal}>
-        Change password
+        {t('ChangePassword')}
       </UpdatePasswordBtn>
     </>
   );
