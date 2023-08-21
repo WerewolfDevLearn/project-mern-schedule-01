@@ -10,7 +10,7 @@ export const DataBtn = styled.div`
   text-align: center;
   text-transform: uppercase;
   @media screen and (min-width: 768px) {
-    dispaly: flex;
+    display: flex;
     justify-content: space-around;
     align-items: center;
     margin-top: 33px;
@@ -44,7 +44,7 @@ export const CalendarGlobalStyles = createGlobalStyle`
   }
   .react-datepicker__header {
     position: relative;
-    dispaly: flex;
+    display: flex;
     align-items: center;
     justify-content: center;
     background-color: ${({ theme }) => theme.colors.accent};

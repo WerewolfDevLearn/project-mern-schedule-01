@@ -70,7 +70,8 @@ export const themes = Object.freeze({
     textCancelBtnIntodo: '#111111',
     borderDefaultColor: 'rgba(17, 17, 17, 0.15)',
     borderUserForm: 'rgba(17, 17, 17, 0.15)',
-    placeholder: '#343434'
+    placeholder: '#343434',
+    PeriodPaginatorBorder: 'rgba(220, 227, 229, 0.50)'
   },
   fontSizes: {
     micro: '10px',
@@ -164,6 +165,7 @@ export const dark = Object.freeze({
     sidebarBorder: 'transparent',
     textDisablBtn: '#FFFFFF20',
     statisticsBgLines: 'rgba(227, 243, 255, 0.15)',
+    PeriodPaginatorBorder: 'rgba(255, 255, 255, 0.15)',
 
     black: '#343434',
     white: '#FFFFFF',

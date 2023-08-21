@@ -24,10 +24,18 @@ export const AddTaskBtnStyles = styled(motion.button)`
   font-weight: 600;
   line-height: 18px;
 
+  transition: color 100ms linear, background 100ms linear, transform 100ms linear;
+
+  &:hover,
+  &:focus {
+    color: ${({ theme }) => theme.colors.white};
+    background: ${({ theme }) => theme.colors.accent};
+    transform: scale(1.05);
+  }
+
   @media screen and (width >= 768px) {
     max-width: 304px;
     position: static;
-    /* margin-top: ${(props) => props.count && '32px'}; */
   }
 `;
 

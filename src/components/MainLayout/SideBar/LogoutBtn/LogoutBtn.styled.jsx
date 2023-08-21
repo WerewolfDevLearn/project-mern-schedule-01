@@ -21,6 +21,7 @@ export const LogOutBtn = styled.button`
   justify-content: center;
   text-decoration: underline;
   text-shadow: 0px 47px 355px rgba(0, 0, 0, 0.07), 0px 9.4px 57.6875px rgba(0, 0, 0, 0.035);
+  box-shadow: 4px 2px 16px 0px rgba(136, 165, 191, 0.30);
   color: ${({ theme }) => theme.colors.white};
   background-color: #3e85f3;
   transform: scale(1);

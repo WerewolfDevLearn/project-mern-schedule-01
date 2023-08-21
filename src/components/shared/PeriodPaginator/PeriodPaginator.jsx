@@ -3,7 +3,9 @@ import { format, parse } from 'date-fns';
 import { forwardRef } from 'react';
 import { useTranslation } from 'react-i18next';
 
+// import CalendarDataPicker from '../CalendarDataPiker/CalendarDataPiker';
 import CalendarDataPicker from '../CalendarDataPiker/CalendarDataPicker';
+import { ChevronLeft, ChevronRight } from '../Icons';
 
 import {
   DivWrapper,
@@ -13,13 +15,7 @@ import {
   ButtonWrapper2
 } from './PeriodPaginator.styled';
 
-const PeriodPaginator = ({
-  prevHandler,
-  nextHandler,
-  type,
-  date,
-  setCurrentDate
-}) => {
+const PeriodPaginator = ({ prevHandler, nextHandler, type, date, setCurrentDate }) => {
   const { t } = useTranslation();
 
   const getFormattedDate = () => {
@@ -64,14 +60,14 @@ const PeriodPaginator = ({
             prevHandler(type);
           }}
         >
-          &lt;
+          <ChevronLeft width="18px" height="18px" />
         </ButtonWrapper1>
         <ButtonWrapper2
           onClick={() => {
             nextHandler(type);
           }}
         >
-          &gt;
+          <ChevronRight width="18px" height="18px" />
         </ButtonWrapper2>
       </ButtonsWrapper>
     </DivWrapper>
