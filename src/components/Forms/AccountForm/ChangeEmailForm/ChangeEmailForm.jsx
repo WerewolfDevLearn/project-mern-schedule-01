@@ -20,12 +20,14 @@ import {
   CancelBtn
 } from './ChangeEmailForm.styled';
 
-export default function ChangeEmailForm({ onClose, callbackEmail }) {
+export default function ChangeEmailForm({ onClose, callbackEmail, openChangeEmailVerifyModal }) {
   const initialValues = { email: '' };
 
-  const [isUpdating, setisUpdating] = useState(false);
+  // const [isUpdating, setisUpdating] = useState(false);
 
   const handleSubmit = (values) => {
+    openChangeEmailVerifyModal();
+    console.log(openChangeEmailVerifyModal);
     console.log(values);
     callbackEmail(values);
   };
@@ -77,5 +79,6 @@ export default function ChangeEmailForm({ onClose, callbackEmail }) {
 
 ChangeEmailForm.propTypes = {
   onClose: PropTypes.func.isRequired,
-  callbackEmail: PropTypes.func.isRequired
+  callbackEmail: PropTypes.func.isRequired,
+  openChangeEmailVerifyModal: PropTypes.bool.isRequired
 };

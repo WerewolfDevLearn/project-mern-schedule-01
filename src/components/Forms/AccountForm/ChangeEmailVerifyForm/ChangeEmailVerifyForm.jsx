@@ -7,16 +7,21 @@ import i18n from 'i18next';
 import UniversalInput from '../../UniversalInput/UniversalInput';
 import { validationChangeEmailRules } from '../accountValidationRules';
 
-import { Modal, InputsContainer, BtnWrap, UpdateBtn, CancelBtn } from './ChangeEmailForm.styled';
+import {
+  Modal,
+  InputsContainer,
+  BtnWrap,
+  UpdateBtn,
+  CancelBtn
+} from './ChangeEmailVerifyForm.styled';
 
-export default function ChangeEmailForm({ onClose, callbackEmail }) {
+export default function ChangeEmailForm({ onClose, callbackEmail, closeChangeEmailVerifyModal }) {
   const initialValues = { code: '' };
-
-  const [isUpdating, setisUpdating] = useState(false);
 
   const handleSubmit = (values) => {
     console.log(values);
     callbackEmail(values);
+    closeChangeEmailVerifyModal();
   };
 
   return (
@@ -43,9 +48,9 @@ export default function ChangeEmailForm({ onClose, callbackEmail }) {
                 <BtnWrap>
                   <UpdateBtn
                     type="submit"
-                    disabled={
-                      !formik.isValid || !formik.touched || formik.isSubmitting || !formik.dirty
-                    }
+                    // disabled={
+                    //   !formik.isValid || !formik.touched || formik.isSubmitting || !formik.dirty
+                    // }
                   >
                     Verify
                   </UpdateBtn>
@@ -66,5 +71,6 @@ export default function ChangeEmailForm({ onClose, callbackEmail }) {
 
 ChangeEmailForm.propTypes = {
   onClose: PropTypes.func.isRequired,
-  callbackEmail: PropTypes.func.isRequired
+  callbackEmail: PropTypes.func.isRequired,
+  closeChangeEmailVerifyModal: PropTypes.bool.isRequired
 };

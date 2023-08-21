@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Formik, Form } from 'formik';
 import { format } from 'date-fns';
@@ -7,7 +7,6 @@ import { useTranslation } from 'react-i18next';
 
 import { useUser } from 'src/redux/selectors';
 
-import CalendarPage from '../../../CalendarPage/CalendarPage';
 import UniversalInput from '../../UniversalInput/UniversalInput';
 import AccountAvatar from '../AccountAvatar/AccountAvatar';
 
@@ -29,7 +28,7 @@ export default function UserForm({ callBack }) {
 
   const [imagePreview, setImagePreview] = useState(null);
   const [selectedAvatar, setSelectedAvatar] = useState(user.avatarUrl);
-  const [selectedDate, setSelectedDate] = useState(initialValues.birthday);
+  // const [selectedDate, setSelectedDate] = useState(initialValues.birthday);
 
   const onSubmit = (data) => {
     const formData = new FormData();
@@ -78,29 +77,6 @@ export default function UserForm({ callBack }) {
                     placeholder={t('Enter your name')}
                   />
                   <UniversalInput
-                    label={t('Birthday')}
-                    type="date"
-                    name="birthday"
-                    placeholder="Pick a date of your birthday"
-                  />
-                  {/* <label htmlFor="birthday">
-                      <FormLabelSpan>{t('Birthday')}</FormLabelSpan>
-                      <DateInput
-                        id="birthday"
-                        name="birthday"
-                        selected={selectedDate}
-                        dateFormat="dd-MM-yyyy"
-                        onSelect={handleDateChange}
-                      />
-                      <ErrorMessage name="birthday" component="div" />
-                    </label> */}
-                  {/* <FormikInput
-                      label={t('UserEmail')}
-                      type="email"
-                      name="email"
-                      placeholder={t('Enter email')}
-                    /> */}
-                  <CalendarPage
                     label={t('Birthday')}
                     type="date"
                     name="birthday"
