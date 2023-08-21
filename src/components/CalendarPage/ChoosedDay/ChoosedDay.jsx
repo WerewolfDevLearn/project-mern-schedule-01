@@ -19,17 +19,13 @@ export default function ChoosedDay() {
 
   return (
     <ChoosedDayStyles>
-      {isLoading && !isRefreshing ? (
-        <Loader />
+      {!isLoading && !isRefreshing && Boolean(tasks) ? (
+        <>
+          <DayCalendarHead date={currentDate} tasks={tasks.tasks} />
+          <TasksColumnsList tasks={tasks.tasks} />
+        </>
       ) : (
-
-        !isLoading && (
-          <>
-            <DayCalendarHead date={currentDate} tasks={tasks.tasks} />
-            <TasksColumnsList tasks={tasks.tasks} />
-          </>
-        )
-
+        <Loader />
       )}
     </ChoosedDayStyles>
   );

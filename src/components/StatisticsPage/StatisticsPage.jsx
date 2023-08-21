@@ -21,7 +21,11 @@ const StatisticsPage = () => {
   const { t } = useTranslation();
   const [currentDate, setCurrentDate] = useState(format(new Date(), 'yyyy-MM-dd'));
 
-  const { data: tasks, isLoading } = useGetTasksQuery({
+  const {
+    data: tasks,
+    isLoading,
+    isFetching
+  } = useGetTasksQuery({
     year: getYear(new Date(currentDate)),
     month: getMonth(new Date(currentDate)) + 1,
     day: getDate(new Date(currentDate))
@@ -40,7 +44,13 @@ const StatisticsPage = () => {
   return (
     <StatisticsPageStyles>
       <StatisticsHeadWrapper>
-        <PeriodPaginator prevHandler={onPrev} nextHandler={onNext} type="day" date={currentDate} />
+        <PeriodPaginator
+          prevHandler={onPrev}
+          nextHandler={onNext}
+          type="day"
+          date={currentDate}
+          setCurrentDate={setCurrentDate}
+        />
         <Legend>
           <LegendItem>
             <Ellipse type="day" />
@@ -52,7 +62,7 @@ const StatisticsPage = () => {
           </LegendItem>
         </Legend>
       </StatisticsHeadWrapper>
-      {isLoading ? <Loader /> : <StatisticsChart tasks={tasks} />}
+      {!isLoading && !isFetching && Boolean(tasks) ? <StatisticsChart tasks={tasks} /> : <Loader />}
     </StatisticsPageStyles>
   );
 };
