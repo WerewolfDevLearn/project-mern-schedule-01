@@ -17,6 +17,7 @@ import {
 
 export default function ChangeEmailForm({ onClose, callbackEmail, closeChangeEmailVerifyModal }) {
   const initialValues = { code: '' };
+  const { t } = useTranslation();
 
   const handleSubmit = (values) => {
     console.log(values);
@@ -35,10 +36,10 @@ export default function ChangeEmailForm({ onClose, callbackEmail, closeChangeEma
                 {/* <Verify> */}
                 <InputsContainer>
                   <UniversalInput
-                    label="Verify code"
+                    label={t('VerifyCode')}
                     type="text"
                     name="code"
-                    placeholder="Enter verify code"
+                    placeholder={t('EnterVerifyCode')}
                   />
                 </InputsContainer>
                 <BtnWrap>
@@ -48,10 +49,10 @@ export default function ChangeEmailForm({ onClose, callbackEmail, closeChangeEma
                     //   !formik.isValid || !formik.touched || formik.isSubmitting || !formik.dirty
                     // }
                   >
-                    Verify
+                    {t('Verify')}
                   </UpdateBtn>
                   <CancelBtn type="button" onClick={onClose}>
-                    Cancel
+                    {t('Cancel')}
                   </CancelBtn>
                 </BtnWrap>
                 {/* </Verify> */}
