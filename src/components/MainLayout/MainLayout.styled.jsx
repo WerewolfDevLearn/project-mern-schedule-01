@@ -9,6 +9,9 @@ export const MainLayOutContainer = styled.div`
   @media screen and (${themes.breakpoints.m} < width) {
     padding-right: 32px;
   }
+  @media screen and (${themes.breakpoints.l} > width) {
+    width: 1440px;
+  }
 `;
 export const MainLayOutSubContainer = styled.div`
   display: flex;
