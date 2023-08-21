@@ -7,6 +7,7 @@ import { useTranslation } from 'react-i18next';
 
 import { useUser } from 'src/redux/selectors';
 
+import CalendarPage from '../../../CalendarPage/CalendarPage';
 import UniversalInput from '../../UniversalInput/UniversalInput';
 import AccountAvatar from '../AccountAvatar/AccountAvatar';
 
@@ -99,6 +100,12 @@ export default function UserForm({ callBack }) {
                       name="email"
                       placeholder={t('Enter email')}
                     /> */}
+                  <CalendarPage
+                    label={t('Birthday')}
+                    type="date"
+                    name="birthday"
+                    placeholder="Pick a date of your birthday"
+                  />
                   <UniversalInput
                     label={t('Phone')}
                     type="tel"
