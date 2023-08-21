@@ -44,8 +44,9 @@ export const StyledNavLink = styled(NavLink)`
 
   &:hover,
   &:focus {
-    transform: scale(1.05);
-    
+    transform: scale(1.15);
+    background: ${({ theme }) => theme.colors.darkBlue};
+    color: ${({ theme }) => theme.colors.textMonthDayBtn};
   }
 
   @media screen and (min-width: 768px) {
