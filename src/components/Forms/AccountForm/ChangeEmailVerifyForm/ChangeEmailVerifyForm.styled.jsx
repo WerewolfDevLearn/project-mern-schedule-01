@@ -1,16 +1,16 @@
 import styled from 'styled-components';
-import { Form } from 'formik';
+import { Field, Form, ErrorMessage as FormikErrorMessage } from 'formik';
 import { themes } from 'src/styles/variables/themes';
 
 export const Modal = styled(Form)`
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
   position: relative;
   width: 100vw;
   height: 100vh;
-  padding: 20px;
+  padding: 10px;
   background-color: white;
   box-shadow: rgb(0, 0, 0) 0px 0px 80px;
 
@@ -24,32 +24,8 @@ export const Modal = styled(Form)`
   }
 `;
 
-export const XCloseWrap = styled.button`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  padding: 10px;
-
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0, 0.11, 0.35, 2);
-
-  &:hover,
-  &:focus {
-    color: #cf0202;
-  }
-`;
-
-export const ChangeEmailTitle = styled.h1`
-  margin-bottom: 30px;
-  text-align: center;
-  color: #3e85f3;
-`;
-
 export const InputsContainer = styled.div`
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 `;
 
 export const BtnWrap = styled.div`
@@ -90,7 +66,7 @@ export const CancelBtn = styled.button`
   color: white;
   background-color: #3e85f3;
   /* border: 3px solid #3e85f3; */
-  margin-left: 30px;
+  margin-left: 100px;
   margin-bottom: 10px;
 
   transform: scale(1);

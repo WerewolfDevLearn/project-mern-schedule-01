@@ -28,7 +28,8 @@ export const AvatarAddIcon = styled.div`
   border-radius: 50%;
   z-index: 1;
 
-  &:hover {
+  &:hover,
+  &:focus {
     cursor: pointer;
     background-color: #2b78ef;
   }
@@ -65,7 +66,8 @@ export const AvatarImg = styled.img`
   border-radius: 50%;
   object-fit: cover;
 
-  &:hover {
+  &:hover,
+  &:focus {
     cursor: pointer;
   }
 

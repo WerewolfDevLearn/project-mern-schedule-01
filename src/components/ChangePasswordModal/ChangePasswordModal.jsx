@@ -6,7 +6,7 @@ import Modal from 'src/components/shared/Modal/Modal';
 
 import ChangePasswordForm from '../Forms/AccountForm/ChangePasswordForm/ChangePasswordForm';
 
-import { ChangeValueBtn } from './ChangePasswordModal.styled';
+import { UpdatePasswordBtn } from './ChangePasswordModal.styled';
 
 export default function ChangePasswordModal({ callbackPassword }) {
   const { t } = useTranslation();
@@ -33,9 +33,9 @@ export default function ChangePasswordModal({ callbackPassword }) {
           }
         </Modal>
       )}
-      <ChangeValueBtn type="button" onClick={openChangePasswordModal}>
+      <UpdatePasswordBtn type="button" onClick={openChangePasswordModal}>
         Change password
-      </ChangeValueBtn>
+      </UpdatePasswordBtn>
     </>
   );
 }

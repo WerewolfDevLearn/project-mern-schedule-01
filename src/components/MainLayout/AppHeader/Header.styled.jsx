@@ -10,19 +10,21 @@ export const Header = styled.header`
   display: flex;
   justify-content: t;
   align-items: center;
-  margin-bottom: 64px;
+  margin-bottom: 95px;
   padding-top: 24px;
 
   @media screen and (${themes.breakpoints.s} < width) {
     max-width: 768px;
     padding-top: 24px;
+    margin-bottom: 64px;
   }
   @media screen and (${themes.breakpoints.m} < width) {
+    margin-bottom: 32px;
     max-width: 1440px;
     padding-top: 40px;
   }
   @media screen and (${themes.breakpoints.l} < width) {
-    max-width: 1440px;
+    width: 1440px;
     padding-top: 40px;
   }
 `;
