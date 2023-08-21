@@ -7,8 +7,6 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend,
-  Label,
   LabelList
 } from 'recharts';
 import { useTranslation } from 'react-i18next';

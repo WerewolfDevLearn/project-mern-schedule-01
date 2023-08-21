@@ -15,6 +15,7 @@ export const StatisticsPageStyles = styled.div`
 `;
 
 export const StatisticsHeadWrapper = styled.div`
+  margin-bottom: 40px;
   display: flex;
   flex-direction: column;
   gap: 20px;
