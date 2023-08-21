@@ -6,6 +6,7 @@ export const FormLabelSpan = styled.span`
   display: flex;
   margin-bottom: 8px;
   margin-top: 16px;
+  color: ${({ theme }) => theme.colors.placeholder};
 `;
 
 export const InputField = styled(Field)`
@@ -13,12 +14,15 @@ export const InputField = styled(Field)`
   line-height: 1.29;
   font-weight: 600;
   letter-spacing: -0.02em;
-  color: #111111;
-  border: 1px solid rgba(17, 17, 17, 15%);
+  color: ${({ theme }) => theme.colors.textCancelBtn};
+  border-width: 1px;
+  border-style: solid;
+  border-color: ${({ theme }) => theme.colors.borderInputUserForm};
   border-radius: 8px;
   padding: 0 18px;
   margin-bottom: 8px;
   width: 200px;
+  background: transparent;
 
   @media screen and (${themes.breakpoints.s} <= width < ${themes.breakpoints.m}) {
     width: 299px;
@@ -30,7 +34,6 @@ export const InputField = styled(Field)`
     line-height: 1.13;
     width: 354px;
     height: 46px;
-    border: 1px solid rgba(17, 17, 17, 15%);
     border-radius: 8px;
     padding: 0 18px;
     margin-bottom: 8px;

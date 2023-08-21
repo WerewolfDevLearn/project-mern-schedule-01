@@ -11,7 +11,7 @@ export const Modal = styled(Form)`
   width: 100vw;
   height: 100vh;
   padding: 10px;
-  background-color: white;
+  background: ${({ theme }) => theme.colors.backgroundUserForm};
   box-shadow: rgb(0, 0, 0) 0px 0px 80px;
 
   @media screen and (${themes.breakpoints.s} <= width < ${themes.breakpoints.m}) {
@@ -32,6 +32,7 @@ export const XCloseWrap = styled.button`
   top: 15px;
   right: 15px;
   padding: 10px;
+  color: ${({ theme }) => theme.colors.placeholder};
 
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0, 0.11, 0.35, 2);

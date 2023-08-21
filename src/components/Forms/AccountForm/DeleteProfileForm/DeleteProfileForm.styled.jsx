@@ -10,7 +10,7 @@ export const Modal = styled.div`
   height: 100vh;
   padding: 10px;
   position: relative;
-  background-color: white;
+  background: ${({ theme }) => theme.colors.backgroundUserForm};
   box-shadow: rgb(0, 0, 0) 0px 0px 80px;
 
   @media screen and (${themes.breakpoints.s} <= width < ${themes.breakpoints.m}) {
@@ -21,15 +21,6 @@ export const Modal = styled.div`
     height: 550px;
     border-radius: 16px;
   }
-
-  /* @media screen and (${themes.breakpoints.s} <= width < ${themes.breakpoints.m}) {
-  }
-
-  @media screen and (${themes.breakpoints.m} <= width < ${themes.breakpoints.l}) {
-  }
-
-  @media screen and (${themes.breakpoints.l} <= width) {
-  } */
 `;
 
 export const XCloseWrap = styled.div`
@@ -40,6 +31,7 @@ export const XCloseWrap = styled.div`
   top: 15px;
   right: 15px;
   padding: 10px;
+  color: ${({ theme }) => theme.colors.placeholder};
 
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0, 0.11, 0.35, 2);
@@ -57,6 +49,7 @@ export const ValidationErrorWrap = styled.div`
 
 export const Title = styled.h1`
   margin-bottom: 30px;
+  color: ${({ theme }) => theme.colors.placeholder};
 
   @media screen and (${themes.breakpoints.m} <= width) {
     margin-bottom: 20px;
@@ -65,6 +58,7 @@ export const Title = styled.h1`
 
 export const Description = styled.p`
   margin-bottom: 60px;
+  color: ${({ theme }) => theme.colors.placeholder};
 
   @media screen and (${themes.breakpoints.m} <= width) {
     margin-bottom: 20px;
@@ -73,6 +67,10 @@ export const Description = styled.p`
 
 export const InputWrap = styled.label`
   margin-bottom: 40px;
+`;
+
+export const InputSpan = styled.span`
+  color: ${({ theme }) => theme.colors.placeholder};
 `;
 
 export const BtnWrap = styled.div`
