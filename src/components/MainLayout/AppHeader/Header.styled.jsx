@@ -41,3 +41,22 @@ export const WrapTogglers = styled.div`
   gap: 10px;
   margin-right: 15px;
 `;
+
+export const Go = styled.span`
+  color: #3e85f3;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 18px;
+`;
+
+export const Slogan = styled.p`
+  margin-top: 8px;
+  color: ${({ theme }) => theme.colors.textAndIconTodo};
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 18px;
+`;
