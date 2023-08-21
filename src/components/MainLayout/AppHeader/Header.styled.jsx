@@ -15,8 +15,8 @@ export const Header = styled.header`
 
   @media screen and (${themes.breakpoints.s} < width) {
     max-width: 768px;
-    margin-bottom: 64px;
     padding-top: 24px;
+    margin-bottom: 64px;
   }
   @media screen and (${themes.breakpoints.m} < width) {
     margin-bottom: 32px;
