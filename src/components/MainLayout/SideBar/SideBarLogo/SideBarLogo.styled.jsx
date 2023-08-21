@@ -19,20 +19,17 @@ export const LogoText = styled.h1`
   font-size: 16px;
   font-weight: 700;
   line-height: 1.37;
-  @media screen and (${themes.breakpoints.s} < width <= ${themes.breakpoints.m}) {
-    line-height: 1.4;
-  }
-  @media screen and (${themes.breakpoints.m} < width) {
+
+  @media screen and (width >= ${themes.breakpoints.l}) {
     font-size: 24px;
-    line-height: 1;
   }
 `;
 export const LogoIMG = styled.img`
   width: 36px;
-  @media screen and (${themes.breakpoints.s} < width <=${themes.breakpoints.m}) {
+  @media screen and (${themes.breakpoints.m} < width) {
     width: 60px;
   }
-  @media screen and (${themes.breakpoints.m} < width) {
+  @media screen and (${themes.breakpoints.l} < width) {
     width: 70px;
   }
 `;

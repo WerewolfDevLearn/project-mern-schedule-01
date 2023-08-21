@@ -105,7 +105,7 @@ export default function AppHeader({ callBack, isHomePage }) {
       ) : (
         <Header>
           <UserMenuBTN callBack={callBack} />
-          <LoactionSign>{headerTitle[activePage]}</LoactionSign>
+          {isDesktop1440 && <LoactionSign>{headerTitle[activePage]}</LoactionSign>}
 
           <AddFeedbackBtn openModal={openModal} />
           <WrapTogglers>
