@@ -124,12 +124,12 @@ export const changePW = createAsyncThunk(
 );
 export const changeEM = createAsyncThunk(
   'user/ChangeEmail',
-  async (_, { rejectWithValue, getState }) => {
+  async (userData, { rejectWithValue, getState }) => {
     try {
       const state = getState();
       const stateToken = state.user.token;
       if (!stateToken) return rejectWithValue('You have no rights');
-      const credentials = await changeEmail(stateToken);
+      const credentials = await changeEmail(userData, stateToken);
       return credentials;
     } catch (error) {
       return rejectWithValue(error.message);

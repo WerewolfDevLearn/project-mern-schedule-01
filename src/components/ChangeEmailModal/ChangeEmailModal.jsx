@@ -10,15 +10,13 @@ import ChangeEmailVerifyForm from '../Forms/AccountForm/ChangeEmailVerifyForm/Ch
 
 import { ChangeValueBtn } from './ChangeEmailModal.styled';
 
-export default function ChangeEmailModal({ callbackEmail }) {
+export default function ChangeEmailModal() {
   const { t } = useTranslation();
   //   const user = useUser();
 
   const [showChangeEmailModal, setShowChangeEmailModal] = useState(false);
   const [showChangeEmailVerifyModal, setShowChangeEmailVerifyModal] = useState(false);
   // const [isUpdating, setisUpdating] = useState(false);
-  console.log(showChangeEmailModal);
-  console.log(showChangeEmailVerifyModal);
 
   const openChangeEmailModal = () => {
     setShowChangeEmailModal(true);
@@ -42,26 +40,17 @@ export default function ChangeEmailModal({ callbackEmail }) {
         <Modal isOpen={showChangeEmailModal} onClose={closeChangeEmailModal}>
           <ChangeEmailForm
             onClose={closeChangeEmailModal}
-            callbackEmail={callbackEmail}
             openChangeEmailVerifyModal={openChangeEmailVerifyModal}
           />
-        </Modal>
-      )}
-      <ChangeValueBtn type="button" onClick={openChangeEmailModal}>
-        Change email
-      </ChangeValueBtn>
-      {showChangeEmailVerifyModal && (
-        <Modal isOpen={showChangeEmailVerifyModal} onClose={closeChangeEmailVerifyModal}>
           <ChangeEmailVerifyForm
             onClose={closeChangeEmailVerifyModal}
             closeChangeEmailVerifyModal={closeChangeEmailVerifyModal}
           />
         </Modal>
       )}
+      <ChangeValueBtn type="button" onClick={openChangeEmailModal}>
+        Change email
+      </ChangeValueBtn>
     </>
   );
 }
-
-ChangeEmailModal.propTypes = {
-  callbackEmail: PropTypes.func.isRequired
-};
