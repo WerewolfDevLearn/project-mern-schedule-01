@@ -8,45 +8,6 @@ visually appealing and intuitive format. Say goodbye to scattered to-do lists an
 streamlined productivity with
 [**GooseTrack**](https://werewolfdevlearn.github.io/project-mern-schedule-01/)!</br></br>
 
-Technologies:
-1. React
-2. Redux Toolkit
-3. Axios
-4. date-fns
-5. formik
-6. i18next
-7. prop-types
-8. styled-components
-9. swiper
-10. yup
-11. vite
-12. Adaptive / Responsive
-13. flag-icons
-14. moment
-15. recharts
-
-</br></br>
-
-<h3 align="center"> ℹ️  Team  🚀 <h3>
-<span align="center">
-
-<a align="center" href="https://github.com/WerewolfDevLearn">![GitHub](https://img.shields.io/badge/-Mikhail-05122A?style=flat&logo=github)</a>
-<a align="center" href="https://github.com/dmitryberesten">![GitHub](https://img.shields.io/badge/-Dmytrii-05122A?style=flat&logo=github)</a>
-<a align="center" href="https://github.com/Inna-Mykytiuk">![GitHub](https://img.shields.io/badge/-Inna-05122A?style=flat&logo=github)</a>
-<a align="center" href="https://github.com/TarasKachmar2022">![GitHub](https://img.shields.io/badge/-Taras-05122A?style=flat&logo=github)</a>
-<a align="center" href="https://github.com/Iryna-Vyshniak">![GitHub](https://img.shields.io/badge/-Iryna-05122A?style=flat&logo=github)</a>
-<a align="center" href="https://github.com/IvanMutsko">![GitHub](https://img.shields.io/badge/-Ivan-05122A?style=flat&logo=github)</a>
-<a align="center" href="https://github.com/YuliyaBondG">![GitHub](https://img.shields.io/badge/-Julia-05122A?style=flat&logo=github)</a>
-<a align="center" href="https://github.com/Belka-S">![GitHub](https://img.shields.io/badge/-Serhii-05122A?style=flat&logo=github)</a>
-<a align="center" href="https://github.com/VladyslavaDvorovenko">![GitHub](https://img.shields.io/badge/-Vladyslava-05122A?style=flat&logo=github)</a>
-<a align="center" href="https://github.com/DimaShabatyn">![GitHub](https://img.shields.io/badge/-Dima-05122A?style=flat&logo=github)</a>
-<a align="center" href="https://github.com/SerhiiMaslov1979">![GitHub](https://img.shields.io/badge/-Serhii-05122A?style=flat&logo=github)</a>
-<a align="center" href="https://github.com/Malberee">![GitHub](https://img.shields.io/badge/-Pavlo-05122A?style=flat&logo=github)</a>
-
-</span>
-
-</br></br>
-
 📅 **Stay
 Organized:** [**GooseTrack**](https://werewolfdevlearn.github.io/project-mern-schedule-01/) is your
 all-in-one solution for staying on top of tasks, events, and deadlines. Seamlessly create, manage,
@@ -88,6 +49,62 @@ management and calendar integration bring. Witness the transformation in your pr
 maximizing your days!</br></br>
 
 ---
+
+<div align="center">
+
+## ℹ️ **Team** 🚀
+
+<a align="center" href="https://github.com/WerewolfDevLearn">![GitHub](https://img.shields.io/badge/-Mikhail-05122A?style=flat&logo=github)</a>
+<a align="center" href="https://github.com/dmitryberesten">![GitHub](https://img.shields.io/badge/-Dmytrii-05122A?style=flat&logo=github)</a>
+<a align="center" href="https://github.com/Inna-Mykytiuk">![GitHub](https://img.shields.io/badge/-Inna-05122A?style=flat&logo=github)</a>
+<a align="center" href="https://github.com/TarasKachmar2022">![GitHub](https://img.shields.io/badge/-Taras-05122A?style=flat&logo=github)</a>
+<a align="center" href="https://github.com/Iryna-Vyshniak">![GitHub](https://img.shields.io/badge/-Iryna-05122A?style=flat&logo=github)</a>
+<a align="center" href="https://github.com/IvanMutsko">![GitHub](https://img.shields.io/badge/-Ivan-05122A?style=flat&logo=github)</a>
+<a align="center" href="https://github.com/YuliyaBondG">![GitHub](https://img.shields.io/badge/-Julia-05122A?style=flat&logo=github)</a>
+<a align="center" href="https://github.com/Belka-S">![GitHub](https://img.shields.io/badge/-Serhii-05122A?style=flat&logo=github)</a>
+<a align="center" href="https://github.com/VladyslavaDvorovenko">![GitHub](https://img.shields.io/badge/-Vladyslava-05122A?style=flat&logo=github)</a>
+<a align="center" href="https://github.com/DimaShabatyn">![GitHub](https://img.shields.io/badge/-Dima-05122A?style=flat&logo=github)</a>
+<a align="center" href="https://github.com/SerhiiMaslov1979">![GitHub](https://img.shields.io/badge/-Serhii-05122A?style=flat&logo=github)</a>
+<a align="center" href="https://github.com/Malberee">![GitHub](https://img.shields.io/badge/-Pavlo-05122A?style=flat&logo=github)</a>
+
+---
+
+## :zap: Technologies
+
+These are some of the technologies and tools that we have work experience
+
+![JavaScript](https://img.shields.io/badge/JavaScript-323330?&style=flat-square&logo=javascript&logoColor=F7DF1E)
+![React](https://img.shields.io/badge/React-20232A?&style=flat-square&logo=react&logoColor=61DAFB)
+![Redux](https://img.shields.io/badge/Redux-764ABC?&style=flat-square&logo=redux&logoColor=FFF)
+![styled-components](https://img.shields.io/badge/styled--components-DB7093?style=flat-square&logo=styled-components&logoColor=FFF)
+![i18next](https://img.shields.io/badge/i18next-26A69A?style=flat-square&logo=i18next&logoColor=FFF)
+![Vite.js](https://img.shields.io/badge/Vite.js-646CFF?&style=flat-square&logo=vite&logoColor=FFF)
+![Node.js](https://img.shields.io/badge/Node.js-339933?&style=flat-square&logo=node.js&logoColor=FFF)
+![Express.js](https://img.shields.io/badge/Express.js-000000?&style=flat-square&logo=express)
+![MongoDB](https://img.shields.io/badge/MongoDB-47A248?&style=flat-square&logo=mongodb&logoColor=FFF)
+![ESLint](https://img.shields.io/badge/ESLint-4B32C3?&style=flat-square&logo=eslint)
+![Prettier](https://img.shields.io/badge/Prettier-F7B93E?&style=flat-square&logo=prettier&logoColor=000)
+![Git](https://img.shields.io/badge/Git-F05032?&style=flat-square&logo=git&logoColor=FFF)
+![GitHub](https://img.shields.io/badge/GitHub-181717?&style=flat-square&logo=github)
+![VSCode](https://img.shields.io/badge/VSCode-007ACC?style=flat-square&logo=visual-studio-code)
+![Figma](https://img.shields.io/badge/Figma-F24E1E?&style=flat-square&logo=figma&logoColor=FFF)
+<a href="https://axios-http.com/" target="_blank" rel="noreferrer"><img src="https://ik.imagekit.io/irinavn2011/logo.svg?updatedAt=1692603887708" width="46" height="26"  alt="Axios" /></a>
+<a href="https://mui.com/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/materialui-colored.svg" width="26" height="26" alt="Material UI" /></a>
+<a href="https://swiperjs.com/" target="_blank" rel="noreferrer"><img src="https://ik.imagekit.io/irinavn2011/swiper-logo.svg?updatedAt=1692603887640" width="26" height="26" alt="Swiper" /></a>
+<a href="https://date-fns.org/" target="_blank" rel="noreferrer"><img src="https://ik.imagekit.io/irinavn2011/7ceafe855b131d457fe7de810ed31e0f.svg?updatedAt=1692604286354" width="26" height="26" alt="date-fns"/></a>
+<a href="https://recharts.org/en-US/" target="_blank" rel="noreferrer" style="color: #22b5bf; font-family: Roboto Mono,Consolas,Liberation Mono,Courier New,Courier,monospace;
+    font-size: 18px;
+    font-weight: 300;"> &lt;Recharts /&gt;</a>
+<a href="https://formik.org/" target="_blank" rel="noreferrer"><img src="https://www.kindacode.com/wp-content/uploads/2021/01/formik-300x259.png" width="26" height="26" alt="date-fns"/></a>
+<a href="https://flagicons.lipis.dev/" target="_blank" rel="noreferrer"><img src="https://www.freeiconspng.com/uploads/green-flags-icon-png-27.png" width="26" height="26" alt="date-fns"/></a>
+<a href="https://render.com/" target="_blank" rel="noreferrer" style="color: #22b5bf; font-family: Roboto Mono,Consolas,Liberation Mono,Courier New,Courier,monospace;
+    font-size: 18px;
+    font-weight: 300;">
+render
+</a>
+
+</div>
+</br></br>
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
