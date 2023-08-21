@@ -1,4 +1,4 @@
-import { Suspense, Lazy } from 'react';
+import { Suspense, lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import { useError } from 'src/redux/selectors';
@@ -8,22 +8,21 @@ import { useThemeColors } from 'src/components/MainLayout/ThemeToggler/ThemeCont
 
 import PrivateRoutes from './components/shared/Routes/PrivateRoutes';
 import PubliceRourtes from './components/shared/Routes/PubliceRoutes';
-import MainLayout from './components/MainLayout/MainLayout';
-import AccountPage from './components/AccountPage/AccountPage';
-import CalendarPage from './components/CalendarPage/CalendarPage';
-import ChoosedMonth from './components/CalendarPage/ChoosedMonth/ChoosedMonth';
-import ChoosedDay from './components/CalendarPage/ChoosedDay/ChoosedDay';
-import StatisticsPage from './components/StatisticsPage/StatisticsPage';
 import Loader from './components/shared/Loader/Loader';
-import MainPage from './pages/MainPage';
-import ErrorPage from './pages/ErrorPage/ErrorPage';
-import LoginPage from './pages/LoginPage/LoginPage';
-import AuthGoogle from './components/shared/AuthGoogle/AuthGoogle';
-
-import RegisterPage from './pages/RegisterPage/RegisterPage';
 import { DivWrapperAPP } from './App.styled';
-
 import routes from './routes';
+
+const MainLayout = lazy(() => import('./components/MainLayout/MainLayout'));
+const AccountPage = lazy(() => import('./components/AccountPage/AccountPage'));
+const CalendarPage = lazy(() => import('./components/CalendarPage/CalendarPage'));
+const ChoosedMonth = lazy(() => import('./components/CalendarPage/ChoosedMonth/ChoosedMonth'));
+const ChoosedDay = lazy(() => import('./components/CalendarPage/ChoosedDay/ChoosedDay'));
+const StatisticsPage = lazy(() => import('./components/StatisticsPage/StatisticsPage'));
+const AuthGoogle = lazy(() => import('./components/shared/AuthGoogle/AuthGoogle'));
+const MainPage = lazy(() => import('./pages/MainPage'));
+const ErrorPage = lazy(() => import('./pages/ErrorPage/ErrorPage'));
+const LoginPage = lazy(() => import('./pages/LoginPage/LoginPage'));
+const RegisterPage = lazy(() => import('./pages/RegisterPage/RegisterPage'));
 
 function App() {
   const error = useError();

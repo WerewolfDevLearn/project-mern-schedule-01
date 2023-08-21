@@ -20,11 +20,7 @@ export const Header = styled.header`
   }
   @media screen and (${themes.breakpoints.m} < width) {
     margin-bottom: 32px;
-    max-width: 1440px;
-    padding-top: 40px;
-  }
-  @media screen and (${themes.breakpoints.l} < width) {
-    width: 1440px;
+    max-width: 1087px;
     padding-top: 40px;
   }
 `;
