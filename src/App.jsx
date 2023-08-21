@@ -24,6 +24,7 @@ import RegisterPage from './pages/RegisterPage/RegisterPage';
 import { DivWrapperAPP, DivColorWrapperAPP } from './App.styled';
 
 import routes from './routes';
+import { GlobalStyle } from './styles/Basic/globalStyles.styled';
 
 // const MainLayout = lazy(() => import('./components/MainLayout/MainLayout'));
 // const AccountPage = lazy(() => import('./components/AccountPage/AccountPage'));
@@ -72,6 +73,7 @@ function App() {
           <ToastContainer hideProgressBar closeOnClick theme={theme.toastify.theme} />
         </DivWrapperAPP>
       </DivColorWrapperAPP>
+      <GlobalStyle />
     </ThemeProvider>
   );
 }
