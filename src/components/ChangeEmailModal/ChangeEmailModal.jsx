@@ -17,8 +17,8 @@ export default function ChangeEmailModal({ callbackEmail }) {
   const [showChangeEmailModal, setShowChangeEmailModal] = useState(false);
   const [showChangeEmailVerifyModal, setShowChangeEmailVerifyModal] = useState(false);
   // const [isUpdating, setisUpdating] = useState(false);
-  console.log(showChangeEmailModal);
-  console.log(showChangeEmailVerifyModal);
+  // console.log(showChangeEmailModal);
+  // console.log(showChangeEmailVerifyModal);
 
   const openChangeEmailModal = () => {
     setShowChangeEmailModal(true);
