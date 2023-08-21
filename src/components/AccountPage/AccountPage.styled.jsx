@@ -16,7 +16,8 @@ export const AccountPageWrap = styled.div`
   background-color: white;
   border-radius: 16px;
   position: relative;
-
+  background: ${({ theme }) => theme.colors.backgroundUserForm};
+  /* backgroundUserForm */
   @media screen and (${themes.breakpoints.m} <= width < ${themes.breakpoints.l}) {
     padding: 40px 175px 40px 175px;
   }

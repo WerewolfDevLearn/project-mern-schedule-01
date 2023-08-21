@@ -14,13 +14,13 @@ export const Header = styled.header`
   padding-top: 24px;
 
   @media screen and (${themes.breakpoints.s} < width) {
-    max-width: 768px;
+    /* max-width: 768px; */
     padding-top: 24px;
     margin-bottom: 64px;
   }
   @media screen and (${themes.breakpoints.m} < width) {
     margin-bottom: 32px;
-    max-width: 1087px;
+    /* max-width: 1087px; */
     padding-top: 40px;
   }
 `;
