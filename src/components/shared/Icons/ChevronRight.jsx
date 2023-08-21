@@ -1,8 +1,8 @@
 /* eslint-disable react/no-unknown-property */
-const SvgChevronLeft = (props) => (
+const SvgChevronRight = (props) => (
   <svg width="1em" height="1em" fill="none" {...props}>
     <path
-      d="M6.75 13.5L11.25 9L6.75 4.5"
+      d="M11.25 13.5L6.75 9L11.25 4.5"
       stroke="currentColor"
       strokeWidth="1.5"
       strokeLinecap="round"
@@ -10,4 +10,4 @@ const SvgChevronLeft = (props) => (
     />
   </svg>
 );
-export default SvgChevronLeft;
+export default SvgChevronRight;

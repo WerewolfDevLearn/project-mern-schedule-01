@@ -60,6 +60,13 @@ export const DateDayWrap = styled.div`
   background-color: ${(props) =>
     props.selected ? backgroundColor.primaryBlue : backgroundColor.transparent};
   color: ${(props) => (props.selected ? colorText.white : props.theme.colors.textAndIconTodo)};
+
+  transition: background 100ms linear;
+
+  &:hover,
+  &:focus {
+    background: ${({ theme }) => theme.colors.accent}50;
+  }
 `;
 
 export const DateDay = styled.p`

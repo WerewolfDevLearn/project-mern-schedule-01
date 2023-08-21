@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const TasksColumnStyles = styled.li`
   position: relative;
+  scroll-snap-align: center;
 
   min-width: 335px;
   height: fit-content;

@@ -61,6 +61,13 @@ export const EditBtn = styled.button`
   align-items: center;
 
   background: rgba(62, 134, 243, 0.169);
+
+  transition: background 100ms linear;
+
+  &:hover,
+  &:focus {
+    background: rgba(62, 134, 243, 0.329);
+  }
 `;
 
 export const RemoveBtn = styled.button`
@@ -72,7 +79,14 @@ export const RemoveBtn = styled.button`
   justify-content: center;
   align-items: center;
 
-  background-color: rgba(234, 61, 101, 0.2);
+  background: rgba(234, 61, 101, 0.2);
+
+  transition: background 100ms linear;
+
+  &:hover,
+  &:focus {
+    background-color: rgba(234, 61, 101, 0.336);
+  }
 `;
 
 export const PencilIcon = styled(Pencil)`
@@ -161,6 +175,13 @@ export const ButtonAction = styled.button`
 
   color: ${colorText.white};
   background-color: ${backgroundColor.primaryBlue};
+
+  transition: transform 100ms linear;
+
+  &:hover,
+  &:focus {
+    transform: scale(1.05);
+  }
 `;
 
 export const ButtonCancel = styled.button`
@@ -173,4 +194,11 @@ export const ButtonCancel = styled.button`
 
   color: ${({ theme }) => theme.colors.textAndIconTodo};
   background-color: ${({ theme }) => theme.colors.canceled};
+
+  transition: transform 100ms linear;
+
+  &:hover,
+  &:focus {
+    transform: scale(1.05);
+  }
 `;

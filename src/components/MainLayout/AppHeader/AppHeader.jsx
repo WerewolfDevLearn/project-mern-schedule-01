@@ -9,9 +9,9 @@ import FeedbackForm from 'src/components/Forms/FeedbackForm/FeedbackForm';
 import { modalBackdropcolors } from 'src/styles/variables/themes';
 import LangToggler from 'src/components/shared/LangToggler/LangToggler';
 
-import goose1x from 'src/images/others/desktop/goose1x.png';
-import goose2x from 'src/images/others/desktop/goose2x.png';
-import goose3x from 'src/images/others/desktop/goose3x.png';
+import goose1x from 'src/images/others/desktop/goose-calendar1x.png';
+import goose2x from 'src/images/others/desktop/goose-calendar2x.png';
+import goose3x from 'src/images/others/desktop/goose-calendar3x.png';
 
 import AddFeedbackBtn from '../AddFeedbackBtn/AddFeedbackBtn';
 import ThemeToggler from '../ThemeToggler/ThemeToggler';
