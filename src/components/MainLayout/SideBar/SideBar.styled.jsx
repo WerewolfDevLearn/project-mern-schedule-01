@@ -30,7 +30,7 @@ export const SideBarContainer = styled.aside`
   padding: 24px 20px;
   transform: ${({ open }) => (open ? 'translateX(100%)' : 'translateX(0)')};
   transition: transform 100ms ease-in-out;
-  @media screen and (${themes.breakpoints.s} < width <=${themes.breakpoints.m}) {
+  @media screen and (width >= ${themes.breakpoints.m}) {
     position: absolute;
     z-index: 2;
     left: -290px;
