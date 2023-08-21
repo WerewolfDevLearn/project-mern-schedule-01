@@ -21,7 +21,7 @@ export const SidebarBackdrop = styled.div`
 export const SideBarContainer = styled.aside`
   position: absolute;
   z-index: 2;
-  left: -225px;
+  left: -250px;
   background-color: ${({ theme }) => theme.colors.backgroundSidebar};
   display: flex;
   flex-direction: column;
