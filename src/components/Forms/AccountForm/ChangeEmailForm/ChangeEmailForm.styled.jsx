@@ -32,6 +32,7 @@ export const XCloseWrap = styled.button`
   top: 15px;
   right: 15px;
   padding: 10px;
+  color: ${({ theme }) => theme.colors.placeholder};
 
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0, 0.11, 0.35, 2);
@@ -62,7 +63,7 @@ export const UpdateBtn = styled.button`
   border: none;
   border-radius: 16px;
   color: white;
-  background-color: #3e85f3;
+  background-color: ${({ theme }) => theme.colors.accent};
   margin-bottom: 10px;
 
   transform: scale(1);
@@ -72,6 +73,7 @@ export const UpdateBtn = styled.button`
 
   &:hover,
   &:focus {
+    background-color: ${({ theme }) => theme.colors.accent};
     background-color: #2b78ef;
     transform: scale(1.1);
   }

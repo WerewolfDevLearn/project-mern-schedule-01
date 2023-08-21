@@ -32,6 +32,7 @@ export const XCloseWrap = styled.button`
   top: 15px;
   right: 15px;
   padding: 10px;
+  color: ${({ theme }) => theme.colors.placeholder};
 
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0, 0.11, 0.35, 2);
