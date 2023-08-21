@@ -2,12 +2,11 @@ import styled from 'styled-components';
 import SimpleBar from 'simplebar-react';
 
 export const Scrollbar = styled(SimpleBar)`
-  overflow-y: hidden;
-  scroll-snap-type: x mandatory;
 
   .simplebar-content-wrapper {
     scroll-snap-type: x mandatory;
   }
+
 
   .simplebar-track.simplebar-horizontal {
     position: fixed;

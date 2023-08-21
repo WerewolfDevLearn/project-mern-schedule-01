@@ -6,9 +6,9 @@ export const DivWrapper = styled('div')`
   position: relative;
   align-items: center;
   justify-content: space-between;
-  /* @media screen and (max-width: 768px) {
+  @media screen and (max-width: 768px) {
     width: 100%;
-  } */
+  }
   @media screen and (min-width: 768px) {
     justify-content: space-around;
     align-items: center;
@@ -19,7 +19,7 @@ export const TitleWrapper = styled.button`
   color: #ffffff;
   background: #3e85f3;
   border-radius: 8px;
-  border: 1px solid rgba(220, 227, 229, 0.8);
+  /* border: 1px solid rgba(220, 227, 229, 0.8); */
   font-weight: 700;
   font-size: 14px;
   line-height: 18px;
@@ -42,9 +42,7 @@ export const ButtonsWrapper = styled('div')`
   margin-left: 8px;
 `;
 export const ButtonWrapper1 = styled('button')`
-  /* height: 34px;
-  width: 35px; */
-  padding: 8px 10px;
+  padding: 7px 10px;
 
   display: flex;
   justify-content: center;
@@ -62,13 +60,14 @@ export const ButtonWrapper1 = styled('button')`
   &:hover {
     color: #565759;
   }
+
+  @media screen and (width >= 768px) {
+    padding: 8px 10px;
+  }
 `;
 
 export const ButtonWrapper2 = styled('button')`
-  /* height: 34px;
-  width: 35px; */
-
-  padding: 8px 10px;
+  padding: 7px 10px;
 
   display: flex;
   justify-content: center;
@@ -85,5 +84,9 @@ export const ButtonWrapper2 = styled('button')`
   transition: color 100ms linear;
   &:hover {
     color: #565759;
+  }
+
+  @media screen and (width >= 768px) {
+    padding: 8px 10px;
   }
 `;

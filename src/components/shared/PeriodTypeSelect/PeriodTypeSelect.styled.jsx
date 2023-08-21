@@ -40,6 +40,14 @@ export const StyledNavLink = styled(NavLink)`
     border-radius: 0 8px 8px 0;
   }
 
+  transition: transform 100ms linear;
+
+  &:hover,
+  &:focus {
+    transform: scale(1.05);
+    
+  }
+
   @media screen and (min-width: 768px) {
     &.day {
       padding: 8px 26px;
