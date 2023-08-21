@@ -36,7 +36,6 @@ export default function CalendarDataPicker({ type, CustomInput, onSelectDay, set
           navigate(isParams ? `/calendar/${type}/${formattedDate}` : '/statistics');
         }}
         customInput={<CustomInput />}
-        // dateFormat="MMMM yyyy"
         dateFormat={type === 'day' ? 'dd MMMM yyyy' : 'MMMM yyyy'}
         calendarStartDay={1}
         formatWeekDay={(day) => day.substr(0, 1)}
