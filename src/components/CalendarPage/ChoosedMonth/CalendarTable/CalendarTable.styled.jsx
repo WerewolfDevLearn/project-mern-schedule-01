@@ -97,6 +97,7 @@ export const CurrentDay = styled.div`
   top: 8px;
   right: 4px;
   padding: 4px 6px;
+  width: 34px;
   border-radius: 8px;
   font-weight: ${themes.fontWeight.b};
   font-family: Inter;
