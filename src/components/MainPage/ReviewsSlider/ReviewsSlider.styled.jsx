@@ -60,6 +60,9 @@ export const ReviewsItem = styled.div`
   height: 194px;
 
   border: 1px solid rgba(0, 0, 0, 0.12);
+  border-width: 1px;
+  border-style: solid;
+  border-color: ${({ theme }) => theme.colors.borderInputUserForm};
   border-radius: 8px;
 
   background-attachment: fixed;
@@ -116,7 +119,7 @@ export const UserTitle = styled.h4`
   font-weight: ${themes.fontWeight.b};
   font-size: ${themes.fontSizes.l};
   line-height: 18px;
-  color: ${themes.colors.black};
+  color: ${({ theme }) => theme.colors.subtitle};
 `;
 
 export const UserRating = styled.div`
@@ -130,7 +133,7 @@ export const UserReview = styled.p`
   font-weight: ${themes.fontWeight.m};
   font-size: ${themes.fontSizes.s};
   line-height: 18px;
-  color: rgba(17, 17, 17, 0.7);
+  color: ${({ theme }) => theme.colors.content};
 
   @media (min-width: ${themes.breakpoints.m}) {
     margin-left: 68px;

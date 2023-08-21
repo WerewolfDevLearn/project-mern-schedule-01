@@ -74,15 +74,14 @@ export const DescriptionSubtitle = styled.p`
   font-size: ${themes.fontSizes.xxxl};
   line-height: 40px;
   text-transform: uppercase;
-  color: #171820;
+  color: ${({ theme }) => theme.colors.subtitle};
 
   @media (min-width: ${themes.breakpoints.m}) {
     margin-bottom: 24px;
     font-size: ${themes.fontSizes.titleMain};
     line-height: 44px;
 
-    text-shadow: 0px 47px 355px rgba(0, 0, 0, 0.07),
-      0px 9.4px 57.6875px rgba(0, 0, 0, 0.035);
+    text-shadow: 0px 47px 355px rgba(0, 0, 0, 0.07), 0px 9.4px 57.6875px rgba(0, 0, 0, 0.035);
   }
 `;
 
@@ -91,7 +90,7 @@ export const DescriptionContent = styled.p`
   font-size: ${themes.fontSizes.s};
   line-height: 18px;
 
-  color: rgba(17, 17, 17, 0.9);
+  color: ${({ theme }) => theme.colors.content};
 
   @media (min-width: ${themes.breakpoints.m}) {
     max-width: 275px;
