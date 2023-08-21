@@ -28,7 +28,6 @@ const Layout = () => {
   const callBack = () => setOpen(true);
   const callBackCls = () => setOpen(false);
 
-  // const theme = useThemeColors().theme;
   useEffect(() => {
     if (token) {
       dispatch(getCurrent());

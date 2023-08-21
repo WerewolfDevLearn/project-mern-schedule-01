@@ -4,21 +4,25 @@ import { themes } from 'src/styles/variables/themes';
 export const Header = styled.header`
   color: ${({ theme }) => theme.colors.textAndIconTodo};
   background: ${({ theme }) => theme.colors.background};
+  width: 100%;
   position: relative;
   z-index: 1;
   display: flex;
-  justify-content: right;
+  justify-content: t;
   align-items: center;
   margin-bottom: 64px;
   padding-top: 24px;
-  padding-left: 20px;
-  padding-right: 20px;
+
   @media screen and (${themes.breakpoints.s} < width) {
+    max-width: 768px;
     padding-top: 24px;
-    padding-left: 32px;
-    padding-right: 32px;
   }
   @media screen and (${themes.breakpoints.m} < width) {
+    max-width: 1440px;
+    padding-top: 40px;
+  }
+  @media screen and (${themes.breakpoints.l} < width) {
+    max-width: 1440px;
     padding-top: 40px;
   }
 `;

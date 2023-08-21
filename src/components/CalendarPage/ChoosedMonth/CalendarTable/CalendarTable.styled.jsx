@@ -18,25 +18,22 @@ const getPriorityColor = (props) => {
 export const GridWrapper = styled.ul`
   display: flex;
   flex-wrap: wrap;
-  width: 340px;
+  width: 100%;
   height: 564px;
-  margin: auto;
   gap: 0px;
   align-content: flex-start;
 
   @media screen and (min-width: ${themes.breakpoints.m}) {
-    width: 704px;
     height: 860px;
   }
   @media screen and (min-width: ${themes.breakpoints.l}) {
-    width: 1087px;
     height: 750px;
   }
 `;
 
 export const CellWrapper = styled(NavLink)`
   position: relative;
-  width: 48px;
+  width: calc(100% / 7);
   height: 93px;
   text-align: right;
   border: 1px solid ${({ theme }) => theme.colors.borderTableAndInput};
@@ -46,7 +43,6 @@ export const CellWrapper = styled(NavLink)`
   cursor: pointer;
 
   @media screen and (min-width: ${themes.breakpoints.m}) {
-    width: 100px;
     height: 144px;
     font-size: ${themes.fontSizes.m};
     line-height: 1.12;
@@ -54,7 +50,6 @@ export const CellWrapper = styled(NavLink)`
   }
 
   @media screen and (min-width: ${themes.breakpoints.l}) {
-    width: 155px;
     height: 125px;
   }
 `;
