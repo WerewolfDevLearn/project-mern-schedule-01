@@ -2062,6 +2062,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   top: 8px;
   right: 4px;
   padding: 4px 6px;
+  width: 34px;
   border-radius: 8px;
   font-weight: ${I.fontWeight.b};
   font-family: Inter;
