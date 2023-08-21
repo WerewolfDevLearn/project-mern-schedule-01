@@ -10,7 +10,9 @@ import {
   updateUser,
   deleteUser,
   changeEmail,
-  changePassword
+  changePassword,
+  forgotPwd,
+  resetPwd
 } from 'src/services/authAxApi';
 
 export const authenticate = createAsyncThunk('user/Auth', function (token, { rejectWithValue }) {
@@ -136,3 +138,21 @@ export const changeEM = createAsyncThunk(
     }
   }
 );
+
+export const forgot = createAsyncThunk('user/ForgotPwd', async (email, { rejectWithValue }) => {
+  try {
+    const response = await forgotPwd(email);
+    return response;
+  } catch (error) {
+    return rejectWithValue(error.message);
+  }
+});
+
+export const reset = createAsyncThunk('user/ResetPwd', async (pwd, { rejectWithValue }) => {
+  try {
+    const response = await resetPwd(pwd);
+    return response;
+  } catch (error) {
+    return rejectWithValue(error.message);
+  }
+});
