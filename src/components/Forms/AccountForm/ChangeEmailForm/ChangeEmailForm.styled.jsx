@@ -1,16 +1,16 @@
 import styled from 'styled-components';
-import { Field, Form, ErrorMessage as FormikErrorMessage } from 'formik';
+import { Form } from 'formik';
 import { themes } from 'src/styles/variables/themes';
 
 export const Modal = styled(Form)`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   position: relative;
   width: 100vw;
   height: 100vh;
-  padding: 10px;
+  padding: 20px;
   background-color: white;
   box-shadow: rgb(0, 0, 0) 0px 0px 80px;
 
@@ -49,7 +49,7 @@ export const ChangeEmailTitle = styled.h1`
 `;
 
 export const InputsContainer = styled.div`
-  margin-bottom: 30px;
+  margin-bottom: 40px;
 `;
 
 export const BtnWrap = styled.div`
@@ -90,7 +90,7 @@ export const CancelBtn = styled.button`
   color: white;
   background-color: #3e85f3;
   /* border: 3px solid #3e85f3; */
-  margin-left: 100px;
+  margin-left: 30px;
   margin-bottom: 10px;
 
   transform: scale(1);

@@ -5,7 +5,7 @@ import { themes } from 'src/styles/variables/themes';
 export const Modal = styled(Form)`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   position: relative;
   width: 100vw;
@@ -43,12 +43,8 @@ export const XCloseWrap = styled.button`
 `;
 
 export const ChangePasswordTitle = styled.h1`
-  margin-bottom: 80px;
   text-align: center;
   color: #3e85f3;
-
-  @media screen and (${themes.breakpoints.s} <= width < ${themes.breakpoints.m}) {
-  }
 
   @media screen and (${themes.breakpoints.m} <= width) {
     margin-bottom: 30px;
@@ -56,8 +52,6 @@ export const ChangePasswordTitle = styled.h1`
 `;
 
 export const InputsContainer = styled.div`
-  margin-bottom: 90px;
-
   @media screen and (${themes.breakpoints.m} <= width) {
     margin-bottom: 40px;
   }
@@ -108,8 +102,7 @@ export const CancelBtn = styled.button`
   border-radius: 16px;
   color: white;
   background-color: #3e85f3;
-  /* border: 3px solid #3e85f3; */
-  margin-left: 100px;
+  margin-left: 30px;
   margin-bottom: 10px;
 
   transform: scale(1);

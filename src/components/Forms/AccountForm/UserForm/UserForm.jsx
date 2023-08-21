@@ -46,7 +46,6 @@ export default function UserForm({ callBack }) {
         formData.append('birthday', birthday);
       }
     });
-
     callBack(formData);
   };
 
@@ -104,6 +103,7 @@ export default function UserForm({ callBack }) {
                     label={t('Phone')}
                     type="tel"
                     name="phone"
+                    pattern="\(\d{3}\) \d{3}-\d{4}"
                     placeholder="+380971234567"
                   />
                   <UniversalInput
