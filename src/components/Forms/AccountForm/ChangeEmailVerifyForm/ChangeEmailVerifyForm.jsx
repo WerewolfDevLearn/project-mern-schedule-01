@@ -26,11 +26,7 @@ export default function ChangeEmailForm({ onClose, callbackEmail, closeChangeEma
 
   return (
     <>
-      <Formik
-        initialValues={initialValues}
-        validationSchema={validationChangeEmailRules}
-        onSubmit={handleSubmit}
-      >
+      <Formik initialValues={initialValues} onSubmit={handleSubmit}>
         {(formik) => {
           return (
             <>
