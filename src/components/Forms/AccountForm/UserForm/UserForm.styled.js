@@ -4,21 +4,6 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { themes } from 'src/styles/variables/themes';
 
-export const FormContainer = styled.div`
-  padding: 0 18px 40px 18px;
-  background-color: white;
-  border-radius: 16px;
-  position: relative;
-
-  @media screen and (${themes.breakpoints.m} <= width < ${themes.breakpoints.l}) {
-    padding: 40px 175px 40px 175px;
-  }
-
-  @media screen and (${themes.breakpoints.l} <= width) {
-    padding: 60px 165px 60px 164px;
-  }
-`;
-
 export const FormWrap = styled.div`
   display: flex;
   flex-direction: column;
@@ -42,7 +27,7 @@ export const RoleTitle = styled.p`
   margin-bottom: 24px;
   color: #343434;
 
-  @media screen and (${themes.breakpoints.m} <= width < ${themes.breakpoints.l}) {
+  @media screen and (${themes.breakpoints.m} <= width) {
     font-size: 14px;
     font-weight: 600;
     line-height: 1.29;
@@ -69,106 +54,6 @@ export const FormInputContainer = styled.div`
     gap: 16px 50px;
     width: 758px;
     position: relative;
-  }
-`;
-
-export const FormLabelSpan = styled.span`
-  display: flex;
-  margin-bottom: 8px;
-  font-size: 12px;
-  line-height: 1.17;
-  letter-spacing: -0.02em;
-  color: #111111;
-
-  @media screen and (${themes.breakpoints.m} <= width < ${themes.breakpoints.l}) {
-    font-size: 14px;
-    line-height: 1.29;
-  }
-
-  @media screen and (${themes.breakpoints.l} <= width) {
-  }
-`;
-
-export const InputField = styled(Field)`
-  font-size: 14px;
-  line-height: 1.29;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  color: #111111;
-  border: 1px solid rgba(17, 17, 17, 15%);
-  border-radius: 8px;
-  padding: 0 18px;
-  margin-bottom: 8px;
-  width: 200px;
-
-  @media screen and (${themes.breakpoints.s} <= width < ${themes.breakpoints.m}) {
-    width: 299px;
-    height: 42px;
-  }
-
-  @media screen and (${themes.breakpoints.m} <= width) {
-    font-size: 16px;
-    line-height: 1.13;
-    width: 354px;
-    height: 46px;
-    border: 1px solid rgba(17, 17, 17, 15%);
-    border-radius: 8px;
-    padding: 0 18px;
-    margin-bottom: 8px;
-
-    &:hover {
-      border: 1px solid black;
-    }
-  }
-`;
-
-export const DateInput = styled(DatePicker)`
-  font-size: 14px;
-  line-height: 1.29;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  border: 1px solid rgba(17, 17, 17, 15%);
-  border-radius: 8px;
-  margin-bottom: 8px;
-  padding: 0 18px;
-  color: #111111;
-  width: 200px;
-
-  @media screen and (${themes.breakpoints.s} <= width < ${themes.breakpoints.m}) {
-    width: 299px;
-    height: 42px;
-  }
-
-  @media screen and (${themes.breakpoints.m} <= width) {
-    font-size: 16px;
-    line-height: 1.13;
-    width: 354px;
-    height: 46px;
-    border: 1px solid rgba(17, 17, 17, 15%);
-    border-radius: 8px;
-    padding: 0 18px;
-
-    &:hover {
-      border: 1px solid black;
-    }
-  }
-
-  @media screen and (${themes.breakpoints.l} <= width) {
-  }
-`;
-
-export const ErrorMessage = styled(FormikErrorMessage)`
-  font-size: 12px;
-  padding-left: 14px;
-  color: red;
-  @media screen and (${themes.breakpoints.s} <= width < ${themes.breakpoints.m}) {
-  }
-
-  @media screen and (${themes.breakpoints.m} <= width < ${themes.breakpoints.l}) {
-  }
-
-  @media screen and (${themes.breakpoints.l} <= width) {
-    padding-left: 18px;
   }
 `;
 

@@ -82,6 +82,13 @@ export default function PasswordInput({
       </div>
     );
   }
-  {
-  }
 }
+
+PasswordInput.propTypes = {
+  formik: PropTypes.func.isRequired,
+  label: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  placeholder: PropTypes.string.isRequired,
+  validateAfterSubmit: PropTypes.bool.isRequired,
+  setValidateAfterSubmit: PropTypes.bool.isRequired
+};

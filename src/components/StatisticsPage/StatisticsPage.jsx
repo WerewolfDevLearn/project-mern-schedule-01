@@ -44,7 +44,13 @@ const StatisticsPage = () => {
   return (
     <StatisticsPageStyles>
       <StatisticsHeadWrapper>
-        <PeriodPaginator prevHandler={onPrev} nextHandler={onNext} type="day" date={currentDate} />
+        <PeriodPaginator
+          prevHandler={onPrev}
+          nextHandler={onNext}
+          type="day"
+          date={currentDate}
+          setCurrentDate={setCurrentDate}
+        />
         <Legend>
           <LegendItem>
             <Ellipse type="day" />

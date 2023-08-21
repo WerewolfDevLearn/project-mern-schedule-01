@@ -78,7 +78,7 @@ export const SvgValidate = styled.img`
 export const SvgEye = styled.img`
   position: absolute;
   right: 46px;
-  bottom: 11px;
+  bottom: 17px;
   width: 24px;
   &.left {
     right: 18px;

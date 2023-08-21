@@ -4,70 +4,58 @@ import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import i18n from 'i18next';
 
-import { XClose } from '../../../shared/Icons';
 import UniversalInput from '../../UniversalInput/UniversalInput';
-import VerifyForm from '../../AuthForms/VerifyForm/VerifyForm';
-
 import { validationChangeEmailRules } from '../accountValidationRules';
 
 import {
   Modal,
-  XCloseWrap,
-  ChangeEmailTitle,
   InputsContainer,
   BtnWrap,
   UpdateBtn,
   CancelBtn
-} from './ChangeEmailForm.styled';
+} from './ChangeEmailVerifyForm.styled';
 
-export default function ChangeEmailForm({ onClose, callbackEmail, openChangeEmailVerifyModal }) {
-  const initialValues = { email: '' };
-
-  // const [isUpdating, setisUpdating] = useState(false);
+export default function ChangeEmailForm({ onClose, callbackEmail, closeChangeEmailVerifyModal }) {
+  const initialValues = { code: '' };
 
   const handleSubmit = (values) => {
-    openChangeEmailVerifyModal();
-    console.log(openChangeEmailVerifyModal);
     console.log(values);
     callbackEmail(values);
+    closeChangeEmailVerifyModal();
   };
 
   return (
     <>
-      <Formik
-        initialValues={initialValues}
-        validationSchema={validationChangeEmailRules}
-        onSubmit={handleSubmit}
-      >
+      <Formik initialValues={initialValues} onSubmit={handleSubmit}>
         {(formik) => {
           return (
             <>
               <Modal>
-                <XCloseWrap onClick={onClose}>
-                  <XClose width="24" height="24" />
-                </XCloseWrap>
-                <ChangeEmailTitle>Change email</ChangeEmailTitle>
+                {/* {!isUpdating && ( */}
+                {/* <Verify> */}
                 <InputsContainer>
                   <UniversalInput
-                    label="New email"
-                    // type="email"
-                    name="email"
-                    placeholder="Enter new email"
+                    label="Verify code"
+                    type="text"
+                    name="code"
+                    placeholder="Enter verify code"
                   />
                 </InputsContainer>
                 <BtnWrap>
                   <UpdateBtn
                     type="submit"
-                    disabled={
-                      !formik.isValid || !formik.touched || formik.isSubmitting || !formik.dirty
-                    }
+                    // disabled={
+                    //   !formik.isValid || !formik.touched || formik.isSubmitting || !formik.dirty
+                    // }
                   >
-                    Update email
+                    Verify
                   </UpdateBtn>
                   <CancelBtn type="button" onClick={onClose}>
                     Cancel
                   </CancelBtn>
                 </BtnWrap>
+                {/* </Verify> */}
+                {/* )} */}
               </Modal>
             </>
           );
@@ -80,5 +68,5 @@ export default function ChangeEmailForm({ onClose, callbackEmail, openChangeEmai
 ChangeEmailForm.propTypes = {
   onClose: PropTypes.func.isRequired,
   callbackEmail: PropTypes.func.isRequired,
-  openChangeEmailVerifyModal: PropTypes.bool.isRequired
+  closeChangeEmailVerifyModal: PropTypes.bool.isRequired
 };

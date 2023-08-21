@@ -39,8 +39,8 @@ export const SideBarContainer = styled.aside`
   }
   @media screen and (${themes.breakpoints.m} < width) {
     position: relative;
-    z-index: 2;
-    left: -20px;
+    z-index: 0;
+    left: 0px;
     width: 290px;
     padding: 24px;
     transform: none;

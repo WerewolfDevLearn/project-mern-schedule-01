@@ -1,5 +1,6 @@
 import { isFulfilled, isRejected } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
+import i18n from 'i18next';
 
 const regExp = {
   userRegFF: 'user/Register/fulfilled',
@@ -15,13 +16,13 @@ const regExp = {
 
 export const ErrorLogger = (_api) => (next) => (action) => {
   if (action.type === regExp.userRegFF) {
-    toast.success('Verification letter was send to you email address');
+    toast.success(i18n.t('Verification letter was send to you email address'));
   }
   if (action.type === regExp.userLoginFF) {
-    toast.success('Welcome!');
+    toast.success(i18n.t('Welcome'));
   }
   if (action.type === regExp.userUpdateFF) {
-    toast.success('User updated!');
+    toast.success(i18n.t('UserUpdated'));
   }
 
   if (
@@ -29,14 +30,14 @@ export const ErrorLogger = (_api) => (next) => (action) => {
     action.type === regExp.userLoginRG &&
     action.payload === 'Action Required: Verify Your Email'
   ) {
-    toast.error(' Please check you email');
+    toast.error(i18n.t('CheckEmail'));
   }
   if (
     isRejected(action) &&
     action.type === regExp.userGCRG &&
     action.payload === 'Request failed with status code 500'
   ) {
-    toast.error('Please login');
+    toast.error(i18n.t('PleaseLogin'));
   }
 
   if (
@@ -44,53 +45,48 @@ export const ErrorLogger = (_api) => (next) => (action) => {
     action.type === regExp.userLoginRG &&
     action.payload !== 'Action Required: Verify Your Email'
   ) {
-    toast.error('Unauthorized');
+    toast.error(i18n.t('Unauthorized'));
   }
 
   if (isRejected(action) && action.type === regExp.userRegRG) {
-    toast.error(
-      ' User with such name and email is exist. Please chagne you register information or Log in'
-    );
+    toast.error(i18n.t('UserExists'));
   }
 
   if (isFulfilled(action) && action.meta.arg) {
-    const { message } = action.payload;
     const { endpointName } = action.meta.arg;
 
     // Tasks
     if (endpointName === 'createTasks') {
-      toast.success(message);
+      toast.success(i18n.t('CreateTasksSuccess'));
     }
     if (endpointName === 'deleteTasks') {
-      toast.success(message);
+      toast.success(i18n.t('DeleteTasksSuccess'));
     }
     if (endpointName === 'updateTasks') {
-      toast.success(message);
+      toast.success(i18n.t('UpdateTasksSuccess'));
     }
 
     // Reviews
     if (endpointName === 'createReviews') {
-      toast.success(message);
+      toast.success(i18n.t('CreateReviewsSuccess'));
     }
     if (endpointName === 'deleteReviews') {
-      toast.success(message);
+      toast.success(i18n.t('DeleteReviewsSuccess'));
     }
     if (endpointName === 'updateReviews') {
-      toast.success(message);
+      toast.success(i18n.t('UpdateReviewsSuccess'));
     }
   }
 
   if (isRejected(action) && action.meta.arg && action.type.includes('tasks')) {
-    const { message } = action.payload.data;
-
     if (action.meta.arg.endpointName === 'createTasks') {
-      toast.error(message);
+      toast.error(i18n.t('TasksCreateError'));
     }
     if (action.meta.arg.endpointName === 'deleteTasks') {
-      toast.error(message);
+      toast.error(i18n.t('TasksDeleteteError'));
     }
     if (action.meta.arg.endpointName === 'updateTasks') {
-      toast.error(message);
+      toast.error(i18n.t('TasksUpdateError'));
     }
   }
 
