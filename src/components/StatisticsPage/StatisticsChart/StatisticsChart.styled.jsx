@@ -1,17 +1,5 @@
 import styled from 'styled-components';
 
-// export const StatisticsChartStyles = styled.div``;
-
-export const Container = styled.div`
-  width: 100%;
-  height: 100%;
-
-  @media (min-width: ${({ theme }) => theme.breakpoints.l}) {
-    width: 1087px;
-    height: 752px;
-  }
-`;
-
 export const ChartContainer = styled.div`
   position: relative;
   width: 860px;

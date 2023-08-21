@@ -16,18 +16,23 @@ const getPriorityColor = (props) => {
 };
 
 export const GridWrapper = styled.ul`
+  border-radius: 8px;
+  overflow: hidden;
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-  height: 564px;
+  /* height: 564px; */
+  /* height: 470px; */
   gap: 0px;
   align-content: flex-start;
 
   @media screen and (min-width: ${themes.breakpoints.m}) {
-    height: 860px;
+    /* height: 860px; */
+    height: 720px;
   }
   @media screen and (min-width: ${themes.breakpoints.l}) {
-    height: 750px;
+    /* height: 750px; */
+    height: 625px;
   }
 `;
 
@@ -92,6 +97,7 @@ export const CurrentDay = styled.div`
   top: 8px;
   right: 4px;
   padding: 4px 6px;
+  width: 34px;
   border-radius: 8px;
   font-weight: ${themes.fontWeight.b};
   font-family: Inter;

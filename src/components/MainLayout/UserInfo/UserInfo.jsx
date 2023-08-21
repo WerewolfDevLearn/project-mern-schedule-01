@@ -7,7 +7,7 @@ export default function UserInfo() {
   const { name, avatarUrl } = useUser();
   return (
     <UserInfoStyles>
-      <UserName>{name}</UserName>
+      <UserName>{name.split(' ')[0]}</UserName>
       {avatarUrl ? (
         <Avatar
           alt="username"

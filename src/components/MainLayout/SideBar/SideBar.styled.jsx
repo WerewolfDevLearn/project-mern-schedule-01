@@ -30,14 +30,14 @@ export const SideBarContainer = styled.aside`
   padding: 24px 20px;
   transform: ${({ open }) => (open ? 'translateX(100%)' : 'translateX(0)')};
   transition: transform 100ms ease-in-out;
-  @media screen and (${themes.breakpoints.s} < width <=${themes.breakpoints.m}) {
+  @media screen and (width >= ${themes.breakpoints.m}) {
     position: absolute;
     z-index: 2;
     left: -290px;
     width: 290px;
     padding: 32px;
   }
-  @media screen and (${themes.breakpoints.m} < width) {
+  @media screen and (${themes.breakpoints.l} <= width) {
     position: relative;
     z-index: 0;
     left: 0px;
@@ -46,6 +46,9 @@ export const SideBarContainer = styled.aside`
     transform: none;
     transition: none;
   }
+  /* @media screen and (${themes.breakpoints.l} <= width) {
+    left: -32px;
+  } */
 `;
 export const SideBarHeading = styled.h3`
   font-size: 12px;

@@ -14,17 +14,13 @@ export const Header = styled.header`
   padding-top: 24px;
 
   @media screen and (${themes.breakpoints.s} < width) {
-    max-width: 768px;
+    /* max-width: 768px; */
     padding-top: 24px;
     margin-bottom: 64px;
   }
   @media screen and (${themes.breakpoints.m} < width) {
     margin-bottom: 32px;
-    max-width: 1440px;
-    padding-top: 40px;
-  }
-  @media screen and (${themes.breakpoints.l} < width) {
-    width: 1440px;
+    /* max-width: 1087px; */
     padding-top: 40px;
   }
 `;
@@ -44,4 +40,23 @@ export const WrapTogglers = styled.div`
   align-items: center;
   gap: 10px;
   margin-right: 15px;
+`;
+
+export const Go = styled.span`
+  color: #3e85f3;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 18px;
+`;
+
+export const Slogan = styled.p`
+  margin-top: 8px;
+  color: ${({ theme }) => theme.colors.textAndIconTodo};
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 18px;
 `;

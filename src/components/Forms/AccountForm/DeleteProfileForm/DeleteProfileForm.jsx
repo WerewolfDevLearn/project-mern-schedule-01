@@ -12,12 +12,15 @@ import {
   Title,
   Description,
   InputWrap,
+  InputSpan,
   BtnWrap,
   CancelBtn,
   DeleteBtn
 } from './DeleteProfileForm.styled';
 
 export default function DeleteProfileForm({ onClose, callBack }) {
+  const { t } = useTranslation();
+
   const [isChecked, setIsChecked] = useState(false);
 
   const handleSubmit = (data) => {
@@ -33,8 +36,8 @@ export default function DeleteProfileForm({ onClose, callBack }) {
         <ValidationErrorWrap>
           <ValidationError width="240" height="240" />
         </ValidationErrorWrap>
-        <Title>Are you sure?</Title>
-        <Description>This action will permanently delete the profile data.</Description>
+        <Title>{t('AreYouSure')}</Title>
+        <Description>{t('DeleteProfileConfirmation')}</Description>
         <InputWrap>
           <input
             type="checkbox"
@@ -42,12 +45,12 @@ export default function DeleteProfileForm({ onClose, callBack }) {
             name="agreement"
             onChange={() => setIsChecked(!isChecked)}
           />{' '}
-          I agree to delete profile data
+          <InputSpan>{t('AgreeToDeleteProfile')}</InputSpan>
         </InputWrap>
         <BtnWrap>
-          <CancelBtn onClick={onClose}>Cancel</CancelBtn>
+          <CancelBtn onClick={onClose}>{t('Cancel')}</CancelBtn>
           <DeleteBtn type="submit" disabled={!isChecked} onClick={handleSubmit}>
-            Delete profile
+            {t('DeleteProfile')}
           </DeleteBtn>
         </BtnWrap>
       </Modal>

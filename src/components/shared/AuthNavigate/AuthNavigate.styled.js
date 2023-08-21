@@ -1,18 +1,26 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import { themes } from 'src/styles/variables/themes';
 
 export const NavigateLink = styled(NavLink)`
-  color: #3e85f3;
-  text-shadow: 0px 9.399999618530273px 57.6875px rgba(0, 0, 0, 0.04),
-    0px 47px 355px rgba(0, 0, 0, 0.07);
-  font-family: Inter;
-  font-size: 12px;
+  color: ${themes.colors.accent};
+  text-shadow: ${themes.shadows.authHeading};
+  font-size: ${themes.fontSizes.xs};
   font-style: normal;
-  font-weight: 600;
+  font-weight: ${themes.fontWeight.sb};
   line-height: 14px;
   text-decoration-line: underline;
 
+  transition-property: color;
+  transition-duration: ${themes.animations.duration};
+  transition-timing-function: ${themes.animations.cubicBezier};
+
+  &:hover,
+  &:focus {
+    color: ${themes.colors.hovered};
+  }
+
   @media screen and (min-width: 768px) {
-    font-size: 18px;
+    font-size: ${themes.fontSizes.l};
   }
 `;
