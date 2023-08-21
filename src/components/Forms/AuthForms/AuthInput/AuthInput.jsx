@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 
@@ -6,6 +7,7 @@ import iconError from 'src/images/svg/validation-error.svg';
 import iconSuccess from 'src/images/svg/validation-success.svg';
 
 import ShowPasswordBtn from '../ShowPasswordBtn/ShowPasswordBtn';
+import ForgotPwdLink from '../ForgotPwdForm/ForgotPwdLink/ForgotPwdLink';
 
 import {
   InputContainer,
@@ -59,9 +61,13 @@ export default function AuthInput({
     }
   }, [values, errors[name], submitCount]);
 
+  const isLoginInput = useLocation().pathname === '/login' && type === 'password';
+
   return (
     <Subtitle htmlFor={name} className={status}>
-      {t(title)}
+      <div>
+        {t(title)} {isLoginInput && <ForgotPwdLink />}
+      </div>
       <InputContainer>
         <Input
           type={inputType()}
