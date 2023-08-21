@@ -1,1 +1,0 @@
-import{al as o,b as r,am as n,j as c}from"./index-17318f2c.js";const i=()=>{const[e]=o(),s=r(),t=e.get("token"),a=e.get("refreshToken");return s(n({token:t,refreshToken:a})),c.jsx("h2",{children:"Loading..."})};export{i as default};
