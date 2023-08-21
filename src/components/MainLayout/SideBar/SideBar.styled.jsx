@@ -37,7 +37,7 @@ export const SideBarContainer = styled.aside`
     width: 290px;
     padding: 32px;
   }
-  @media screen and (${themes.breakpoints.m} < width) {
+  @media screen and (${themes.breakpoints.l} <= width) {
     position: relative;
     z-index: 0;
     left: 0px;
@@ -46,6 +46,9 @@ export const SideBarContainer = styled.aside`
     transform: none;
     transition: none;
   }
+  /* @media screen and (${themes.breakpoints.l} <= width) {
+    left: -32px;
+  } */
 `;
 export const SideBarHeading = styled.h3`
   font-size: 12px;

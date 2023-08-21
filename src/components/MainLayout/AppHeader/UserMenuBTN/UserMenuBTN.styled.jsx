@@ -12,7 +12,7 @@ export const UserMenuBTNOpen = styled.button`
     width: 34px;
     height: 34px;
   }
-  @media screen and (width > ${themes.breakpoints.m}) {
+  @media screen and (width >= ${themes.breakpoints.l}) {
     display: none;
   }
 `;
