@@ -3,8 +3,8 @@ import { store } from 'src/redux/store';
 
 import { authenticate } from '../redux/auth/authOps';
 
-// axios.defaults.baseURL = 'https://project-mern-schedule-03.onrender.com/api';
-axios.defaults.baseURL = 'http://localhost:3001/api';
+axios.defaults.baseURL = 'https://project-mern-schedule-03.onrender.com/api';
+// axios.defaults.baseURL = 'http://localhost:3001/api';
 export async function userRegister(userData) {
   const response = await axios.post('/users/register', userData);
   return response.data;
@@ -89,9 +89,6 @@ axios.interceptors.response.use(
         const { data } = await axios.post('/users/refresh', {
           refreshToken: store.getState().user.refreshToken
         });
-        console.log('qwe');
-        console.log(store.getState().user.refreshToken);
-
         token.set(data.token);
         await store.dispatch(authenticate({ token: data.token, refreshToken: data.refreshToken }));
         error.config.headers.Authorization = `Bearer ${data.token}`;
