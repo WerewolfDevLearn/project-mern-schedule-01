@@ -8,9 +8,9 @@ export const MainLayOutContainer = styled.div`
 
   @media screen and (${themes.breakpoints.m} < width) {
     padding-right: 32px;
-  }
-  @media screen and (${themes.breakpoints.l} > width) {
-    width: 1440px;
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
   }
 `;
 export const MainLayOutSubContainer = styled.div`
@@ -20,6 +20,6 @@ export const MainLayOutSubContainer = styled.div`
 
 export const ChildrenContainer = styled.div`
   @media screen and (${themes.breakpoints.m} < width) {
-    margin-left: 300px;
+    padding: 0 32px;
   }
 `;

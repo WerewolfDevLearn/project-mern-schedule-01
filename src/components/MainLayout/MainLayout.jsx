@@ -1,6 +1,4 @@
 import { Outlet } from 'react-router-dom';
-import { useThemeColors } from 'src/components/MainLayout/ThemeToggler/ThemeContextProvider';
-import { ThemeProvider } from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { modalBackdropcolors } from 'src/styles/variables/themes';
@@ -39,7 +37,6 @@ const Layout = () => {
   const isLoading = useisLoading();
   return (
     <>
-      {/* <ThemeProvider theme={theme}> */}
       <MainLayOutContainer>
         <SideBar open={open} callBackCls={callBackCls} />
         <MainLayOutSubContainer>
@@ -47,7 +44,7 @@ const Layout = () => {
           <ChildrenContainer>{isLoading ? <Loader /> : <Outlet />}</ChildrenContainer>
         </MainLayOutSubContainer>
       </MainLayOutContainer>
-      {/* </ThemeProvider> */}
+
       {isRefreshing && (
         <Modal color={modalBackdropcolors.black}>
           <Loader />
