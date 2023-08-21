@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Formik } from 'formik';
 import PropTypes from 'prop-types';
 
-import { validationReserEmailRules } from '../validationRules';
+import { validationReserPwdRules } from '../validationRules';
 import AuthInput from '../AuthInput/AuthInput';
 
 import { Container, Title, FormElement, InputWrap, Button, Img } from '../GeneralAuth.styles';
@@ -16,7 +16,7 @@ export default function ForgotPwdForm({ onSubmitForm }) {
     <Container>
       <Title>{t('Forgot Password')}</Title>
       <Formik
-        validationSchema={validationReserEmailRules}
+        validationSchema={validationReserPwdRules}
         initialValues={{ email: '' }}
         validateOnBlur={false}
         validateOnChange={validateAfterSubmit}

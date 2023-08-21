@@ -58,6 +58,18 @@ export async function changePassword(userDate, tokenAuth) {
   return data;
 }
 
+export async function forgotPwd(email) {
+  const response = await axios.post('/users/forgot', email);
+  const data = response.data;
+  return data;
+}
+
+export async function resetPwd(pwdData) {
+  const response = await axios.post('/users/reset', pwdData);
+  const data = response.data;
+  return data;
+}
+
 export const token = {
   set(token) {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -71,11 +83,14 @@ export const token = {
 axios.interceptors.response.use(
   (response) => response,
   async (error) => {
+    console.log('error: ', error);
     if (error.response.status === 401) {
       try {
         const { data } = await axios.post('/users/refresh', {
           refreshToken: store.getState().user.refreshToken
         });
+        console.log('qwe');
+        console.log(store.getState().user.refreshToken);
 
         token.set(data.token);
         await store.dispatch(authenticate({ token: data.token, refreshToken: data.refreshToken }));

@@ -18,6 +18,8 @@ import Loader from './components/shared/Loader/Loader';
 import MainPage from './pages/MainPage';
 import ErrorPage from './pages/ErrorPage/ErrorPage';
 import LoginPage from './pages/LoginPage/LoginPage';
+import ForgotPwdPage from './pages/ForgotPwdPage/ForgotPwdPage';
+import ResetPwdPage from './pages/ResetPwdPage/ResetPwdPage';
 import AuthGoogle from './components/shared/AuthGoogle/AuthGoogle';
 
 import RegisterPage from './pages/RegisterPage/RegisterPage';
@@ -42,6 +44,8 @@ function App() {
               <Route path={routes.registerPage} element={<RegisterPage />} />
               <Route path={routes.loginPage} element={<LoginPage />} />
               <Route path={routes.authGoogle} element={<AuthGoogle />} />
+              <Route path={routes.forgotPassword} element={<ForgotPwdPage />} />
+              <Route path={routes.resetPassword} element={<ResetPwdPage />} />
             </Route>
             <Route element={<PrivateRoutes />}>
               <Route path={routes.mainLayout} element={<MainLayout />}>

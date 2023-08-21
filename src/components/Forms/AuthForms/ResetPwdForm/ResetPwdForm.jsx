@@ -3,21 +3,21 @@ import { useTranslation } from 'react-i18next';
 import { Formik } from 'formik';
 import PropTypes from 'prop-types';
 
-import { validationReserEmailRules } from '../validationRules';
+import { validationReserPwdRules } from '../validationRules';
 import AuthInput from '../AuthInput/AuthInput';
 
 import { Container, Title, FormElement, InputWrap, Button, Img } from '../GeneralAuth.styles';
 
-export default function ForgotPwdForm({ onSubmitForm }) {
+export default function ResetPwdForm({ onSubmitForm }) {
   const [validateAfterSubmit, setValidateAfterSubmit] = useState(false);
   const { t } = useTranslation();
 
   return (
     <Container>
-      <Title>{t('Forgot Password')}</Title>
+      <Title>{t('Reset Password')}</Title>
       <Formik
-        validationSchema={validationReserEmailRules}
-        initialValues={{ email: '' }}
+        validationSchema={validationReserPwdRules}
+        initialValues={{ newPassword: '', confirmPassword: '' }}
         validateOnBlur={false}
         validateOnChange={validateAfterSubmit}
         validateOnMount={false}
@@ -34,16 +34,28 @@ export default function ForgotPwdForm({ onSubmitForm }) {
             <FormElement autoComplete="off">
               <InputWrap>
                 <AuthInput
-                  name="email"
-                  title="Email"
-                  type="email"
-                  placeholder="nadiia@gmail.com"
-                  id="pwd_email"
+                  name="newPassword"
+                  title="New password"
+                  type="password"
+                  placeholder="●●●●●●●"
+                  id="newPassword"
                   validateAfterSubmit={validateAfterSubmit}
                   submitCount={submitCount}
                   errors={errors}
                   setValidateAfterSubmit={setValidateAfterSubmit}
-                  values={values.email}
+                  values={values.newPassword}
+                />
+                <AuthInput
+                  name="confirmPassword"
+                  title="Confirm password"
+                  type="password"
+                  placeholder="●●●●●●●"
+                  id="confirmPassword"
+                  validateAfterSubmit={validateAfterSubmit}
+                  submitCount={submitCount}
+                  errors={errors}
+                  setValidateAfterSubmit={setValidateAfterSubmit}
+                  values={values.confirmPassword}
                 />
               </InputWrap>
               <Button type="submit" onClick={handleSubmit}>
@@ -57,6 +69,6 @@ export default function ForgotPwdForm({ onSubmitForm }) {
   );
 }
 
-ForgotPwdForm.propTypes = {
+ResetPwdForm.propTypes = {
   onSubmitForm: PropTypes.func.isRequired
 };

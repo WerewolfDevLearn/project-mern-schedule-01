@@ -23,7 +23,8 @@
 
   "Log In": "Увійти",
   "Log In With Google": "Увійти з Google",
-  "Forgot Password?": "Забули пароль?",
+  "Forgot Password": "Забули пароль",
+  "Reset Password": "Новий пароль",
   "Sign Up": "Реєстрація",
   "Sign Up With Google": "Реєстрація з Google",
   "Name": " Ім'я",
@@ -47,6 +48,7 @@
   "Invalid Email": "Невірний формат електронної пошти",
   "Password Required": "Пароль є обов'язковим полем",
   "Password Characters": "Пароль повинен мати щонайменше 6 символів",
+  "Must Match": "Паролі мають співпадати",
 
   "User Profile": "Профіль Користувача",
   "Feedback": "Відгуки",
