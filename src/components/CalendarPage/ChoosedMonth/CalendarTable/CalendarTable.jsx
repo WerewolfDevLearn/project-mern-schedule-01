@@ -28,6 +28,7 @@ import {
   TaskItem,
   TasksMoreLabel
 } from './CalendarTable.styled';
+import TasksBadge from '../../TasksBadge/TasksBadge';
 
 export default function CalendarTable() {
   const { currentDate } = useParams();
@@ -80,7 +81,6 @@ export default function CalendarTable() {
           return <CellWrapper key={idx} />;
         }
         const calendarWithTask = getDayTasks(dayItem, respons?.tasks);
-
         return (
           <CellWrapper
             to={`/calendar/day/${format(dayItem, 'yyyy-MM-dd')}`}
@@ -89,6 +89,7 @@ export default function CalendarTable() {
             istoday={isToday(dayItem).toString()}
           >
             <RowInCell>
+              <TasksBadge tasks={calendarWithTask} date={dayItem} page="month" />
               <ShowDayWrapper>
                 {isToday(dayItem) ? (
                   <CurrentDay>{format(dayItem, 'd')}</CurrentDay>
