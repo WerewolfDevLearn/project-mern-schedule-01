@@ -637,7 +637,7 @@ attempted value: ${o}
   font-weight: 700;
   line-height: 1.28;
   margin-right: 8px;
-`;function fI(){const{name:e,avatarUrl:t}=g1();return T.jsxs(pSe,{children:[T.jsx(hSe,{children:e.split(" ")[0]}),t?T.jsx(IT,{alt:"username",src:t,sx:{width:32,height:32,border:"1.8px solid #3E85F3"}}):T.jsx(IT,{alt:"username",src:"",sx:{width:32,height:32},children:e.split("")[0]})]})}function mSe(e){return Ea({tag:"svg",attr:{viewBox:"0 0 512 512"},child:[{tag:"path",attr:{d:"M32 96v64h448V96H32zm0 128v64h448v-64H32zm0 128v64h448v-64H32z"}}]})(e)}const gSe=j.button`
+`;function fI(){const{name:e,avatarUrl:t}=g1(),r=window.innerWidth<768;return T.jsxs(pSe,{children:[T.jsx(hSe,{children:r&&e.length>7?`${e.slice(0,3)}...`:e.split(" ")[0]}),t?T.jsx(IT,{alt:"username",src:t,sx:{width:32,height:32,border:"1.8px solid #3E85F3"}}):T.jsx(IT,{alt:"username",src:"",sx:{width:32,height:32},children:e.split("")[0]})]})}function mSe(e){return Ea({tag:"svg",attr:{viewBox:"0 0 512 512"},child:[{tag:"path",attr:{d:"M32 96v64h448V96H32zm0 128v64h448v-64H32zm0 128v64h448v-64H32z"}}]})(e)}const gSe=j.button`
   /* @media screen and (width <= ${I.breakpoints.s}) { */
     display: block;
     min-width: 24px;
@@ -724,7 +724,7 @@ attempted value: ${o}
     padding-right: 32px;
   }
   @media screen and (${I.breakpoints.l} < width) {
-    width: 1087px;
+    /* width: 1087px;  кажется это лишнее, не уверен */
     padding-bottom: 42px;
   }
 `,SSe=j.div`
@@ -2484,11 +2484,9 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     padding: 20px;
   }
 `;function Gg({tasks:e,title:t}){const[r,n]=O.useState({isOpen:!1,action:"",taskToEdit:null}),i=o=>{o&&n({isOpen:!0,action:"edit",taskToEdit:o}),o||n({isOpen:!0,action:"add",taskToEdit:null})},a=()=>{n({isOpen:!1,action:"",taskToEdit:null})};return T.jsxs(T.Fragment,{children:[T.jsxs(JCe,{children:[T.jsx(L7,{title:t,openModal:i,column:t}),T.jsx(Q7,{tasks:e,openModal:i}),T.jsx(X7,{tasksCount:e.length,openModal:i})]}),T.jsx(gy,{children:r.isOpen&&T.jsx(pn,{onClose:a,color:_i.grey,clickable:!0,children:T.jsx(J7,{onClose:a,action:r.action,column:t,taskToEdit:r.taskToEdit})})})]})}Gg.propTypes={tasks:Y.array,title:Y.string};const ZCe=j($P)`
-
   .simplebar-content-wrapper {
     scroll-snap-type: x mandatory;
   }
-
 
   .simplebar-track.simplebar-horizontal {
     position: fixed;
@@ -2496,7 +2494,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     left: 20px;
     right: 20px;
 
-    width: auto;
+    width: calc(100% - 40px);
     height: 12px;
     border-radius: 12px;
 
@@ -2505,17 +2503,19 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     transform: scale(1);
 
     @media screen and (width >= 768px) {
+      width: calc(100% - 64px);
+      left: 32px;
+      right: 32px;
       height: 14px;
-      left: 30px;
-      right: 30px;
     }
   }
 
   .simplebar-scrollbar.simplebar-horizontal {
     position: fixed;
     bottom: 20px;
-    left: 20px;
-    right: 20px;
+    /* left: 20px;
+    right: 20px; */
+    padding: 0 20px;
 
     width: auto;
     height: 12px;
@@ -2526,8 +2526,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     transform: scale(1);
 
     @media screen and (width >= 768px) {
-      left: 30px;
-      right: 30px;
+      /* left: 30px;
+      right: 30px; */
       height: 14px;
     }
   }
@@ -2554,6 +2554,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 
   @media screen and (width >= 768px) {
     gap: 16px;
+    justify-content: space-between;
   }
 
   @media screen and (width >= 1440px) {
