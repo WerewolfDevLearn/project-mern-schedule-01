@@ -1,10 +1,12 @@
 // import { useState } from 'react';
 import { Formik } from 'formik';
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import i18n from 'i18next';
+import XClose from 'src/components/shared/Icons/XClose';
+import { changeEM } from 'src/redux/auth/authOps';
 
-import { XClose } from '../../../shared/Icons';
 import UniversalInput from '../../UniversalInput/UniversalInput';
 // import VerifyForm from '../../AuthForms/VerifyForm/VerifyForm';
 
@@ -20,14 +22,18 @@ import {
   CancelBtn
 } from './ChangeEmailForm.styled';
 
-export default function ChangeEmailForm({ onClose, callbackEmail }) {
+export default function ChangeEmailForm({ onClose, openChangeEmailVerifyModal }) {
+  const dispatch = useDispatch();
+
   const initialValues = { email: '' };
   const { t } = useTranslation();
 
   // const [isUpdating, setisUpdating] = useState(false);
 
   const handleSubmit = (values) => {
-    callbackEmail(values);
+    dispatch(changeEM(values));
+    openChangeEmailVerifyModal();
+    // onClose();
   };
 
   return (
@@ -77,6 +83,5 @@ export default function ChangeEmailForm({ onClose, callbackEmail }) {
 
 ChangeEmailForm.propTypes = {
   onClose: PropTypes.func.isRequired,
-  callbackEmail: PropTypes.func.isRequired,
   openChangeEmailVerifyModal: PropTypes.func.isRequired
 };

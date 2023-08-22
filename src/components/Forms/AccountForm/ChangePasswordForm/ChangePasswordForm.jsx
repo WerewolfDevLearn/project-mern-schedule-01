@@ -25,13 +25,11 @@ export default function ChangePasswordForm({ onClose, callbackPassword }) {
   const [validateAfterSubmit, setValidateAfterSubmit] = useState(false);
 
   const initialValues = {
-    password: '',
     newPassword: '',
     confirmPassword: ''
   };
   const onSubmit = (data) => {
     setValidateAfterSubmit(true);
-    console.log(data);
     callbackPassword(data);
     setValidateAfterSubmit(false);
   };
@@ -57,22 +55,13 @@ export default function ChangePasswordForm({ onClose, callbackPassword }) {
                 </XCloseWrap>
                 <ChangePasswordTitle>{t('ChangePassword')}</ChangePasswordTitle>
                 <InputsContainer>
-                  {/* <PasswordInput
-                    formik={formik}
-                    validateAfterSubmit={validateAfterSubmit}
-                    setValidateAfterSubmit={setValidateAfterSubmit}
-                    label="Old password"
-                    name="password"
-                    id="password"
-                    placeholder="Password"
-                  /> */}
                   <InputWrap>
                     <PasswordInput
                       formik={formik}
                       validateAfterSubmit={validateAfterSubmit}
                       setValidateAfterSubmit={setValidateAfterSubmit}
                       label={t('NewPassword')}
-                      name="password"
+                      name="newPassword"
                       id="newPassword"
                       placeholder={t('Password')}
                     />

@@ -112,12 +112,12 @@ export const delUser = createAsyncThunk(
 );
 export const changePW = createAsyncThunk(
   'user/ChangePassword',
-  async (_, { rejectWithValue, getState }) => {
+  async (userData, { rejectWithValue, getState }) => {
     try {
       const state = getState();
       const stateToken = state.user.token;
       if (!stateToken) return rejectWithValue('You have no rights');
-      const credentials = await changePassword(stateToken);
+      const credentials = await changePassword(userData, stateToken);
       return credentials;
     } catch (error) {
       return rejectWithValue(error.message);
