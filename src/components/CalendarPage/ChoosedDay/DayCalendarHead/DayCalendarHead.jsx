@@ -4,14 +4,14 @@ import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 import { addDays, eachDayOfInterval, format, startOfWeek } from 'date-fns';
 
+import TasksBadge from '../../TasksBadge/TasksBadge';
+
 import {
   DayCalendarHeadStyles,
   DayCalendarHeadItem,
   WeekDay,
   DateDayWrap,
-  DateDay,
-  TasksCount,
-  CheckStyles
+  DateDay
 } from './DayCalendarHead.styled';
 
 export default function DayCalendarHead({ date, tasks }) {
@@ -51,26 +51,6 @@ export default function DayCalendarHead({ date, tasks }) {
     navigate(path, { replace: true });
   };
 
-  const getCountTasksForDay = (date) => {
-    const formattedDate = formatDate(date);
-    const tasksFiltered = tasks.filter((task) => task.date === formattedDate);
-    const tasksFilteredNotDone = tasksFiltered.filter((task) => task.category !== 'done');
-    const tasksFilteredDone = tasksFiltered.filter((task) => task.category === 'done');
-
-    return (
-      <>
-        {tasksFilteredNotDone.length > 0 ? (
-          <TasksCount>{tasksFilteredNotDone.length}</TasksCount>
-        ) : (
-          tasksFilteredNotDone.length < 1 &&
-          tasksFilteredDone.length >= 1 && (
-            <CheckStyles color="#2ac76b" width="15px" height="15px" />
-          )
-        )}
-      </>
-    );
-  };
-
   return (
     <DayCalendarHeadStyles>
       {weekDays.map((day) => (
@@ -78,7 +58,7 @@ export default function DayCalendarHead({ date, tasks }) {
           <a onClick={() => onSelectDay(day)}>
             <WeekDay>{getWeekDay(day)}</WeekDay>
             <DateDayWrap selected={formatDate(day) === selectedDay}>
-              {getCountTasksForDay(day)}
+              <TasksBadge tasks={tasks} date={day} page="day" />
               <DateDay>{format(day, 'd')}</DateDay>
             </DateDayWrap>
           </a>

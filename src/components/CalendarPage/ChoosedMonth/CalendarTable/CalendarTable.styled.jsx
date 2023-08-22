@@ -47,6 +47,14 @@ export const CellWrapper = styled(NavLink)`
   padding-bottom: 1px;
   cursor: pointer;
 
+  transition: border 100ms linear;
+
+  &:hover,
+  &:focus {
+    border: 1px solid ${({ theme }) => theme.colors.accent};
+    outline: transparent;
+  }
+
   @media screen and (min-width: ${themes.breakpoints.m}) {
     height: 144px;
     font-size: ${themes.fontSizes.m};

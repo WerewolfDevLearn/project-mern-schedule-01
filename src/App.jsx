@@ -74,7 +74,12 @@ function App() {
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </Suspense>
-      <ToastContainer hideProgressBar closeOnClick theme={theme.toastify.theme} />
+      <ToastContainer
+        hideProgressBar
+        closeOnClick
+        theme={theme.toastify.theme}
+        position="bottom-right"
+      />
       {/* </DivWrapperAPP> */}
       {/* </DivColorWrapperAPP> */}
       <GlobalStyle />
