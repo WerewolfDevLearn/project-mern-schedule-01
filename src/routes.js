@@ -3,6 +3,8 @@ const routes = {
   registerPage: '/register',
   loginPage: '/login',
   authGoogle: '/login/google',
+  forgotPassword: '/forgot',
+  resetPassword: '/reset',
   verify: '/verify', //  :verifycode
   mainLayout: '/',
   accountPage: '/account',

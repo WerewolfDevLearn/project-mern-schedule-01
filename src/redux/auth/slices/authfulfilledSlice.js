@@ -3,16 +3,7 @@ import { persistReducer } from 'redux-persist';
 
 import storage from 'redux-persist/lib/storage';
 
-import {
-  authenticate,
-  userlogin,
-  logOut,
-  getCurrent,
-  verify,
-  updUser,
-  changeEM,
-  delUser
-} from '../authOps';
+import { authenticate, userlogin, logOut, getCurrent, verify, updUser, delUser } from '../authOps';
 
 const initialState = {
   userId: '',
@@ -48,9 +39,6 @@ const userGetCurrent = (state, { payload }) => {
   state.birthday = payload.user.birthday;
   state.avatarUrl = payload.user.avatarUrl;
 };
-const userChangeEmail = (state, { payload }) => {
-  state.email = payload.user.email;
-};
 
 const userSlice = createSlice({
   name: 'user',
@@ -65,7 +53,6 @@ const userSlice = createSlice({
       .addCase(updUser.fulfilled, userGetCurrent)
       .addCase(logOut.fulfilled, () => initialState)
       .addCase(delUser.fulfilled, () => initialState)
-      .addCase(changeEM.fulfilled, () => userChangeEmail)
       .addCase(getCurrent.rejected, () => userTokenExpired);
   }
 });

@@ -3,9 +3,10 @@ import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { useGetReviewOwnQuery } from 'src/redux/reviews/reviewsApi';
+
 import Modal from 'src/components/shared/Modal/Modal';
 import FeedbackForm from 'src/components/Forms/FeedbackForm/FeedbackForm';
+import FormWrapper from 'src/components/Forms/FeedbackForm/FormWrapper';
 import { modalBackdropcolors } from 'src/styles/variables/themes';
 import LangToggler from 'src/components/shared/LangToggler/LangToggler';
 
@@ -21,13 +22,13 @@ import UserMenuBTN from './UserMenuBTN/UserMenuBTN';
 import { Header, LoactionSign, WrapTogglers, Go, Slogan } from './Header.styled';
 
 export default function AppHeader({ callBack, isHomePage }) {
-  let action = 'add';
-  const { data: reviews, isFetching, isLoading } = useGetReviewOwnQuery();
-  if (!isLoading && reviews) {
-    if (reviews.length) {
-      action = 'view';
-    }
-  }
+  // let action = 'add';
+  // const { data: reviews, isFetching, isLoading } = useGetReviewOwnQuery();
+  // if (!isLoading && reviews) {
+  //   if (reviews.length) {
+  //     action = 'view';
+  //   }
+  // }
 
   const { t } = useTranslation();
 
@@ -97,7 +98,7 @@ export default function AppHeader({ callBack, isHomePage }) {
           <AnimatePresence>
             {modalIsOpen && (
               <Modal onClose={closeModal} color={modalBackdropcolors.grey} clickable>
-                <FeedbackForm onClose={closeModal} action={action} reviewToEdit={reviews[0]} />
+                <FeedbackForm onClose={closeModal} />
               </Modal>
             )}
           </AnimatePresence>
@@ -117,7 +118,7 @@ export default function AppHeader({ callBack, isHomePage }) {
           <AnimatePresence>
             {modalIsOpen && (
               <Modal onClose={closeModal} color={modalBackdropcolors.grey} clickable>
-                <FeedbackForm onClose={closeModal} action={action} reviewToEdit={reviews[0]} />
+                <FormWrapper onClose={closeModal} />
               </Modal>
             )}
           </AnimatePresence>
