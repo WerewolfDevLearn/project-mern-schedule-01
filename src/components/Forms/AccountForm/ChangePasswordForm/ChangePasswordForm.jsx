@@ -24,7 +24,6 @@ export default function ChangePasswordForm({ onClose, callbackPassword }) {
   const [validateAfterSubmit, setValidateAfterSubmit] = useState(false);
 
   const initialValues = {
-    password: '',
     newPassword: '',
     confirmPassword: ''
   };
@@ -61,7 +60,7 @@ export default function ChangePasswordForm({ onClose, callbackPassword }) {
                       validateAfterSubmit={validateAfterSubmit}
                       setValidateAfterSubmit={setValidateAfterSubmit}
                       label={t('NewPassword')}
-                      name="password"
+                      name="newPassword"
                       id="newPassword"
                       placeholder={t('Password')}
                     />

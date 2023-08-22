@@ -2,6 +2,10 @@ import { Formik } from 'formik';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 
+import { useDispatch } from 'react-redux';
+
+import { verify } from 'src/redux/auth/authOps';
+
 import UniversalInput from '../../UniversalInput/UniversalInput';
 
 import {
@@ -12,13 +16,14 @@ import {
   CancelBtn
 } from './ChangeEmailVerifyForm.styled';
 
-export default function ChangeEmailForm({ onClose, callbackEmail, closeChangeEmailVerifyModal }) {
-  const initialValues = { code: '' };
+export default function ChangeEmailVerifyForm({ onClose }) {
+  const initialValues = { verificationCode: '' };
   const { t } = useTranslation();
+  const dispatch = useDispatch();
 
   const handleSubmit = (values) => {
-    callbackEmail(values);
-    closeChangeEmailVerifyModal();
+    dispatch(verify(values));
+    onClose();
   };
 
   return (
@@ -32,7 +37,7 @@ export default function ChangeEmailForm({ onClose, callbackEmail, closeChangeEma
                   <UniversalInput
                     label={t('VerifyCode')}
                     type="text"
-                    name="code"
+                    name="verificationCode"
                     placeholder={t('EnterVerifyCode')}
                   />
                 </InputsContainer>
@@ -40,7 +45,7 @@ export default function ChangeEmailForm({ onClose, callbackEmail, closeChangeEma
                   <UpdateBtn
                     type="submit"
                     // disabled={
-                    //   !formik.isValid || !formik.touched || formik.isSubmitting || !formik.dirty
+                    // !formik.isValid || !formik.touched || formik.isSubmitting || !formik.dirty
                     // }
                   >
                     {t('Verify')}
@@ -58,8 +63,6 @@ export default function ChangeEmailForm({ onClose, callbackEmail, closeChangeEma
   );
 }
 
-ChangeEmailForm.propTypes = {
-  onClose: PropTypes.func.isRequired,
-  callbackEmail: PropTypes.func.isRequired,
-  closeChangeEmailVerifyModal: PropTypes.bool.isRequired
+ChangeEmailVerifyForm.propTypes = {
+  onClose: PropTypes.func.isRequired
 };
