@@ -16,6 +16,8 @@ export default function ChangeEmailModal() {
   const [showChangeEmailVerifyModal, setShowChangeEmailVerifyModal] = useState(false);
   const [backdrop, setBackdrop] = useState(false);
 
+  const { t } = useTranslation();
+
   const openBackdrop = () => {
     setBackdrop(true);
     setShowChangeEmailModal(true);
@@ -42,7 +44,7 @@ export default function ChangeEmailModal() {
       )}
 
       <ChangeValueBtn type="button" onClick={openBackdrop}>
-        Change email
+        {t('ChangeEmail')}
       </ChangeValueBtn>
     </>
   );

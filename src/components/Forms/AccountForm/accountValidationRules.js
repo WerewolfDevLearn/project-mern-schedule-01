@@ -39,7 +39,7 @@ export const validationChangePasswordRules = Yup.object().shape({
   confirmPassword: Yup.string()
     .min(6, i18n.t('ShortPassword'))
     .required(i18n.t('Password Required'))
-    .oneOf([Yup.ref('newPassword'), null], 'Passwords must match')
+    .oneOf([Yup.ref('newPassword'), null], i18n.t('Passwords must match'))
 });
 
 export const validationUserFormRules = Yup.object().shape({
