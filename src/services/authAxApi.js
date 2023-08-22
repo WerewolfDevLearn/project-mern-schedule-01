@@ -3,8 +3,8 @@ import { store } from 'src/redux/store';
 
 import { authenticate } from '../redux/auth/authOps';
 
-// axios.defaults.baseURL = 'https://project-mern-schedule-03.onrender.com/api';
-axios.defaults.baseURL = 'http://localhost:3001/api';
+axios.defaults.baseURL = 'https://project-mern-schedule-03.onrender.com/api';
+// axios.defaults.baseURL = 'http://localhost:3001/api';
 export async function userRegister(userData) {
   const response = await axios.post('/users/register', userData);
   return response.data;
