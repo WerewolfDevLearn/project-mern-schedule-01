@@ -32,6 +32,7 @@ export default function AppHeader({ callBack, isHomePage }) {
 
   const { t } = useTranslation();
 
+  const [isOpenLangToggler, setIsOpenLangToggler] = useState(false);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const location = useLocation();
   const activePage = location.pathname.split('/')[1];
@@ -49,6 +50,10 @@ export default function AppHeader({ callBack, isHomePage }) {
 
   const closeModal = () => {
     setModalIsOpen(false);
+  };
+
+  const toggleLangPopover = () => {
+    setIsOpenLangToggler((prev) => !prev);
   };
 
   const [isDesktop1440, setIsDesktop1440] = useState(false);
@@ -90,7 +95,11 @@ export default function AppHeader({ callBack, isHomePage }) {
 
           <AddFeedbackBtn openModal={openModal} />
           <WrapTogglers>
-            <LangToggler isHomePage={isHomePage} />
+            <LangToggler
+              isHomePage={isHomePage}
+              isOpen={isOpenLangToggler}
+              togglePopover={toggleLangPopover}
+            />
             <ThemeToggler />
           </WrapTogglers>
 
@@ -110,7 +119,11 @@ export default function AppHeader({ callBack, isHomePage }) {
 
           <AddFeedbackBtn openModal={openModal} />
           <WrapTogglers>
-            <LangToggler isHomePage={isHomePage} />
+            <LangToggler
+              isHomePage={isHomePage}
+              isOpen={isOpenLangToggler}
+              togglePopover={toggleLangPopover}
+            />
             <ThemeToggler />
           </WrapTogglers>
 
