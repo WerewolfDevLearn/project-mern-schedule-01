@@ -16,11 +16,9 @@ import { Container, ContentWrap, Wrap, StyledImg } from './ForgotPwdPage.styled'
 function ForgotPwdPage() {
   const dispatch = useDispatch();
   const isLoading = useisLoading();
-  const navigate = useNavigate();
 
   const callBack = (data) => {
     dispatch(forgot(data));
-    // navigate('/login', { replace: true });
   };
 
   return (

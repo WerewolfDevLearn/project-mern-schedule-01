@@ -83,7 +83,6 @@ export const token = {
 axios.interceptors.response.use(
   (response) => response,
   async (error) => {
-    console.log('error: ', error);
     if (error.response.status === 401) {
       try {
         const { data } = await axios.post('/users/refresh', {

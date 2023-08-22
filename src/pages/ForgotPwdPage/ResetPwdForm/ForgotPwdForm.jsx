@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import { validationReserPwdRules } from '../validationRules';
 import AuthInput from '../AuthInput/AuthInput';
 
-import { Container, Title, FormElement, InputWrap, Button, Img } from '../GeneralAuth.styles';
+import { Container, Title, FormElement, InputWrap, Button } from '../GeneralAuth.styles';
 
 export default function ForgotPwdForm({ onSubmitForm }) {
   const [validateAfterSubmit, setValidateAfterSubmit] = useState(false);
