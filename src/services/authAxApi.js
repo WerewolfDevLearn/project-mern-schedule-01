@@ -83,11 +83,14 @@ export const token = {
 axios.interceptors.response.use(
   (response) => response,
   async (error) => {
-    if (error.response.status === 401) {
+    if (error.response.status == 401) {
+      const refreshToken = store.getState().user.refreshToken;
+      axios.defaults.headers.common['refreshtoken'] = refreshToken;
+      error.config.headers.refreshtoken = `${refreshToken}`;
+
       try {
-        const { data } = await axios.post('/users/refresh', {
-          refreshToken: store.getState().user.refreshToken
-        });
+        const { data } = await axios.post('/users/refresh', { refreshToken }); // req.body do not attach refreshToken sometimes !!!
+
         token.set(data.token);
         await store.dispatch(authenticate({ token: data.token, refreshToken: data.refreshToken }));
         error.config.headers.Authorization = `Bearer ${data.token}`;
