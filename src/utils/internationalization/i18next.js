@@ -5,6 +5,8 @@ import Backend from 'i18next-http-backend';
 
 import en from './locales/en/en.json';
 import uk from './locales/uk/uk.json';
+import de from './locales/de/de.json';
+import pl from './locales/pl/pl.json';
 import { langs } from './langs';
 
 const resources = {
@@ -13,6 +15,12 @@ const resources = {
   },
   uk: {
     translation: uk
+  },
+  de: {
+    translation: de
+  },
+  pl: {
+    translation: pl
   }
 };
 
@@ -21,8 +29,8 @@ i18n
   .use(initReactI18next)
   .use(Backend)
   .init({
-    supportedLngs: ['en', 'uk'],
-    locales: ['en', 'uk'],
+    supportedLngs: ['en', 'uk', 'de', 'pl'],
+    locales: ['en', 'uk', 'de', 'pl'],
     fallbackLng: langs.EN,
     debug: false,
     resources,

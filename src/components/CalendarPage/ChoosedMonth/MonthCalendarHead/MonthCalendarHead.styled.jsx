@@ -46,6 +46,7 @@ export const WorkDay = styled.li`
   font-weight: ${themes.fontWeight.sb};
   line-height: 18px;
   text-transform: uppercase;
+  text-align: center;
 `;
 
 export const WeekendDay = styled(WorkDay)`

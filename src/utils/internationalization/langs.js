@@ -1,4 +1,6 @@
 export const langs = {
   UK: 'uk',
-  EN: 'en'
+  EN: 'en',
+  DE: 'de',
+  PL: 'pl'
 };

@@ -41,3 +41,21 @@ export const Label = styled.p`
   background-color: ${themes.colors.ligthBlue};
   border-radius: 50%;
 `;
+
+export const PopoverWrapper = styled.ul`
+  padding: 20px;
+  border-radius: 8px;
+  z-index: 5;
+
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+
+  background: ${({ theme }) => theme.colors.backgroundModalTodo};
+  border: 1px solid ${({ theme }) => theme.colors.tasksListBorder};
+  box-shadow: 0px 4px 16px 0px rgba(17, 17, 17, 0.1);
+`;
+
+export const PopoverItem = styled.li`
+  width: auto;
+`;
