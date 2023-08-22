@@ -20,7 +20,7 @@ export const MainLayOutSubContainer = styled.div`
     padding-right: 32px;
   }
   @media screen and (${themes.breakpoints.l} < width) {
-    width: 1087px;
+    /* width: 1087px;  кажется это лишнее, не уверен */
     padding-bottom: 42px;
   }
 `;

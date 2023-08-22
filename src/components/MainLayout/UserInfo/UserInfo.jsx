@@ -5,9 +5,12 @@ import { UserInfoStyles, UserName } from './UserInfo.styled';
 
 export default function UserInfo() {
   const { name, avatarUrl } = useUser();
+
+  const screenWidthIsMobile = window.innerWidth < 768;
+
   return (
     <UserInfoStyles>
-      <UserName>{name.split(' ')[0]}</UserName>
+      <UserName>{screenWidthIsMobile ? `${name.slice(0, 3)}...` : name.split(' ')[0]}</UserName>
       {avatarUrl ? (
         <Avatar
           alt="username"

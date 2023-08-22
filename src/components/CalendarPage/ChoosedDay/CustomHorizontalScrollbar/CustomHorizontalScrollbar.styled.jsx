@@ -2,11 +2,9 @@ import styled from 'styled-components';
 import SimpleBar from 'simplebar-react';
 
 export const Scrollbar = styled(SimpleBar)`
-
   .simplebar-content-wrapper {
     scroll-snap-type: x mandatory;
   }
-
 
   .simplebar-track.simplebar-horizontal {
     position: fixed;
@@ -14,7 +12,7 @@ export const Scrollbar = styled(SimpleBar)`
     left: 20px;
     right: 20px;
 
-    width: auto;
+    width: calc(100% - 40px);
     height: 12px;
     border-radius: 12px;
 
@@ -23,17 +21,19 @@ export const Scrollbar = styled(SimpleBar)`
     transform: scale(1);
 
     @media screen and (width >= 768px) {
+      width: calc(100% - 64px);
+      left: 32px;
+      right: 32px;
       height: 14px;
-      left: 30px;
-      right: 30px;
     }
   }
 
   .simplebar-scrollbar.simplebar-horizontal {
     position: fixed;
     bottom: 20px;
-    left: 20px;
-    right: 20px;
+    /* left: 20px;
+    right: 20px; */
+    padding: 0 20px;
 
     width: auto;
     height: 12px;
@@ -44,8 +44,8 @@ export const Scrollbar = styled(SimpleBar)`
     transform: scale(1);
 
     @media screen and (width >= 768px) {
-      left: 30px;
-      right: 30px;
+      /* left: 30px;
+      right: 30px; */
       height: 14px;
     }
   }
