@@ -118,7 +118,7 @@ export default function AppHeader({ callBack, isHomePage }) {
           <AnimatePresence>
             {modalIsOpen && (
               <Modal onClose={closeModal} color={modalBackdropcolors.grey} clickable>
-                <FormWrapper onClose={closeModal} action="view" />
+                <FormWrapper onClose={closeModal} />
               </Modal>
             )}
           </AnimatePresence>
