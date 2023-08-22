@@ -14,6 +14,7 @@ export const InputField = styled(Field)`
   line-height: 1.29;
   font-weight: 600;
   letter-spacing: -0.02em;
+  width: 200px;
   color: ${({ theme }) => theme.colors.textCancelBtn};
   border-width: 1px;
   border-style: solid;
@@ -21,15 +22,18 @@ export const InputField = styled(Field)`
   border-radius: 8px;
   padding: 0 18px;
   margin-bottom: 8px;
-  width: 200px;
   background: transparent;
 
-  @media screen and (${themes.breakpoints.s} <= width < ${themes.breakpoints.m}) {
+  &:hover {
+    border: 1px solid black;
+  }
+
+  @media screen and (${themes.breakpoints.s} < width <= ${themes.breakpoints.m}) {
     width: 299px;
     height: 42px;
   }
 
-  @media screen and (${themes.breakpoints.m} <= width) {
+  @media screen and (${themes.breakpoints.m} < width) {
     font-size: 16px;
     line-height: 1.13;
     width: 354px;
@@ -37,10 +41,6 @@ export const InputField = styled(Field)`
     border-radius: 8px;
     padding: 0 18px;
     margin-bottom: 8px;
-
-    &:hover {
-      border: 1px solid black;
-    }
   }
 `;
 
@@ -81,13 +81,8 @@ export const ErrorMessage = styled(FormikErrorMessage)`
   line-height: 14px;
   padding-left: 14px;
   color: red;
-  @media screen and (${themes.breakpoints.s} <= width < ${themes.breakpoints.m}) {
-  }
 
-  @media screen and (${themes.breakpoints.m} <= width < ${themes.breakpoints.l}) {
-  }
-
-  @media screen and (${themes.breakpoints.l} <= width) {
+  @media screen and (${themes.breakpoints.m} < width) {
     padding-left: 18px;
   }
 `;

@@ -13,7 +13,7 @@ export const UserNameTitle = styled.h2`
   margin-bottom: 4px;
   color: ${({ theme }) => theme.colors.textCancelBtn};
 
-  @media screen and (${themes.breakpoints.l} <= width) {
+  @media screen and (${themes.breakpoints.m} < width) {
     margin-bottom: 8px;
   }
 `;
@@ -26,14 +26,14 @@ export const RoleTitle = styled.p`
   margin-bottom: 24px;
   color: ${({ theme }) => theme.colors.placeholder};
 
-  @media screen and (${themes.breakpoints.m} <= width) {
+  @media screen and (${themes.breakpoints.s} <= width) {
     font-size: 14px;
     font-weight: 600;
     line-height: 1.29;
     letter-spacing: -0.02em;
   }
 
-  @media screen and (${themes.breakpoints.l} <= width) {
+  @media screen and (${themes.breakpoints.m} < width) {
     margin-bottom: 44px;
   }
 `;
@@ -43,11 +43,11 @@ export const FormInputContainer = styled.div`
   flex-direction: column;
   gap: 10px;
 
-  @media screen and (${themes.breakpoints.m} <= width < ${themes.breakpoints.l}) {
+  @media screen and (${themes.breakpoints.s} <= width < ${themes.breakpoints.m}) {
     gap: 16px;
   }
 
-  @media screen and (${themes.breakpoints.l} <= width) {
+  @media screen and (${themes.breakpoints.m} < width) {
     flex-direction: row;
     flex-wrap: wrap;
     gap: 16px 50px;
@@ -92,12 +92,12 @@ export const FormBtn = styled.button`
     cursor: not-allowed;
   }
 
-  @media screen and (${themes.breakpoints.m} <= width) {
+  @media screen and (${themes.breakpoints.s} < width) {
     width: 262px;
     height: 48px;
     margin-top: 80px;
   }
 
-  @media screen and (${themes.breakpoints.l} <= width) {
+  @media screen and (${themes.breakpoints.m} < width) {
   }
 `;

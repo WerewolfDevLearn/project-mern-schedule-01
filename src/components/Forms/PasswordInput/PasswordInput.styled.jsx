@@ -15,6 +15,10 @@ export const InputContainer = styled.div`
 `;
 
 export const InputField = styled(Field)`
+  font-size: 14px;
+  line-height: 1.29;
+  font-weight: 600;
+  letter-spacing: -0.02em;
   width: 354px;
   height: 46px;
   border-width: 1px;
@@ -48,8 +52,8 @@ export const ErrorMessage = styled(FormikErrorMessage)`
   left: 14px;
   bottom: -18px;
 
-  @media screen and (min-width: ${themes.breakpoints.m}) {
-    font-size: ${themes.fontSizes.s};
+  @media screen and (${themes.breakpoints.m} < width) {
+    /* font-size: ${themes.fontSizes.s}; */
     left: 18px;
   }
 `;
