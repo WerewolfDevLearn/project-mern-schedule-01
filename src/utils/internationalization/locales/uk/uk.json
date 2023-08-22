@@ -179,6 +179,7 @@
   "OldPassword": "Старий пароль",
   "NewPassword": "Новий пароль",
   "ConfirmNewPassword": "Підтвердити новий пароль",
+  "Passwords must match": "Паролі мають збігатися",
   "UpdatePassword": "Оновити пароль",
   "ShortPassword": "Пароль занадто короткий - повинен містити принаймні 6 символів",
   "DeleteProfile": "Видалити профіль",
