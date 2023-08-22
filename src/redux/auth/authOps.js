@@ -30,7 +30,8 @@ export const register = createAsyncThunk(
       const response = await userRegister(user);
       return response;
     } catch (error) {
-      return rejectWithValue(error.response.data.message);
+      if (error.response.data.message) return rejectWithValue(error.response.data.message);
+      return rejectWithValue(error.message);
     }
   }
 );
@@ -40,14 +41,18 @@ export const userlogin = createAsyncThunk(
   async function (loginU, { rejectWithValue }) {
     try {
       const response = await userLogin(loginU);
+
       token.set(response.token);
       return response;
     } catch (error) {
-      return rejectWithValue(error);
+      if (error.response.data.message === 'Action Required: Verify Your Email') {
+        return rejectWithValue(error.response.data.message);
+      }
+      return rejectWithValue(error.message);
     }
   }
 );
-
+userlogin();
 export const logOut = createAsyncThunk('user/LogOut', async (_, { rejectWithValue }) => {
   try {
     const response = await userLogOut();

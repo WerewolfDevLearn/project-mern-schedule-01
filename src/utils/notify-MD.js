@@ -11,10 +11,18 @@ const regExp = {
   userLoginRG: 'user/Login/rejected',
   userLogOutRG: 'user/LogOut/rejected',
   userUpdateRG: 'user/Update/rejected',
-  userGCRG: 'user/GetCurrent/rejected'
+  userGCRG: 'user/GetCurrent/rejected',
+  userChPWRG: 'user/ChangePassword/rejected',
+  userChPWFF: 'user/ChangePassword/fulfilled',
+  userEmailCRG: 'user/ChangeEmail/rejected',
+  userEmailCFF: 'user/ChangeEmail/fulfilled',
+  userVerifyRG: 'user/VerifyEmail/rejected',
+  userVerifyFF: 'user/VerifyEmail/fulfilled'
 };
 
 export const ErrorLogger = (_api) => (next) => (action) => {
+  console.log('actio: ', action);
+
   if (action.type === regExp.userRegFF) {
     toast.success(i18n.t('Verification letter was send to you email address'));
   }
@@ -25,12 +33,31 @@ export const ErrorLogger = (_api) => (next) => (action) => {
     toast.success(i18n.t('UserUpdated'));
   }
 
+  if (action.type === regExp.userEmailCFF) {
+    toast.success('Email was updated successfully!'); // i18n.t('UserUpdated')
+  }
+  if (action.type === regExp.userEmailCRG) {
+    toast.error('Your email has not been updated. Please try again later'); // i18n.t('UserUpdated')
+  }
+  if (action.type === regExp.userChPWFF) {
+    toast.success('Password was updated successfully!'); // i18n.t('UserUpdated')
+  }
+  if (action.type === regExp.userChPWRG) {
+    toast.error('Your Password has not been updated. Please try again later'); // i18n.t('UserUpdated')
+  }
+  if (action.type === regExp.userChPWFF) {
+    toast.success('A verification code has been sent to your email. Please check it!'); // i18n.t('UserUpdated')
+  }
+  if (action.type === regExp.userChPWRG) {
+    toast.error('Something went wrong. Please try again'); // i18n.t('UserUpdated')
+  }
+
   if (
     isRejected(action) &&
     action.type === regExp.userLoginRG &&
     action.payload === 'Action Required: Verify Your Email'
   ) {
-    toast.error(i18n.t('CheckEmail'));
+    toast.success(i18n.t('CheckEmail'));
   }
   if (
     isRejected(action) &&
