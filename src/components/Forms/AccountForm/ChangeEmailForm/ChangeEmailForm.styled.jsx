@@ -14,9 +14,6 @@ export const Modal = styled(Form)`
   background: ${({ theme }) => theme.colors.backgroundUserForm};
   box-shadow: rgb(0, 0, 0) 0px 0px 80px;
 
-  @media screen and (${themes.breakpoints.s} <= width < ${themes.breakpoints.m}) {
-  }
-
   @media screen and (${themes.breakpoints.m} <= width) {
     width: 600px;
     height: 350px;
@@ -91,7 +88,6 @@ export const CancelBtn = styled.button`
   border-radius: 16px;
   color: white;
   background-color: #3e85f3;
-  /* border: 3px solid #3e85f3; */
   margin-left: 30px;
   margin-bottom: 10px;
 
