@@ -23,6 +23,8 @@
 
   "Log In": "Log in",
   "Log In With Google": "Log in with Google",
+  "Forgot Password": "Forgot password",
+  "Reset Password": "Reset password",
   "Sign Up": "Sign up",
   "Sign Up With Google": "Sign up with Google",
   "Name": "Name",
@@ -46,6 +48,7 @@
   "Invalid Email": "Invalid email format",
   "Password Required": "Password is a required field",
   "Password Characters": "Password must be at least 6 characters",
+  "Must Match":"Must Match",
 
   "User Profile": "User Profile",
   "Feedback": "Feedback",
@@ -176,6 +179,7 @@
   "OldPassword": "Old password",
   "NewPassword": "New password",
   "ConfirmNewPassword": "Confirm new password",
+  "Passwords must match": "Passwords must match",
   "UpdatePassword": "Update password",
   "ShortPassword": "The password is short - must contain at least 6 characters",
   "DeleteProfile": "Delete profile",

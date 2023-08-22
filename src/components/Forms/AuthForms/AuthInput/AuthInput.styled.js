@@ -27,6 +27,12 @@ export const Subtitle = styled.label`
   @media screen and (min-width: ${themes.breakpoints.m}) {
     font-size: ${themes.fontSizes.s};
   }
+
+  & div {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
 `;
 
 export const InputContainer = styled.div`

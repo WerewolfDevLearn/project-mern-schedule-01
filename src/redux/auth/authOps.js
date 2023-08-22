@@ -10,7 +10,9 @@ import {
   updateUser,
   deleteUser,
   changeEmail,
-  changePassword
+  changePassword,
+  forgotPwd,
+  resetPwd
 } from 'src/services/authAxApi';
 
 export const authenticate = createAsyncThunk('user/Auth', function (token, { rejectWithValue }) {
@@ -110,12 +112,12 @@ export const delUser = createAsyncThunk(
 );
 export const changePW = createAsyncThunk(
   'user/ChangePassword',
-  async (_, { rejectWithValue, getState }) => {
+  async (userData, { rejectWithValue, getState }) => {
     try {
       const state = getState();
       const stateToken = state.user.token;
       if (!stateToken) return rejectWithValue('You have no rights');
-      const credentials = await changePassword(stateToken);
+      const credentials = await changePassword(userData, stateToken);
       return credentials;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -124,15 +126,33 @@ export const changePW = createAsyncThunk(
 );
 export const changeEM = createAsyncThunk(
   'user/ChangeEmail',
-  async (_, { rejectWithValue, getState }) => {
+  async (userData, { rejectWithValue, getState }) => {
     try {
       const state = getState();
       const stateToken = state.user.token;
       if (!stateToken) return rejectWithValue('You have no rights');
-      const credentials = await changeEmail(stateToken);
+      const credentials = await changeEmail(userData, stateToken);
       return credentials;
     } catch (error) {
       return rejectWithValue(error.message);
     }
   }
 );
+
+export const forgot = createAsyncThunk('user/ForgotPwd', async (email, { rejectWithValue }) => {
+  try {
+    const response = await forgotPwd(email);
+    return response;
+  } catch (error) {
+    return rejectWithValue(error.message);
+  }
+});
+
+export const reset = createAsyncThunk('user/ResetPwd', async (pwd, { rejectWithValue }) => {
+  try {
+    const response = await resetPwd(pwd);
+    return response;
+  } catch (error) {
+    return rejectWithValue(error.message);
+  }
+});

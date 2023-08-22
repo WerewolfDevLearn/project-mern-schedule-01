@@ -71,7 +71,9 @@ export const themes = Object.freeze({
     borderDefaultColor: 'rgba(17, 17, 17, 0.15)',
     borderUserForm: 'rgba(17, 17, 17, 0.15)',
     placeholder: '#343434',
-    PeriodPaginatorBorder: 'rgba(220, 227, 229, 0.50)'
+    PeriodPaginatorBorder: 'rgba(220, 227, 229, 0.50)',
+    subtitle: '#171820',
+    content: 'rgba(17, 17, 17, 0.9)'
   },
   fontSizes: {
     micro: '10px',
@@ -165,7 +167,6 @@ export const dark = Object.freeze({
     sidebarBorder: 'transparent',
     textDisablBtn: '#FFFFFF20',
     statisticsBgLines: 'rgba(227, 243, 255, 0.15)',
-    PeriodPaginatorBorder: 'rgba(255, 255, 255, 0.15)',
 
     black: '#343434',
     white: '#FFFFFF',
@@ -188,7 +189,10 @@ export const dark = Object.freeze({
     textCancelBtnIntodo: '#111111',
     borderDefaultColor: 'rgba(17, 17, 17, 0.15)',
     borderUserForm: 'rgba(255, 255, 255, 0.15)',
-    placeholder: 'rgba(250, 250, 250, 0.30)'
+    placeholder: 'rgba(250, 250, 250, 0.30)',
+    PeriodPaginatorBorder: 'rgba(255, 255, 255, 0.15)',
+    subtitle: '#FFFFFF',
+    content: 'rgba(250, 250, 250, 0.7)'
   },
   fontSizes: {
     micro: '10px',

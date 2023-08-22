@@ -14,3 +14,17 @@ export const validationLoginRules = Yup.object().shape({
   email: Yup.string().required(i18n.t('Email Required')).email(i18n.t('Invalid Email')),
   password: Yup.string().required(i18n.t('Password Required')).min(6, i18n.t('Password Characters'))
 });
+
+export const validationReserEmailRules = Yup.object().shape({
+  email: Yup.string().required(i18n.t('Email Required')).email(i18n.t('Invalid Email'))
+});
+
+export const validationReserPwdRules = Yup.object().shape({
+  newPassword: Yup.string()
+    .required(i18n.t('Password Required'))
+    .min(6, i18n.t('Password Characters')),
+  confirmPassword: Yup.string()
+    .required(i18n.t('Password Required'))
+    .min(6, i18n.t('Password Characters'))
+    .oneOf([Yup.ref('newPassword')], i18n.t('Must Match'))
+});

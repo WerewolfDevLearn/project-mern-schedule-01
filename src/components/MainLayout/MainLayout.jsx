@@ -40,11 +40,16 @@ const Layout = () => {
         <SideBar open={open} callBackCls={callBackCls} />
         <MainLayOutSubContainer>
           <AppHeader callBack={callBack} onGiveFeedBack={toggleModal} />
-          <ChildrenContainer>{isLoading ? <Loader /> : <Outlet />}</ChildrenContainer>
+          <ChildrenContainer>{<Outlet />}</ChildrenContainer>
         </MainLayOutSubContainer>
       </MainLayOutContainer>
 
       {isRefreshing && (
+        <Modal color={modalBackdropcolors.black}>
+          <Loader />
+        </Modal>
+      )}
+      {isLoading && (
         <Modal color={modalBackdropcolors.black}>
           <Loader />
         </Modal>
