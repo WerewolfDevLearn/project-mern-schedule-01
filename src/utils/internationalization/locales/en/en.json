@@ -176,6 +176,7 @@
   "OldPassword": "Old password",
   "NewPassword": "New password",
   "ConfirmNewPassword": "Confirm new password",
+  "Passwords must match": "Passwords must match",
   "UpdatePassword": "Update password",
   "ShortPassword": "The password is short - must contain at least 6 characters",
   "DeleteProfile": "Delete profile",
