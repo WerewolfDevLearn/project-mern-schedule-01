@@ -58,4 +58,4 @@ export const PopoverWrapper = styled.ul`
 
 export const PopoverItem = styled.li`
   width: auto;
-`
+`;
