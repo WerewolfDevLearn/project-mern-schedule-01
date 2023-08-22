@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import i18n from 'i18next';
 import { useTranslation } from 'react-i18next';
 import Modal from 'src/components/shared/Modal/Modal';
 

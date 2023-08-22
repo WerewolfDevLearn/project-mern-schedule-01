@@ -1,8 +1,7 @@
 import { useState } from 'react';
-import PropTypes from 'prop-types';
-import i18n from 'i18next';
 import { useTranslation } from 'react-i18next';
-import { useUser, useError, useisLoading } from 'src/redux/selectors';
+import { useError, useisLoading } from 'src/redux/selectors';
+
 import Modal from 'src/components/shared/Modal/Modal';
 
 import ChangeEmailForm from '../Forms/AccountForm/ChangeEmailForm/ChangeEmailForm';
@@ -11,14 +10,11 @@ import ChangeEmailVerifyForm from '../Forms/AccountForm/ChangeEmailVerifyForm/Ch
 import { ChangeValueBtn } from './ChangeEmailModal.styled';
 
 export default function ChangeEmailModal() {
-  const { t } = useTranslation();
-  //   const user = useUser();
   const isLoading = useisLoading();
   const error = useError();
   const [showChangeEmailModal, setShowChangeEmailModal] = useState(false);
   const [showChangeEmailVerifyModal, setShowChangeEmailVerifyModal] = useState(false);
   const [backdrop, setBackdrop] = useState(false);
-  // const [isUpdating, setisUpdating] = useState(false);
 
   const openBackdrop = () => {
     setBackdrop(true);
@@ -42,7 +38,6 @@ export default function ChangeEmailModal() {
           {!isLoading && !error && showChangeEmailVerifyModal && !showChangeEmailModal && (
             <ChangeEmailVerifyForm onClose={() => setBackdrop(false)} />
           )}
-          {/* {error && setBackdrop(false)} */}
         </Modal>
       )}
 

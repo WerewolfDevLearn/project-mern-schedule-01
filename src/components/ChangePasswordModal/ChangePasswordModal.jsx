@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-import i18n from 'i18next';
 import { useTranslation } from 'react-i18next';
 import Modal from 'src/components/shared/Modal/Modal';
 

@@ -1,6 +1,4 @@
 import styled from 'styled-components';
-import { Field, ErrorMessage as FormikErrorMessage } from 'formik';
-import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { themes } from 'src/styles/variables/themes';
 
@@ -15,7 +13,7 @@ export const UserNameTitle = styled.h2`
   margin-bottom: 4px;
   color: ${({ theme }) => theme.colors.textCancelBtn};
 
-  @media screen and (${themes.breakpoints.l} <= width) {
+  @media screen and (${themes.breakpoints.m} <= width) {
     margin-bottom: 8px;
   }
 `;
@@ -98,8 +96,5 @@ export const FormBtn = styled.button`
     width: 262px;
     height: 48px;
     margin-top: 80px;
-  }
-
-  @media screen and (${themes.breakpoints.l} <= width) {
   }
 `;

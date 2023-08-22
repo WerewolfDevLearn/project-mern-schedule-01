@@ -1,10 +1,9 @@
 import { useRef } from 'react';
 import PropTypes from 'prop-types';
 import Avatar from '@mui/material/Avatar';
-import i18n from 'i18next';
 import { useTranslation } from 'react-i18next';
 import { useUser } from 'src/redux/selectors';
-import { Plus, Trash } from 'src/components/shared/Icons';
+import { Plus } from 'src/components/shared/Icons';
 
 import { SUPPORTED_FORMATS } from '../accountValidationRules';
 
@@ -12,7 +11,6 @@ import {
   AvatarAddIcon,
   AvatarContainer,
   AvatarInputField,
-  AvatarImgContainer,
   AvatarImg
 } from './AccountAvatar.styled';
 
@@ -22,12 +20,10 @@ export default function AccountAvatar({
   setSelectedAvatar,
   setImagePreview
 }) {
-  const { t } = useTranslation();
   const user = useUser();
   const fileInputRef = useRef(null);
 
   const handleAddImageClick = () => fileInputRef.current.click();
-  const handleDeleteImageClick = () => fileInputRef.current.click();
 
   return (
     <AvatarContainer>
@@ -43,7 +39,6 @@ export default function AccountAvatar({
           onBlur={() => formik.setTouched({ avatar: true })}
           onChange={(e) => {
             const avatar = e.target.files[0];
-            // console.log('AVATAR', avatar);
 
             if (avatar && SUPPORTED_FORMATS.includes(avatar.type)) {
               formik.setFieldValue('avatar', avatar);
@@ -55,7 +50,6 @@ export default function AccountAvatar({
 
         {selectedAvatar ? (
           <div>
-            {/* {console.log('SELECT AVATAR', selectedAvatar)} */}
             <AvatarImg src={selectedAvatar} alt={user.name} />
           </div>
         ) : (
