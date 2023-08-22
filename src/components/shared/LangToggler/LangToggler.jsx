@@ -16,7 +16,6 @@ export default function LangToggler({ isHomePage, isOpen, togglePopover }) {
 
   const handleLangChange = ({ currentTarget }) => {
     const { value } = currentTarget;
-    console.log(value);
 
     setSearchParams({ lang: value });
 

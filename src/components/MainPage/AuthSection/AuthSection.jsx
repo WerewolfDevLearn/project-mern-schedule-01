@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import routes from 'src/routes';
@@ -27,11 +28,16 @@ import {
 
 export default function AuthSection({ isHomePage }) {
   const { t } = useTranslation();
+  const [isOpenLangToggler, setIsOpenLangToggler] = useState(false);
+
+  const toggleLangPopover = () => {
+    setIsOpenLangToggler((prev) => !prev);
+  };
 
   return (
     <StyledHero>
       <StyledTogglerWrapper>
-        <LangToggler isHomePage={!isHomePage} />
+        <LangToggler isHomePage={!isHomePage} isOpen={isOpenLangToggler} togglePopover={toggleLangPopover} />
       </StyledTogglerWrapper>
       <StyledImg>
         <source
