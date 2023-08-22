@@ -31,11 +31,12 @@ import {
   RatingStarDisable
 } from './FeedbackForm.styled';
 
-export default function FeedbackForm({ onClose, action = 'add', reviewToEdit }) {
-  const [createReview, createResult] = useCreateReviewsMutation();
-  const [deleteReview, deleteResult] = useDeleteReviewsMutation();
-  const [updateReview, updateResult] = useUpdateReviewsMutation();
+export default function FeedbackForm({ onClose, action, reviewToEdit }) {
+  const [createReview] = useCreateReviewsMutation();
+  const [deleteReview] = useDeleteReviewsMutation();
+  const [updateReview] = useUpdateReviewsMutation();
   const [selectAction, setSelectAction] = useState(action);
+
   const { t } = useTranslation();
 
   let _id, rating, comment;

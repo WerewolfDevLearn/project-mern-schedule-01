@@ -18,12 +18,15 @@ import Loader from './components/shared/Loader/Loader';
 import MainPage from './pages/MainPage';
 import ErrorPage from './pages/ErrorPage/ErrorPage';
 import LoginPage from './pages/LoginPage/LoginPage';
+import ForgotPwdPage from './pages/ForgotPwdPage/ForgotPwdPage';
+import ResetPwdPage from './pages/ResetPwdPage/ResetPwdPage';
 import AuthGoogle from './components/shared/AuthGoogle/AuthGoogle';
 
 import RegisterPage from './pages/RegisterPage/RegisterPage';
 import { DivWrapperAPP, DivColorWrapperAPP } from './App.styled';
 
 import routes from './routes';
+import { GlobalStyle } from './styles/Basic/globalStyles.styled';
 
 // const MainLayout = lazy(() => import('./components/MainLayout/MainLayout'));
 // const AccountPage = lazy(() => import('./components/AccountPage/AccountPage'));
@@ -55,6 +58,8 @@ function App() {
                 <Route path={routes.registerPage} element={<RegisterPage />} />
                 <Route path={routes.loginPage} element={<LoginPage />} />
                 <Route path={routes.authGoogle} element={<AuthGoogle />} />
+                <Route path={routes.forgotPassword} element={<ForgotPwdPage />} />
+                <Route path={routes.resetPassword} element={<ResetPwdPage />} />
               </Route>
               <Route element={<PrivateRoutes />}>
                 <Route path={routes.mainLayout} element={<MainLayout />}>
@@ -72,6 +77,7 @@ function App() {
           <ToastContainer hideProgressBar closeOnClick theme={theme.toastify.theme} />
         </DivWrapperAPP>
       </DivColorWrapperAPP>
+      <GlobalStyle />
     </ThemeProvider>
   );
 }

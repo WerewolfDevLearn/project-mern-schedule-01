@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
-import { themes } from 'src/styles/variables/themes';
 
 export const List = styled.ul`
   display: flex;
@@ -40,11 +39,10 @@ export const StyledNavLink = styled(NavLink)`
     border-radius: 0 8px 8px 0;
   }
 
-  transition: transform 100ms linear;
+  transition: background 100ms linear, color 100ms linear;
 
   &:hover,
   &:focus {
-    transform: scale(1.15);
     background: ${({ theme }) => theme.colors.darkBlue};
     color: ${({ theme }) => theme.colors.textMonthDayBtn};
   }
