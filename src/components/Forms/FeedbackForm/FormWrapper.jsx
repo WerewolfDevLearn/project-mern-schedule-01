@@ -7,7 +7,7 @@ export default function FormWrapper({ onClose }) {
   const { data: reviews, isLoading } = useGetReviewOwnQuery();
   let action = 'add';
   if (!isLoading && reviews) {
-    if (reviews.length) {
+    if (reviews.length > 0) {
       action = 'view';
     }
   }

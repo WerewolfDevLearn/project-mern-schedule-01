@@ -7,10 +7,11 @@ axios.defaults.baseURL = 'https://project-mern-schedule-03.onrender.com/api';
 // axios.defaults.baseURL = 'http://localhost:3001/api';
 export async function userRegister(userData) {
   const response = await axios.post('/users/register', userData);
+  console.log('response: ', response);
   return response.data;
 }
 export async function userLogin(loginData) {
-  const response = await axios.post('/users/login', loginData);
+  const response = await axios.post('/users/login', loginData, { parse: true });
   const data = response.data;
   return data;
 }
@@ -80,26 +81,35 @@ export const token = {
 };
 
 // access-refresh token logic
-axios.interceptors.response.use(
-  (response) => response,
-  async (error) => {
-    if (error.response.status == 401) {
-      const refreshToken = store.getState().user.refreshToken;
-      axios.defaults.headers.common['refreshtoken'] = refreshToken;
-      error.config.headers.refreshtoken = `${refreshToken}`;
+// axios.interceptors.response.use(
+//   (response) => response,
+//   async (error) => {
+//     if (
+//       // eslint-disable-next-line eqeqeq
+//       error.response.status == 401 &&
+//       error.response.message !== 'Action Required: Verify Your Email'
+//     ) {
+//       try {
+//         const refreshToken = store.getState().user.refreshToken;
+//         if (!refreshToken) {
+//           return Promise.reject(error);
+//         }
+//         // eslint-disable-next-line dot-notation
+//         axios.defaults.headers.common['refreshtoken'] = refreshToken;
+//         error.config.headers.refreshtoken = `${refreshToken}`;
 
-      try {
-        const { data } = await axios.post('/users/refresh', { refreshToken }); // req.body do not attach refreshToken sometimes !!!
+//         const { data } = await axios.post('/users/refresh', { refreshToken }); // req.body do not attach refreshToken sometimes !!!
 
-        token.set(data.token);
-        await store.dispatch(authenticate({ token: data.token, refreshToken: data.refreshToken }));
-        error.config.headers.Authorization = `Bearer ${data.token}`;
+//         token.set(data.token);
+//         await store.dispatch(authenticate({ token: data.token, refreshToken: data.refreshToken }));
+//         error.config.headers.Authorization = `Bearer ${data.token}`;
 
-        return axios(error.config);
-      } catch (error) {
-        error.message = 'Unauthorized';
-        return Promise.reject(error);
-      }
-    }
-  }
-);
+//         return axios(error.config);
+//       } catch (error) {
+//         // error.message = 'Unauthorized';
+//         return Promise.reject(error);
+//       }
+//     }
+//     return Promise.reject(error);
+//   }
+// );

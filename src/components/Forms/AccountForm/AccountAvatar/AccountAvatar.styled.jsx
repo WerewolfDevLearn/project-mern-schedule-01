@@ -44,21 +44,6 @@ export const AvatarInputField = styled.input`
   display: none;
 `;
 
-export const AvatarImgContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 72px;
-  height: 72px;
-  border: 2px solid #3e85f3;
-  border-radius: 50%;
-
-  @media screen and (${themes.breakpoints.m} <= width) {
-    width: 124px;
-    height: 124px;
-  }
-`;
-
 export const AvatarImg = styled.img`
   width: 72px;
   height: 72px;
